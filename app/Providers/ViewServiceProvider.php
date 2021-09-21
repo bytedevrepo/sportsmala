@@ -41,12 +41,12 @@ class ViewServiceProvider extends ServiceProvider
         );
 
         View::composer(
-            ['site.layouts.header'],
+            ['theme-soccer.layouts.header'],
             'App\Http\View\Composers\PrimaryMenuComposer'
         );
 
         View::composer(
-            ['site.layouts.header', 'site.layouts.footer', 'site.partials.right_sidebar_widgets'],
+            ['theme-soccer.layouts.header', 'site.layouts.footer', 'site.partials.right_sidebar_widgets'],
             'App\Http\View\Composers\SocialComposer'
         );
 
