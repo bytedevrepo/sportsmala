@@ -48,19 +48,7 @@
 <body data-template="template-soccer" class="@if(settingHelper('preloader_option')==0) page-loader-disable @endif {{defaultModeCheck()}}">
 <div class="site-wrapper clearfix">
     <div class="site-overlay"></div>
-    <!-- Header================================================== --><!-- Header Mobile -->
-    <div class="header-mobile clearfix" id="header-mobile">
-        <div class="header-mobile__logo"><a href="_soccer_index.html">
-                <img src="/site/theme-soccer/assets/images/soccer/logo.png" srcset="site/theme-soccer/assets/images/soccer/logo@2x.png 2x" alt="Alchemists" class="header-mobile__logo-img">
-            </a>
-        </div>
-        <div class="header-mobile__inner">
-            <a id="header-mobile__toggle" class="burger-menu-icon"><span class="burger-menu-icon__line"></span>
-            </a>
-            <span class="header-mobile__search-icon" id="header-mobile__search-icon"></span>
-        </div>
-    </div>
-    <!-- Header Desktop -->
+    <!-- Header -->
     @include('theme-soccer.layouts.header')
     <!-- Header / End -->
     <!-- Pushy Panel - Dark -->
