@@ -21,27 +21,25 @@ class UserController extends Controller
 {
     public function showLoginForm()
     {
-        $widgetService          = new WidgetService();
-        $widgets                = $widgetService->getWidgetDetails();
+        $widgetService = new WidgetService();
+        $widgets = $widgetService->getWidgetDetails();
 
-        return view('site.auth.login', compact('widgets'));
+        return view('theme-soccer.auth.login', compact('widgets'));
     }
 
     public function login(Request $request)
     {
         if( settingHelper('captcha_visibility') == 1):
         $request->validate([
-            'email'         => ['required', 'string', 'email', 'max:255'],
-            'password'      => ['required', 'string'],
-            'g-recaptcha-response'      => ['required', 'string'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string'],
+            'g-recaptcha-response' => ['required', 'string'],
         ]);
         else:
-
             $request->validate([
-                'email'         => ['required', 'string', 'email', 'max:255'],
-                'password'      => ['required', 'string'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+                'password' => ['required', 'string'],
             ]);
-
         endif;
 
         $user = User::where('email', $request->email)->first();
@@ -70,7 +68,7 @@ class UserController extends Controller
 
     public function showRegistrationForm()
     {
-        return view('site.auth.register');
+        return view('theme-soccer.auth.register');
     }
 
     public function register(Request $request)
@@ -148,7 +146,7 @@ class UserController extends Controller
 
     public function forgotPassword()
     {
-        return view('site.auth.forgot_password');
+        return view('theme-soccer.auth.forgot_password');
     }
 
     public function postForgotPassword(Request $request)
