@@ -56,7 +56,7 @@ class ViewServiceProvider extends ServiceProvider
         );
 
         View::composer(
-            ['site.layouts.header', 'common::layouts.header'],
+            ['theme-soccer.layouts.header', 'common::layouts.header'],
             'App\Http\View\Composers\ActiveLangComposer'
         );
 
