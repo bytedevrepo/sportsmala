@@ -17,28 +17,29 @@
             <div class="header__top-bar-inner">
                 <!-- Account Navigation -->
                 <ul class="nav-account">
-                    <li class="nav-account__item"><a href="#" data-toggle="modal" data-target="#modal-login-register-tabs">Your Account</a></li>
-                    <li class="nav-account__item nav-account__item--wishlist">
-                        <a href="_soccer_shop-wishlist.html">Wishlist <span class="highlight">8</span></a>
-                    </li>
                     <li class="nav-account__item">
-                        <a href="#">Currency: <span class="highlight">USD</span></a>
-                        <ul class="main-nav__sub">
-                            <li><a href="#">USD</a></li>
-                            <li><a href="#">EUR</a></li>
-                            <li><a href="#">GBP</a></li>
-                        </ul>
+                        <a href="#">{{date('l, d F Y')}}</a>
                     </li>
                     <li class="nav-account__item">
                         <a href="#">Language: <span class="highlight">EN</span></a>
                         <ul class="main-nav__sub">
-                            <li><a href="#">English</a></li>
-                            <li><a href="#">Spanish</a></li>
-                            <li><a href="#">French</a></li>
-                            <li><a href="#">German</a></li>
+                            @foreach ($activeLang as $lang)
+                                <li><a href="#">{{ $lang->name }}</a></li>
+                            @endforeach
                         </ul>
                     </li>
-                    <li class="nav-account__item nav-account__item--logout"><a href="_soccer_shop-login.html">Logout</a></li>
+                    @if(Cartalyst\Sentinel\Laravel\Facades\Sentinel::check())
+                        <li class="nav-account__item">
+                            <a href="{{ route('site.profile') }}" >Your Account</a>
+                        </li>
+                        <li class="nav-account__item nav-account__item--logout">
+                            <a href="{{ route('site.logout') }}">Logout</a>
+                        </li>
+                    @else
+                        <li class="nav-account__item nav-account__item--logout">
+                            <a href="{{ route('site.login.form') }}">{{ __('login') }}</a>
+                        </li>
+                    @endif
                 </ul>
                 <!-- Account Navigation / End -->
             </div>
