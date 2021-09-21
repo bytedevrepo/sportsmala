@@ -21,12 +21,12 @@ class ViewServiceProvider extends ServiceProvider
         );
 
         View::composer(
-            ['site.partials.footer_widgets', 'site.layouts.footer'],
+            ['theme-soccer._partials.footer_widgets', 'theme-soccer.layouts.footer'],
             'App\Http\View\Composers\FooterWidgetComposer'
         );
 
         View::composer(
-            ['site.layouts.header'],
+            ['theme-soccer.layouts.header'],
             'App\Http\View\Composers\HeaderWidgetComposer'
         );
 
