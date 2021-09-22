@@ -16,7 +16,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(
-            ['site.partials.right_sidebar_widgets'],
+            ['theme-soccer._partials.right_sidebar_widgets'],
             'App\Http\View\Composers\WidgetComposer'
         );
 
@@ -46,7 +46,7 @@ class ViewServiceProvider extends ServiceProvider
         );
 
         View::composer(
-            ['theme-soccer.layouts.header', 'site.layouts.footer', 'site.partials.right_sidebar_widgets'],
+            ['theme-soccer.layouts.header', 'site.layouts.footer', 'theme-soccer._partials.right_sidebar_widgets'],
             'App\Http\View\Composers\SocialComposer'
         );
 
@@ -61,12 +61,12 @@ class ViewServiceProvider extends ServiceProvider
         );
 
         View::composer(
-            ['site.partials.home.primary_section'],
+            ['theme-soccer._partials.home.breaking_section'],
             'App\Http\View\Composers\BreakingComposer'
         );
 
         View::composer(
-            ['site.layouts.app', 'site.partials.home.primary_section'],
+            ['theme-soccer.layouts.app', 'theme-soccer._partials.home.primary_section'],
             'App\Http\View\Composers\LanguageComposer'
         );
 
