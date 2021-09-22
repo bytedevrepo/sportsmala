@@ -94,7 +94,7 @@ class HomeController extends Controller
         $tracker->agent_browser = UserAgentBrowser(\Request()->header('User-Agent'));
 
         $tracker->save();
-
+//dd($sliderPosts);
 //        return view('site.pages.home', compact('primarySection','primarySectionPosts', 'categorySections', 'sliderPosts', 'video_posts', 'latest_posts', 'totalPostCount'));
         return view('theme-soccer.pages.home', compact('primarySection','primarySectionPosts', 'categorySections', 'sliderPosts', 'video_posts', 'latest_posts', 'totalPostCount'));
     }
