@@ -25,8 +25,6 @@
     <link href="{{ asset('site/theme-soccer/assets/vendor/slick/slick.css') }}" rel="stylesheet">
     <!-- Template CSS-->
     <link href="{{ asset('site/theme-soccer/assets/css/style-soccer.css') }}" rel="stylesheet">
-    <!-- Custom CSS-->
-    <link href="{{ asset('site/theme-soccer/assets/css/custom.css') }}" rel="stylesheet">
     @yield('style')
     @if(settingHelper('predefined_header')!=null)
         {!! base64_decode(settingHelper('predefined_header')) !!}
@@ -230,5 +228,13 @@
 <!-- Template JS -->
 <script src="{{ asset('site/theme-soccer/assets/js/init.js') }}"></script>
 <script src="{{ asset('site/theme-soccer/assets/js/custom.js') }}"></script>
+<script src="{{asset('site/theme-soccer/assets/js/theia-sticky-sidebar.min.js') }}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery('.content, .sidebar').theiaStickySidebar({
+            additionalMarginTop: 0
+        });
+    });
+</script>
 </body>
 </html>

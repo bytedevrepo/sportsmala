@@ -17,13 +17,6 @@
             <div class="header__top-bar-inner">
                 <!-- Account Navigation -->
                 <ul class="nav-account">
-                    {{--<li class="nav-account__item">--}}
-                    {{--@foreach($socialMedias as $socialMedia)--}}
-                    {{--<a class="mr-2" href="{{$socialMedia->url}}" target="_blank"><i class="{{$socialMedia->icon}}" aria-hidden="true"></i></a>--}}
-                    {{--@endforeach--}}
-                    {{--<a href="{{ url('feed') }}"><i class="fa fa-rss" aria-hidden="true"></i></a>--}}
-                    {{--</li>--}}
-
                     <li class="nav-account__item">
                         <a href="#">{{date('l, d F Y')}}</a>
                     </li>
@@ -65,16 +58,10 @@
             <!-- Header Search Form / End -->
             <ul class="info-block info-block--header">
                 <li class="info-block__item info-block__item--contact-primary">
-                    <svg role="img" class="df-icon df-icon--whistle">
-                        <use xlink:href="assets/images/icons-soccer.svg#whistle"/>
-                    </svg>
                     <h6 class="info-block__heading">Join Our Team!</h6>
                     <a class="info-block__link" href="mailto:tryouts@alchemists.com">tryouts@alchemists.com</a>
                 </li>
                 <li class="info-block__item info-block__item--contact-secondary">
-                    <svg role="img" class="df-icon df-icon--soccer-ball">
-                        <use xlink:href="assets/images/icons-soccer.svg#soccer-ball"/>
-                    </svg>
                     <h6 class="info-block__heading">Contact Us</h6>
                     <a class="info-block__link" href="mailto:info@alchemists.com">info@alchemists.com</a>
                 </li>
@@ -183,7 +170,11 @@
                                                     </div>
                                                 </li>
                                                 <li class="posts__item posts__item--category-1">
-                                                    <figure class="posts__thumb"><a href="#"><img src="assets/images/samples/post-img4-xs.jpg" alt=""></a></figure>
+                                                    <figure class="posts__thumb">
+                                                        <a href="#">
+                                                            <img src="/site/theme-soccer/assets/images/samples/post-img4-xs.jpg" alt="">
+                                                        </a>
+                                                    </figure>
                                                     <div class="posts__inner">
                                                         <div class="posts__cat"><span class="label posts__cat-label">The Team</span></div>
                                                         <h6 class="posts__title"><a href="#">The team is starting a new power breakfast regimen</a></h6>
