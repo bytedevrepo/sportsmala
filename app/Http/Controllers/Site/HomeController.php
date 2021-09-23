@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use Modules\Ads\Entities\AdLocation;
 use Modules\Appearance\Entities\ThemeSection;
 use Modules\Post\Entities\Post;
 use LaravelLocalization;
@@ -11,7 +10,6 @@ use App\VisitorTracker;
 use Illuminate\Support\Facades\Input;
 use Sentinel;
 use DB;
-use Modules\Post\Entities\Category;
 
 class HomeController extends Controller
 {
@@ -94,7 +92,6 @@ class HomeController extends Controller
         $tracker->agent_browser = UserAgentBrowser(\Request()->header('User-Agent'));
 
         $tracker->save();
-//dd($sliderPosts);
 //        return view('site.pages.home', compact('primarySection','primarySectionPosts', 'categorySections', 'sliderPosts', 'video_posts', 'latest_posts', 'totalPostCount'));
         return view('theme-soccer.pages.home', compact('primarySection','primarySectionPosts', 'categorySections', 'sliderPosts', 'video_posts', 'latest_posts', 'totalPostCount'));
     }

@@ -10,7 +10,7 @@
                                     <span class="label posts__cat-label">{{ __('breaking_news') }}</span>
                                 </div>
                                 <h1 class="page-heading__title">
-                                    <a href="{{ route('article.detail', ['id' => $post->slug]) }}">{!! \Illuminate\Support\Str::limit($post->title, 50) !!}</a>
+                                    <a href="{{ route('article.detail', ['id' => $post->slug]) }}">{!! \Illuminate\Support\Str::limit($post->title, 255) !!}</a>
                                 </h1>
                             </div>
                         </div>

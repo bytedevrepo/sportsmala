@@ -7,7 +7,6 @@ use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
 use Modules\Post\Entities\Comment;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Redirect;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Session;
 
@@ -26,7 +25,6 @@ class CommentController extends Controller
         $comment            = new Comment();
         $comment->fill($data);
         $comment->save();
-
         return redirect()->back();
     }
 

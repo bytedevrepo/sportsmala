@@ -25,7 +25,12 @@
                                     <span class="label posts__cat-label">{{ $post['category']->category_name }}</span>
                                 </a>
                             </div>
-                            <h3 class="posts__title">{!! \Illuminate\Support\Str::limit($post->title, 50) !!}</h3>
+                            <a href="{{ route('article.detail', ['id' => $post->slug]) }}">
+                                <h3 class="posts__title">
+                                    {!! \Illuminate\Support\Str::limit($post->title, 95) !!}
+                                </h3>
+                            </a>
+
                             <div class="post-author">
                                 {{ __('post_by') }}
                                 <div class="post-author__info">
