@@ -47,7 +47,7 @@
 <div class="site-wrapper clearfix">
     <div class="site-overlay"></div>
     <!-- Header -->
-    @include('theme-soccer.layouts.header')
+@include('theme-soccer.layouts.header')
     <!-- Header / End -->
     <!-- Pushy Panel - Dark -->
     <aside class="pushy-panel pushy-panel--dark">
@@ -139,7 +139,6 @@
         </div>
     </aside>
     <!-- Pushy Panel - Dark / End -->
-
     @yield('content')
 
     @include('theme-soccer.layouts.footer')

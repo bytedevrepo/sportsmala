@@ -62,11 +62,12 @@ class AuthorController extends Controller
             ->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))
             ->count();
 
-        return view('site.pages.author.my_profile', compact('articles', 'totalPostCount'));
+//        return view('site.pages.author.my_profile', compact('articles', 'totalPostCount'));
+        return view('theme-soccer.pages.author.my_profile', compact('articles', 'totalPostCount'));
     }
     public function  myProfileEdit(){
-
-        return view('site.pages.author.edit_profile');
+//        return view('site.pages.author.edit_profile');
+        return view('theme-soccer.pages.author.edit_profile');
     }
     public function  myProfileUpdate(Request $request){
         $validation = Validator::make($request->all(), [
@@ -120,7 +121,8 @@ class AuthorController extends Controller
     }
     public function  social(){
         $socials = Sentinel::getUser()->social_media;
-        return view('site.pages.author.social',compact('socials'));
+//        return view('site.pages.author.social',compact('socials'));
+        return view('theme-soccer.pages.author.social',compact('socials'));
     }
     public function  socialUpdate(Request $request){
         $inputs             = $request->except(['_token']);
@@ -133,7 +135,8 @@ class AuthorController extends Controller
     }
     public function  preference(){
         $preferences = Sentinel::findById(1)->permissions;
-        return view('site.pages.author.preference',compact('preferences'));
+//        return view('site.pages.author.preference',compact('preferences'));
+        return view('theme-soccer.pages.author.preference',compact('preferences'));
     }
     public function  preferenceUpdate(Request $request){
         $inputs             = $request->except(['_token']);
@@ -145,6 +148,7 @@ class AuthorController extends Controller
         return redirect()->back()->with('success', __('successfully_updated'));
     }
     public function  changePassword(){
-        return view('site.pages.author.change_password');
+//        return view('site.pages.author.change_password');
+        return view('theme-soccer..pages.author.change_password');
     }
 }

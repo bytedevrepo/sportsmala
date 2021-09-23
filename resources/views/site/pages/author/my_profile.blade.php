@@ -61,7 +61,7 @@
                                     <li><a href="{{ @Sentinel::getUser()->social_media['linkedin_url'] }}"><i
                                                 class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                 @endif
-                            </ul>
+                                class="img-fluid   </ul>
                         </div><!-- /.sg-social -->
                     </div>
                 </div><!-- /.author-top-content -->
@@ -77,8 +77,7 @@
                                                     @if(isFileExist($post->image, $result = @$post->image->medium_image))
                                                         <img
                                                             src="{{safari_check() ? basePath(@$post->image).'/'.$result : static_asset('default-image/default-358x215.png') }} "
-                                                            data-original=" {{basePath($post->image)}}/{{ $result }} "
-                                                            class="img-fluid" alt="{!! $post->title !!}">
+                                                            data-original=" {{basePath($post->image)}}/{{ $result }}" alt="{!! $post->title !!}">
                                                     @else
                                                         <img
                                                             src="{{static_asset('default-image/default-358x215.png') }} "
