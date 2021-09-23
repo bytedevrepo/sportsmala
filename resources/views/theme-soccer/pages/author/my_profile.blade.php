@@ -27,7 +27,9 @@
                     <div class="card card--clean alc-staff">
                         <div class="card__header card__header--has-btn">
                             <h4>My Profile</h4>
-                            <a class="btn btn-default btn-outline btn-xs card-header__button" href="" title="Go to the Team">Update profile</a>
+                            <a class="btn btn-default btn-outline btn-xs card-header__button" href="{{ route('site.profile.form') }}" title="Update Profile">
+                                Update profile
+                            </a>
                         </div>
                         <div class="card__content">
                             <div class="card mb-0">
@@ -49,7 +51,7 @@
                                                         {{ Sentinel::getUser() ? Sentinel::getUser()->first_name : '' }}
                                                         <span class="alc-staff__header-last-name">{{ Sentinel::getUser() ? Sentinel::getUser()->last_name : '' }}</span>
                                                     </h1>
-                                                    <span class="alc-staff__header-role">{{ __('last_login') }}: {{ date('l, d F Y, h:i a' , strtotime(Sentinel::getUser()->last_login)) }}</span>
+                                                    <span class="alc-staff__header-role">{{ Sentinel::getUser() ? Sentinel::getUser()->email : '' }}</span>
                                                 </header>
                                                 <!-- Excerpt -->
                                                 <div class="alc-staff-excerpt">
