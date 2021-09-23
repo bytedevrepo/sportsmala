@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
-use Modules\Appearance\Entities\ThemeSection;
-use Modules\Gallery\Entities\Audio;
 use Modules\Gallery\Entities\Video;
 use Modules\Gallery\Entities\Image as galleryImage;
 use Modules\Post\Entities\Category;
@@ -141,7 +138,8 @@ class ArticleController extends Controller
 		$tracker->agent_browser = UserAgentBrowser(\Request()->header('User-Agent'));
 		$tracker->save();
 
-		return view('site.pages.article_detail', compact('post', 'widgets', 'socialLinks', 'relatedPost', 'tracks', 'post_contents'));
+//		return view('site.pages.article_detail', compact('post', 'widgets', 'socialLinks', 'relatedPost', 'tracks', 'post_contents'));
+		return view('theme-soccer.pages.article_detail', compact('post', 'widgets', 'socialLinks', 'relatedPost', 'tracks', 'post_contents'));
 	}
 
 	private function socialLinks()
