@@ -35,6 +35,7 @@
                     <!-- Account Navigation / End -->
                 </div>
                 <div class="col-lg-8">
+                   @include('theme-soccer._partials.notification')
                     <!-- Personal Information -->
                     <div class="card card--lg">
                         <div class="card__header">
@@ -43,7 +44,9 @@
                                 View profile
                             </a>
                         </div>
+
                         <div class="card__content">
+
                             <form class="df-personal-info" name="author-form" method="post" action="{{ route('site.profile.save') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group form-group--upload">

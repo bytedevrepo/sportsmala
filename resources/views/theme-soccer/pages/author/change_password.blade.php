@@ -35,6 +35,7 @@
                     <!-- Account Navigation / End -->
                 </div>
                 <div class="col-lg-8">
+                @include('theme-soccer._partials.notification')
                     <!-- Personal Information -->
                     <div class="card card--lg">
                         <div class="card__header">
