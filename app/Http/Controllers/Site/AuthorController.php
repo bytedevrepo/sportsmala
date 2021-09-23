@@ -62,7 +62,8 @@ class AuthorController extends Controller
             ->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))
             ->count();
 
-        return view('site.pages.author.my_profile', compact('articles', 'totalPostCount'));
+//        return view('site.pages.author.my_profile', compact('articles', 'totalPostCount'));
+        return view('theme-soccer.pages.author.my_profile', compact('articles', 'totalPostCount'));
     }
     public function  myProfileEdit(){
 
