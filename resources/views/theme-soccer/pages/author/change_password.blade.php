@@ -11,7 +11,7 @@
                     <h1 class="page-heading__title">Update <span class="highlight">Account</span></h1>
                     <ol class="page-heading__breadcrumb breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('site.profile.form') }}">Update Account</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('site.profile.form') }}">Account</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Change Password</li>
                     </ol>
                 </div>

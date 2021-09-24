@@ -11,7 +11,7 @@
                     <h1 class="page-heading__title">Update <span class="highlight">Account</span></h1>
                     <ol class="page-heading__breadcrumb breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('site.profile.form') }}">Update Account</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('site.profile.form') }}">Account</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Preference</li>
                     </ol>
                 </div>
@@ -23,20 +23,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
-                    <!-- Account Navigation -->
-                    <div class="card">
-                        <div class="card__header">
-                            <h4>Welcome Back!</h4>
-                        </div>
-                        <div class="card__content">
-                            @include('theme-soccer.pages.author.sidebar')
-                        </div>
-                    </div>
-                    <!-- Account Navigation / End -->
+                    @include('theme-soccer.pages.author.sidebar')
                 </div>
                 <div class="col-lg-8">
                 @include('theme-soccer._partials.notification')
-                    <!-- Personal Information -->
+                <!-- Personal Information -->
                     <div class="card card--lg">
                         <div class="card__header">
                             <h4>Preference</h4>

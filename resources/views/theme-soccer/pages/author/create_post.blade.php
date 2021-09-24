@@ -1,5 +1,9 @@
+{{--NOT USED--}}
 @extends('theme-soccer.layouts.app')
-@section('my-profile-edit')
+@push('style')
+    <link href="{{static_asset('vendor/tinymce/skins/lightgray/skin.min.css')}}" rel="stylesheet" />
+@endpush
+@section('submit-news')
     active
 @stop
 @section('content')
@@ -8,11 +12,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 offset-md-1">
-                    <h1 class="page-heading__title">Update <span class="highlight">Account</span></h1>
+                    <h1 class="page-heading__title">Create <span class="highlight">Post</span></h1>
                     <ol class="page-heading__breadcrumb breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('site.profile.form') }}">Account</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Personal Information</li>
+                        <li class="breadcrumb-item active" aria-current="page">Create Post</li>
                     </ol>
                 </div>
             </div>
@@ -30,15 +34,13 @@
                 <!-- Personal Information -->
                     <div class="card card--lg">
                         <div class="card__header">
-                            <h4>Personal Information</h4>
+                            <h4>{{ __('submit_news') }}</h4>
                             <a class="btn btn-default btn-outline btn-xs card-header__button" href="{{ route('site.profile') }}" title="Update Profile">
                                 View profile
                             </a>
                         </div>
-
                         <div class="card__content">
-
-                            <form class="df-personal-info" name="author-form" method="post" action="{{ route('site.profile.save') }}" enctype="multipart/form-data">
+                            <form class="df-personal-info" name="author-form" method="post" action="{{ route('submit.news.save') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group form-group--upload">
                                     <div class="form-group__avatar" >
@@ -59,36 +61,28 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="account-username">{{ __('first_name') }}</label>
-                                            <input required type="text" class="form-control" name="first_name" id="first_name" value="{{ Sentinel::getUser()->first_name }}" placeholder="{{ __('first_name') }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="account-username">{{ __('last_name') }}</label>
-                                            <input required type="text" class="form-control" name="last_name" value="{{ Sentinel::getUser()->last_name }}" id="account-username" placeholder="{{ __('last_name') }}">
+                                            <label for="account-email">{{ __('title') }}</label>
+                                            <input type="text" class="form-control" value="{{ old('title') }}" name="title" placeholder="Post title">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="account-email">{{ __('email') }}</label>
-                                            <input disabled type="email" class="form-control" value="{{ Sentinel::getUser()->email }}" name="" id="account-email" placeholder="{{__('input_email')}}">
+                                            <label for="account-email">{{ __('content') }}</label>
+                                            <textarea class="form-control" name="content" id="post_content" cols="30" rows="5">{{old('content')}}</textarea>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label for="account-email">{{ __('email') }}</label>
-                                            <textarea class="form-control" rows="7" name="about" placeholder="{{__('input_message')}}">{{ Sentinel::getUser()->about_us }}</textarea>
-                                        </div>
-                                    </div>
+                                <div class="form-group--submit">
+                                    @if(Cartalyst\Sentinel\Laravel\Facades\Sentinel::check())
+                                        <button type="submit" class="btn btn-primary-inverse btn-lg btn-block">Submit</button>
+                                    @else
+                                        <a class="btn btn-primary-inverse" href="{{ route('site.login.form') }}">Login</a>
+                                    @endif
                                 </div>
-                                <div class="form-group--submit"><button type="submit" class="btn btn-primary-inverse btn-lg btn-block">See all the changes</button></div>
                             </form>
                         </div>
                     </div>
@@ -96,10 +90,24 @@
             </div>
         </div>
     </div>
-    <script>
-        function setUserImage(e) {
-            let frame = document.getElementById('profile_image');
-            frame.src=URL.createObjectURL(event.target.files[0]);
-        }
-    </script>
 @stop
+@push('script')
+    <script src="{{static_asset('vendor/tinymce/tinymce.min.js')}}"></script>
+    <script>
+        //TinyMCE
+        tinymce.init({
+            selector: "textarea#post_content",
+            theme: "modern",
+            height: 400,
+            plugins: [
+                'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen',
+                'insertdatetime media nonbreaking save table contextmenu directionality',
+                'emoticons template paste textcolor colorpicker textpattern imagetools'
+            ],
+            toolbar1: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            toolbar2: 'print preview media | forecolor backcolor emoticons',
+            image_advtab: true
+        });
+    </script>
+@endpush

@@ -25,7 +25,6 @@
     <link href="{{ asset('site/theme-soccer/assets/vendor/slick/slick.css') }}" rel="stylesheet">
     <!-- Template CSS-->
     <link href="{{ asset('site/theme-soccer/assets/css/style-soccer.css') }}" rel="stylesheet">
-    @yield('style')
     @if(settingHelper('predefined_header')!=null)
         {!! base64_decode(settingHelper('predefined_header')) !!}
     @endif
@@ -235,5 +234,8 @@
         });
     });
 </script>
+@yield('script')
+@yield('player')
+@yield('audio')
 </body>
 </html>

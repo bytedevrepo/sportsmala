@@ -167,7 +167,8 @@ class ArticleController extends Controller
 			$widgetService = new WidgetService();
 			$widgets = $widgetService->getWidgetDetails();
 
-			return view('site.pages.submit_news', compact('widgets'));
+//			return view('site.pages.submit_news', compact('widgets'));
+			return view('theme-soccer.pages.author.create_post', compact('widgets'));
 		else:
 			return response()->view('site.pages.404');
 		endif;
