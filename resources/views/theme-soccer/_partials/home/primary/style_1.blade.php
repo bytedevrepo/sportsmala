@@ -21,9 +21,13 @@
                         <figure class="posts__thumb"><img src="/site/theme-soccer/assets/images/soccer/samples/post-slide7.jpg" alt=""></figure>
                         <div class="posts__inner">
                             <div class="posts__cat">
-                                <a href="{{ url('category',$post['category']->slug) }}">
-                                    <span class="label posts__cat-label">{{ $post['category']->category_name }}</span>
-                                </a>
+                                @if(!blank($post->categories))
+                                    @foreach($post->categories as $category)
+                                        <a href="{{ url('category',$category->slug) }}">
+                                            <span class="label posts__cat-label mb-1 ml-1">{{ $category->category_name }}</span>
+                                        </a>
+                                    @endforeach
+                                @endif
                             </div>
                             <a href="{{ route('article.detail', ['id' => $post->slug]) }}">
                                 <h3 class="posts__title">
@@ -68,13 +72,15 @@
                                 </a>
                             </figure>
                             <div class="posts__inner">
-                                @isset($post->category->category_name)
-                                    <div class="posts__cat">
-                                        <a href="{{ url('category',$post['category']->slug) }}">
-                                            <span class="label posts__cat-label">{{ $post['category']->category_name }}</span>
-                                        </a>
-                                    </div>
-                                @endif
+                                <div class="posts__cat">
+                                    @if(!blank($post->categories))
+                                        @foreach($post->categories as $category)
+                                            <a href="{{ url('category',$category->slug) }}">
+                                                <span class="label posts__cat-label mb-1 ml-1">{{ $category->category_name }}</span>
+                                            </a>
+                                        @endforeach
+                                    @endif
+                                </div>
                                 <h6 class="posts__title">
                                     <a href="{{ route('article.detail', ['id' => $post->slug]) }}">{!! \Illuminate\Support\Str::limit($post->title, 60) !!}</a>
                                 </h6>

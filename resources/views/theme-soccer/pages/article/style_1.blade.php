@@ -62,11 +62,15 @@
     @endif
     <div class="card__content">
         <div class="post__category">
-            <span class="label posts__cat-label">
-                 <a href="{{ url('category',data_get($post, 'category.slug')) }}">
-                     <span class="label posts__cat-label">{{ data_get($post, 'category.category_name') }}</span>
-                 </a>
-            </span>
+            @if(!blank($post->categories))
+                @foreach($post->categories as $category)
+                    <div class="label posts__cat-label">
+                         <a href="{{ url('category',$category->slug) }}">
+                             <span class="label posts__cat-label">{{ $category->category_name }}</span>
+                         </a>
+                    </div>
+                @endforeach
+            @endif
         </div>
         <header class="post__header">
             <h2 class="post__title">{!! $post->title ?? '' !!}</h2>
@@ -82,7 +86,9 @@
         <div class="post__content">
             {!! $post->content ?? '' !!}
             @if(isset($post->read_more_link))
-                <a href="{{ $post->read_more_link }}" class="btn btn-primary-inverse float-right" target="_blank">{{ __('read_actual_content') }} <i class="fa fa-long-arrow-right"></i></a>
+                <div class="pb-4">
+                    <a href="{{ $post->read_more_link }}" class="btn btn-primary-inverse float-right" target="_blank">{{ __('read_actual_content') }} <i class="fa fa-long-arrow-right"></i></a>
+                </div>
             @endif
         </div>
 

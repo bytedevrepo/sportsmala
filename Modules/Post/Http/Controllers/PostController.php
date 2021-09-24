@@ -359,8 +359,8 @@ class PostController extends Controller
         $post->tags             = $request->tags;
         $post->meta_description = $request->meta_description;
         $post->language         = $request->language;
-        $post->category_id      = $request->category_id;
-        $post->sub_category_id  = $request->sub_category_id;
+//        $post->category_id      = $request->category_id;
+//        $post->sub_category_id  = $request->sub_category_id;
         $post->image_id         = $request->image_id;
 
         if(isset($request->video_id)):
