@@ -33,7 +33,7 @@ class WidgetService extends Service
 
     private function popularPost()
     {
-        return Post::with(['image', 'user'])
+        return Post::with(['image', 'user','categories'])
                 ->orderBy('total_hit', 'DESC')
                 ->take(4)
                 ->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))
@@ -150,7 +150,7 @@ class WidgetService extends Service
                         ->where('location', \Modules\Widget\Enums\WidgetLocation::RIGHT_SIDEBAR)
                         ->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))
                         ->get();
-                        //dd($widgets);
+//                        dd($widgets);
 
         foreach ($widgets as $widget) {
 

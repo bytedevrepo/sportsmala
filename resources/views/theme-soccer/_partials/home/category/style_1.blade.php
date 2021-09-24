@@ -15,15 +15,17 @@
         <div class="posts posts--cards post-grid row">
             @foreach($posts->take(4) as $post)
                 <div class="post-grid__item col-sm-6">
-                    <div class="posts__item posts__item--card posts__item--category-2 card">
+                    <div class="posts__item posts__item--card posts__item--category-1 card">
                         <figure class="posts__thumb">
-                            @isset($post->category->category_name)
-                                <div class="posts__cat">
-                                    <a href="{{ url('category',$post['category']->slug) }}">
-                                        <span class="label posts__cat-label">{{ $post['category']->category_name }}</span>
-                                    </a>
-                                </div>
-                            @endif
+                            <div class="posts__cat">
+                                @if(!blank($post->categories))
+                                    @foreach($post->categories as $category)
+                                        <a href="{{ url('category',$category->slug) }}">
+                                            <span class="label posts__cat-label mb-1 ml-1">{{ $category->category_name }}</span>
+                                        </a>
+                                    @endforeach
+                                @endif
+                            </div>
                             <a href="#">
                                 @if(isFileExist($post->image, $result = @$post->image->medium_image_three))
                                     <img src=" {{basePath($post->image)}}/{{ $result }} " width="100%" height="100%" alt="{!! $post->title !!}">
@@ -37,7 +39,7 @@
                             <time datetime="{{$post->updated_at}}" class="posts__date">
                                 <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">{{ $post->updated_at->format('F j, Y') }}</a>
                             </time>
-                            <h6 class="posts__title"><a href="#">{!! \Illuminate\Support\Str::limit($post->title,80) !!}</a></h6>
+                            <h6 class="posts__title"><a href="{{ route('article.detail', ['id' => $post->slug]) }}">{!! \Illuminate\Support\Str::limit($post->title,80) !!}</a></h6>
                             <div class="posts__excerpt">
                                 {!! strip_tags(\Illuminate\Support\Str::limit($post->content, 155)) !!}
                             </div>
