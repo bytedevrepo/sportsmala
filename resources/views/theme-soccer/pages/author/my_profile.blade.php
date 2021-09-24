@@ -10,7 +10,7 @@
                 <div class="col-md-10 offset-md-1">
                     <h1 class="page-heading__title">My <span class="highlight">Profile</span></h1>
                     <ol class="page-heading__breadcrumb breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Account</a></li>
                         <li class="breadcrumb-item active" aria-current="page">My Profile</li>
                     </ol>
                 </div>

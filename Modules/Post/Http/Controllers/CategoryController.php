@@ -21,7 +21,6 @@ class CategoryController extends Controller
 
         $activeLang     = Language::where('status', 'active')->orderBy('name', 'ASC')->get();
 
-
         return view('post::categories', compact('activeLang', 'categories'));
     }
 

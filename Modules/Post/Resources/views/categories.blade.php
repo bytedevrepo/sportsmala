@@ -65,60 +65,50 @@
 
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="category_id">{{ __('parent_category') }}*</label>
-                                        <select class="form-control dynamic" id="parent_id" name="parent_id" required>
-                                        <option value="">{{ __('select_category') }}</option>
-                                        @foreach ($categories as $category)
-                                            <option
-                                                value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                        @endforeach
-                                    </select>
+                                        <label for="category_id">{{ __('parent_category') }} </label>
+                                        <select class="form-control dynamic" id="parent_id" name="parent_id">
+                                            <option value="">{{ __('select_category') }}</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="category-name" class="col-form-label">{{ __('category_name') }}
-                                            *</label>
-                                        <input id="category-name" name="category_name" type="text" class="form-control"
-                                               required>
+                                        <label for="category-name" class="col-form-label">{{ __('category_name') }} *</label>
+                                        <input id="category-name" name="category_name" type="text" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="category-slug" class="col-form-label"><b>{{ __('slug') }}</b>
-                                            ({{ __('slug_message') }})</label>
+                                        <label for="category-slug" class="col-form-label"><b>{{ __('slug') }}</b>({{ __('slug_message') }})</label>
                                         <input id="category-slug" name="slug" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="category-desc" class="col-form-label"><b>{{ __('description') }}</b>
-                                            ({{ __('meta_tag') }})</label>
-                                        <input id="category-desc" name="meta_description" type="text"
-                                               class="form-control">
+                                        <label for="category-desc" class="col-form-label"><b>{{ __('description') }}</b>({{ __('meta_tag') }})</label>
+                                        <input id="category-desc" name="meta_description" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label for="category-keywords"
-                                               class="col-form-label"><b>{{ __('keywords') }}</b> ({{ __('meta_tag') }})</label>
-                                        <input id="category-keywords" name="meta_keywords" type="text"
-                                               class="form-control">
+                                        <label for="category-keywords" class="col-form-label"><b>{{ __('keywords') }}</b> ({{ __('meta_tag') }})</label>
+                                        <input id="category-keywords" name="meta_keywords" type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group">
                                         <label for="category-order" class="col-form-label">{{ __('order') }}</label>
-                                        <input id="category-order" value="1" name="order" type="number"
-                                               class="form-control">
+                                        <input id="category-order" value="1" name="order" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 m-t-20">
                                         <div class="form-group form-float form-group-sm text-right">
-                                            <button type="submit" name="btnsubmit" class="btn btn-primary pull-right"><i
-                                                    class="m-r-10 mdi mdi-plus"></i>{{ __('add_category') }}</button>
+                                            <button type="submit" name="btnsubmit" class="btn btn-primary pull-right"><i class="m-r-10 mdi mdi-plus"></i>{{ __('add_category') }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -140,11 +130,11 @@
                                         <tr role="row">
                                             <th>#</th>
                                             <th>{{ __('category_name') }}</th>
-                                            <th>{{ __('parent_category') }}</th>
-                                            <th>{{ __('language') }}</th>
-                                            <th>{{ __('order') }}</th>
+                                            <th class="text-center">{{ __('parent_category') }}</th>
+                                            <th class="text-center">{{ __('language') }}</th>
+                                            <th class="text-center">{{ __('order') }}</th>
                                             @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
-                                                <th>{{ __('options') }}</th>
+                                                <th class="text-center">{{ __('options') }}</th>
                                             @endif
                                         </tr>
                                         </thead>
@@ -154,35 +144,28 @@
                                             <tr role="row" class="odd" id="row_{{ $category->id }}">
                                                 <td class="sorting_1">{{ $category->id }}</td>
                                                 <td>{{ $category->category_name }}</td>
-                                                <td> </td>
-                                                <td>{{ $category->language }}</td>
-                                                <td>{{ $category->order }}</td>
+                                                <td class="text-center">
+                                                    @if(!blank($category->parent))
+                                                        {{ data_get($category, 'parent.category_name') }}
+                                                    @else
+                                                        <code>root</code>
+                                                    @endif
+                                                </td>
+                                                <td class="text-center">{{ $category->language }}</td>
+                                                <td class="text-center">{{ $category->order }}</td>
                                                 @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
-                                                    <td>
-                                                        <div class="dropdown">
-                                                            <button
-                                                                class="btn bg-primary dropdown-toggle btn-select-option"
-                                                                type="button" data-toggle="dropdown">...
-                                                                <span class="caret"></span>
-                                                            </button>
-                                                            <ul class="dropdown-menu options-dropdown">
-                                                                @if(Sentinel::getUser()->hasAccess(['category_write']))
-                                                                    <li>
-                                                                        <a href="{{ route('edit-category',['id'=>$category->id]) }}"><i
-                                                                                class="fa fa-edit option-icon"></i>{{ __('edit') }}
-                                                                        </a>
-                                                                    </li>
-                                                                @endif
-                                                                @if(Sentinel::getUser()->hasAccess(['category_delete']))
-                                                                    <li>
-                                                                        <a href="javascript:void(0)"
-                                                                           onclick="delete_item('categories','{{ $category->id }}')"><i
-                                                                                class="fa fa-trash option-icon"></i>{{ __('delete') }}
-                                                                        </a>
-                                                                    </li>
-                                                                @endif
-                                                            </ul>
-                                                        </div>
+                                                    <td class="text-center">
+                                                        @if(Sentinel::getUser()->hasAccess(['category_write']))
+                                                            <a href="{{ route('edit-category',['id'=>$category->id]) }}"><i
+                                                                    class="fa fa-edit option-icon"></i>
+                                                            </a>
+                                                        @endif
+                                                        @if(Sentinel::getUser()->hasAccess(['category_delete']))
+                                                            <a href="javascript:void(0)"
+                                                               onclick="delete_item('categories','{{ $category->id }}')"><i
+                                                                    class="fa fa-trash option-icon"></i>
+                                                            </a>
+                                                        @endif
                                                     </td>
                                                 @endif
                                             </tr>

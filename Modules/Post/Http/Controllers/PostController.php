@@ -38,38 +38,38 @@ class PostController extends Controller
 
     public function createArticle()
     {
-        $categories     = Category::where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))->get();
+        $categories     = Category::with('subCategory')
+            ->where('parent_id', null)
+            ->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))->get();
         $subCategories  = SubCategory::all();
         $activeLang     = Language::where('status', 'active')->orderBy('name', 'ASC')->get();
         $countImage     = galleryImage::count();
         $countVideo     = Video::count();
-
         return view('post::article_create',compact('categories', 'subCategories', 'activeLang', 'countImage', 'countVideo'));
     }
     public function saveNewPost(Request $request,$type){
 
         Validator::make($request->all(), [
             'title'             => 'required|min:2|unique:posts',
-            'content'           => 'required',
+            'body'           => 'required',
             'language'          => 'required',
-            'category_id'       => 'required',
             'slug'              => 'nullable|min:2|unique:posts|regex:/^\S*$/u',
         ])->validate();
 
-        $post               =   new Post();
-        $post->title        =   $request->title;
+        $post = new Post();
+        $post->title = $request->title;
         if ($request->slug != null) :
-            $post->slug     = $request->slug;
+            $post->slug = $request->slug;
         else :
-            $post->slug     = $this->make_slug($request->title);
+            $post->slug = $this->make_slug($request->title);
         endif;
 
-        $post->user_id      = Sentinel::getUser()->id;
-        $post->content      = $request->content;
+        $post->user_id = Sentinel::getUser()->id;
+        $post->content = $request->body;
 
-        $post->visibility   = $request->visibility;
+        $post->visibility = $request->visibility;
 
-        $post->layout       = $request->layout;
+        $post->layout = $request->layout;
 
 
         if(isset($request->featured)):
@@ -113,8 +113,8 @@ class PostController extends Controller
         $post->tags             = $request->tags;
         $post->meta_description = $request->meta_description;
         $post->language         = $request->language;
-        $post->category_id      = $request->category_id;
-        $post->sub_category_id  = $request->sub_category_id;
+//        $post->category_id      = $request->category_id;
+//        $post->sub_category_id  = $request->sub_category_id;
         $post->image_id         = $request->image_id;
         if($type == 'video'):
             if($request->video_url_type != null){
@@ -153,7 +153,9 @@ class PostController extends Controller
 
         $post->contents = $request->new_content;
         $post->save();
-
+        if (isset($request->category_ids) AND !blank($request->category_ids)){
+            $post->categories()->sync($request->category_ids);
+        }
 
         if($type == 'audio'):
             $post->audio()->attach($request->audio);
@@ -232,11 +234,12 @@ class PostController extends Controller
 
     public function editPost($type,$id){
         $activeLang     = Language::where('status', 'active')->orderBy('name', 'ASC')->get();
-        $post           = Post::where('id',$id)->with(['image','video','videoThumbnail','category','subCategory'])->first();
-        $categories     = Category::where('language',$post->language)->get();
+        $post           = Post::where('id',$id)->with(['image','video','videoThumbnail','categories'])->first();
+        $categories     = Category::with('subCategory')
+            ->where('language',$post->language)
+            ->where('parent_id', null)
+            ->get();
         $ads            = Ad::orderBy('id', 'desc')->get();
-
-   /*     dd($post->category['id']);*/
         $subCategories  = [];
         if($post->category_id != ""){
             $subCategories  = SubCategory::where('category_id',$post->category['id'])->get();
@@ -248,7 +251,7 @@ class PostController extends Controller
                 $content_type = array_keys($content);
                 //$post_contents[] = $type[0];
                 foreach($content as $value){
-                    
+
                     $abc = [];
                     foreach($value as $key => $item){
 
@@ -268,7 +271,7 @@ class PostController extends Controller
                             $abc[] = [$key => $item, 'video' => $video];
                         }else{
                             $abc[] = [$key => $item];
-                        } 
+                        }
                     }
                     $post_contents[] =[$content_type[0] => $abc];
                 }
@@ -280,9 +283,12 @@ class PostController extends Controller
         $countAudio  = Audio::count();
         $countVideo  = Video::count();
 
-
+        $post_category_ids = [];
+        if (!blank($post_categories = $post->categories)){
+            $post_category_ids = $post_categories->pluck('id')->toArray();
+        }
         if($type == 'article') :
-            return view('post::article_edit',compact('post','categories','subCategories','activeLang', 'countImage', 'post_contents', 'ads'));
+            return view('post::article_edit',compact('post','categories','subCategories','activeLang', 'countImage', 'post_contents', 'ads', 'post_category_ids'));
         elseif($type == 'video'):
             return view('post::video_post_edit',compact('post','categories','subCategories','activeLang', 'countImage', 'countVideo', 'post_contents', 'ads'));
         elseif($type == 'audio'):
@@ -294,9 +300,8 @@ class PostController extends Controller
         // return $request;
         Validator::make($request->all(), [
             'title'             => 'required|min:2',
-            'content'           => 'required',
+            'body'           => 'required',
             'language'          => 'required',
-            'category_id'       => 'required',
             'slug'              => 'nullable|min:2|max:120|regex:/^\S*$/u|unique:posts,slug,' . $id,
         ])->validate();
 
@@ -309,7 +314,7 @@ class PostController extends Controller
             $post->slug = $this->make_slug($request->title);
         endif;
 
-        $post->content      = $request->content;
+        $post->content      = $request->body;
         $post->visibility   = $request->visibility;
         $post->layout       = $request->layout;
 
@@ -378,7 +383,7 @@ class PostController extends Controller
             Validator::make($request->all(), [
                 'audio' => 'required'
             ])->validate();
-            
+
             $post->audio()->detach();
             $post->audio()->attach($request->audio);
 
@@ -400,7 +405,11 @@ class PostController extends Controller
         $post->contents = $request->new_content;
 
         $post->save();
-        
+
+        if (isset($request->category_ids) AND !blank($request->category_ids)){
+            $post->categories()->sync($request->category_ids);
+        }
+
         return redirect()->back()->with('success',__('successfully_updated'));
     }
 
@@ -520,7 +529,7 @@ class PostController extends Controller
     }
 
     private function make_slug($string) {
-        $slug = preg_replace('/\s+/u', '-', trim(strtolower($string))); 
+        $slug = preg_replace('/\s+/u', '-', trim(strtolower($string)));
 
         if(isset($slug)):
             return $slug;
