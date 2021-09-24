@@ -376,21 +376,30 @@ class ArticleController extends Controller
 
     public function search(Request $request)
     {
+        $query = strtolower($request->get('search'));
+        $posts = [];
+        $totalPostCount = 0;
+        $timeTaken = 0;
         try{
-            $posts = Post::where(DB::raw('LOWER(title)'), 'like', '%' . strtolower($request->get('search')) . '%')
-                ->when(Sentinel::check() == false, function ($query) {
-                    $query->where('auth_required', 0);
-                })
-                ->limit(6)->get();
+            if($query !== '') {
+                $start = hrtime(true);
 
-            $totalPostCount = Post::where(DB::raw('LOWER(title)'), 'like', '%' . strtolower($request->get('search')) . '%')
-                ->when(Sentinel::check() == false, function ($query) {
-                    $query->where('auth_required', 0);
-                })->count();
+                $posts = Post::where(DB::raw('LOWER(title)'), 'like', '%' . $query . '%')
+                    ->when(Sentinel::check() == false, function ($query) {
+                        $query->where('auth_required', 0);
+                    })
+                    ->get();
 
-            return view('site.pages.search', compact('posts','totalPostCount'));
+                $totalPostCount = Post::where(DB::raw('LOWER(title)'), 'like', '%' . $query . '%')
+                    ->when(Sentinel::check() == false, function ($query) {
+                        $query->where('auth_required', 0);
+                    })->count();
+                $end = hrtime(true);
+                $timeTaken = ((int)$end - (int)$start) / 1000000000;
+            }
+            return view('theme-soccer.pages.search', compact('posts','totalPostCount', 'query', 'timeTaken'));
         } catch (\Exception $e) {
-            return view('site.pages.404');
+            abort(404);
         }
     }
 
