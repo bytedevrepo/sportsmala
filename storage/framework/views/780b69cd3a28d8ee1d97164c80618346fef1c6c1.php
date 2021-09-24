@@ -92,7 +92,7 @@
                                 <div class="row p-l-15">
                                     <div class="col-12">
                                         <label for="post_content" class="col-form-label"><?php echo e(__('content')); ?>*</label>
-                                        <textarea name="content" value="<?php echo e($post->content); ?>" id="post_content"
+                                        <textarea name="body" value="<?php echo e($post->content); ?>" id="post_content"
                                                   cols="30" rows="5">
                                                         <?php echo $post->content; ?>
 
@@ -189,8 +189,8 @@
                                 ?>
                                 <?php $__currentLoopData = $post_contents; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $page => $content): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php
-                                    $page = array_keys($content);
-                                    $content_count++;
+                                        $page = array_keys($content);
+                                        $content_count++;
 
                                     ?>
                                     <?php echo $__env->make('post::contents/'.$page[0], compact('content_count', 'content'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
@@ -292,7 +292,7 @@
                                         <label class="custom-control custom-checkbox">
                                             <input type="checkbox" id="editor_picks" name="editor_picks"
                                                    class="custom-control-input" <?php if($post->editor_picks==1): ?> checked
-                                                   <?php endif; ?>>
+                                                <?php endif; ?>>
                                             <span class="custom-control-label"></span>
                                         </label>
                                     </div>
@@ -393,7 +393,7 @@
                                     <div class="form-group">
                                         <label for="post_language"><?php echo e(__('select_language')); ?>*</label>
                                         <select class="form-control dynamic-category" id="post_language" name="language"
-                                         data-dependent="category_id">
+                                                data-dependent="category_id">
                                             <?php $__currentLoopData = $activeLang; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $lang): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                 <option
                                                     <?php if($post->language==$lang->code): ?> Selected
@@ -404,19 +404,49 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label for="category_id"><?php echo e(__('category')); ?>*</label>
-                                        <select class="form-control dynamic" id="category_id" name="category_id"
-                                                data-dependent="sub_category_id" required>
-                                            <option value=""><?php echo e(__('select_category')); ?></option>
-                                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                <option <?php if($post->category_id == $category->id): ?> Selected
-                                                        <?php endif; ?> value="<?php echo e($category->id); ?>"><?php echo e($category->category_name); ?></option>
-                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                        </select>
-                                    </div>
+                                
+                                    
+                                        
+                                        
+                                                
+                                            
+                                            
+                                                
+                                                        
+                                            
+                                        
+                                    
+                                
+
+                            </div>
+                            <div class="add-new-page  bg-white p-20 m-b-20">
+                                <div class="col-md-12">
+                                    <label for="category_id"><?php echo e(__('category')); ?></label>
                                 </div>
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="col-12 col-md-12">
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" id="featured_post"
+                                                   <?php echo e((in_array($value->id, $post_category_ids)) ? 'checked' : ''); ?>
+
+                                                   name="category_ids[]" value="<?php echo e($value->id); ?>"
+                                                   class="custom-control-input">
+                                            <span class="custom-control-label"><?php echo e($value->category_name); ?></span>
+                                        </label>
+                                        <?php if(!blank($value->subCategory)): ?>
+                                            <?php $__currentLoopData = $value->subCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sub_category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <label class="custom-control custom-checkbox ml-4">
+                                                    <input type="checkbox" id="featured_post" name="category_ids[]"
+                                                           <?php echo e((in_array($sub_category->id, $post_category_ids)) ? 'checked' : ''); ?>
+
+                                                           value="<?php echo e($sub_category->id); ?>"
+                                                           class="custom-control-input">
+                                                    <span class="custom-control-label"><?php echo e($sub_category->category_name); ?></span>
+                                                </label>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                             </div>
                             <div class="add-new-page  bg-white p-20 m-b-20">
@@ -505,14 +535,14 @@
         </div>
     </div>
 
-<input type="hidden" value="<?php echo e($content_count); ?>" id="content_number">
+    <input type="hidden" value="<?php echo e($content_count); ?>" id="content_number">
 
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('script'); ?>
     <script>
         $(document).ready(function () {
 
-             $('.dynamic-category').change(function () {
+            $('.dynamic-category').change(function () {
                 if ($(this).val() != '') {
                     var select = $(this).attr("id");
                     var value = $(this).val();

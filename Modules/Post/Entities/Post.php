@@ -78,5 +78,9 @@ class Post extends Model implements Feedable
     	"contents" => "array"
     ];
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class)->withTimestamps();
+    }
 
 }

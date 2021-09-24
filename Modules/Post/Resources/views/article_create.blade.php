@@ -92,7 +92,7 @@
                                 <div class="row p-l-15">
                                     <div class="col-12">
                                         <label for="post_content" class="col-form-label">{{ __('content') }}*</label>
-                                        <textarea name="content" value="{{ old('content') }}" id="post_content"
+                                        <textarea name="body" value="{{ old('body') }}" id="post_content"
                                                   cols="30" rows="5"></textarea>
                                     </div>
                                 </div>
@@ -368,7 +368,7 @@
                                     <div class="form-group">
                                         <label for="post_language">{{ __('select_language') }}*</label>
                                         <select class="form-control dynamic-category" id="post_language" name="language"
-                                        data-dependent="category_id" required>
+                                                data-dependent="category_id" required>
                                             @foreach ($activeLang as  $lang)
                                                 <option
                                                     @if(App::getLocale()==$lang->code) Selected
@@ -379,20 +379,43 @@
                                     </div>
                                 </div>
 
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label for="category_id">{{ __('category') }}*</label>
+                                {{--<div class="col-sm-12">--}}
+                                    {{--<div class="form-group">--}}
+                                        {{--<label for="category_id">{{ __('category') }}*</label>--}}
 
-                                        <select class="form-control dynamic" id="category_id" name="category_id"
-                                                data-dependent="sub_category_id" required>
-                                            <option value="">{{ __('select_category') }}</option>
-                                            @foreach ($categories as $category)
-                                                <option
-                                                    value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                        {{--<select class="form-control dynamic" id="category_id" name="category_id"--}}
+                                                {{--data-dependent="sub_category_id" required>--}}
+                                            {{--<option value="">{{ __('select_category') }}</option>--}}
+                                            {{--@foreach ($categories as $category)--}}
+                                                {{--<option value="{{ $category->id }}">{{ $category->category_name }}</option>--}}
+                                            {{--@endforeach--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+
+                            </div>
+                            <div class="add-new-page  bg-white p-20 m-b-20">
+                                <div class="col-md-12">
+                                    <label for="category_id">{{ __('category') }}</label>
                                 </div>
+                                @foreach($categories as $value)
+                                    <div class="col-12 col-md-12">
+                                        <label class="custom-control custom-checkbox">
+                                            <input type="checkbox" id="featured_post" name="category_ids[]" value="{{ $value->id }}"
+                                                   class="custom-control-input">
+                                            <span class="custom-control-label">{{ $value->category_name }}</span>
+                                        </label>
+                                        @if(!blank($value->subCategory))
+                                            @foreach($value->subCategory as $sub_category)
+                                                <label class="custom-control custom-checkbox ml-4">
+                                                    <input type="checkbox" id="featured_post" name="category_ids[]" value="{{ $sub_category->id }}"
+                                                           class="custom-control-input">
+                                                    <span class="custom-control-label">{{ $sub_category->category_name }}</span>
+                                                </label>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                @endforeach
 
                             </div>
                             <div class="add-new-page  bg-white p-20 m-b-20">
@@ -543,7 +566,7 @@
                 method: "GET",
                 data: {value: value, content_count:content_number},
                 success: function (result) {
-                     $('.content-area').append(result);
+                    $('.content-area').append(result);
                     $("#content_number").val(content_number);
 
                     // auto scrolling to newly added element
