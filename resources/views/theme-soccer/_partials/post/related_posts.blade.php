@@ -8,14 +8,15 @@
                 @foreach($relatedPost as $item)
                     <div class="col-md-6">
                         <!-- Prev Post -->
-                        <div class="posts__item posts__item--card posts__item--category-2 card">
+                        <div class="posts__item posts__item--card posts__item--category-1 card">
                             <figure class="posts__thumb">
-                                @isset($item->category->category_name)
-                                    <div class="posts__cat">
-                                        <a href="{{ url('category',$item->category->slug) }}">
-                                            <span
-                                                class="label posts__cat-label">{{ $item->category->category_name }}</span>
-                                        </a>
+                                @if(!blank($item->categories))
+                                    <div class="label posts__cat">
+                                        @foreach($item->categories as $category)
+                                            <a href="{{ url('category',$category->slug) }}">
+                                                <span class="label posts__cat-label mr-1">{{ $category->category_name }}</span>
+                                            </a>
+                                        @endforeach
                                     </div>
                                 @endif
                                 <a href="{{ route('article.detail', [$item->slug]) }}">

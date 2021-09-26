@@ -21,15 +21,6 @@
                                     </a>
                                 </figure>
                                 <div class="posts__inner">
-                                    <div class="posts__cat">
-                                        @if(!blank($post->categories))
-                                            @foreach($post->categories as $category)
-                                                <a href="{{ url('category',$category->slug) }}">
-                                                    <span class="label posts__cat-label mb-1 ml-1">{{ $category->category_name }}</span>
-                                                </a>
-                                            @endforeach
-                                        @endif
-                                    </div>
                                     <h6 class="posts__title posts__title--color-hover">
                                         <a href="{{ route('article.detail', [$post->slug]) }}">
                                             {{data_get($post, 'title')}}

@@ -9,15 +9,15 @@
                         @if ($loop->index > 10)
                             @break
                         @endif
-                            <li class="posts__item posts__item--category-1">
-                                <div class="posts__inner">
-                                    <h6 class="posts__title posts__title--color-hover">
-                                        <a href="{{ url('category',$item->slug) }}">
-                                            {{ $item->category_name }} <span class="float-right">({{ $item->post_count }})</span>
-                                        </a>
-                                    </h6>
-                                </div>
-                            </li>
+                        <li class="posts__item posts__item--category-1">
+                            <div class="posts__inner">
+                                <h6 class="posts__title posts__title--color-hover">
+                                    <a href="{{ url('category',$item->slug) }}">
+                                        {{ $item->category_name }} <span class="float-right">({{ $item->post_count }})</span>
+                                    </a>
+                                </h6>
+                            </div>
+                        </li>
                     @endforeach
                 </ul>
             </div>

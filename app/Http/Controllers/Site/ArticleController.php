@@ -103,7 +103,7 @@ class ArticleController extends Controller
 	        }
 	    endif;
 
-		$categoryWithPost = Category::with(['post' => function ($query) use ($post) {
+		$categoryWithPost = Category::with(['post.categories','post' => function ($query) use ($post) {
 			return $query->limit(8)->orderBy('id', 'desc')->where('id', '!=', $post->id);
 		}])->find($post->category_id);
 		$relatedPost = data_get($categoryWithPost, 'post');
