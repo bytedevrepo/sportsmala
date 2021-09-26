@@ -1,14 +1,11 @@
-<!-- Widget: Standings / End --><!-- Widget: Social Buttons - Condensed-->
-<aside class="widget widget--sidebar widget-social widget-social--condensed">
+<aside class="widget widget--sidebar widget-social">
     @foreach($socialMedias as $socialMedia)
-        <a href="{{ $socialMedia->url?? '#' }}" class="btn-social-counter" target="_blank" style="background:{{$socialMedia->icon_bg_color}}">
-            <div class="btn-social-counter__icon">
+        <a href="{{ $socialMedia->url?? '#' }}" class="btn-social-counter btn-social-counter--fb" style="background:{{$socialMedia->icon_bg_color}}" target="_blank">
+            <div class="btn-social-counter__icon" style="background:{{$socialMedia->icon_bg_color}}; filter: brightness(0.80);">
                 <i class="{{ $socialMedia->icon }}"></i>
             </div>
             <h6 class="btn-social-counter__title">{{$socialMedia->name}}</h6>
-            <span class="btn-social-counter__count" style="background:{{$socialMedia->icon_bg_color}}"><span class="btn-social-counter__count-num"></span></span>
-            <span class="btn-social-counter__add-icon"></span>
+            <span class="btn-social-counter__count"><span class="btn-social-counter__count-num"></span> Likes</span> <span class="btn-social-counter__add-icon"></span>
         </a>
     @endforeach
 </aside>
-<!-- Widget: Social Buttons - Condensed / End -->
