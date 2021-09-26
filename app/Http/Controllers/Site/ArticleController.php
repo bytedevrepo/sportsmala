@@ -407,7 +407,11 @@ class ArticleController extends Controller
 	{
 		try {
 			$id = Category::where('slug', $slug)->first()->id;
-			$posts = Post::with(['image', 'user'])->where('category_id', $id)->where('visibility', 1)
+			$posts = Post::with(['image', 'user', 'categories'])
+                ->whereHas('categories', function ($q) use($id){
+                    $q->where('category_id', $id);
+                })
+                ->where('visibility', 1)
 				->where('status', 1)
 				->when(Sentinel::check() == false, function ($query) {
 					$query->where('auth_required', 0);
@@ -415,7 +419,6 @@ class ArticleController extends Controller
 				->orderBy('id', 'desc')
 				->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))->limit(6)
 				->get();
-
 			$totalPostCount = Post::where('category_id', $id)->where('visibility', 1)
 				->where('status', 1)
 				->when(Sentinel::check() == false, function ($query) {
@@ -837,7 +840,8 @@ class ArticleController extends Controller
 			$tracker->save();
 
 
-			return view('site.pages.date_posts', compact('posts', 'widgets', 'totalPostCount', 'date'));
+//			return view('site.pages.date_posts', compact('posts', 'widgets', 'totalPostCount', 'date'));
+			return view('theme-soccer.pages.date_posts', compact('posts', 'widgets', 'totalPostCount', 'date'));
 		} catch (\Exception $e) {
 			return view('site.pages.404');
 		}
