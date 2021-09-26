@@ -15,6 +15,17 @@
     <div class="header__top-bar clearfix">
         <div class="container">
             <div class="header__top-bar-inner">
+                <ul class="social-links social-links--inline social-links--main-nav">
+                    @foreach($socialMedias as $socialMedia)
+                        <li class="social-links__item">
+                            <a href="{{$socialMedia->url}}" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="{{ $socialMedia->name }}"><i class="{{$socialMedia->icon}}"></i></a>
+                        </li>
+                    @endforeach
+                    <li class="social-links__item">
+                        <a href="{{ url('feed') }}" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="rss"><i class="fa fa-rss"></i></a>
+                    </li>
+                </ul>
+                <!-- Social Links / End -->
                 <!-- Account Navigation -->
                 <ul class="nav-account">
                     <li class="nav-account__item">
@@ -39,8 +50,12 @@
                         <li class="nav-account__item nav-account__item--logout">
                             <a href="{{ route('site.login.form') }}">{{ __('login') }}</a>
                         </li>
+                        <li class="nav-account__item nav-account__item--logout">
+                            <a href="{{ route('site.register.form') }}">{{ __('register') }}</a>
+                        </li>
                     @endif
                 </ul>
+                <!-- Social Links -->
                 <!-- Account Navigation / End -->
             </div>
         </div>
@@ -188,19 +203,8 @@
                             @endif
                         @endforeach
                     </ul>
-                    <!-- Social Links -->
 
-                    <ul class="social-links social-links--inline social-links--main-nav">
-                        @foreach($socialMedias as $socialMedia)
-                            <li class="social-links__item">
-                                <a href="{{$socialMedia->url}}" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="{{ $socialMedia->name }}"><i class="{{$socialMedia->icon}}"></i></a>
-                            </li>
-                        @endforeach
-                        <li class="social-links__item">
-                            <a href="{{ url('feed') }}" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="rss"><i class="fa fa-rss"></i></a>
-                        </li>
-                    </ul>
-                    <!-- Social Links / End --><!-- Pushy Panel Toggle -->
+                    <!-- Pushy Panel Toggle -->
                     <a href="#" class="pushy-panel__toggle"><span class="pushy-panel__line"></span> </a>
                     <!-- Pushy Panel Toggle / Eng -->
                 </nav>

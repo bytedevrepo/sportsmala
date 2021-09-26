@@ -90,12 +90,7 @@
                                     <div class="post-grid__item col-6">
                                         <div class="posts__item posts__item--card posts__item--category-1 card">
                                             <figure class="posts__thumb">
-                                                <div class="posts__cat">
-                                                    <a href="{{ url('category',$post->category->slug) }}">
-                                                        <span class="label posts__cat-label">{{ $post->category->category_name }}</span>
-                                                    </a>
-                                                </div>
-                                                <a href="#">
+                                                <a href="{{ route('article.detail', ['id' => @$post->slug]) }}">
                                                     @if(isFileExist($post->image, $result = @$post->image->medium_image))
                                                         <img src="{{basePath($post->image)}}/{{ $result }}" alt="{!! $post->title !!}">
                                                     @else
@@ -104,7 +99,7 @@
                                                 </a>
                                             </figure>
                                             <div class="posts__inner card__content">
-                                                <a href="{{ url('category',$post->category->slug) }}" class="posts__cta"></a>
+                                                <a href="{{ route('article.detail', ['id' => @$post->slug]) }}" class="posts__cta"></a>
                                                 <time datetime="2016-08-23" class="posts__date">
                                                     <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
                                                         {{ $post->updated_at->format('F j, Y') }}
