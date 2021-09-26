@@ -656,7 +656,7 @@ class ArticleController extends Controller
 	{
 		try {
 
-			$posts = Post::with(['image', 'user'])->whereRaw("FIND_IN_SET('$slug',tags)")->where('visibility', 1)
+			$posts = Post::with(['image', 'user', 'categories'])->whereRaw("FIND_IN_SET('$slug',tags)")->where('visibility', 1)
 				->where('status', 1)
 				->when(Sentinel::check() == false, function ($query) {
 					$query->where('auth_required', 0);
@@ -686,7 +686,8 @@ class ArticleController extends Controller
 			$tracker->agent_browser = UserAgentBrowser(\Request()->header('User-Agent'));
 			$tracker->save();
 
-			return view('site.pages.tags_posts', compact('posts', 'widgets', 'totalPostCount', 'slug'));
+//			return view('site.pages.tags_posts', compact('posts', 'widgets', 'totalPostCount', 'slug'));
+			return view('theme-soccer.pages.tags_posts', compact('posts', 'widgets', 'totalPostCount', 'slug'));
 		} catch (\Exception $e) {
 			return view('site.pages.404');
 		}
@@ -807,7 +808,7 @@ class ArticleController extends Controller
 
 
 		try{
-			$posts          =  Post::with(['image', 'user'])->whereDate('updated_at', $date)
+			$posts          =  Post::with(['image', 'user', 'categories'])->whereDate('updated_at', $date)
 								->where('visibility', 1)
 								->where('status', 1)
 								->when(Sentinel::check()== false, function ($query) {
