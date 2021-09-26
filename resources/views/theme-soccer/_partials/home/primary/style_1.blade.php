@@ -5,20 +5,28 @@
 <div class="card card--clean">
     <header class="card__header card__header--has-filter">
         <h4>Featured News</h4>
-        <ul class="category-filter category-filter--featured">
-            <li class="category-filter__item"><a href="#" class="category-filter__link category-filter__link--reset category-filter__link--active">All</a></li>
-            <li class="category-filter__item"><a href="#" class="category-filter__link" data-category="posts__item--category-1">The Team</a></li>
-            <li class="category-filter__item"><a href="#" class="category-filter__link" data-category="posts__item--category-3">The League</a></li>
-            <li class="category-filter__item"><a href="#" class="category-filter__link" data-category="posts__item--category-2">Injuries</a></li>
-        </ul>
+        {{--<ul class="category-filter category-filter--featured">--}}
+            {{--<li class="category-filter__item"><a href="#" class="category-filter__link category-filter__link--reset category-filter__link--active">All</a></li>--}}
+            {{--<li class="category-filter__item"><a href="#" class="category-filter__link" data-category="posts__item--category-1">The Team</a></li>--}}
+            {{--<li class="category-filter__item"><a href="#" class="category-filter__link" data-category="posts__item--category-3">The League</a></li>--}}
+            {{--<li class="category-filter__item"><a href="#" class="category-filter__link" data-category="posts__item--category-2">Injuries</a></li>--}}
+        {{--</ul>--}}
     </header>
     <div class="card__content">
         <!-- Slider -->
         <div class="slick posts posts--slider-featured posts-slider posts-slider--center">
             @foreach($sliderPosts as $post)
+                {{--{{dd($post['image'])}}--}}
                 <div class="posts__item posts__item--category-1">
                     <a href="#" class="posts__link-wrapper">
-                        <figure class="posts__thumb"><img src="/site/theme-soccer/assets/images/soccer/samples/post-slide7.jpg" alt=""></figure>
+                        <figure class="posts__thumb">
+                            {{--@if(isFileExist(@$post['image'], $result = @$post['image']->big_image))--}}
+                                {{--<img src="{{basePath(@$post['image'])}}/{{ $result }}" alt="{!! $post->title !!}">--}}
+                            {{--@else--}}
+                                {{--<img src="{{static_asset('default-image/default-500x500.png') }}" alt="{!! $post->title !!}" style="height: 100px;width: 100px">--}}
+                            {{--@endif--}}
+                            <img src="{{ static_asset('site/theme-soccer/assets/images/soccer/samples/post-slide7.jpg') }}" alt="">
+                        </figure>
                         <div class="posts__inner">
                             <div class="posts__cat">
                                 @if(!blank($post->categories))
@@ -63,7 +71,7 @@
                     <ul class="posts posts--simple-list">
                         <li class="posts__item posts__item--category-1">
                             <figure class="posts__thumb">
-                                <a href="#">
+                                <a href="{{ route('article.detail', ['id' => $post->slug]) }}">
                                     @if(isFileExist(@$post['image'], $result = @$post['image']->thumbnail))
                                         <img src="{{basePath(@$post['image'])}}/{{ $result }}" alt="{!! $post->title !!}">
                                     @else
