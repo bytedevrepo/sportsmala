@@ -25,6 +25,12 @@
                         <a href="{{ url('feed') }}" class="social-links__link" data-toggle="tooltip" data-placement="bottom" title="rss"><i class="fa fa-rss"></i></a>
                     </li>
                 </ul>
+                <div class="header-search-form">
+                    <form action="{{ route('article.search') }}" id="search" class="search-form" method="GET">
+                        <input type="text" style="border-color: white;" class="form-control header-mobile__search-control" name="search" placeholder="{{ __('search') }}">
+                        <button type="submit" class="header-mobile__search-submit"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
                 <!-- Social Links / End -->
                 <!-- Account Navigation -->
                 <ul class="nav-account">
@@ -64,28 +70,23 @@
     <div class="header__secondary">
         <div class="container">
             <!-- Header Search Form -->
-            <div class="header-search-form">
-                <form action="{{ route('article.search') }}" id="search" class="search-form" method="GET">
-                    <input type="text" class="form-control header-mobile__search-control" name="search" placeholder="{{ __('search') }}">
-                    <button type="submit" class="header-mobile__search-submit"><i class="fa fa-search"></i></button>
-                </form>
-            </div>
+
             <!-- Header Search Form / End -->
             <ul class="info-block info-block--header">
                 <li class="info-block__item info-block__item--contact-primary">
-                    <h6 class="info-block__heading">Join Our Team!</h6>
-                    <a class="info-block__link" href="mailto:tryouts@alchemists.com">tryouts@alchemists.com</a>
+                    <h6 class="info-block__heading">Score Section</h6>
+                    <a class="info-block__link" href="mailto:tryouts@alchemists.com">score</a>
                 </li>
-                <li class="info-block__item info-block__item--contact-secondary">
-                    <h6 class="info-block__heading">Contact Us</h6>
-                    <a class="info-block__link" href="mailto:info@alchemists.com">info@alchemists.com</a>
-                </li>
-                @if(settingHelper('submit_news_status')==1)
-                    <li class="info-block__item info-block__item--shopping-cart js-info-block__item--onhover">
-                        <h6 class="info-block__heading">{{__('submit_now')}}</h6>
-                        <a class="info-block__link" href="{{ route('submit.news.form') }}">Submit a post</a>
-                    </li>
-                @endif
+                {{--<li class="info-block__item info-block__item--contact-secondary">--}}
+                    {{--<h6 class="info-block__heading">Contact Us</h6>--}}
+                    {{--<a class="info-block__link" href="mailto:info@alchemists.com">info@alchemists.com</a>--}}
+                {{--</li>--}}
+                {{--@if(settingHelper('submit_news_status')==1)--}}
+                    {{--<li class="info-block__item info-block__item--shopping-cart js-info-block__item--onhover">--}}
+                        {{--<h6 class="info-block__heading">{{__('submit_now')}}</h6>--}}
+                        {{--<a class="info-block__link" href="{{ route('submit.news.form') }}">Submit a post</a>--}}
+                    {{--</li>--}}
+                {{--@endif--}}
             </ul>
         </div>
     </div>
