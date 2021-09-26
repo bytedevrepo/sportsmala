@@ -438,9 +438,10 @@ class ArticleController extends Controller
 			$tracker->agent_browser = UserAgentBrowser(\Request()->header('User-Agent'));
 			$tracker->save();
 
-			return view('site.pages.category_posts', compact('posts', 'widgets', 'totalPostCount', 'id'));
+			return view('theme-soccer.pages.category_posts', compact('posts', 'widgets', 'totalPostCount', 'id'));
+//			return view('site.pages.category_posts', compact('posts', 'widgets', 'totalPostCount', 'id'));
 		} catch (\Exception $e) {
-			return view('site.pages.404');
+			abort(404);
 		}
 	}
 
