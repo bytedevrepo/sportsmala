@@ -53,7 +53,7 @@
         <div class="pushy-panel__inner">
             <header class="pushy-panel__header">
                 <div class="pushy-panel__logo">
-                    <a href="_soccer_index.html">
+                    <a href="/">
                         <img src="{{ static_asset(settingHelper('logo')) }}" srcset="{{ static_asset(settingHelper('logo')) }}" alt="">
                     </a>
                 </div>

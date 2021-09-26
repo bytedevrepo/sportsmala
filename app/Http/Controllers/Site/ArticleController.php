@@ -407,7 +407,11 @@ class ArticleController extends Controller
 	{
 		try {
 			$id = Category::where('slug', $slug)->first()->id;
-			$posts = Post::with(['image', 'user'])->where('category_id', $id)->where('visibility', 1)
+			$posts = Post::with(['image', 'user', 'categories'])
+                ->whereHas('categories', function ($q) use($id){
+                    $q->where('category_id', $id);
+                })
+                ->where('visibility', 1)
 				->where('status', 1)
 				->when(Sentinel::check() == false, function ($query) {
 					$query->where('auth_required', 0);
@@ -415,7 +419,6 @@ class ArticleController extends Controller
 				->orderBy('id', 'desc')
 				->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))->limit(6)
 				->get();
-
 			$totalPostCount = Post::where('category_id', $id)->where('visibility', 1)
 				->where('status', 1)
 				->when(Sentinel::check() == false, function ($query) {
@@ -438,9 +441,10 @@ class ArticleController extends Controller
 			$tracker->agent_browser = UserAgentBrowser(\Request()->header('User-Agent'));
 			$tracker->save();
 
-			return view('site.pages.category_posts', compact('posts', 'widgets', 'totalPostCount', 'id'));
+			return view('theme-soccer.pages.category_posts', compact('posts', 'widgets', 'totalPostCount', 'id'));
+//			return view('site.pages.category_posts', compact('posts', 'widgets', 'totalPostCount', 'id'));
 		} catch (\Exception $e) {
-			return view('site.pages.404');
+			abort(404);
 		}
 	}
 
@@ -652,7 +656,7 @@ class ArticleController extends Controller
 	{
 		try {
 
-			$posts = Post::with(['image', 'user'])->whereRaw("FIND_IN_SET('$slug',tags)")->where('visibility', 1)
+			$posts = Post::with(['image', 'user', 'categories'])->whereRaw("FIND_IN_SET('$slug',tags)")->where('visibility', 1)
 				->where('status', 1)
 				->when(Sentinel::check() == false, function ($query) {
 					$query->where('auth_required', 0);
@@ -682,7 +686,8 @@ class ArticleController extends Controller
 			$tracker->agent_browser = UserAgentBrowser(\Request()->header('User-Agent'));
 			$tracker->save();
 
-			return view('site.pages.tags_posts', compact('posts', 'widgets', 'totalPostCount', 'slug'));
+//			return view('site.pages.tags_posts', compact('posts', 'widgets', 'totalPostCount', 'slug'));
+			return view('theme-soccer.pages.tags_posts', compact('posts', 'widgets', 'totalPostCount', 'slug'));
 		} catch (\Exception $e) {
 			return view('site.pages.404');
 		}
@@ -803,7 +808,7 @@ class ArticleController extends Controller
 
 
 		try{
-			$posts          =  Post::with(['image', 'user'])->whereDate('updated_at', $date)
+			$posts          =  Post::with(['image', 'user', 'categories'])->whereDate('updated_at', $date)
 								->where('visibility', 1)
 								->where('status', 1)
 								->when(Sentinel::check()== false, function ($query) {
@@ -836,7 +841,8 @@ class ArticleController extends Controller
 			$tracker->save();
 
 
-			return view('site.pages.date_posts', compact('posts', 'widgets', 'totalPostCount', 'date'));
+//			return view('site.pages.date_posts', compact('posts', 'widgets', 'totalPostCount', 'date'));
+			return view('theme-soccer.pages.date_posts', compact('posts', 'widgets', 'totalPostCount', 'date'));
 		} catch (\Exception $e) {
 			return view('site.pages.404');
 		}

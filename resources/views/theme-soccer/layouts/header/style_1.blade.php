@@ -1,7 +1,7 @@
 <!-- Header Mobile -->
 <div class="header-mobile clearfix" id="header-mobile">
-    <div class="header-mobile__logo"><a href="_soccer_index.html">
-            <img src="/site/theme-soccer/assets/images/soccer/logo.png" srcset="site/theme-soccer/assets/images/soccer/logo@2x.png 2x" alt="Alchemists" class="header-mobile__logo-img">
+    <div class="header-mobile__logo"><a href="/">
+            <img src="{{ static_asset(settingHelper('logo')) }}" srcset="{{ static_asset(settingHelper('logo')) }}" alt="Alchemists" class="header-mobile__logo-img">
         </a>
     </div>
     <div class="header-mobile__inner">
