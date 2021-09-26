@@ -17,14 +17,14 @@
     <!-- Google Web Fonts================================================== -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CSource+Sans+Pro:400,700" rel="stylesheet">
     <!-- CSS================================================== --><!-- Vendor CSS -->
-    <link href="{{ asset('site/theme-soccer/assets/vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ asset('site/theme-soccer/assets/fonts/font-awesome/css/all.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('site/theme-soccer/assets/fonts/font-awesome/css/v4-shims.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('site/theme-soccer/assets/fonts/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('site/theme-soccer/assets/vendor/magnific-popup/dist/magnific-popup.css') }}" rel="stylesheet">
-    <link href="{{ asset('site/theme-soccer/assets/vendor/slick/slick.css') }}" rel="stylesheet">
+    <link href="{{ static_asset('site/theme-soccer/assets/vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ static_asset('site/theme-soccer/assets/fonts/font-awesome/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ static_asset('site/theme-soccer/assets/fonts/font-awesome/css/v4-shims.min.css') }}" rel="stylesheet">
+    <link href="{{ static_asset('site/theme-soccer/assets/fonts/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
+    <link href="{{ static_asset('site/theme-soccer/assets/vendor/magnific-popup/dist/magnific-popup.css') }}" rel="stylesheet">
+    <link href="{{ static_asset('site/theme-soccer/assets/vendor/slick/slick.css') }}" rel="stylesheet">
     <!-- Template CSS-->
-    <link href="{{ asset('site/theme-soccer/assets/css/style-soccer.css') }}" rel="stylesheet">
+    <link href="{{ static_asset('site/theme-soccer/assets/css/style-soccer.css') }}" rel="stylesheet">
     @if(settingHelper('predefined_header')!=null)
         {!! base64_decode(settingHelper('predefined_header')) !!}
     @endif
@@ -217,16 +217,16 @@
     <!-- Login/Register Tabs Modal / End -->
 </div>
 <!-- Javascript Files================================================== --><!-- Core JS -->
-<script src="{{ asset('site/theme-soccer/assets/vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('site/theme-soccer/assets/vendor/jquery/jquery-migrate.min.js') }}"></script>
-<script src="{{ asset('site/theme-soccer/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('site/theme-soccer/assets/js/core.js') }}"></script>
+<script src="{{ static_asset('site/theme-soccer/assets/vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ static_asset('site/theme-soccer/assets/vendor/jquery/jquery-migrate.min.js') }}"></script>
+<script src="{{ static_asset('site/theme-soccer/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ static_asset('site/theme-soccer/assets/js/core.js') }}"></script>
 <!-- Vendor JS -->
-<script src="{{ asset('site/theme-soccer/assets/vendor/twitter/jquery.twitter.js') }}"></script>
+<script src="{{ static_asset('site/theme-soccer/assets/vendor/twitter/jquery.twitter.js') }}"></script>
 <!-- Template JS -->
-<script src="{{ asset('site/theme-soccer/assets/js/init.js') }}"></script>
-<script src="{{ asset('site/theme-soccer/assets/js/custom.js') }}"></script>
-<script src="{{asset('site/theme-soccer/assets/js/theia-sticky-sidebar.min.js') }}"></script>
+<script src="{{ static_asset('site/theme-soccer/assets/js/init.js') }}"></script>
+<script src="{{ static_asset('site/theme-soccer/assets/js/custom.js') }}"></script>
+<script src="{{static_asset('site/theme-soccer/assets/js/theia-sticky-sidebar.min.js') }}"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         jQuery('.content, .sidebar').theiaStickySidebar({
