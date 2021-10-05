@@ -5,11 +5,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 offset-md-1">
-                    <h1 class="page-heading__title">Post</h1>
+                    <h1 class="page-heading__title">Article</h1>
                     <ol class="page-heading__breadcrumb breadcrumb">
-                        <li class="breadcrumb-item"><a href="_soccer_index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="_soccer_blog-1.html">News</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Post Page V2</li>
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Article</li>
                     </ol>
                 </div>
             </div>

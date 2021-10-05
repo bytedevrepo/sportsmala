@@ -1,17 +1,16 @@
 @extends('theme-soccer.layouts.app')
 @section('content')
-    @if(!blank($primarySectionPosts))
-        <!-- Hero Slider -->
-        @include('theme-soccer._partials.home.breaking_section', [
-        'section' => $primarySection,
-        'posts' => $primarySectionPosts,
-        'sliderPosts' => $sliderPosts,
-    ])
+    @if(!blank($breakingSection))
+        @include('theme-soccer._partials.home.breaking_section', ['section' => $breakingSection])
+    @endif
+    @if(!blank($topNewsSection))
+        @include('theme-soccer._partials.home.top_news_section', ['section' => $topNewsSection])
     @endif
     <div class="site-content">
         <div class="container">
             <div class="row">
                 <div class="content col-lg-8 sg-sticky">
+{{--                    @include('theme-soccer._partials.home.top_news_section', ['section' => $primarySection,'posts' => $primarySectionPosts,'sliderPosts' => $sliderPosts])--}}
                     @include('theme-soccer._partials.home.primary_section', ['section' => $primarySection,'posts' => $primarySectionPosts,'sliderPosts' => $sliderPosts])
                     @include('theme-soccer._partials.home.category_section', ['section' => $primarySection,'posts' => $primarySectionPosts,'sliderPosts' => $sliderPosts])
                 </div>

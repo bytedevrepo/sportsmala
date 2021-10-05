@@ -38,6 +38,8 @@ Route::group(
                 route::get('themes', 'ThemeController@themes')->name('themes')->middleware('permissionCheck:theme_section_read');
                 route::post('themes/current/update', 'ThemeController@updateCurrentTheme')->name('update-current-theme')->middleware('permissionCheck:theme_section_write');
                 route::post('primary-section/update', 'ThemeController@updatePrimarySection')->name('update-primary-section')->middleware('permissionCheck:theme_section_write');
+                route::post('breaking-section/update', 'ThemeController@updateBreakingSection')->name('update-breaking-section')->middleware('permissionCheck:theme_section_write');
+                route::post('top-news-section/update', 'ThemeController@updateTopNewsSection')->name('update-top-news-section')->middleware('permissionCheck:theme_section_write');
 
                 route::get('theme-options', 'ThemeController@themeOption')->name('themes-options')->middleware('permissionCheck:theme_section_read');
                 route::post('update/theme-option', 'ThemeController@updateThemeOption')->name('update-theme-option')->middleware('permissionCheck:theme_section_write');

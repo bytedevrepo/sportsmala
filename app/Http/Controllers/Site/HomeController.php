@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use Modules\Appearance\Entities\ThemeSection;
+use Modules\Post\Entities\Category;
 use Modules\Post\Entities\Post;
 use LaravelLocalization;
 use App\VisitorTracker;
@@ -92,7 +93,19 @@ class HomeController extends Controller
         $tracker->agent_browser = UserAgentBrowser(\Request()->header('User-Agent'));
 
         $tracker->save();
+
+        $breakingSection = ThemeSection::where('is_primary', 2)->first();
+        $topNewsSection = ThemeSection::where('is_primary', 3)->first();
+
+        $topNews = Post::with(['image','category'=> function($query) use ($topNewsSection){
+            $query->where('id', '=', $topNewsSection->category_id);
+        }])
+            ->orderBy('id','DESC')
+            ->where('language', \LaravelLocalization::setLocale() ?? settingHelper('default_language'))
+            ->limit($topNewsSection->post_amount)
+            ->get();
+
 //        return view('site.pages.home', compact('primarySection','primarySectionPosts', 'categorySections', 'sliderPosts', 'video_posts', 'latest_posts', 'totalPostCount'));
-        return view('theme-soccer.pages.home', compact('primarySection','primarySectionPosts', 'categorySections', 'sliderPosts', 'video_posts', 'latest_posts', 'totalPostCount'));
+        return view('theme-soccer.pages.home', compact('primarySection','primarySectionPosts', 'categorySections', 'sliderPosts', 'video_posts', 'latest_posts', 'totalPostCount', 'breakingSection','topNewsSection', 'topNews'));
     }
 }
