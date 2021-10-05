@@ -68,28 +68,7 @@
     </div>
     <!-- Header Top Bar / End --><!-- Header Secondary -->
     <div class="header__secondary m-2">
-        {{--<div class="container">--}}
-            <!-- Header Search Form -->
-            <img src="{{ asset('score.png') }}" alt="" style="height: 70px;">
-
-            <!-- Header Search Form / End -->
-            {{--<ul class="info-block info-block--header">--}}
-                {{--<li class="info-block__item info-block__item--contact-primary pt-0 pb-1">--}}
-                    {{--<h6 class="info-block__heading">Score Section</h6>--}}
-                    {{--<a class="info-block__link" href="mailto:tryouts@alchemists.com">score</a>--}}
-                {{--</li>--}}
-                {{--<li class="info-block__item info-block__item--contact-secondary">--}}
-                    {{--<h6 class="info-block__heading">Contact Us</h6>--}}
-                    {{--<a class="info-block__link" href="mailto:info@alchemists.com">info@alchemists.com</a>--}}
-                {{--</li>--}}
-                {{--@if(settingHelper('submit_news_status')==1)--}}
-                    {{--<li class="info-block__item info-block__item--shopping-cart js-info-block__item--onhover">--}}
-                        {{--<h6 class="info-block__heading">{{__('submit_now')}}</h6>--}}
-                        {{--<a class="info-block__link" href="{{ route('submit.news.form') }}">Submit a post</a>--}}
-                    {{--</li>--}}
-                {{--@endif--}}
-            {{--</ul>--}}
-        {{--</div>--}}
+        <img src="{{ asset('score.png') }}" alt="" style="height: 70px; width: 100%;">
     </div>
     <!-- Header Secondary / End --><!-- Header Primary -->
     <div class="header__primary">
