@@ -14,48 +14,56 @@ use Validator;
 class ThemeSectionController extends Controller
 {
     public function sections(){
-        $sections                   =ThemeSection::with('ad')->orderBy('order',"ASC")->where('is_primary','<>',1)->where(function($query) {
-                                                        $query->where('language', \LaravelLocalization::setLocale() ?? settingHelper('default_language'))->orWhere('language', null);
-                                                    })->paginate(10);
+        $sections =ThemeSection::with('ad')
+            ->orderBy('order',"ASC")
+            ->where('is_primary','<>',1)
+            ->where(function($query) {
+                $query->where('language', \LaravelLocalization::setLocale() ?? settingHelper('default_language'))->orWhere('language', null);
+            })
+            ->paginate(10);
 
-        $categories                 =Category::orderBy('id','ASC')->where('language', \LaravelLocalization::setLocale() ?? settingHelper('default_language'))->get();
-        $primarySection             =ThemeSection::where('is_primary',1)->first();
+        $categories = Category::orderBy('id','ASC')->where('language', \LaravelLocalization::setLocale() ?? settingHelper('default_language'))->get();
+        $primarySection = ThemeSection::where('is_primary',1)->first();
+        $breakingSection = ThemeSection::where('is_primary',2)->first();
+        $topNewsSection = ThemeSection::where('is_primary',3)->first();
 
-        $ads                        = Ad::orderBy('id','desc')->get();
+        $ads = Ad::orderBy('id','desc')->get();
 
         return view('appearance::theme_section',[
             'sections'      =>$sections,
             'primarySection'=> $primarySection,
+            'breakingSection'=> $breakingSection,
             'categories'    =>$categories,
+            'topNewsSection'    =>$topNewsSection,
             'ads'           =>$ads,
-            ]);
+        ]);
     }
 
     public function saveNewSection(Request $request){
 
         if($request->type == \Modules\Appearance\Enums\ThemeSectionType::CATEGORY):
 
-        Validator::make($request->all(), [
-            'category_id'   => 'required',
-            'order'         => 'required',
-            'section_style' => 'required',
-            'status'        => 'required'
-        ])->validate();
+            Validator::make($request->all(), [
+                'category_id'   => 'required',
+                'order'         => 'required',
+                'section_style' => 'required',
+                'status'        => 'required'
+            ])->validate();
 
         elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::VIDEO):
 
-        Validator::make($request->all(), [
-            'order'         => 'required',
-            'section_style' => 'required',
-            'status'        => 'required'
-        ])->validate();
+            Validator::make($request->all(), [
+                'order'         => 'required',
+                'section_style' => 'required',
+                'status'        => 'required'
+            ])->validate();
 
         elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::LATEST_POST):
 
-        Validator::make($request->all(), [
-            'order'         => 'required',
-            'status'        => 'required'
-        ])->validate();
+            Validator::make($request->all(), [
+                'order'         => 'required',
+                'status'        => 'required'
+            ])->validate();
 
         endif;
 
@@ -65,32 +73,32 @@ class ThemeSectionController extends Controller
 
         if($request->type == \Modules\Appearance\Enums\ThemeSectionType::CATEGORY):
 
-        $category               = Category::findOrFail($request->category_id);
+            $category               = Category::findOrFail($request->category_id);
 
-        $section->label         = $category->category_name;
-        $section->category_id   = $request->category_id;
-        $section->section_style = $request->section_style;
-        $section->language      = \LaravelLocalization::setLocale() ?? settingHelper('default_language');
+            $section->label         = $category->category_name;
+            $section->category_id   = $request->category_id;
+            $section->section_style = $request->section_style;
+            $section->language      = \LaravelLocalization::setLocale() ?? settingHelper('default_language');
 
         elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::VIDEO):
 
-        $section->section_style = $request->section_style;  
-        $section->label         = 'videos'; 
+            $section->section_style = $request->section_style;
+            $section->label         = 'videos';
 
         elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::LATEST_POST):
 
-        $section->label         = 'latest_post';
+            $section->label         = 'latest_post';
 
         endif;
 
 
         $section->order         = $request->order;
-        
+
         $section->status        = $request->status;
         if($request->ad != ""){
-             $section->ad_id         = $request->ad;
+            $section->ad_id         = $request->ad;
         }
-       
+
 
         $section->save();
 
@@ -110,27 +118,27 @@ class ThemeSectionController extends Controller
 
         if($request->type == \Modules\Appearance\Enums\ThemeSectionType::CATEGORY):
 
-        Validator::make($request->all(), [
-            'category_id'   => 'required',
-            'order'         => 'required',
-            'section_style' => 'required',
-            'status'        => 'required'
-        ])->validate();
+            Validator::make($request->all(), [
+                'category_id'   => 'required',
+                'order'         => 'required',
+                'section_style' => 'required',
+                'status'        => 'required'
+            ])->validate();
 
         elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::VIDEO):
 
-        Validator::make($request->all(), [
-            'order'         => 'required',
-            'section_style' => 'required',
-            'status'        => 'required'
-        ])->validate();
+            Validator::make($request->all(), [
+                'order'         => 'required',
+                'section_style' => 'required',
+                'status'        => 'required'
+            ])->validate();
 
         elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::LATEST_POST):
 
-        Validator::make($request->all(), [
-            'order'         => 'required',
-            'status'        => 'required'
-        ])->validate();
+            Validator::make($request->all(), [
+                'order'         => 'required',
+                'status'        => 'required'
+            ])->validate();
 
         endif;
 
@@ -141,20 +149,20 @@ class ThemeSectionController extends Controller
 
         if($request->type == \Modules\Appearance\Enums\ThemeSectionType::CATEGORY):
 
-        $category               = Category::findOrFail($request->category_id);
+            $category               = Category::findOrFail($request->category_id);
 
-        $section->label         = $category->category_name;
-        $section->category_id   = $request->category_id;
-        $section->section_style = $request->section_style;
+            $section->label         = $category->category_name;
+            $section->category_id   = $request->category_id;
+            $section->section_style = $request->section_style;
 
         elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::VIDEO):
 
-        $section->section_style = $request->section_style;  
-        $section->label         = 'videos'; 
+            $section->section_style = $request->section_style;
+            $section->label         = 'videos';
 
         elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::LATEST_POST):
 
-        $section->label         = 'latest_post';
+            $section->label         = 'latest_post';
 
         endif;
 
@@ -163,7 +171,7 @@ class ThemeSectionController extends Controller
         $section->status        = $request->status;
         $section->status        = $request->status;
         if($request->ad != ""){
-             $section->ad_id    = $request->ad;
+            $section->ad_id    = $request->ad;
         }
 
         $section->save();

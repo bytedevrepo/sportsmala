@@ -21,9 +21,11 @@ class PageController extends Controller
             $socialMedias       = SocialMedia::where('status', 1)->get();
 
             if($page->page_type == 1):
-                return view('site.pages.default_page', compact('page'));
+//                return view('site.pages.default_page', compact('page'));
+                return view('theme-soccer.pages.default_page', compact('page'));
             else:
-                return view('site.pages.contact_us', compact('page', 'socialMedias'));
+                return view('theme-soccer.pages.contact_us', compact('page', 'socialMedias'));
+//                return view('site.pages.contact_us', compact('page', 'socialMedias'));
             endif;
         }
         catch (\Exception $e){
@@ -64,7 +66,7 @@ class PageController extends Controller
 
     	 return redirect()->back()->with('success', __('successfully_send'));
     }
-    
+
     public function imageAlbums(){
         $albums = Album::all();
         return view('site.pages.albums', compact('albums'));

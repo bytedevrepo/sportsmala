@@ -26,7 +26,7 @@ class ViewServiceProvider extends ServiceProvider
         );
 
         View::composer(
-            ['theme-soccer.layouts.header'],
+            ['theme-soccer.layouts.header', 'site.layouts.app'],
             'App\Http\View\Composers\HeaderWidgetComposer'
         );
 
@@ -66,7 +66,7 @@ class ViewServiceProvider extends ServiceProvider
         );
 
         View::composer(
-            ['theme-soccer.layouts.app', 'theme-soccer._partials.home.primary_section'],
+            ['theme-soccer.layouts.app', 'theme-soccer._partials.home.primary_section', 'site.layouts.app'],
             'App\Http\View\Composers\LanguageComposer'
         );
 

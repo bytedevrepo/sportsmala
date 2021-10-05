@@ -64,6 +64,54 @@ class ThemeController extends Controller
 
         return redirect()->back()->with('success', __('successfully_updated'));
     }
+    public function updateBreakingSection(Request $request)
+    {
+
+        // Validator::make($request->all(), [
+        //     'primary_section_style' => 'required'
+        // ])->validate();
+
+        $theme = Theme::where('status', 1)->first();
+
+        $data = [
+            'theme_id'      => $theme->id,
+            'label'         => 'Breaking Section',
+            'order'         => 1,
+            'section_style' => $request->get('breaking_section_style', 'style_1'),
+            'is_primary'    => 2,
+            'status'        => 1
+        ];
+
+        ThemeSection::updateOrCreate([
+            'theme_id' => $theme->id,
+            'is_primary' => 2,
+        ], $data);
+
+        return redirect()->back()->with('success', __('successfully_updated'));
+    }
+
+    public function updateTopNewsSection(Request $request)
+    {
+        $theme = Theme::where('status', 1)->first();
+
+        $data = [
+            'theme_id'      => $theme->id,
+            'label'         => 'Top News Section',
+            'order'         => 1,
+            'post_amount' => $request->get('posts_count', 3),
+            'section_style' => $request->get('top_news_section_style', 'style_1'),
+            'is_primary'    => 3,
+            'category_id'    => $request->get('category_id'),
+            'status'        => 1
+        ];
+
+        ThemeSection::updateOrCreate([
+            'theme_id' => $theme->id,
+            'is_primary' => 3,
+        ], $data);
+
+        return redirect()->back()->with('success', __('successfully_updated'));
+    }
 
     public function themeOption()
     {
