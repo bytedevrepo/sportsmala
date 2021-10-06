@@ -68,7 +68,7 @@
     </div>
     <!-- Header Top Bar / End --><!-- Header Secondary -->
     <div class="header__secondary m-2">
-        <img src="{{ asset('score.png') }}" alt="" style="height: 70px; width: 100%;">
+        <img src="{{ static_asset('score.png') }}" alt="" style="height: 70px; width: 100%;">
     </div>
     <!-- Header Secondary / End --><!-- Header Primary -->
     <div class="header__primary">
