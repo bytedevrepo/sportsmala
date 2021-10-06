@@ -56,7 +56,6 @@ class CommentController extends Controller
 
         $url = \LaravelLocalization::getLocalizedURL(App::getLocale(), \URL::previous());
         return redirect($url);
-        return response()->json($url);
     }
 
     public function modeChange()
