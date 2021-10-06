@@ -16,9 +16,5 @@ yarn-error.log
 /public/videos/*.mkv
 /public/videos/*.webm
 /bootstrap/cache/*.php
-/storage/logs
-*.zip
 /__SOURCE
 /.vscode
-storage/framework/sessions/
-storage/framework/views/*.*
