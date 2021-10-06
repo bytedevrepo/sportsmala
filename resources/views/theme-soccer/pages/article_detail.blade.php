@@ -25,11 +25,9 @@
                     @if($post->layout =='default')
                         @include('theme-soccer.pages.article.style_1')
                     @elseif($post->layout == 'style_2')
-                        <?php echo ("style not found"); ?>
-                        {{--                    @include('site.pages.article.style_2')--}}
+                        @include('theme-soccer.pages.article.style_1')
                     @elseif($post->layout == 'style_3')
-                        <?php echo ("style not found"); ?>
-                        {{--                    @include('site.pages.article.style_3')--}}
+                        <@include('theme-soccer.pages.article.style_1')
                     @endif
                     @if(settingHelper('inbuild_comment') == 1)
                         @include('theme-soccer._partials.post.write_comment')

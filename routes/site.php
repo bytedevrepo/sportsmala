@@ -4,8 +4,7 @@ $article = settingHelper('article_detail_prefix') ?? 'article';
 
 Route::feeds();
 
-Route::group(
-    [
+Route::group([
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'isInstalledCheck']
     ],
@@ -36,7 +35,7 @@ Route::group(
 			Route::post('submit/news', 'ArticleController@saveNews')->name('submit.news.save');
 			Route::post('site/send/message', 'PageController@sendMessage')->name('site.send.message');
 			Route::post('poll-store', 'PollController@savePoll')->name('site.poll.store');
-			Route::get('site-switch-langauge', 'CommentController@switchLanguage');
+			Route::get('site-switch-langauge/{lang}', 'CommentController@switchLanguage')->name('switch-langauge');
 			Route::get('mode-change', 'CommentController@modeChange');
 			Route::get('category/{slug}','ArticleController@postByCategory')->name('site.category');
 			Route::get('sub-category/{slug}','ArticleController@postBySubCategory')->name('site.sub-category');

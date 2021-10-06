@@ -29,8 +29,9 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
      * @return void
+     * @throws Exception
      */
     public function report(Exception $exception)
     {
@@ -40,34 +41,23 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws Exception
      */
     public function render($request, Exception $exception)
     {
          if ($this->isHttpException($exception)) {
              if ($exception->getStatusCode() == 404) {
-
-                 return response()->view('site.pages.404');
-
+                 return response()->view('theme-soccer.errors.404');
              } elseif ($exception->getStatusCode() == 403) {
-
-                 return response()->view('site.pages.403');
-
+                 return response()->view('theme-soccer.errors.403');
              } elseif ($exception->getStatusCode() == 405){
-
-                  return response()->view('site.pages.405');
-
+                  return response()->view('theme-soccer.errors.405');
              }
-         }else{
-
-            return parent::render($request, $exception);
          }
-
-
-
-
+        return parent::render($request, $exception);
         // if($exception instanceof FileUnacceptableForCollection){
         //     return redirect()->back()->with('error','File not excepted');
         // }

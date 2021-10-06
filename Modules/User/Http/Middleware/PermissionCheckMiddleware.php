@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Sentinel;
 
-class permissionCheckMiddleware
+class PermissionCheckMiddleware
 {
     /**
      * Handle an incoming request.

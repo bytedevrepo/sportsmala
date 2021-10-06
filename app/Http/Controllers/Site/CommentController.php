@@ -49,14 +49,13 @@ class CommentController extends Controller
 
     public function switchLanguage(Request $request)
     {
-        $lang               = $request->lang;
-
+        $lang = $request->lang;
         App::setLocale($lang);
         Session::put('locale', $lang);
         LaravelLocalization::setLocale($lang);
 
-        $url                = \LaravelLocalization::getLocalizedURL(App::getLocale(), \URL::previous());
-
+        $url = \LaravelLocalization::getLocalizedURL(App::getLocale(), \URL::previous());
+        return redirect($url);
         return response()->json($url);
     }
 
