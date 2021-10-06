@@ -200,7 +200,7 @@
                                                     <select class="form-control" name="category_id" id="category" required>
                                                         <option value=""><?php echo e(__('select_category')); ?></option>
                                                         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            <option value="<?php echo e($category->id); ?>" <?php echo e(($topNewsSection->category_id == $category->id) ? 'selected' : ''); ?>><?php echo e($category->category_name); ?></option>
+                                                            <option value="<?php echo e($category->id); ?>" <?php echo e(($topNewsSection AND ($topNewsSection->category_id == $category->id)) ? 'selected' : ''); ?>><?php echo e($category->category_name); ?></option>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                     </select>
                                                 </div>
@@ -213,7 +213,7 @@
                                             <div class="col-12 col-md-4">
                                                 <div class="primary_section_style">
                                                     <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="top_news_section_style" id="primary_section_style_1" value="style_1" <?php if($topNewsSection->section_style == "style_1"): ?> checked="" <?php endif; ?> class="custom-control-input">
+                                                        <input type="radio" name="top_news_section_style" id="primary_section_style_1" value="style_1" <?php if($topNewsSection AND ($topNewsSection->section_style == "style_1")): ?> checked="" <?php endif; ?> class="custom-control-input">
                                                         <span class="custom-control-label"></span>
                                                     </label>
                                                     <p>style_1</p>
@@ -222,7 +222,7 @@
                                             <div class="col-12 col-md-4">
                                                 <div class="primary_section_style">
                                                     <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="top_news_section_style" id="primary_section_style_none" value="" <?php if($topNewsSection->section_style == null): ?> checked="" <?php endif; ?> class="custom-control-input">
+                                                        <input type="radio" name="top_news_section_style" id="primary_section_style_none" value="" <?php if($topNewsSection AND ($topNewsSection->section_style == null)): ?> checked="" <?php endif; ?> class="custom-control-input">
                                                         <span class="custom-control-label"></span>
                                                     </label>
                                                     <p><?php echo e(__('none')); ?></p>
@@ -256,7 +256,7 @@
                                             <div class="col-12 col-md-4">
                                                 <div class="primary_section_style">
                                                     <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="breaking_section_style" id="primary_section_style_1" value="style_1" <?php if($breakingSection->section_style == "style_1"): ?> checked="" <?php endif; ?> class="custom-control-input">
+                                                        <input type="radio" name="breaking_section_style" id="primary_section_style_1" value="style_1" <?php if($breakingSection AND $breakingSection->section_style == "style_1"): ?> checked="" <?php endif; ?> class="custom-control-input">
                                                         <span class="custom-control-label"></span>
                                                     </label>
                                                     <p>style_1</p>
@@ -266,7 +266,7 @@
                                             <div class="col-12 col-md-4">
                                                 <div class="primary_section_style">
                                                     <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="breaking_section_style" id="primary_section_style_none" value="" <?php if($breakingSection->section_style == null): ?> checked="" <?php endif; ?> class="custom-control-input">
+                                                        <input type="radio" name="breaking_section_style" id="primary_section_style_none" value="" <?php if($breakingSection AND $breakingSection->section_style == null): ?> checked="" <?php endif; ?> class="custom-control-input">
                                                         <span class="custom-control-label"></span>
                                                     </label>
                                                     <p><?php echo e(__('none')); ?></p>

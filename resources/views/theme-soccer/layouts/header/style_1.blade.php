@@ -38,26 +38,26 @@
                         <a href="#">{{date('l, d F Y')}}</a>
                     </li>
                     <li class="nav-account__item">
-                        <a href="#">Language: <span class="highlight">EN</span></a>
+                        <a href="#">Language: <span class="highlight">{{LaravelLocalization::setLocale() ? LaravelLocalization::setLocale() : 'EN'}}</span></a>
                         <ul class="main-nav__sub">
                             @foreach ($activeLang as $lang)
-                                <li><a href="#">{{ $lang->name }}</a></li>
+                                <li><a  href="{{ route('switch-langauge', $lang->code) }}">{{ $lang->name }}</a></li>
                             @endforeach
                         </ul>
                     </li>
                     @if(Cartalyst\Sentinel\Laravel\Facades\Sentinel::check())
                         <li class="nav-account__item">
-                            <a href="{{ route('site.profile') }}" >Your Account</a>
+                            <a href="{{ route('site.profile') }}" >{{ __('header.your_account') }}</a>
                         </li>
                         <li class="nav-account__item nav-account__item--logout">
-                            <a href="{{ route('site.logout') }}">Logout</a>
+                            <a href="{{ route('site.logout') }}">{{ __('header.logout') }}</a>
                         </li>
                     @else
                         <li class="nav-account__item nav-account__item--logout">
-                            <a href="{{ route('site.login.form') }}">{{ __('login') }}</a>
+                            <a href="{{ route('site.login.form') }}">{{ __('header.login') }}</a>
                         </li>
                         <li class="nav-account__item nav-account__item--logout">
-                            <a href="{{ route('site.register.form') }}">{{ __('register') }}</a>
+                            <a href="{{ route('site.register.form') }}">{{ __('header.register') }}</a>
                         </li>
                     @endif
                 </ul>

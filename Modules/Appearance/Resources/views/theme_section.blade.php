@@ -201,7 +201,7 @@
                                                     <select class="form-control" name="category_id" id="category" required>
                                                         <option value="">{{ __('select_category') }}</option>
                                                         @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}" {{ ($topNewsSection->category_id == $category->id) ? 'selected' : '' }}>{{ $category->category_name }}</option>
+                                                            <option value="{{ $category->id }}" {{ ($topNewsSection AND ($topNewsSection->category_id == $category->id)) ? 'selected' : '' }}>{{ $category->category_name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -214,7 +214,7 @@
                                             <div class="col-12 col-md-4">
                                                 <div class="primary_section_style">
                                                     <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="top_news_section_style" id="primary_section_style_1" value="style_1" @if($topNewsSection->section_style == "style_1") checked="" @endif class="custom-control-input">
+                                                        <input type="radio" name="top_news_section_style" id="primary_section_style_1" value="style_1" @if($topNewsSection AND ($topNewsSection->section_style == "style_1")) checked="" @endif class="custom-control-input">
                                                         <span class="custom-control-label"></span>
                                                     </label>
                                                     <p>style_1</p>
@@ -223,7 +223,7 @@
                                             <div class="col-12 col-md-4">
                                                 <div class="primary_section_style">
                                                     <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="top_news_section_style" id="primary_section_style_none" value="" @if($topNewsSection->section_style == null) checked="" @endif class="custom-control-input">
+                                                        <input type="radio" name="top_news_section_style" id="primary_section_style_none" value="" @if($topNewsSection AND ($topNewsSection->section_style == null)) checked="" @endif class="custom-control-input">
                                                         <span class="custom-control-label"></span>
                                                     </label>
                                                     <p>{{ __('none') }}</p>
@@ -255,7 +255,7 @@
                                             <div class="col-12 col-md-4">
                                                 <div class="primary_section_style">
                                                     <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="breaking_section_style" id="primary_section_style_1" value="style_1" @if($breakingSection->section_style == "style_1") checked="" @endif class="custom-control-input">
+                                                        <input type="radio" name="breaking_section_style" id="primary_section_style_1" value="style_1" @if($breakingSection AND $breakingSection->section_style == "style_1") checked="" @endif class="custom-control-input">
                                                         <span class="custom-control-label"></span>
                                                     </label>
                                                     <p>style_1</p>
@@ -265,7 +265,7 @@
                                             <div class="col-12 col-md-4">
                                                 <div class="primary_section_style">
                                                     <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="breaking_section_style" id="primary_section_style_none" value="" @if($breakingSection->section_style == null) checked="" @endif class="custom-control-input">
+                                                        <input type="radio" name="breaking_section_style" id="primary_section_style_none" value="" @if($breakingSection AND $breakingSection->section_style == null) checked="" @endif class="custom-control-input">
                                                         <span class="custom-control-label"></span>
                                                     </label>
                                                     <p>{{ __('none') }}</p>
