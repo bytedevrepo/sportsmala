@@ -4,5 +4,5 @@
 active
 @endsection
 @section('content')
-    @include('common::dashboard')
+{{--    @include('common::dashboard')--}}
 @endsection
