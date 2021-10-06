@@ -21,42 +21,42 @@ class CommonController extends Controller
     public function index()
     {
         $data['totalVisits']               = VisitorTracker::get();
-//        $data['totalUniqueVisitors']       = VisitorTracker::where('date', 'like', date('Y').'%')->get();
-//        $count = 0;
-//        foreach($data['totalUniqueVisitors']->groupBy('ip') as $key => $visitor){
-//           $count += $visitor->groupBy('url')->count();
-//        }
-//
-//        $data['totalUniqueVisits']         = $count;
-//        $data['totalUniqueVisitors']       = $data['totalUniqueVisitors']->groupBy('ip')->count();
-//
-//        $data['totalVisitors']             = $data['totalVisits']->groupBy('ip')->count();
-//        $data['usageBrowsers']             = $data['totalVisits']->groupBy('agent_browser');
-//        $data['registeredUsers']           = Activation::get();
-//        $data['publishedPost']             = Post::where('visibility', 1)->where('status', 1)->get();
-//        $data['submittedPost']             = Post::where('submitted', 1)->get();
-//
-//        $month = date('Y-m');
-//        $visitors = VisitorTracker::where('date', 'like', '%' . $month . '%')->get();
-//        for($i = 1; $i <= date('t'); $i++){
-//            if ($i < 10) {
-//                $i = str_pad($i, 2, "0", STR_PAD_LEFT);
-//            }
-//            // visits count
-//            $visits                    = $visitors->where('date', date('Y-m-'.$i));
-//            $data['dates'][] = $i;
-//            $data['visits'][]          = $visits->count();
-//            //visitor count
-//            $data['visitors'][]        = $visits->groupBy('ip')->count();
-//        }
-//
-//        $data['dates']                 = implode(',', $data['dates']);
-//        $data['visits']                = implode(',', $data['visits']);
-//        $data['visitors']              = implode(',', $data['visitors']);
-//
-//        $data['posthits']              = Post::with('image')->orderBy('total_hit', 'DESC')->where('total_hit', '!=', 0)->paginate(10);
-//
-//        $data['browserColor'] = ['#254f37', '#8f97db', '#db9cd0', '#dbc98f', '#9fdb8f', '#8fdbc3', '#8fcfdb', '#6F7841', '#a61616', '#051057'];
+        $data['totalUniqueVisitors']       = VisitorTracker::where('date', 'like', date('Y').'%')->get();
+        $count = 0;
+        foreach($data['totalUniqueVisitors']->groupBy('ip') as $key => $visitor){
+           $count += $visitor->groupBy('url')->count();
+        }
+
+        $data['totalUniqueVisits']         = $count;
+        $data['totalUniqueVisitors']       = $data['totalUniqueVisitors']->groupBy('ip')->count();
+
+        $data['totalVisitors']             = $data['totalVisits']->groupBy('ip')->count();
+        $data['usageBrowsers']             = $data['totalVisits']->groupBy('agent_browser');
+        $data['registeredUsers']           = Activation::get();
+        $data['publishedPost']             = Post::where('visibility', 1)->where('status', 1)->get();
+        $data['submittedPost']             = Post::where('submitted', 1)->get();
+
+        $month = date('Y-m');
+        $visitors = VisitorTracker::where('date', 'like', '%' . $month . '%')->get();
+        for($i = 1; $i <= date('t'); $i++){
+            if ($i < 10) {
+                $i = str_pad($i, 2, "0", STR_PAD_LEFT);
+            }
+            // visits count
+            $visits                    = $visitors->where('date', date('Y-m-'.$i));
+            $data['dates'][] = $i;
+            $data['visits'][]          = $visits->count();
+            //visitor count
+            $data['visitors'][]        = $visits->groupBy('ip')->count();
+        }
+
+        $data['dates']                 = implode(',', $data['dates']);
+        $data['visits']                = implode(',', $data['visits']);
+        $data['visitors']              = implode(',', $data['visitors']);
+
+        $data['posthits']              = Post::with('image')->orderBy('total_hit', 'DESC')->where('total_hit', '!=', 0)->paginate(10);
+
+        $data['browserColor'] = ['#254f37', '#8f97db', '#db9cd0', '#dbc98f', '#9fdb8f', '#8fdbc3', '#8fcfdb', '#6F7841', '#a61616', '#051057'];
 
 
         return view('common::index', compact('data'));

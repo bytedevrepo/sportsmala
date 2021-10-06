@@ -1,8 +1,8 @@
-{{--@extends('common::layouts.master')--}}
+@extends('common::layouts.master')
 
-{{--@section('home')--}}
-{{--active--}}
-{{--@endsection--}}
-{{--@section('content')--}}
-{{--    @include('common::dashboard')--}}
-{{--@endsection--}}
+@section('home')
+active
+@endsection
+@section('content')
+    @include('common::dashboard')
+@endsection
