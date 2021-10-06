@@ -4,13 +4,14 @@ namespace Modules\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\User\Http\Middleware\PermissionCheckMiddleware;
 
 class UserServiceProvider extends ServiceProvider
 {
     protected $middleware = [
 
         'loginCheck'        => \Modules\User\Http\Middleware\LoginCheckMiddleware::class,
-        'permissionCheck'   => \Modules\User\Http\Middleware\permissionCheckMiddleware::class,
+        'permissionCheck'   => PermissionCheckMiddleware::class,
 
     ];
 
