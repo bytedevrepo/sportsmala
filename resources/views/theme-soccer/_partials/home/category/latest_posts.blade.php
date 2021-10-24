@@ -41,13 +41,13 @@
                             </div>
                         </div>
                         <footer class="posts__footer card__footer">
-                            <div class="post-author">
-                                <div class="post-author__info">
-                                    <h4 class="post-author__name">
-                                        <a href="{{ route('site.author',['id' => $post['user']->id]) }}">{{ data_get($post, 'user.first_name') }}</a>
-                                    </h4>
-                                </div>
-                            </div>
+                            {{--<div class="post-author">--}}
+                                {{--<div class="post-author__info">--}}
+                                    {{--<h4 class="post-author__name">--}}
+                                        {{--<a href="{{ route('site.author',['id' => $post['user']->id]) }}">{{ data_get($post, 'user.first_name') }}</a>--}}
+                                    {{--</h4>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
                             <ul class="post__meta meta">
                                 <li class="meta__item meta__item--views">{{ $post->total_hit ?? 0 }}</li>
                             </ul>

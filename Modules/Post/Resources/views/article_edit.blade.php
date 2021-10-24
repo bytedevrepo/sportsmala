@@ -458,24 +458,24 @@
                                             <img src="{{static_asset('default-image/Detail/detail_1.png') }}" alt="" class="img-responsive cat-block-img">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="custom-control custom-radio detail-control-inline">
-                                                <input type="radio" name="layout" id="detail_style_2" value="style_2" {{@$post->layout=="style_2" ? 'checked': ''}}  class="custom-control-input">
-                                                <span class="custom-control-label"></span>
-                                            </label>
-                                            <img src="{{static_asset('default-image/Detail/detail_2.png') }}" alt="" class="img-responsive cat-block-img">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label class="custom-control custom-radio detail-control-inline">
-                                                <input type="radio" name="layout" id="detail_style_3" value="style_3" {{@$post->layout=="style_3" ? 'checked': ''}}  class="custom-control-input">
-                                                <span class="custom-control-label"></span>
-                                            </label>
-                                            <img src="{{static_asset('default-image/Detail/detail_3.png') }}" alt="" class="img-responsive cat-block-img">
-                                        </div>
-                                    </div>
+                                    {{--<div class="col-md-4">--}}
+                                        {{--<div class="form-group">--}}
+                                            {{--<label class="custom-control custom-radio detail-control-inline">--}}
+                                                {{--<input type="radio" name="layout" id="detail_style_2" value="style_2" {{@$post->layout=="style_2" ? 'checked': ''}}  class="custom-control-input">--}}
+                                                {{--<span class="custom-control-label"></span>--}}
+                                            {{--</label>--}}
+                                            {{--<img src="{{static_asset('default-image/Detail/detail_2.png') }}" alt="" class="img-responsive cat-block-img">--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="col-md-4">--}}
+                                        {{--<div class="form-group">--}}
+                                            {{--<label class="custom-control custom-radio detail-control-inline">--}}
+                                                {{--<input type="radio" name="layout" id="detail_style_3" value="style_3" {{@$post->layout=="style_3" ? 'checked': ''}}  class="custom-control-input">--}}
+                                                {{--<span class="custom-control-label"></span>--}}
+                                            {{--</label>--}}
+                                            {{--<img src="{{static_asset('default-image/Detail/detail_3.png') }}" alt="" class="img-responsive cat-block-img">--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                 </div>
                             </div>
                             <div class="add-new-page  bg-white p-20 m-b-20">
