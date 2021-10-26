@@ -186,7 +186,7 @@
                     </ul>
 
                     <!-- Pushy Panel Toggle -->
-                    <a href="#" class="pushy-panel__toggle"><span class="pushy-panel__line"></span> </a>
+                    {{--<a href="#" class="pushy-panel__toggle"><span class="pushy-panel__line"></span> </a>--}}
                     <!-- Pushy Panel Toggle / Eng -->
                 </nav>
                 <!-- Main Navigation / End -->
