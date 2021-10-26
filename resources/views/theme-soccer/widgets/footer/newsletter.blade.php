@@ -5,7 +5,7 @@
             <h4 class="widget__title">{{ data_get($detail, 'title') }}</h4>
             <div class="widget__content">
                 <p>Subscribe to our newsletter.</p>
-                <form action="{{ route('subscribe.newsletter') }}" class="contact-form">
+                <form action="{{ route('subscribe.newsletter') }}" method="post" class="contact-form">
                     @csrf
                     <div class="form-group form-group--xs">
                         <input type="email" name="email" class="form-control input-sm" id="contact-form-email" placeholder="{{__('email_address')}}" required>
