@@ -40,11 +40,11 @@
                                 </h6>
                             </div>
                             <footer class="posts__footer card__footer">
-                                <div class="post-author">
-                                    <div class="post-author__info">
-                                        <h4 class="post-author__name">{{ data_get($item, 'user.first_name') }}</h4>
-                                    </div>
-                                </div>
+                                {{--<div class="post-author">--}}
+                                    {{--<div class="post-author__info">--}}
+                                        {{--<h4 class="post-author__name">{{ data_get($item, 'user.first_name') }}</h4>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                                 <ul class="post__meta meta">
                                     <li class="meta__item meta__item--views">{{ $item->total_hit ?? 0 }}</li>
                                 </ul>

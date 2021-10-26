@@ -115,42 +115,42 @@
                                                 <img src="{{static_asset('default-image/Section/Section_1.png') }}" alt="" class="img-responsive cat-block-img">
                                             </div>
                                         </div>
-                                        <div class="col-12 col-md-4">
-                                            <div class="section_section_style">
-                                                <label class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" name="section_style" id="section_section_style_2" value="style_2" class="custom-control-input">
-                                                    <span class="custom-control-label"></span>
-                                                </label>
-                                                <img src="{{static_asset('default-image/Section/Section_2.png') }}" alt="" class="img-responsive cat-block-img">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-4">
-                                            <div class="section_section_style">
-                                                <label class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" name="section_style" id="section_section_style_3" value="style_3" class="custom-control-input">
-                                                    <span class="custom-control-label"></span>
-                                                </label>
-                                                <img src="{{static_asset('default-image/Section/Section_3.png') }}" alt="" class="img-responsive cat-block-img">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-4">
-                                            <div class="section_section_style">
-                                                <label class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" name="section_style" id="section_section_style_4" value="style_4" class="custom-control-input">
-                                                    <span class="custom-control-label"></span>
-                                                </label>
-                                                <img src="{{static_asset('default-image/Section/Section_4.png') }}" alt="" class="img-responsive cat-block-img">
-                                            </div>
-                                        </div>
-                                        <div class="col-12 col-md-4">
-                                            <div class="section_section_style">
-                                                <label class="custom-control custom-radio custom-control-inline">
-                                                    <input type="radio" name="section_style" id="section_section_style_5" value="style_5" class="custom-control-input">
-                                                    <span class="custom-control-label"></span>
-                                                </label>
-                                                <img src="{{static_asset('default-image/Section/Section_5.png') }}" alt="" class="img-responsive cat-block-img">
-                                            </div>
-                                        </div>
+                                        {{--<div class="col-12 col-md-4">--}}
+                                            {{--<div class="section_section_style">--}}
+                                                {{--<label class="custom-control custom-radio custom-control-inline">--}}
+                                                    {{--<input type="radio" name="section_style" id="section_section_style_2" value="style_2" class="custom-control-input">--}}
+                                                    {{--<span class="custom-control-label"></span>--}}
+                                                {{--</label>--}}
+                                                {{--<img src="{{static_asset('default-image/Section/Section_2.png') }}" alt="" class="img-responsive cat-block-img">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-12 col-md-4">--}}
+                                            {{--<div class="section_section_style">--}}
+                                                {{--<label class="custom-control custom-radio custom-control-inline">--}}
+                                                    {{--<input type="radio" name="section_style" id="section_section_style_3" value="style_3" class="custom-control-input">--}}
+                                                    {{--<span class="custom-control-label"></span>--}}
+                                                {{--</label>--}}
+                                                {{--<img src="{{static_asset('default-image/Section/Section_3.png') }}" alt="" class="img-responsive cat-block-img">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-12 col-md-4">--}}
+                                            {{--<div class="section_section_style">--}}
+                                                {{--<label class="custom-control custom-radio custom-control-inline">--}}
+                                                    {{--<input type="radio" name="section_style" id="section_section_style_4" value="style_4" class="custom-control-input">--}}
+                                                    {{--<span class="custom-control-label"></span>--}}
+                                                {{--</label>--}}
+                                                {{--<img src="{{static_asset('default-image/Section/Section_4.png') }}" alt="" class="img-responsive cat-block-img">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col-12 col-md-4">--}}
+                                            {{--<div class="section_section_style">--}}
+                                                {{--<label class="custom-control custom-radio custom-control-inline">--}}
+                                                    {{--<input type="radio" name="section_style" id="section_section_style_5" value="style_5" class="custom-control-input">--}}
+                                                    {{--<span class="custom-control-label"></span>--}}
+                                                {{--</label>--}}
+                                                {{--<img src="{{static_asset('default-image/Section/Section_5.png') }}" alt="" class="img-responsive cat-block-img">--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
                                     </div>
                                 </div>
                                 <div class="row">
@@ -299,24 +299,24 @@
                                                     <img src="{{static_asset('default-image/primary_section/Style_1.png') }}" alt="image" class="img-responsive cat-block-img">
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="primary_section_style">
-                                                    <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="primary_section_style" id="primary_section_style_2" value="style_2" @if($primarySection->section_style == "style_2") checked="" @endif class="custom-control-input">
-                                                        <span class="custom-control-label"></span>
-                                                    </label>
-                                                    <img src="{{static_asset('default-image/primary_section/Style_2.png') }}" alt="image" class="img-responsive cat-block-img">
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-md-4">
-                                                <div class="primary_section_style">
-                                                    <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="primary_section_style" id="primary_section_style_3" value="style_3" @if($primarySection->section_style == "style_3") checked="" @endif class="custom-control-input">
-                                                        <span class="custom-control-label"></span>
-                                                    </label>
-                                                    <img src="{{static_asset('default-image/primary_section/Style_3.png') }}" alt="image" class="img-responsive cat-block-img">
-                                                </div>
-                                            </div>
+                                            {{--<div class="col-12 col-md-4">--}}
+                                                {{--<div class="primary_section_style">--}}
+                                                    {{--<label class="custom-control custom-radio custom-control-inline">--}}
+                                                        {{--<input type="radio" name="primary_section_style" id="primary_section_style_2" value="style_2" @if($primarySection->section_style == "style_2") checked="" @endif class="custom-control-input">--}}
+                                                        {{--<span class="custom-control-label"></span>--}}
+                                                    {{--</label>--}}
+                                                    {{--<img src="{{static_asset('default-image/primary_section/Style_2.png') }}" alt="image" class="img-responsive cat-block-img">--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--<div class="col-12 col-md-4">--}}
+                                                {{--<div class="primary_section_style">--}}
+                                                    {{--<label class="custom-control custom-radio custom-control-inline">--}}
+                                                        {{--<input type="radio" name="primary_section_style" id="primary_section_style_3" value="style_3" @if($primarySection->section_style == "style_3") checked="" @endif class="custom-control-input">--}}
+                                                        {{--<span class="custom-control-label"></span>--}}
+                                                    {{--</label>--}}
+                                                    {{--<img src="{{static_asset('default-image/primary_section/Style_3.png') }}" alt="image" class="img-responsive cat-block-img">--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
                                             <div class="col-12 col-md-4">
                                                 <div class="primary_section_style">
                                                     <label class="custom-control custom-radio custom-control-inline">

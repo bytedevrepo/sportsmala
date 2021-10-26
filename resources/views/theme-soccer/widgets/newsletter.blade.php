@@ -8,7 +8,7 @@
         <div class="widget-newsletter__desc">
             <p>{{ __('newsletter_description') ?? 'Subscribe to our mailing list to get the new updates!' }}</p>
         </div>
-        <form action="{{ route('subscribe.newsletter') }}" method="POST" class="inline-form">
+        <form action="{{ route('subscribe.newsletter') }}" method="post" class="inline-form">
             @csrf
             <div class="input-group">
                 <input name="email" type="email" class="form-control" placeholder="{{__('email_address')}}">
