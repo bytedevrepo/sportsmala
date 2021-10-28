@@ -2,78 +2,58 @@
 
 namespace Modules\Tournament\Http\Controllers;
 
+use Validator;
+use Image;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Tournament\Entities\Team;
 
 class TeamController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Response
-     */
     public function teamList()
     {
-        return view('tournament::team');
+        $teams = Team::all();
+        return view('tournament::team', compact('teams'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
     public function create()
     {
-        return view('tournament::create');
+        return view('tournament::team-create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Response
-     */
+    public function edit(Team $team)
+    {
+        return view('tournament::team-create', compact('team'));
+    }
+
     public function store(Request $request)
     {
-        //
-    }
+        Validator::make($request->all(), [
+            'team_name' => 'required|max:255',
+        ])->validate();
+        if ($request->id){
+            $query = Team::find($request->id);
+        }else{
+            $query = new Team();
+        }
+        if ($request->hasFile('image')){
+            $requestImage = $request->image;
+            $originalImageName = date('YmdHis') . "_original_" . rand(1, 50) . '.' . 'webp';
+            if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
+                $directory = 'images/';
+            else:
+                $directory = 'public/images/';
+            endif;
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        return view('tournament::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        return view('tournament::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+            $originalImageUrl = $directory . $originalImageName;
+            $imgOriginal = Image::make(imagecreatefromjpeg($requestImage))->encode('webp', 80);
+            $imgOriginal->save($originalImageUrl);
+            $query->logo = str_replace("public/","",$originalImageUrl);
+        }
+        $query->team_name = $request->team_name;
+        $query->description = $request->description;
+        $query->save();
+        return redirect()->route('team-list')->with('success',__('successfully_added'));
     }
 }

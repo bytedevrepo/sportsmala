@@ -99,7 +99,6 @@ class TournamentController extends Controller
             $end_date = Carbon::parse($request->end_date)->format('Y-m-d h:i:s A');
             $query->end_date = $end_date;
         }
-//        dd($end_date);
         $query->tournament_name = $request->tournament_name;
         $query->category_id = $request->category_id;
         $query->description = $request->description;

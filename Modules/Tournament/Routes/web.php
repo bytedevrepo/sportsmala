@@ -25,7 +25,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
                 Route::post('/save-tournament', 'TournamentController@saveTournament')->name('save-tournament');
 
                 Route::get('/team-list', 'TeamController@teamList')->name('team-list');
-                Route::post('/save-team', 'TeamController@saveTeam')->name('save-team');
+                Route::get('/team-create', 'TeamController@create')->name('team-create');
+                Route::get('/team-edit/{team}', 'TeamController@edit')->name('team-edit');
+                Route::post('/save-team', 'TeamController@store')->name('save-team');
 
                 Route::get('/match', 'MatchController@matchList')->name('match-list');
                 Route::post('/match', 'MatchController@saveMatch')->name('match-save');
