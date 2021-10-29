@@ -16,7 +16,7 @@ class CreateGamesTable extends Migration
         Schema::create('games', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tournament_id');
-            $table->dateTime('game_time');
+            $table->date('game_date');
             $table->unsignedBigInteger('team1_id');
             $table->unsignedBigInteger('team2_id');
             $table->string('team1_score');

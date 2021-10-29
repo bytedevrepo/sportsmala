@@ -2,6 +2,7 @@
 
 namespace Modules\Tournament\Http\Controllers;
 
+use Modules\Tournament\Entities\Game;
 use Modules\Tournament\Entities\Tournament;
 use Validator;
 use Image;
@@ -104,5 +105,21 @@ class TournamentController extends Controller
         $query->description = $request->description;
         $query->save();
         return redirect()->route('tournament-list')->with('success',__('successfully_added'));
+    }
+
+    public function tournamentListAjax()
+    {
+        $tournaments = Tournament::select('id', 'tournament_name')->get();
+        return \response()->json($tournaments);
+    }
+
+    public function scoreListAjax(Request $request)
+    {
+        $today = Carbon::now()->format('Y-m-d');
+        $match = Game::with(['team1','team2'])
+            ->where('tournament_id',$request->tournament_id)
+            ->where('game_date','=', $today)
+            ->get();
+        return \response()->json($match);
     }
 }

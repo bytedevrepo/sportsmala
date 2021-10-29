@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     @include('theme-soccer._partials.seo_og')
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     {{-- icons --}}
     <link rel="icon" href="{{static_asset(settingHelper('favicon')) }}">
     <link rel="apple-touch-icon" sizes="144x144" href="{{static_asset('site/images/ico/apple-touch-icon-precomposed.png') }}">
@@ -41,13 +41,49 @@
         gtag('js', new Date());
         gtag('config', '{{ settingHelper('google_analytics_id') }}');
     </script>
+    <style>
+        .story-result .card{
+            height: 80px;
+            border-radius: 0px;
+            background-color: #1e2024;
+            border-color: #292c31;
+        }
+        .story-result .result{
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 1px;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+        .team1{
+            font-size: 12px;
+            margin-bottom: 1px;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+        .team2{
+            font-size: 12px;
+            margin-bottom: 1px;
+            padding-right: 5px;
+            padding-left: 5px;
+        }
+        .story-result .card-body{
+            padding-top:1px;
+            padding-right: 5px;
+            padding-left: 5px;
+            padding-bottom: 0px;
+        }
+        .story-tournament{
+            padding: 10px;
+        }
+    </style>
 </head>
 <body data-template="template-soccer" class="@if(settingHelper('preloader_option')==0) page-loader-disable @endif {{defaultModeCheck()}}">
 <div class="site-wrapper clearfix">
     <div class="site-overlay"></div>
     <!-- Header -->
 @include('theme-soccer.layouts.header')
-    <!-- Header / End -->
+<!-- Header / End -->
     <!-- Pushy Panel - Dark -->
     <aside class="pushy-panel pushy-panel--dark">
         <div class="pushy-panel__inner">
@@ -91,10 +127,10 @@
         </div>
     </aside>
     <!-- Pushy Panel - Dark / End -->
-    @yield('content')
+@yield('content')
 
-    @include('theme-soccer.layouts.footer')
-    <!-- Login/Register Tabs Modal -->
+@include('theme-soccer.layouts.footer')
+<!-- Login/Register Tabs Modal -->
     <div class="modal fade" id="modal-login-register-tabs" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg modal--login modal--login-only" role="document">
             <div class="modal-content">
@@ -186,6 +222,71 @@
             additionalMarginTop: 0
         });
     });
+</script>
+<script>
+    $(document).ready(function() {
+        getCategory();
+    });
+
+    function getScore(id='') {
+        let val;
+        if (id){
+            val = id;
+        } else{
+            val = $("#tournamentSelect option:selected").val();
+        }
+        var scoreUrl = "{{ route('tournament-score-ajax') }}";
+        // $('#socreCardRow').removeChild();
+        $.ajax({
+            type: 'POST',
+            url: scoreUrl,
+            dataType: "json",
+            data: {'tournament_id': val, _token:"{{ csrf_token() }}"},
+            async:false,
+            success: function(response) {
+                $('.scoreCard').remove();
+                for (i=0; i<response.length; i++) {
+                    $("#socreCardRow").append(
+                        `<div class="col-md-2 p-0 scoreCard">
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="result pull-right">Result</span>
+                            <p class="team1">
+                                <span class="float-left">${response[i].team1.team_name}</span>
+                                <span class="float-right">${response[i].team1_score}</span>
+                            </p>
+                            <br>
+                            <p class="team2">
+                                <span class="float-left">${response[i].team2.team_name}</span>
+                                <span class="float-right">${response[i].team2_score}</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                        `
+                    )
+                }
+            }
+        });
+    }
+    function getCategory() {
+        var tournamentUrl = "{{ route('tournament-list-ajax') }}";
+        $.ajax({
+            type: 'GET',
+            url: tournamentUrl,
+            dataType: "json",
+            async:false,
+            success: function(response) {
+                getScore(response[0].id);
+                for (i=0; i<response.length; i++) {
+                    $('<option/>')
+                        .val(response[i].id)
+                        .text(response[i].tournament_name)
+                        .appendTo('#tournamentSelect')
+                }
+            }
+        });
+    }
 </script>
 @yield('script')
 @yield('player')

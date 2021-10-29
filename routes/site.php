@@ -11,7 +11,7 @@ Route::group([
     function () use($page, $article){
 
     	Route::group(['middleware' => ['XSS']], function () {
-			Route::get('/', 'HomeController@home')->name('home');
+            Route::get('/', 'HomeController@home')->name('home');
 			//start auth route
 			Route::get('/login', 'UserController@showLoginForm')->name('site.login.form');
 			Route::post('/login', 'UserController@login')->name('site.login');

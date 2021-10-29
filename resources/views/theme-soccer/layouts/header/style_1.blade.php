@@ -67,8 +67,102 @@
         </div>
     </div>
     <!-- Header Top Bar / End --><!-- Header Secondary -->
-    <div class="header__secondary m-2">
-        <img src="{{ static_asset('score.png') }}" alt="" style="height: 70px; width: 100%;">
+    <div class="header__secondary m-2 story-result">
+        <div class="container-fluid">
+            <div class="row" id="socreCardRow">
+                <div class="col-md-2 p-0 cols">
+                    <div class="card result-card">
+                        <div class="card-body result-card-body">
+                            <div class="story-tournament">
+                                <select class="form-control" style="background:#1e2024;color: white;" id="tournamentSelect" onchange="getScore()"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{--<div class="col-md-2 p-0">--}}
+                    {{--<div class="card">--}}
+                        {{--<div class="card-body">--}}
+                            {{--<p class="result">Result</p>--}}
+                            {{--<p class="team1">--}}
+                                {{--<span class="float-left">Ban</span>--}}
+                                {{--<span class="float-right">0</span>--}}
+                            {{--</p>--}}
+                            {{--<br>--}}
+                            {{--<p class="team2">--}}
+                                {{--<span class="float-left">Ind</span>--}}
+                                {{--<span class="float-right">0</span>--}}
+                            {{--</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-2 p-0">--}}
+                    {{--<div class="card">--}}
+                        {{--<div class="card-body">--}}
+                            {{--<strong class="result">Result</strong>--}}
+                            {{--<p class="team1">--}}
+                                {{--<span class="float-left">Ban</span>--}}
+                                {{--<span class="float-right">0</span>--}}
+                            {{--</p>--}}
+                            {{--<br>--}}
+                            {{--<p class="team2">--}}
+                                {{--<span class="float-left">Ind</span>--}}
+                                {{--<span class="float-right">0</span>--}}
+                            {{--</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-2 p-0">--}}
+                    {{--<div class="card">--}}
+                        {{--<div class="card-body">--}}
+                            {{--<strong class="result">Result</strong>--}}
+                            {{--<p class="team1">--}}
+                                {{--<span class="float-left">Ban</span>--}}
+                                {{--<span class="float-right">0</span>--}}
+                            {{--</p>--}}
+                            {{--<br>--}}
+                            {{--<p class="team2">--}}
+                                {{--<span class="float-left">Ind</span>--}}
+                                {{--<span class="float-right">0</span>--}}
+                            {{--</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-2 p-0">--}}
+                    {{--<div class="card">--}}
+                        {{--<div class="card-body">--}}
+                            {{--<strong class="result">Result</strong>--}}
+                            {{--<p class="team1">--}}
+                                {{--<span class="float-left">Ban</span>--}}
+                                {{--<span class="float-right">0</span>--}}
+                            {{--</p>--}}
+                            {{--<br>--}}
+                            {{--<p class="team2">--}}
+                                {{--<span class="float-left">Ind</span>--}}
+                                {{--<span class="float-right">0</span>--}}
+                            {{--</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col-md-2 p-0">--}}
+                    {{--<div class="card">--}}
+                        {{--<div class="card-body">--}}
+                            {{--<strong class="result">Result</strong>--}}
+                            {{--<p class="team1">--}}
+                                {{--<span class="float-left">Ban</span>--}}
+                                {{--<span class="float-right">0</span>--}}
+                            {{--</p>--}}
+                            {{--<br>--}}
+                            {{--<p class="team2">--}}
+                                {{--<span class="float-left">Ind</span>--}}
+                                {{--<span class="float-right">0</span>--}}
+                            {{--</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+
+            </div>
+        </div>
+        {{--<img src="{{ static_asset('score.png') }}" alt="" style="height: 70px; width: 100%;">--}}
     </div>
     <!-- Header Secondary / End --><!-- Header Primary -->
     <div class="header__primary">

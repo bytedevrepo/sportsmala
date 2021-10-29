@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('tournamentListAjax', 'TournamentController@tournamentListAjax')->name('tournament-list-ajax');
+Route::post('scoreListAjax', 'TournamentController@scoreListAjax')->name('tournament-score-ajax');
+
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'isInstalledCheck']], function () {
     Route::prefix('tournament')->group(function () {
         Route::group(['middleware' => ['loginCheck']], function () {
@@ -29,9 +32,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
                 Route::get('/team-edit/{team}', 'TeamController@edit')->name('team-edit');
                 Route::post('/save-team', 'TeamController@store')->name('save-team');
 
-                Route::get('/match', 'MatchController@matchList')->name('match-list');
-                Route::post('/match', 'MatchController@saveMatch')->name('match-save');
+                Route::get('/game', 'GameController@matchList')->name('match-list');
+                Route::get('/game-create', 'GameController@create')->name('game-create');
+                Route::post('/save-game', 'GameController@store')->name('game-save');
+                Route::post('/update-game', 'GameController@update')->name('game-update');
             });
         });
     });
 });
+
