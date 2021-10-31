@@ -11,17 +11,17 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav flex-column">
                     @if(Sentinel::getUser()->roles[0]->id != 4 && Sentinel::getUser()->roles[0]->id != 5)
-                    <li class="nav-item ">
-                        <a class="nav-link @yield('home')" href="{{ route('dashboard') }}">
-                            <i class="fas fa-home fa-th-large"></i>{{__('dashboard')}}
-                        </a>
-                    </li>
+                        <li class="nav-item ">
+                            <a class="nav-link @yield('home')" href="{{ route('dashboard') }}">
+                                <i class="fas fa-home fa-th-large"></i>{{__('dashboard')}}
+                            </a>
+                        </li>
                     @else
-                    <li class="nav-item ">
-                        <a class="nav-link @yield('home')" href="{{ route('user-account') }}">
-                            <i class="fas fa-home fa-th-large"></i>{{__('profile')}}
-                        </a>
-                    </li>
+                        <li class="nav-item ">
+                            <a class="nav-link @yield('home')" href="{{ route('user-account') }}">
+                                <i class="fas fa-home fa-th-large"></i>{{__('profile')}}
+                            </a>
+                        </li>
                     @endif
 
                     @if(Sentinel::getUser()->hasAccess(['pages_read']) || Sentinel::getUser()->hasAccess(['pages_write']) || Sentinel::getUser()->hasAccess(['pages_delete']))
@@ -58,7 +58,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link @yield('create_article')" href="{{ route('create-article') }}">{{ __('create_post') }} </a>
                                         </li>
-                                        <!-- <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                             <a class="nav-link @yield('create_video')" href="{{ route('create-video-post') }}">{{ __('create_video_post') }} </a>
                                         </li>
                                         <li class="nav-item">
@@ -161,13 +161,13 @@
                                             </a>
                                         </li>
                                     @endif
-{{--                                    @if(Sentinel::getUser()->hasAccess(['album_read']) || Sentinel::getUser()->hasAccess(['album_write']) || Sentinel::getUser()->hasAccess(['album_delete']))--}}
-{{--                                        <li class="nav-item">--}}
-{{--                                            <a class="nav-link @yield('albums-categories')" href="{{ route('album-categories') }}">--}}
-{{--                                                {{__('categories')}}--}}
-{{--                                            </a>--}}
-{{--                                        </li>--}}
-{{--                                    @endif--}}
+                                    {{--                                    @if(Sentinel::getUser()->hasAccess(['album_read']) || Sentinel::getUser()->hasAccess(['album_write']) || Sentinel::getUser()->hasAccess(['album_delete']))--}}
+                                    {{--                                        <li class="nav-item">--}}
+                                    {{--                                            <a class="nav-link @yield('albums-categories')" href="{{ route('album-categories') }}">--}}
+                                    {{--                                                {{__('categories')}}--}}
+                                    {{--                                            </a>--}}
+                                    {{--                                        </li>--}}
+                                    {{--                                    @endif--}}
                                 </ul>
                             </div>
                         </li>
@@ -283,6 +283,13 @@
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                    @endif
+                    @if(Sentinel::getUser()->hasAccess(['users_read']) || Sentinel::getUser()->hasAccess(['users_write']) || Sentinel::getUser()->hasAccess(['users_delete']))
+                        <li class="nav-item">
+                            <a class="nav-link @yield('tournament')" href="{{route('tournament-category')}}">
+                                <i class="fas fa-fw fa-users"></i>Tournament
+                            </a>
                         </li>
                     @endif
 
@@ -439,6 +446,6 @@
         </nav>
     </div>
 </div>
-    <!-- ============================================================== -->
-    <!-- end left sidebar -->
-    <!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- end left sidebar -->
+<!-- ============================================================== -->

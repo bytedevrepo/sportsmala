@@ -11,19 +11,19 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav flex-column">
                     <?php if(Sentinel::getUser()->roles[0]->id != 4 && Sentinel::getUser()->roles[0]->id != 5): ?>
-                    <li class="nav-item ">
-                        <a class="nav-link <?php echo $__env->yieldContent('home'); ?>" href="<?php echo e(route('dashboard')); ?>">
-                            <i class="fas fa-home fa-th-large"></i><?php echo e(__('dashboard')); ?>
+                        <li class="nav-item ">
+                            <a class="nav-link <?php echo $__env->yieldContent('home'); ?>" href="<?php echo e(route('dashboard')); ?>">
+                                <i class="fas fa-home fa-th-large"></i><?php echo e(__('dashboard')); ?>
 
-                        </a>
-                    </li>
+                            </a>
+                        </li>
                     <?php else: ?>
-                    <li class="nav-item ">
-                        <a class="nav-link <?php echo $__env->yieldContent('home'); ?>" href="<?php echo e(route('user-account')); ?>">
-                            <i class="fas fa-home fa-th-large"></i><?php echo e(__('profile')); ?>
+                        <li class="nav-item ">
+                            <a class="nav-link <?php echo $__env->yieldContent('home'); ?>" href="<?php echo e(route('user-account')); ?>">
+                                <i class="fas fa-home fa-th-large"></i><?php echo e(__('profile')); ?>
 
-                        </a>
-                    </li>
+                            </a>
+                        </li>
                     <?php endif; ?>
 
                     <?php if(Sentinel::getUser()->hasAccess(['pages_read']) || Sentinel::getUser()->hasAccess(['pages_write']) || Sentinel::getUser()->hasAccess(['pages_delete'])): ?>
@@ -62,7 +62,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link <?php echo $__env->yieldContent('create_article'); ?>" href="<?php echo e(route('create-article')); ?>"><?php echo e(__('create_post')); ?> </a>
                                         </li>
-                                        <!-- <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                             <a class="nav-link <?php echo $__env->yieldContent('create_video'); ?>" href="<?php echo e(route('create-video-post')); ?>"><?php echo e(__('create_video_post')); ?> </a>
                                         </li>
                                         <li class="nav-item">
@@ -172,13 +172,13 @@
                                             </a>
                                         </li>
                                     <?php endif; ?>
-
-
-
-
-
-
-
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
                                 </ul>
                             </div>
                         </li>
@@ -305,6 +305,13 @@
                                     </li>
                                 </ul>
                             </div>
+                        </li>
+                    <?php endif; ?>
+                    <?php if(Sentinel::getUser()->hasAccess(['users_read']) || Sentinel::getUser()->hasAccess(['users_write']) || Sentinel::getUser()->hasAccess(['users_delete'])): ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?php echo $__env->yieldContent('tournament'); ?>" href="<?php echo e(route('tournament-category')); ?>">
+                                <i class="fas fa-fw fa-users"></i>Tournament
+                            </a>
                         </li>
                     <?php endif; ?>
 
@@ -481,7 +488,7 @@
         </nav>
     </div>
 </div>
-    <!-- ============================================================== -->
-    <!-- end left sidebar -->
-    <!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- end left sidebar -->
+<!-- ============================================================== -->
 <?php /**PATH C:\xampp\htdocs\sportsmala\Modules\Common\Providers/../Resources/views/layouts/left-sidebar.blade.php ENDPATH**/ ?>
