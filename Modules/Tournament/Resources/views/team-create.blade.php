@@ -1,5 +1,5 @@
 @extends('common::layouts.master')
-@section('tournament-list')
+@section('team-list')
     active
 @endsection
 @section('tournament')

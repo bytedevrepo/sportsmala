@@ -46,14 +46,14 @@
                                         <table class="table table-bordered table-striped">
                                             <thead>
                                             <tr role="row">
-                                                <th>#</th>
+                                                {{--<th>#</th>--}}
                                                 <th>Tournament</th>
                                                 <th>Team1</th>
                                                 <th>Team2</th>
+                                                <th>Game Date</th>
                                                 <th class="text-center">Team1 Score</th>
                                                 <th class="text-center">Team2 Score</th>
-                                                <th>Game Time</th>
-                                                <th>Played</th>
+                                                <th>Game Status</th>
                                                 @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
                                                     <th class="text-center">{{ __('options') }}</th>
                                                 @endif
@@ -66,7 +66,7 @@
                                                         @csrf
                                                         <tr role="row" class="odd" id="row_{{ $value->id }}">
                                                             <input type="hidden" value="{{ $value->id }}" name="id">
-                                                            <td class="sorting_1">{{ $value->id }}</td>
+                                                            {{--<td class="sorting_1">{{ $value->id }}</td>--}}
                                                             <td>
                                                                 @if(!blank($value->tournament))
                                                                     {{ data_get($value, 'tournament.tournament_name') }}
@@ -74,22 +74,23 @@
                                                             </td>
                                                             <td>{{ data_get($value, 'team1.team_name') }}</td>
                                                             <td>{{ data_get($value, 'team2.team_name') }}</td>
-                                                            @if($value->played == 0)
+                                                            <td>{{ $value->game_date }}</td>
+                                                            @if($value->game_status != 2)
                                                                 <td class="text-center">
-                                                                    <input name="team1_score" type="text" style="width: 50px;">
+                                                                    <input name="team1_score" type="text" style="width: 50px;" value="{{ $value->team1_score ?? '' }}">
                                                                 </td>
                                                                 <td class="text-center">
-                                                                    <input name="team2_score" type="text" style="width: 50px;">
+                                                                    <input name="team2_score" type="text" style="width: 50px;" value="{{ $value->team2_score ?? '' }}">
                                                                 </td>
                                                             @else
                                                                 <td class="text-center">{{ $value->team1_score }}</td>
                                                                 <td class="text-center">{{ $value->team2_score }}</td>
                                                             @endif
-                                                            <td>{{ $value->game_date }}</td>
                                                             <td>
                                                                 <select name="played" id="">
-                                                                    <option value="1" @if($value->played == 1) selected @endif>Played</option>
-                                                                    <option value="0" @if($value->played == 0) selected @endif>Not Played</option>
+                                                                    <option value="0" @if($value->game_status == 0) selected @endif>UP_COMING</option>
+                                                                    <option value="1" @if($value->game_status == 1) selected @endif>ON_GOING</option>
+                                                                    <option value="2" @if($value->game_status == 2) selected @endif>COMPLETED</option>
                                                                 </select>
                                                             </td>
                                                             @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))

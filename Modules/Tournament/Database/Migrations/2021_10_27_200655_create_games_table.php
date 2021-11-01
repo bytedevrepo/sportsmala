@@ -21,7 +21,7 @@ class CreateGamesTable extends Migration
             $table->unsignedBigInteger('team2_id');
             $table->string('team1_score');
             $table->string('team2_score');
-            $table->boolean('played');
+            $table->integer('game_status')->comment('0->up_coming,1->on_going,2->completed');
             $table->timestamps();
         });
     }
