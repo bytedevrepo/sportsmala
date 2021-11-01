@@ -1,6 +1,5 @@
 <div class="container mt-4">
     @foreach($posts as $value)
-        {{--{{dd($value->image)}}--}}
         <div class="row">
             <div class="content col-lg-12 text-center">
                 <article class="card card--lg post post--single">
@@ -14,7 +13,11 @@
                             <ul class="post__meta meta">
                                 <li class="meta__item meta__item--date">
                                     <time datetime="{{ $value->updated_at }}">
-                                        {{ $value->updated_at->format('F j, Y') }}
+                                        @if($value->updated_at <= \Carbon\Carbon::today())
+                                            {{ $value->updated_at->format('F j, Y') }}
+                                        @else
+                                            {{ $value->updated_at->diffForHumans() }}
+                                        @endif
                                     </time>
                                 </li>
 

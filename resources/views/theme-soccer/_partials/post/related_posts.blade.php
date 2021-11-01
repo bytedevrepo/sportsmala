@@ -33,7 +33,13 @@
                             <div class="posts__inner card__content">
                                 <a href="#" class="posts__cta"></a>
                                 <time datetime="{{ $item->updated_at }}">
-                                    <a href="{{route('article.date', date('Y-m-d', strtotime($item->updated_at)))}}">{{ $item->updated_at->format('F j, Y') }}</a>
+                                    <a href="{{route('article.date', date('Y-m-d', strtotime($item->updated_at)))}}">
+                                        @if($item->updated_at <= \Carbon\Carbon::today())
+                                            {{ $item->updated_at->format('F j, Y') }}
+                                        @else
+                                            {{ $item->updated_at->diffForHumans() }}
+                                        @endif
+                                    </a>
                                 </time>
                                 <h6 class="posts__title">
                                     <a href="{{ route('article.detail', [$item->slug]) }}">{{ Illuminate\Support\Str::limit($item->title, 70, $end='...') }}</a>

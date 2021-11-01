@@ -77,7 +77,13 @@
             <ul class="post__meta meta">
                 <li class="meta__item meta__item--date">
                     <time datetime="{{ $post->updated_at }}">
-                        <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">{{ $post->updated_at->format('F j, Y') }}</a>
+                        <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
+                            @if($post->updated_at <= \Carbon\Carbon::today())
+                                {{ $post->updated_at->format('F j, Y') }}
+                            @else
+                                {{ $post->updated_at->diffForHumans() }}
+                            @endif
+                        </a>
                     </time>
                 </li>
                 <li class="meta__item meta__item--views hidden-md hidden-lg">{{ $post->total_hit ?? 0 }}</li>
