@@ -26,10 +26,13 @@
                     </li>
                 </ul>
                 <div class="header-search-form">
-                    <form action="{{ route('article.search') }}" id="search" class="search-form" method="GET">
+                    <form id="search_bar_ext"  action="{{ route('article.search') }}" id="search" method="GET">
+                        <input type="search" name="search" placeholder="{{ __('search') }}" class="search_bar_input">
+                    </form>
+                    {{-- <form action="{{ route('article.search') }}" id="search" class="search-form" method="GET">
                         <input type="text" style="border-color: white;" class="form-control header-mobile__search-control" name="search" placeholder="{{ __('search') }}">
                         <button type="submit" class="header-mobile__search-submit"><i class="fa fa-search"></i></button>
-                    </form>
+                    </form> --}}
                 </div>
                 <!-- Social Links / End -->
                 <!-- Account Navigation -->
@@ -233,6 +236,8 @@
                                             <li><a href="_soccer_features-search-results.html">Search Results</a></li>
                                             <li><a href="_soccer_page-contacts.html">Contact Us</a></li>
                                         </ul>
+
+                                        
                                         <div class="col-lg-9 col-md-8 col-12">
                                             <ul class="posts posts--simple-list">
                                                 <li class="posts__item posts__item--category-1">
@@ -282,6 +287,17 @@
                     <!-- Pushy Panel Toggle -->
                     {{--<a href="#" class="pushy-panel__toggle"><span class="pushy-panel__line"></span> </a>--}}
                     <!-- Pushy Panel Toggle / Eng -->
+                    <div class="slan-comp">
+                    </div>
+                    <div class="white-nav-bar">
+                        
+                        <ul>
+                            <li>News</li>
+                            <li>Links</li>
+                            <li>Gallary</li>
+                            <li>Shop</li>
+                        </ul>
+                    </div>
                 </nav>
                 <!-- Main Navigation / End -->
             </div>
