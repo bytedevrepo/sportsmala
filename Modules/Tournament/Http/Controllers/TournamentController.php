@@ -4,6 +4,7 @@ namespace Modules\Tournament\Http\Controllers;
 
 use Modules\Tournament\Entities\Game;
 use Modules\Tournament\Entities\Tournament;
+use Modules\Tournament\Enums\GamePlayedStatus;
 use Validator;
 use Image;
 use Storage;
@@ -74,17 +75,13 @@ class TournamentController extends Controller
 
             $originalImageName = date('YmdHis') . "_original_" . rand(1, 50) . '.' . 'webp';
             $thumbnailImageName = date('YmdHis') . "_thumbnail_100x100_" . rand(1, 50) . '.' . 'webp';
-            if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
-                $directory = 'images/';
-            else:
-                $directory = 'public/images/';
-            endif;
+            $directory = 'images/';
 
             $originalImageUrl       = $directory . $originalImageName;
             $thumbnailImageUrl      = $directory . $thumbnailImageName;
 
-            $imgOriginal = Image::make(imagecreatefromjpeg($requestImage))->encode('webp', 80);
-            $imgThumbnail = Image::make(imagecreatefromjpeg($requestImage))->fit(100, 100)->encode('webp', 80);
+            $imgOriginal = Image::make($requestImage)->encode('webp', 80);
+            $imgThumbnail = Image::make($requestImage)->fit(100, 100)->encode('webp', 80);
             $imgOriginal->save($originalImageUrl);
             $imgThumbnail->save($thumbnailImageUrl);
 
@@ -113,23 +110,55 @@ class TournamentController extends Controller
         $date = $request->date;
         $tournament_ids = Tournament::where('category_id', $category_id)->pluck('id');
 
-//        get last three dates from games table
+//        get last three game_dates from tournament_games table
 //        if filter provides game date then select games within that day else get games of last date in games table as default
-        $gameDates = Game::whereIn('tournament_id', $tournament_ids)->orderBy('game_date', 'desc')->limit(3)->distinct()->pluck('game_date');
+        $gameDatesArr = Game::whereIn('tournament_id', $tournament_ids)->orderBy('game_date', 'desc')->limit(3)->distinct()->pluck('game_date');
+        $gameDates = [];
+        foreach ($gameDatesArr as $value){
+            $gameDates[] = [
+                'date' => $value,
+                'date_human' => Carbon::createFromDate($value)->format('M d'),
+            ];
+        }
+//        dd($gameDates);
         $selectedDate = '';
         if (isset($date) AND $date != ''){
             $selectedDate = $date;
         }else{
             if (!blank($gameDates)){
-                $selectedDate = $gameDates[0];
+                $selectedDate = $gameDates[0]['date'];
             }
         }
         $query = Game::query();
-        $query->with(['team1','team2']);
+        $query->with(['tournament','team1','team2']);
         $query->where('game_date',$selectedDate);
-        $match = $query->get();
-
+        $matchColl = $query->get();
+        $match = [];
+        foreach ($matchColl as $value){
+            $match[] = [
+                'id' => $value->id,
+                'game_date' => $value->game_date,
+                'game_status' => $this->gameStatus($value->game_status),
+                'tournament' => $value->tournament,
+                'team1' => $value->team1,
+                'team1_score' => $value->team1_score,
+                'team2' => $value->team2,
+                'team2_score' => $value->team2_score,
+            ];
+        }
         return \response()->json(compact('gameDates', 'match', 'selectedDate'));
+    }
+
+    private function gameStatus($game_status){
+        if($game_status === GamePlayedStatus::COMPLETED){
+            return 'FT';
+        }
+        if ($game_status === GamePlayedStatus::ON_GOING){
+            return 'On Going';
+        }
+        if ($game_status === GamePlayedStatus::UP_COMING){
+            return 'Up Coming';
+        }
     }
 
     public function tournamentCategoryListAjax()

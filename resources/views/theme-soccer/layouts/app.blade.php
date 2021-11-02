@@ -223,6 +223,7 @@
         });
     });
 </script>
+@if(Route::has('tournament-list'))
 <script>
     $(document).ready(function() {
         getCategory();
@@ -254,34 +255,49 @@
             data: {'category_id': id, 'date': date, _token:"{{ csrf_token() }}"},
             async:false,
             success: function(response) {
-                var gameDateSelect = $('#gameDateSelect');
-                gameDateSelect.empty();
-                var game_dates = response.gameDates;
-                if (game_dates.length){
-                    for(i=0;i<game_dates.length;i++){
-                        $('<option/>')
-                            .val(game_dates[i])
-                            .text(game_dates[i])
-                            .appendTo('#gameDateSelect')
+                if ((response.gameDates !== '')) {
+                    var gameDateSelect = $('#gameDateSelect');
+                    gameDateSelect.empty();
+                    var game_dates = response.gameDates;
+                    if (game_dates.length){
+                        for(i=0;i<game_dates.length;i++){
+                            $('<option/>')
+                                .val(game_dates[i].date)
+                                .text(game_dates[i].date_human)
+                                .appendTo('#gameDateSelect')
+                        }
                     }
+                    gameDateSelect.val(response.selectedDate);
                 }
-                gameDateSelect.val(response.selectedDate);
 
                 var match = response.match;
                 $('.scoreCard').remove();
                 for (i=0; i<match.length; i++) {
+                    var team1_name = match[i].team1.team_name;
+                    var team2_name = match[i].team2.team_name;
+
                     $("#socreCardRow").append(
                         `<div class="col-md-2 p-0 scoreCard">
                     <div class="card">
                         <div class="card-body">
-                            <span class="result pull-right">Result</span>
+                            <p class="result">
+                                <span class="float-left">${match[i].tournament.tournament_name} - ${match[i].game_status} </span>
+                                <span class="float-right">Result</span>
+                            </p>
+                            <br>
                             <p class="team1">
-                                <span class="float-left">${match[i].team1.team_name}</span>
+                                 <span class="float-left">
+                                    <img class="mr-2" src="${match[i].team1.logo}" alt="" style="width: 15px;border-radius: 50%;">
+                                    ${team1_name}
+                                </span>
                                 <span class="float-right">${match[i].team1_score}</span>
                             </p>
                             <br>
                             <p class="team2">
-                                <span class="float-left">${match[i].team2.team_name}</span>
+                                <span class="float-left">
+                                    <img class="mr-2" src="${match[i].team2.logo}" alt="" style="width: 15px;border-radius: 50%;">
+                                    ${team2_name}
+                                </span>
                                 <span class="float-right">${match[i].team2_score}</span>
                             </p>
                         </div>
@@ -312,6 +328,7 @@
         });
     }
 </script>
+@endif
 @yield('script')
 @yield('player')
 @yield('audio')

@@ -7,13 +7,11 @@
 @endsection
 @section('content')
     <div class="dashboard-ecommerce">
+        @include('tournament::sub-menu')
         <div class="container-fluid dashboard-content ">
             <!-- page info start-->
             <div class="row clearfix">
-                <div class="col-md-2">
-                    @include('tournament::sub-menu')
-                </div>
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="add-new-page  bg-white p-20 m-b-20">
@@ -39,6 +37,12 @@
                                         <div class="form-group">
                                             <label for="category-name" class="col-form-label">Team Name *</label>
                                             <input id="category-name" name="team_name" type="text" class="form-control" required value="{{ $team->team_name ?? '' }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="category-name" class="col-form-label">Team Name Short *</label>
+                                            <input id="category-name" name="team_name_abb" type="text" class="form-control" required value="{{ $team->team_name_abb ?? '' }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">

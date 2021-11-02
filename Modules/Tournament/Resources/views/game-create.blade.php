@@ -7,6 +7,7 @@
 @endsection
 @section('content')
     <div class="dashboard-ecommerce">
+        @include('tournament::sub-menu')
         <div class="container-fluid dashboard-content ">
             <!-- page info start-->
             <div class="row clearfix">
@@ -31,10 +32,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="col-md-2">
-                    @include('tournament::sub-menu')
-                </div>
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="add-new-page  bg-white p-20 m-b-20">
