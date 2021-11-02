@@ -24,7 +24,7 @@
                                     <div class="row mb-2">
                                         <div class="col-md-4">
                                             <select name="tournament" class="form-control" id="">
-                                                <option value="">All</option>
+                                                <option value="">All Tournaments</option>
                                                 @if(isset($tournaments))
                                                     @foreach($tournaments as $val)
                                                         <option value="{{ $val->id }}" @if(request('tournament') == $val->id) selected @endif>{{ $val->tournament_name }}</option>
@@ -33,8 +33,8 @@
                                             </select>
                                         </div>
                                         <div class="col-md-8">
-                                            <button type="submit" class="btn btn-primary pull-left">Show</button>
-                                            <a href="{{ route('game-create') }}" class="btn btn-primary pull-right">Create</a>
+                                            <button type="submit" class="btn btn-primary pull-left">Filter</button>
+                                            <a href="{{ route('game-create') }}" class="btn btn-primary pull-right">Create New Match</a>
                                         </div>
                                     </div>
                                 </form>
@@ -42,7 +42,7 @@
                                     <table class="table table-bordered table-striped">
                                         <thead>
                                         <tr role="row">
-                                            {{--<th>#</th>--}}
+                                            <th>#</th>
                                             <th>Tournament</th>
                                             <th>Team1</th>
                                             <th>Team2</th>
@@ -62,7 +62,7 @@
                                                     @csrf
                                                     <tr role="row" class="odd" id="row_{{ $value->id }}">
                                                         <input type="hidden" value="{{ $value->id }}" name="id">
-                                                        {{--<td class="sorting_1">{{ $value->id }}</td>--}}
+                                                        <td class="sorting_1">{{ $value->id }}</td>
                                                         <td>
                                                             @if(!blank($value->tournament))
                                                                 {{ data_get($value, 'tournament.tournament_name') }}
@@ -112,6 +112,9 @@
                                         @endif
                                         </tbody>
                                     </table>
+                                    <div class="float-right">
+                                        {!! $games->links() !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>

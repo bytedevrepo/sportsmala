@@ -15,7 +15,7 @@
                 <div class="col-md-12">
                     <div class="add-new-page  bg-white p-20 m-b-20">
                         <div class="block-header">
-                            <h2>Tournament <a href="{{ route('tournament-create') }}" class="btn btn-primary pull-right">Create</a></h2>
+                            <h2>Tournament <a href="{{ route('tournament-create') }}" class="btn btn-primary pull-right">Create New Tournament</a></h2>
                         </div>
                         <div class="table-responsive all-pages">
                             <table class="table table-bordered table-striped">

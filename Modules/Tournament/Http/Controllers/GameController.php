@@ -23,7 +23,8 @@ class GameController extends Controller
         if(isset($request->tournament) AND !blank($request->tournament)){
             $query->where('tournament_id',$request->tournament )->get();
         }
-        $games = $query->orderBy('id', 'desc')->get();
+        $query->orderBy('id', 'desc');
+        $games = $query->paginate(10);
         return view('tournament::game', compact('games','tournaments'));
     }
 

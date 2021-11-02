@@ -120,7 +120,6 @@ class TournamentController extends Controller
                 'date_human' => Carbon::createFromDate($value)->format('M d'),
             ];
         }
-//        dd($gameDates);
         $selectedDate = '';
         if (isset($date) AND $date != ''){
             $selectedDate = $date;
