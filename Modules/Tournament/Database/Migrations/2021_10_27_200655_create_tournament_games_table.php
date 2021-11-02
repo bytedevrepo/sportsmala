@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGamesTable extends Migration
+class CreateTournamentGamesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateGamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('tournament_games', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('tournament_id');
             $table->date('game_date');
@@ -21,7 +21,7 @@ class CreateGamesTable extends Migration
             $table->unsignedBigInteger('team2_id');
             $table->string('team1_score');
             $table->string('team2_score');
-            $table->boolean('played');
+            $table->integer('game_status')->comment('0->up_coming,1->on_going,2->completed');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateGamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('tournament_games');
     }
 }

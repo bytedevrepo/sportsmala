@@ -6,12 +6,10 @@
     active
 @endsection
 @section('content')
-    <div class="row clearfix">
-        <div class="col-md-2">
-            @include('tournament::sub-menu')
-        </div>
-        <div class="col-md-10">
-            <div class="row">
+    <div class="dashboard-ecommerce">
+        @include('tournament::sub-menu')
+        <div class="container-fluid dashboard-content ">
+            <div class="row clearfix">
                 <div class="col-md-12">
                     <div class="add-new-page bg-white p-20 m-b-20">
                         <div class="block-header">
@@ -19,11 +17,9 @@
                         </div>
                         {!!  Form::open(['route'=>'save-tournament-category','method' => 'post']) !!}
                         <input name="id" type="hidden" value="{{ $category->id ?? '' }}">
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="category-name" class="col-form-label">{{ __('category_name') }} *</label>
-                                <input id="category-name" name="category_name" type="text" class="form-control" required value="{{ $category->category_name ?? '' }}">
-                            </div>
+                        <div class="form-group">
+                            <label for="category-name" class="col-form-label">{{ __('category_name') }} *</label>
+                            <input id="category-name" name="category_name" type="text" class="form-control" required value="{{ $category->category_name ?? '' }}">
                         </div>
                         <div class="row">
                             <div class="col-12 m-t-20">

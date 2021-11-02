@@ -10,11 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('tournamentListAjax', 'TournamentController@tournamentListAjax')->name('tournament-list-ajax');
-Route::post('scoreListAjax', 'TournamentController@scoreListAjax')->name('tournament-score-ajax');
 
 Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'isInstalledCheck']], function () {
     Route::prefix('tournament')->group(function () {
+        Route::get('categories', 'TournamentController@tournamentCategoryListAjax')->name('tournament-category-ajax');
+        Route::post('get_score', 'TournamentController@scoreListAjax')->name('tournament-score-ajax');
+
         Route::group(['middleware' => ['loginCheck']], function () {
             Route::group(['middleware' => ['XSS']], function () {
                 Route::get('/category', 'TournamentController@categoryList')->name('tournament-category');

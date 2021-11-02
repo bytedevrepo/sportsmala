@@ -40,18 +40,15 @@ class TeamController extends Controller
         if ($request->hasFile('image')){
             $requestImage = $request->image;
             $originalImageName = date('YmdHis') . "_original_" . rand(1, 50) . '.' . 'webp';
-            if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') =='s3' || defined('LARAVEL_START_FROM_PUBLIC')) :
-                $directory = 'images/';
-            else:
-                $directory = 'public/images/';
-            endif;
+            $directory = 'images/';
 
             $originalImageUrl = $directory . $originalImageName;
-            $imgOriginal = Image::make(imagecreatefromjpeg($requestImage))->encode('webp', 80);
+            $imgOriginal = Image::make($requestImage)->encode('webp', 80);
             $imgOriginal->save($originalImageUrl);
             $query->logo = str_replace("public/","",$originalImageUrl);
         }
         $query->team_name = $request->team_name;
+        $query->team_name_abb = $request->team_name_abb;
         $query->description = $request->description;
         $query->save();
         return redirect()->route('team-list')->with('success',__('successfully_added'));

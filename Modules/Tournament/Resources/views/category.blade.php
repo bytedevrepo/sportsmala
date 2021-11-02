@@ -7,14 +7,12 @@
 @endsection
 @section('content')
     <div class="dashboard-ecommerce">
+        @include('tournament::sub-menu')
         <div class="container-fluid dashboard-content ">
             <!-- page info start-->
             <div class="row clearfix">
                 @include('tournament::alert')
-                <div class="col-md-2">
-                    @include('tournament::sub-menu')
-                </div>
-                <div class="col-md-10">
+                <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="add-new-page bg-white p-20 m-b-20">
@@ -22,11 +20,9 @@
                                     <h2>Create Tournament Category</h2>
                                 </div>
                                 {!!  Form::open(['route'=>'save-tournament-category','method' => 'post']) !!}
-                                <div class="col-sm-12">
-                                    <div class="form-group">
-                                        <label for="category-name" class="col-form-label">{{ __('category_name') }} *</label>
-                                        <input id="category-name" name="category_name" type="text" class="form-control" required>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="category-name" class="col-form-label">{{ __('category_name') }} *</label>
+                                    <input id="category-name" name="category_name" type="text" class="form-control" required>
                                 </div>
                                 <div class="row">
                                     <div class="col-12 m-t-20">
@@ -78,7 +74,7 @@
                                                     @endif
                                                 </tr>
                                             @endforeach
-                                            @else
+                                        @else
                                             <tr role="row" class="odd">
                                                 <td colspan="3">No items found</td>
                                             </tr>

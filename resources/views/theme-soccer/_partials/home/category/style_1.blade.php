@@ -37,7 +37,13 @@
                         <div class="posts__inner card__content">
                             <a href="#" class="posts__cta"></a>
                             <time datetime="{{$post->updated_at}}" class="posts__date">
-                                <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">{{ $post->updated_at->format('F j, Y') }}</a>
+                                <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
+                                    @if($post->updated_at <= \Carbon\Carbon::today())
+                                        {{ $post->updated_at->format('F j, Y') }}
+                                    @else
+                                        {{ $post->updated_at->diffForHumans() }}
+                                    @endif
+                                </a>
                             </time>
                             <h6 class="posts__title"><a href="{{ route('article.detail', ['id' => $post->slug]) }}">{!! \Illuminate\Support\Str::limit($post->title,80) !!}</a></h6>
                             <div class="posts__excerpt">

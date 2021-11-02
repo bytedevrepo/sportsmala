@@ -2,6 +2,7 @@
 
 namespace Modules\Tournament\Http\Controllers;
 
+use Modules\Tournament\Enums\GamePlayedStatus;
 use Validator;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -13,19 +14,17 @@ use Modules\Tournament\Entities\Tournament;
 
 class GameController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Response
-     */
     public function matchList(Request $request)
     {
         $tournaments = Tournament::all();
 
+        $query = Game::query();
+        $query->with(['team1', 'team2', 'tournament']);
         if(isset($request->tournament) AND !blank($request->tournament)){
-            $games = Game::with(['team1', 'team2', 'tournament'])->where('tournament_id',$request->tournament )->get();
-        }else{
-            $games = Game::with(['team1', 'team2', 'tournament'])->get();
+            $query->where('tournament_id',$request->tournament )->get();
         }
+        $query->orderBy('id', 'desc');
+        $games = $query->paginate(10);
         return view('tournament::game', compact('games','tournaments'));
     }
 
@@ -73,18 +72,18 @@ class GameController extends Controller
         Validator::make($request->all(), [
             'id' => 'required',
         ])->validate();
+        $game = Game::find($request->id);
 
-        if ($request->played == 1){
+        if ($request->played == GamePlayedStatus::COMPLETED){
             Validator::make($request->all(), [
                 'team1_score' => 'required',
                 'team2_score' => 'required',
             ])->validate();
         }
 
-        $game = Game::find($request->id);
         $game->team1_score = $request->team1_score;
         $game->team2_score = $request->team2_score;
-        $game->played = $request->played;
+        $game->game_status = $request->played;
         $game->save();
 
         return redirect()->route('match-list')->with('success',__('successfully_updated'));

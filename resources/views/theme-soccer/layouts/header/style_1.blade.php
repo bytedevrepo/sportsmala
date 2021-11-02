@@ -26,10 +26,13 @@
                     </li>
                 </ul>
                 <div class="header-search-form">
-                    <form action="{{ route('article.search') }}" id="search" class="search-form" method="GET">
+                    <form id="search_bar_ext"  action="{{ route('article.search') }}" id="search" method="GET">
+                        <input type="search" name="search" placeholder="{{ __('search') }}" class="search_bar_input">
+                    </form>
+                    {{-- <form action="{{ route('article.search') }}" id="search" class="search-form" method="GET">
                         <input type="text" style="border-color: white;" class="form-control header-mobile__search-control" name="search" placeholder="{{ __('search') }}">
                         <button type="submit" class="header-mobile__search-submit"><i class="fa fa-search"></i></button>
-                    </form>
+                    </form> --}}
                 </div>
                 <!-- Social Links / End -->
                 <!-- Account Navigation -->
@@ -69,98 +72,9 @@
     <!-- Header Top Bar / End --><!-- Header Secondary -->
     <div class="header__secondary m-2 story-result">
         <div class="container-fluid">
-            <div class="row" id="socreCardRow">
-                <div class="col-md-2 p-0 cols">
-                    <div class="card result-card">
-                        <div class="card-body result-card-body">
-                            <div class="story-tournament">
-                                <select class="form-control" style="background:#1e2024;color: white;" id="tournamentSelect" onchange="getScore()"></select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{--<div class="col-md-2 p-0">--}}
-                    {{--<div class="card">--}}
-                        {{--<div class="card-body">--}}
-                            {{--<p class="result">Result</p>--}}
-                            {{--<p class="team1">--}}
-                                {{--<span class="float-left">Ban</span>--}}
-                                {{--<span class="float-right">0</span>--}}
-                            {{--</p>--}}
-                            {{--<br>--}}
-                            {{--<p class="team2">--}}
-                                {{--<span class="float-left">Ind</span>--}}
-                                {{--<span class="float-right">0</span>--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-md-2 p-0">--}}
-                    {{--<div class="card">--}}
-                        {{--<div class="card-body">--}}
-                            {{--<strong class="result">Result</strong>--}}
-                            {{--<p class="team1">--}}
-                                {{--<span class="float-left">Ban</span>--}}
-                                {{--<span class="float-right">0</span>--}}
-                            {{--</p>--}}
-                            {{--<br>--}}
-                            {{--<p class="team2">--}}
-                                {{--<span class="float-left">Ind</span>--}}
-                                {{--<span class="float-right">0</span>--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-md-2 p-0">--}}
-                    {{--<div class="card">--}}
-                        {{--<div class="card-body">--}}
-                            {{--<strong class="result">Result</strong>--}}
-                            {{--<p class="team1">--}}
-                                {{--<span class="float-left">Ban</span>--}}
-                                {{--<span class="float-right">0</span>--}}
-                            {{--</p>--}}
-                            {{--<br>--}}
-                            {{--<p class="team2">--}}
-                                {{--<span class="float-left">Ind</span>--}}
-                                {{--<span class="float-right">0</span>--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-md-2 p-0">--}}
-                    {{--<div class="card">--}}
-                        {{--<div class="card-body">--}}
-                            {{--<strong class="result">Result</strong>--}}
-                            {{--<p class="team1">--}}
-                                {{--<span class="float-left">Ban</span>--}}
-                                {{--<span class="float-right">0</span>--}}
-                            {{--</p>--}}
-                            {{--<br>--}}
-                            {{--<p class="team2">--}}
-                                {{--<span class="float-left">Ind</span>--}}
-                                {{--<span class="float-right">0</span>--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                {{--<div class="col-md-2 p-0">--}}
-                    {{--<div class="card">--}}
-                        {{--<div class="card-body">--}}
-                            {{--<strong class="result">Result</strong>--}}
-                            {{--<p class="team1">--}}
-                                {{--<span class="float-left">Ban</span>--}}
-                                {{--<span class="float-right">0</span>--}}
-                            {{--</p>--}}
-                            {{--<br>--}}
-                            {{--<p class="team2">--}}
-                                {{--<span class="float-left">Ind</span>--}}
-                                {{--<span class="float-right">0</span>--}}
-                            {{--</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-
-            </div>
+            @if(Route::has('tournament-list'))
+                @include('tournament::score-card')
+            @endif
         </div>
         {{--<img src="{{ static_asset('score.png') }}" alt="" style="height: 70px; width: 100%;">--}}
     </div>
@@ -233,6 +147,8 @@
                                             <li><a href="_soccer_features-search-results.html">Search Results</a></li>
                                             <li><a href="_soccer_page-contacts.html">Contact Us</a></li>
                                         </ul>
+
+
                                         <div class="col-lg-9 col-md-8 col-12">
                                             <ul class="posts posts--simple-list">
                                                 <li class="posts__item posts__item--category-1">
@@ -279,9 +195,19 @@
                         @endforeach
                     </ul>
 
-                    <!-- Pushy Panel Toggle -->
                     {{--<a href="#" class="pushy-panel__toggle"><span class="pushy-panel__line"></span> </a>--}}
                     <!-- Pushy Panel Toggle / Eng -->
+                    <div class="slan-comp">
+                    </div>
+                    <div class="white-nav-bar">
+
+                        <ul>
+                            <li>News</li>
+                            <li>Links</li>
+                            <li>Gallary</li>
+                            <li>Shop</li>
+                        </ul>
+                    </div>
                 </nav>
                 <!-- Main Navigation / End -->
             </div>
