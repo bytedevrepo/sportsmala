@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2021 at 08:56 AM
+-- Generation Time: Nov 02, 2021 at 10:28 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -69,8 +69,8 @@ CREATE TABLE `ads` (
 --
 
 INSERT INTO `ads` (`id`, `ad_name`, `ad_size`, `ad_type`, `ad_url`, `ad_image_id`, `ad_code`, `ad_text`, `created_at`, `updated_at`) VALUES
-(1, 'Buy Now', '970*90', 'image', '', 51, NULL, NULL, '2021-05-29 07:21:12', '2021-05-29 07:21:12'),
-(2, 'ZcZxc', '100*90', 'image', 'https//google.com', 116, NULL, NULL, '2021-05-31 14:41:22', '2021-05-31 14:41:22');
+(1, 'Buy Now', '970*90', 'image', '', 176, NULL, NULL, '2021-05-29 07:21:12', '2021-09-26 08:03:05'),
+(2, 'ZcZxc', '100*90', 'image', 'https//google.com', 177, NULL, NULL, '2021-05-31 14:41:22', '2021-09-26 08:03:37');
 
 -- --------------------------------------------------------
 
@@ -119,6 +119,13 @@ CREATE TABLE `albums` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `albums`
+--
+
+INSERT INTO `albums` (`id`, `language`, `name`, `slug`, `tabs`, `order`, `meta_keywords`, `meta_description`, `disk`, `original_image`, `thumbnail`, `created_at`, `updated_at`) VALUES
+(1, 'en', 'Elliott Beard', 'elliott-beard', NULL, 0, 'Sequi magnam ullam q', 'Duis cillum omnis qu', 'local', 'images/20210926174118_galleryImage_big8.jpg', 'images/20210926174118_galleryImage_thumb1.jpg', '2021-09-26 11:56:19', '2021-09-26 11:56:19');
 
 -- --------------------------------------------------------
 
@@ -185,12 +192,12 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `parent_id`, `category_name`, `language`, `slug`, `meta_description`, `meta_keywords`, `order`, `created_at`, `updated_at`) VALUES
 (1, NULL, 'Sports', 'en', 'world', NULL, NULL, 1, '2021-05-29 07:21:49', '2021-05-29 07:21:49'),
-(2, 1, 'Football', 'en', 'asia', '', '', 1, '2021-05-29 08:45:56', '2021-05-29 08:45:56'),
-(3, 2, 'Cricket', 'en', 'nepal', '', '', 1, '2021-05-29 09:54:45', '2021-05-29 09:54:45'),
-(4, 1, 'Volleyball', 'en', 'volleyball', '', '', 1, '2021-05-29 15:33:30', '2021-05-31 14:23:15'),
-(5, 1, 'dandibiyo', 'en', 'dandibiyo', '', '', 1, '2021-07-08 04:44:54', '2021-07-08 04:44:54'),
+(2, 1, 'Football', 'en', 'football', '', '', 1, '2021-05-29 08:45:56', '2021-09-26 10:54:24'),
+(3, 2, 'Cricket', 'en', 'cricket', '', '', 1, '2021-05-29 09:54:45', '2021-09-26 10:54:32'),
+(5, 1, 'dandibiyo', 'np', 'dandibiyo', '', '', 1, '2021-07-08 04:44:54', '2021-10-06 04:36:46'),
 (6, 1, 'pahpap', 'en', 'pahpap', '', '', 1, '2021-07-29 03:45:25', '2021-07-29 03:45:25'),
-(7, NULL, 'Winifred Clay', 'en', 'winifred-clay', '', '', 1, '2021-09-24 06:35:02', '2021-09-24 06:35:02');
+(7, NULL, 'Winifred Clay', 'en', 'winifred-clay', '', '', 1, '2021-09-24 06:35:02', '2021-09-24 06:35:02'),
+(8, NULL, 'Top News', 'en', 'top-news', '', '', 1, '2021-10-05 06:52:13', '2021-10-05 06:52:13');
 
 -- --------------------------------------------------------
 
@@ -211,14 +218,26 @@ CREATE TABLE `category_post` (
 --
 
 INSERT INTO `category_post` (`id`, `category_id`, `post_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 250, '2021-09-24 06:26:46', '2021-09-24 06:26:46'),
-(2, 2, 250, '2021-09-24 06:26:46', '2021-09-24 06:26:46'),
-(3, 4, 250, '2021-09-24 06:26:46', '2021-09-24 06:26:46'),
-(4, 1, 251, '2021-09-24 06:37:50', '2021-09-24 06:37:50'),
-(5, 2, 251, '2021-09-24 06:37:50', '2021-09-24 06:37:50'),
-(6, 5, 251, '2021-09-24 06:37:50', '2021-09-24 06:37:50'),
-(7, 1, 252, '2021-09-24 06:50:02', '2021-09-24 06:50:02'),
-(11, 5, 252, '2021-09-24 06:54:10', '2021-09-24 06:54:10');
+(1, 1, 124, '2021-09-24 06:26:46', '2021-09-24 06:26:46'),
+(2, 2, 124, '2021-09-24 06:26:46', '2021-09-24 06:26:46'),
+(3, 4, 124, '2021-09-24 06:26:46', '2021-09-24 06:26:46'),
+(6, 5, 124, '2021-09-24 06:37:50', '2021-09-24 06:37:50'),
+(12, 1, 249, '2021-09-24 10:13:07', '2021-09-24 10:13:07'),
+(16, 2, 249, '2021-09-24 10:18:35', '2021-09-24 10:18:35'),
+(17, 4, 249, '2021-09-24 10:18:35', '2021-09-24 10:18:35'),
+(18, 7, 249, '2021-09-24 10:18:35', '2021-09-24 10:18:35'),
+(19, 1, 252, '2021-09-24 10:24:45', '2021-09-24 10:24:45'),
+(20, 2, 252, '2021-09-24 10:24:45', '2021-09-24 10:24:45'),
+(21, 4, 252, '2021-09-24 10:24:45', '2021-09-24 10:24:45'),
+(22, 5, 252, '2021-09-24 10:24:45', '2021-09-24 10:24:45'),
+(23, 6, 252, '2021-09-24 10:24:45', '2021-09-24 10:24:45'),
+(24, 7, 252, '2021-09-24 10:24:45', '2021-09-24 10:24:45'),
+(25, 1, 272, '2021-09-26 10:54:51', '2021-09-26 10:54:51'),
+(26, 2, 272, '2021-09-26 10:54:51', '2021-09-26 10:54:51'),
+(27, 4, 272, '2021-09-26 10:55:47', '2021-09-26 10:55:47'),
+(28, 8, 272, '2021-10-05 06:52:31', '2021-10-05 06:52:31'),
+(29, 8, 266, '2021-10-05 06:52:54', '2021-10-05 06:52:54'),
+(30, 8, 258, '2021-10-05 06:53:10', '2021-10-05 06:53:10');
 
 -- --------------------------------------------------------
 
@@ -236,6 +255,13 @@ CREATE TABLE `comments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `post_id`, `user_id`, `comment_id`, `comment`, `status`, `created_at`, `updated_at`) VALUES
+(1, 247, 1, NULL, 'fasdf', 1, '2021-10-24 08:03:50', '2021-10-24 08:03:50');
 
 -- --------------------------------------------------------
 
@@ -626,6 +652,22 @@ CREATE TABLE `gallery_images` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `gallery_images`
+--
+
+INSERT INTO `gallery_images` (`id`, `disk`, `album_id`, `tab`, `title`, `is_cover`, `original_image`, `thumbnail`, `created_at`, `updated_at`) VALUES
+(1, 'local', 1, NULL, 'Lorem Ipsum', 0, 'images/20210926174149_galleryImage_big1.jpg', 'images/20210926174149_galleryImage_thumb30.jpg', '2021-09-26 11:56:49', '2021-09-26 11:56:49'),
+(2, 'local', 1, NULL, 'Lorem Ipsum', 0, 'images/20210926174149_galleryImage_big4.jpg', 'images/20210926174149_galleryImage_thumb50.jpg', '2021-09-26 11:56:49', '2021-09-26 11:56:49'),
+(3, 'local', 1, NULL, 'Lorem Ipsum', 0, 'images/20210926174149_galleryImage_big33.jpg', 'images/20210926174149_galleryImage_thumb45.jpg', '2021-09-26 11:56:49', '2021-09-26 11:56:49'),
+(4, 'local', 1, NULL, 'Lorem Ipsum', 0, 'images/20210926174149_galleryImage_big35.jpg', 'images/20210926174149_galleryImage_thumb32.jpg', '2021-09-26 11:56:49', '2021-09-26 11:56:49'),
+(5, 'local', 1, NULL, 'Lorem Ipsum', 0, 'images/20210926174149_galleryImage_big23.jpg', 'images/20210926174149_galleryImage_thumb41.jpg', '2021-09-26 11:56:49', '2021-09-26 11:56:49'),
+(6, 'local', 1, NULL, 'Lorem Ipsum', 0, 'images/20210926174149_galleryImage_big27.jpg', 'images/20210926174149_galleryImage_thumb13.jpg', '2021-09-26 11:56:49', '2021-09-26 11:56:49'),
+(7, 'local', 1, NULL, 'Lorem Ipsum', 0, 'images/20210926174149_galleryImage_big39.jpg', 'images/20210926174149_galleryImage_thumb14.jpg', '2021-09-26 11:56:49', '2021-09-26 11:56:49'),
+(8, 'local', 1, NULL, 'Lorem Ipsum', 0, 'images/20210926174149_galleryImage_big16.jpg', 'images/20210926174149_galleryImage_thumb43.jpg', '2021-09-26 11:56:49', '2021-09-26 11:56:49'),
+(9, 'local', 1, NULL, 'Lorem Ipsum', 0, 'images/20210926174149_galleryImage_big39.jpg', 'images/20210926174149_galleryImage_thumb50.jpg', '2021-09-26 11:56:49', '2021-09-26 11:56:49'),
+(10, 'local', 1, NULL, 'Lorem Ipsum', 0, 'images/20210926174149_galleryImage_big20.jpg', 'images/20210926174149_galleryImage_thumb3.jpg', '2021-09-26 11:56:49', '2021-09-26 11:56:49');
+
 -- --------------------------------------------------------
 
 --
@@ -808,7 +850,29 @@ INSERT INTO `images` (`id`, `disk`, `original_image`, `og_image`, `thumbnail`, `
 (152, 'local', 'images/20210531203538_original_1.webp', 'images/20210531203538_ogImage_50.jpg', 'images/20210531203538_thumbnail_100x100_48.webp', 'images/20210531203538_big_1080x1000_40.webp', 'images/20210531203538_big_730x400_26.webp', 'images/20210531203538_medium_358x215_28.webp', 'images/20210531203538_medium_350x190_17.webp', 'images/20210531203538_medium_255x175_29.webp', 'images/20210531203538_small_123x83_23.webp', '2021-05-31 14:50:50', '2021-05-31 14:50:50'),
 (153, 'local', 'images/20210531203551_original_33.webp', 'images/20210531203551_ogImage_24.jpg', 'images/20210531203551_thumbnail_100x100_7.webp', 'images/20210531203551_big_1080x1000_20.webp', 'images/20210531203551_big_730x400_48.webp', 'images/20210531203551_medium_358x215_16.webp', 'images/20210531203551_medium_350x190_2.webp', 'images/20210531203551_medium_255x175_19.webp', 'images/20210531203551_small_123x83_25.webp', '2021-05-31 14:51:04', '2021-05-31 14:51:04'),
 (154, 'local', 'images/20210531203604_original_2.webp', 'images/20210531203604_ogImage_11.jpg', 'images/20210531203604_thumbnail_100x100_4.webp', 'images/20210531203604_big_1080x1000_45.webp', 'images/20210531203604_big_730x400_47.webp', 'images/20210531203604_medium_358x215_8.webp', 'images/20210531203604_medium_350x190_23.webp', 'images/20210531203604_medium_255x175_28.webp', 'images/20210531203604_small_123x83_34.webp', '2021-05-31 14:51:15', '2021-05-31 14:51:15'),
-(155, 'local', 'images/20210608153717_original_16.webp', 'images/20210608153717_ogImage_44.jpg', 'images/20210608153717_thumbnail_100x100_3.webp', 'images/20210608153717_big_1080x1000_29.webp', 'images/20210608153717_big_730x400_15.webp', 'images/20210608153717_medium_358x215_5.webp', 'images/20210608153717_medium_350x190_12.webp', 'images/20210608153717_medium_255x175_43.webp', 'images/20210608153717_small_123x83_23.webp', '2021-06-08 09:52:20', '2021-06-08 09:52:20');
+(155, 'local', 'images/20210608153717_original_16.webp', 'images/20210608153717_ogImage_44.jpg', 'images/20210608153717_thumbnail_100x100_3.webp', 'images/20210608153717_big_1080x1000_29.webp', 'images/20210608153717_big_730x400_15.webp', 'images/20210608153717_medium_358x215_5.webp', 'images/20210608153717_medium_350x190_12.webp', 'images/20210608153717_medium_255x175_43.webp', 'images/20210608153717_small_123x83_23.webp', '2021-06-08 09:52:20', '2021-06-08 09:52:20'),
+(156, 'local', 'images/20210926121037_original_17.webp', 'images/20210926121037_ogImage_10.jpg', 'images/20210926121037_thumbnail_100x100_49.webp', 'images/20210926121037_big_1080x1000_33.webp', 'images/20210926121037_big_730x400_34.webp', 'images/20210926121037_medium_358x215_26.webp', 'images/20210926121037_medium_350x190_43.webp', 'images/20210926121037_medium_255x175_10.webp', 'images/20210926121037_small_123x83_10.webp', '2021-09-26 06:25:39', '2021-09-26 06:25:39'),
+(157, 'local', 'images/20210926121039_original_25.webp', 'images/20210926121039_ogImage_1.jpg', 'images/20210926121039_thumbnail_100x100_37.webp', 'images/20210926121039_big_1080x1000_12.webp', 'images/20210926121039_big_730x400_32.webp', 'images/20210926121039_medium_358x215_16.webp', 'images/20210926121039_medium_350x190_27.webp', 'images/20210926121039_medium_255x175_21.webp', 'images/20210926121039_small_123x83_17.webp', '2021-09-26 06:25:41', '2021-09-26 06:25:41'),
+(158, 'local', 'images/20210926121041_original_49.webp', 'images/20210926121041_ogImage_34.jpg', 'images/20210926121041_thumbnail_100x100_45.webp', 'images/20210926121041_big_1080x1000_36.webp', 'images/20210926121041_big_730x400_26.webp', 'images/20210926121041_medium_358x215_22.webp', 'images/20210926121041_medium_350x190_50.webp', 'images/20210926121041_medium_255x175_18.webp', 'images/20210926121041_small_123x83_28.webp', '2021-09-26 06:25:44', '2021-09-26 06:25:44'),
+(159, 'local', 'images/20210926121044_original_36.webp', 'images/20210926121044_ogImage_42.jpg', 'images/20210926121044_thumbnail_100x100_29.webp', 'images/20210926121044_big_1080x1000_48.webp', 'images/20210926121044_big_730x400_23.webp', 'images/20210926121044_medium_358x215_11.webp', 'images/20210926121044_medium_350x190_50.webp', 'images/20210926121044_medium_255x175_38.webp', 'images/20210926121044_small_123x83_41.webp', '2021-09-26 06:25:46', '2021-09-26 06:25:46'),
+(160, 'local', 'images/20210926121046_original_28.webp', 'images/20210926121046_ogImage_45.jpg', 'images/20210926121046_thumbnail_100x100_41.webp', 'images/20210926121046_big_1080x1000_12.webp', 'images/20210926121046_big_730x400_4.webp', 'images/20210926121046_medium_358x215_31.webp', 'images/20210926121046_medium_350x190_39.webp', 'images/20210926121046_medium_255x175_29.webp', 'images/20210926121046_small_123x83_28.webp', '2021-09-26 06:25:47', '2021-09-26 06:25:47'),
+(161, 'local', 'images/20210926121047_original_22.webp', 'images/20210926121047_ogImage_17.jpg', 'images/20210926121047_thumbnail_100x100_31.webp', 'images/20210926121047_big_1080x1000_38.webp', 'images/20210926121047_big_730x400_12.webp', 'images/20210926121047_medium_358x215_15.webp', 'images/20210926121047_medium_350x190_19.webp', 'images/20210926121047_medium_255x175_19.webp', 'images/20210926121047_small_123x83_6.webp', '2021-09-26 06:25:50', '2021-09-26 06:25:50'),
+(162, 'local', 'images/20210926121050_original_39.webp', 'images/20210926121050_ogImage_4.jpg', 'images/20210926121050_thumbnail_100x100_13.webp', 'images/20210926121050_big_1080x1000_38.webp', 'images/20210926121050_big_730x400_10.webp', 'images/20210926121050_medium_358x215_45.webp', 'images/20210926121050_medium_350x190_24.webp', 'images/20210926121050_medium_255x175_20.webp', 'images/20210926121050_small_123x83_18.webp', '2021-09-26 06:25:52', '2021-09-26 06:25:52'),
+(163, 'local', 'images/20210926121052_original_10.webp', 'images/20210926121052_ogImage_16.jpg', 'images/20210926121052_thumbnail_100x100_12.webp', 'images/20210926121052_big_1080x1000_26.webp', 'images/20210926121052_big_730x400_8.webp', 'images/20210926121052_medium_358x215_26.webp', 'images/20210926121052_medium_350x190_42.webp', 'images/20210926121052_medium_255x175_47.webp', 'images/20210926121052_small_123x83_26.webp', '2021-09-26 06:25:55', '2021-09-26 06:25:55'),
+(164, 'local', 'images/20210926121055_original_20.webp', 'images/20210926121055_ogImage_32.jpg', 'images/20210926121055_thumbnail_100x100_2.webp', 'images/20210926121055_big_1080x1000_24.webp', 'images/20210926121055_big_730x400_35.webp', 'images/20210926121055_medium_358x215_27.webp', 'images/20210926121055_medium_350x190_38.webp', 'images/20210926121055_medium_255x175_49.webp', 'images/20210926121055_small_123x83_5.webp', '2021-09-26 06:25:56', '2021-09-26 06:25:56'),
+(165, 'local', 'images/20210926121056_original_9.webp', 'images/20210926121056_ogImage_25.jpg', 'images/20210926121056_thumbnail_100x100_10.webp', 'images/20210926121056_big_1080x1000_20.webp', 'images/20210926121056_big_730x400_12.webp', 'images/20210926121056_medium_358x215_6.webp', 'images/20210926121056_medium_350x190_24.webp', 'images/20210926121056_medium_255x175_8.webp', 'images/20210926121056_small_123x83_32.webp', '2021-09-26 06:25:58', '2021-09-26 06:25:58'),
+(166, 'local', 'images/20210926121058_original_20.webp', 'images/20210926121058_ogImage_34.jpg', 'images/20210926121058_thumbnail_100x100_45.webp', 'images/20210926121058_big_1080x1000_28.webp', 'images/20210926121058_big_730x400_32.webp', 'images/20210926121058_medium_358x215_12.webp', 'images/20210926121058_medium_350x190_37.webp', 'images/20210926121058_medium_255x175_2.webp', 'images/20210926121058_small_123x83_45.webp', '2021-09-26 06:26:00', '2021-09-26 06:26:00'),
+(167, 'local', 'images/20210926121100_original_34.webp', 'images/20210926121100_ogImage_34.jpg', 'images/20210926121100_thumbnail_100x100_22.webp', 'images/20210926121100_big_1080x1000_9.webp', 'images/20210926121100_big_730x400_14.webp', 'images/20210926121100_medium_358x215_36.webp', 'images/20210926121100_medium_350x190_11.webp', 'images/20210926121100_medium_255x175_33.webp', 'images/20210926121100_small_123x83_15.webp', '2021-09-26 06:26:02', '2021-09-26 06:26:02'),
+(168, 'local', 'images/20210926121102_original_27.webp', 'images/20210926121102_ogImage_36.jpg', 'images/20210926121102_thumbnail_100x100_11.webp', 'images/20210926121102_big_1080x1000_13.webp', 'images/20210926121102_big_730x400_27.webp', 'images/20210926121102_medium_358x215_11.webp', 'images/20210926121102_medium_350x190_8.webp', 'images/20210926121102_medium_255x175_49.webp', 'images/20210926121102_small_123x83_17.webp', '2021-09-26 06:26:03', '2021-09-26 06:26:03'),
+(169, 'local', 'images/20210926121103_original_39.webp', 'images/20210926121103_ogImage_41.jpg', 'images/20210926121103_thumbnail_100x100_41.webp', 'images/20210926121103_big_1080x1000_13.webp', 'images/20210926121103_big_730x400_15.webp', 'images/20210926121103_medium_358x215_47.webp', 'images/20210926121103_medium_350x190_45.webp', 'images/20210926121103_medium_255x175_49.webp', 'images/20210926121103_small_123x83_38.webp', '2021-09-26 06:26:05', '2021-09-26 06:26:05'),
+(170, 'local', 'images/20210926121105_original_18.webp', 'images/20210926121105_ogImage_50.jpg', 'images/20210926121105_thumbnail_100x100_48.webp', 'images/20210926121105_big_1080x1000_50.webp', 'images/20210926121105_big_730x400_39.webp', 'images/20210926121105_medium_358x215_37.webp', 'images/20210926121105_medium_350x190_1.webp', 'images/20210926121105_medium_255x175_7.webp', 'images/20210926121105_small_123x83_16.webp', '2021-09-26 06:26:07', '2021-09-26 06:26:07'),
+(171, 'local', 'images/20210926121119_original_19.webp', 'images/20210926121119_ogImage_37.jpg', 'images/20210926121119_thumbnail_100x100_12.webp', 'images/20210926121119_big_1080x1000_43.webp', 'images/20210926121119_big_730x400_37.webp', 'images/20210926121119_medium_358x215_20.webp', 'images/20210926121119_medium_350x190_10.webp', 'images/20210926121119_medium_255x175_8.webp', 'images/20210926121119_small_123x83_37.webp', '2021-09-26 06:26:30', '2021-09-26 06:26:30'),
+(172, 'local', 'images/20210926121130_original_18.webp', 'images/20210926121130_ogImage_47.jpg', 'images/20210926121130_thumbnail_100x100_37.webp', 'images/20210926121130_big_1080x1000_21.webp', 'images/20210926121130_big_730x400_33.webp', 'images/20210926121130_medium_358x215_6.webp', 'images/20210926121130_medium_350x190_12.webp', 'images/20210926121130_medium_255x175_29.webp', 'images/20210926121130_small_123x83_16.webp', '2021-09-26 06:26:39', '2021-09-26 06:26:39'),
+(173, 'local', 'images/20210926121139_original_14.webp', 'images/20210926121139_ogImage_40.jpg', 'images/20210926121139_thumbnail_100x100_50.webp', 'images/20210926121139_big_1080x1000_44.webp', 'images/20210926121139_big_730x400_50.webp', 'images/20210926121139_medium_358x215_50.webp', 'images/20210926121139_medium_350x190_27.webp', 'images/20210926121139_medium_255x175_23.webp', 'images/20210926121139_small_123x83_24.webp', '2021-09-26 06:26:48', '2021-09-26 06:26:48'),
+(174, 'local', 'images/20210926121148_original_8.webp', 'images/20210926121148_ogImage_45.jpg', 'images/20210926121148_thumbnail_100x100_2.webp', 'images/20210926121148_big_1080x1000_18.webp', 'images/20210926121148_big_730x400_37.webp', 'images/20210926121148_medium_358x215_6.webp', 'images/20210926121148_medium_350x190_20.webp', 'images/20210926121148_medium_255x175_39.webp', 'images/20210926121148_small_123x83_21.webp', '2021-09-26 06:27:00', '2021-09-26 06:27:00'),
+(175, 'local', 'images/20210926121200_original_10.webp', 'images/20210926121200_ogImage_49.jpg', 'images/20210926121200_thumbnail_100x100_21.webp', 'images/20210926121200_big_1080x1000_16.webp', 'images/20210926121200_big_730x400_7.webp', 'images/20210926121200_medium_358x215_39.webp', 'images/20210926121200_medium_350x190_31.webp', 'images/20210926121200_medium_255x175_21.webp', 'images/20210926121200_small_123x83_34.webp', '2021-09-26 06:27:10', '2021-09-26 06:27:10'),
+(176, 'local', 'images/20210926134746_original_9.webp', 'images/20210926134746_ogImage_3.jpg', 'images/20210926134746_thumbnail_100x100_25.webp', 'images/20210926134746_big_1080x1000_10.webp', 'images/20210926134746_big_730x400_9.webp', 'images/20210926134746_medium_358x215_30.webp', 'images/20210926134746_medium_350x190_4.webp', 'images/20210926134746_medium_255x175_27.webp', 'images/20210926134746_small_123x83_29.webp', '2021-09-26 08:02:47', '2021-09-26 08:02:47'),
+(177, 'local', 'images/20210926134829_original_11.webp', 'images/20210926134829_ogImage_34.jpg', 'images/20210926134829_thumbnail_100x100_44.webp', 'images/20210926134829_big_1080x1000_26.webp', 'images/20210926134829_big_730x400_10.webp', 'images/20210926134829_medium_358x215_28.webp', 'images/20210926134829_medium_350x190_20.webp', 'images/20210926134829_medium_255x175_47.webp', 'images/20210926134829_small_123x83_50.webp', '2021-09-26 08:03:30', '2021-09-26 08:03:30');
 
 -- --------------------------------------------------------
 
@@ -2492,18 +2556,22 @@ CREATE TABLE `menu_item` (
 --
 
 INSERT INTO `menu_item` (`id`, `label`, `language`, `menu_id`, `is_mega_menu`, `order`, `parent`, `source`, `url`, `page_id`, `category_id`, `sub_category_id`, `post_id`, `status`, `new_teb`, `created_at`, `updated_at`) VALUES
-(1, 'Home', 'en', 1, 'no', 1, NULL, 'custom', '/', NULL, NULL, NULL, NULL, 1, 0, '2020-10-14 05:41:41', '2021-05-31 04:45:03'),
-(2, 'Contact Us', 'en', 1, 'no', 12, NULL, 'page', NULL, 1, NULL, NULL, NULL, 1, 0, '2020-10-14 05:49:07', '2021-05-31 04:53:01'),
-(3, 'About us', 'en', 1, 'no', 11, NULL, 'page', NULL, 2, NULL, NULL, NULL, 1, 0, '2020-10-14 05:57:29', '2021-05-31 04:53:01'),
-(4, 'World', 'en', 1, 'tab', 2, NULL, 'category', NULL, NULL, 1, NULL, NULL, 1, 0, '2021-05-29 13:51:25', '2021-05-31 04:47:12'),
-(5, 'Asia', 'en', 1, 'no', 3, 4, 'category', NULL, NULL, 2, NULL, NULL, 1, 0, '2021-05-29 13:51:25', '2021-05-29 15:27:54'),
-(6, 'Nepal', 'en', 1, 'no', 4, 4, 'category', NULL, NULL, 3, NULL, NULL, 1, 0, '2021-05-29 13:51:25', '2021-05-31 04:47:12'),
-(7, 'Sports', 'en', 1, 'category', 8, NULL, 'category', NULL, NULL, 1, NULL, NULL, 1, 0, '2021-05-29 15:27:27', '2021-05-31 04:52:19'),
-(8, 'Football', 'en', 1, 'no', 9, 7, 'category', NULL, NULL, 2, NULL, NULL, 1, 0, '2021-05-29 15:27:27', '2021-05-31 04:46:09'),
-(9, 'Cricket', 'en', 1, 'no', 10, 7, 'category', NULL, NULL, 3, NULL, NULL, 1, 0, '2021-05-29 15:27:27', '2021-05-31 04:46:09'),
-(10, 'Sports', 'en', 1, 'no', 5, 4, 'category', NULL, NULL, 1, NULL, NULL, 1, 0, '2021-05-31 04:45:44', '2021-05-31 04:46:08'),
-(11, 'Football', 'en', 1, 'no', 6, 4, 'category', NULL, NULL, 2, NULL, NULL, 1, 0, '2021-05-31 04:45:45', '2021-05-31 04:47:12'),
-(12, 'Cricket', 'en', 1, 'no', 7, 4, 'category', NULL, NULL, 3, NULL, NULL, 1, 0, '2021-05-31 04:45:45', '2021-05-31 04:47:12');
+(1, 'Home', 'en', 1, 'no', 1, NULL, 'custom', '/', NULL, NULL, NULL, NULL, 1, 0, '2020-10-14 05:41:41', '2021-09-26 06:28:39'),
+(4, 'World', 'en', 1, 'tab', 2, NULL, 'category', NULL, NULL, 1, NULL, NULL, 1, 0, '2021-05-29 13:51:25', '2021-09-26 06:28:39'),
+(5, 'Asia', 'en', 1, 'no', 3, 4, 'category', NULL, NULL, 2, NULL, NULL, 1, 0, '2021-05-29 13:51:25', '2021-09-26 06:28:39'),
+(6, 'Nepal', 'en', 1, 'no', 4, 4, 'category', NULL, NULL, 3, NULL, NULL, 1, 0, '2021-05-29 13:51:25', '2021-09-26 06:28:39'),
+(7, 'Sports', 'en', 1, 'category', 8, NULL, 'category', NULL, NULL, 1, NULL, NULL, 1, 0, '2021-05-29 15:27:27', '2021-09-26 06:28:39'),
+(8, 'Football', 'en', 1, 'no', 9, 7, 'category', NULL, NULL, 2, NULL, NULL, 1, 0, '2021-05-29 15:27:27', '2021-09-26 06:28:39'),
+(9, 'Cricket', 'en', 1, 'no', 12, 7, 'category', NULL, NULL, 3, NULL, NULL, 1, 0, '2021-05-29 15:27:27', '2021-09-26 06:28:39'),
+(10, 'Sports', 'en', 1, 'no', 5, 4, 'category', NULL, NULL, 1, NULL, NULL, 1, 0, '2021-05-31 04:45:44', '2021-09-26 06:28:39'),
+(11, 'Football', 'en', 1, 'no', 6, 4, 'category', NULL, NULL, 2, NULL, NULL, 1, 0, '2021-05-31 04:45:45', '2021-09-26 06:28:39'),
+(12, 'Cricket', 'en', 1, 'no', 7, 4, 'category', NULL, NULL, 3, NULL, NULL, 1, 0, '2021-05-31 04:45:45', '2021-09-26 06:28:39'),
+(13, 'Nortje reaping rewards', 'en', 1, 'no', 14, 9, 'post', NULL, NULL, NULL, NULL, 272, 1, 0, '2021-09-26 06:27:59', '2021-09-26 06:29:22'),
+(14, 'Emily Windsor', 'en', 1, 'no', 13, 9, 'post', NULL, NULL, NULL, NULL, 271, 1, 0, '2021-09-26 06:27:59', '2021-09-26 06:29:22'),
+(15, 'Shami, Bishnoi specials', 'en', 1, 'no', 11, 8, 'post', NULL, NULL, NULL, NULL, 270, 1, 0, '2021-09-26 06:27:59', '2021-09-26 06:29:22'),
+(16, 'Ashleigh Gardner and Beth Mooney', 'en', 1, 'no', 10, 8, 'post', NULL, NULL, NULL, NULL, 269, 1, 0, '2021-09-26 06:27:59', '2021-09-26 06:29:22'),
+(22, 'gallery', 'en', 1, 'no', 15, NULL, 'page', NULL, NULL, NULL, NULL, NULL, 1, 0, '2021-09-26 09:23:51', '2021-09-26 09:24:04'),
+(25, 'my menu', 'en', 1, 'no', 0, NULL, 'custom', '', NULL, NULL, NULL, NULL, 1, 0, '2021-10-24 10:26:12', '2021-10-24 10:26:12');
 
 -- --------------------------------------------------------
 
@@ -2585,7 +2653,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (39, '2020_11_24_150907_create_gallery_images_table', 1),
 (40, '2020_12_03_125915_create_rss_feeds_table', 1),
 (41, '2020_12_15_124608_column_update', 1),
-(42, '2021_09_24_113011_create_category_post_table', 2);
+(42, '2021_09_24_113011_create_category_post_table', 2),
+(59, '2021_10_27_200411_create_tournament_categories_table', 3),
+(60, '2021_10_27_200459_create_tournaments_table', 3),
+(61, '2021_10_27_200655_create_games_table', 3),
+(62, '2021_10_27_201755_create_teams_table', 3);
 
 -- --------------------------------------------------------
 
@@ -2619,10 +2691,11 @@ CREATE TABLE `pages` (
 --
 
 INSERT INTO `pages` (`id`, `image_id`, `title`, `language`, `page_type`, `slug`, `description`, `template`, `visibility`, `show_for_register`, `show_title`, `show_breadcrumb`, `location`, `meta_title`, `meta_description`, `meta_keywords`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'Contact Us', 'en', 2, 'contact-us', 'I only wish they WOULD put their heads off?\' shouted the Queen never left off when they liked, and left off sneezing by this time). \'Don\'t grunt,\' said Alice; \'that\'s not at all comfortable, and it put more simply--&quot;Never imagine yourself not to make ONE respectable person!\' Soon her eye fell on a little shriek, and went on \'And how do you mean that you had been looking over their heads. She felt very glad to find my way into that lovely garden. I think I may as well go back, and barking hoarsely all the same, the next verse,\' the Gryphon went on in a VERY good opportunity for repeating his remark, with variations. \'I shall be a queer thing, to be seen: she found it very much,\' said the Rabbit actually TOOK A WATCH OUT OF ITS WAISTCOAT-POCKET, and looked at it, and yet it was too much of a treacle-well--eh, stupid?\' \'But they were all crowded round it, panting, and asking, \'But who has won?\' This question the Dodo solemnly, rising to its children, \'Come away, my dears! It\'s high time to begin with,\' the Mock Turtle in the lock, and to her that she was appealed to by all three dates on their slates, \'SHE doesn\'t believe there\'s an atom of meaning in it.\' The jury all wrote down all three to settle the question, and they lived at the Footman\'s head: it just missed her. Alice caught the baby was howling so much about a foot high: then she looked down at her as hard as she added, to herself, \'whenever I eat one of the doors of the Queen\'s absence, and were resting in the distance. \'Come on!\' cried the Mock Turtle said: \'advance twice, set to work shaking him and punching him in the air: it puzzled her very much pleased at having found out a new kind of thing never happened, and now here I am very tired of swimming about here, O Mouse!\' (Alice thought this a good deal to come out among the party. Some of the mushroom, and raised herself to some tea and bread-and-butter, and went on: \'But why did they draw the treacle from?\' \'You can draw water out of the treat. When the sands are all pardoned.\' \'Come, THAT\'S a good deal until she had quite forgotten the Duchess by this time.) \'You\'re nothing but out-of-the-way things had happened lately, that Alice had not got into a sort of present!\' thought Alice. \'Now we shall get on better.\' \'I\'d rather not,\' the Cat said, waving its tail when I\'m angry. Therefore I\'m mad.\' \'I call it purring, not growling,\' said Alice. \'Of course it is,\' said the March Hare had just begun to dream that she was shrinking rapidly; so she helped herself to about two feet high: even then she had forgotten the words.\' So they got their tails in their mouths; and the other side of the legs of the house, &quot;Let us both go to law: I will just explain to you to get in?\' she repeated, aloud. \'I must be Mabel after all, and I don\'t remember where.\' \'Well, it must be shutting up like a thunderstorm. \'A fine day, your Majesty!\' the soldiers had to sing you a present of everything I\'ve said as yet.\' \'A cheap sort of way, \'Do cats eat bats, I.', '1', '1', 0, 1, 1, NULL, NULL, NULL, NULL, '2021-05-29 07:21:53', '2021-05-29 07:21:53'),
+(1, NULL, 'Contact Us', 'en', 2, 'contact-us', '<p>I only wish they WOULD put their heads off?\' shouted the Queen never left off when they liked, and left off sneezing by this time). \'Don\'t grunt,\' said Alice; \'that\'s not at all comfortable, and it put more simply--\"Never imagine yourself not to make ONE respectable person!\' Soon her eye fell on a little shriek, and went on \'And how do you mean that you had been looking over their heads. She felt very glad to find my way into that lovely garden. I think I may as well go back, and barking hoarsely all the same, the next verse,\' the Gryphon went on in a VERY good opportunity for repeating his remark, with variations. \'I shall be a queer thing, to be seen: she found it very much,\' said the Rabbit actually TOOK A WATCH OUT OF ITS WAISTCOAT-POCKET, and looked at it, and yet it was too much of a treacle-well--eh, stupid?\' \'But they were all crowded round it, panting, and asking, \'But who has won?\' This question the Dodo solemnly, rising to its children, \'Come away, my dears! It\'s high time to begin with,\' the Mock Turtle in the lock, and to her that she was appealed to by all three dates on their slates, \'SHE doesn\'t believe there\'s an atom of meaning in it.\' The jury all wrote down all three to settle the question, and they lived at the Footman\'s head: it just missed her. Alice caught the baby was howling so much about a foot high: then she looked down at her as hard as she added, to herself, \'whenever I eat one of the doors of the Queen\'s absence, and were resting in the distance. \'Come on!\' cried the Mock Turtle said: \'advance twice, set to work shaking him and punching him in the air: it puzzled her very much pleased at having found out a new kind of thing never happened, and now here I am very tired of swimming about here, O Mouse!\' (Alice thought this a good deal to come out among the party. Some of the mushroom, and raised herself to some tea and bread-and-butter, and went on: \'But why did they draw the treacle from?\' \'You can draw water out of the treat. When the sands are all pardoned.\' \'Come, THAT\'S a good deal until she had quite forgotten the Duchess by this time.) \'You\'re nothing but out-of-the-way things had happened lately, that Alice had not got into a sort of present!\' thought Alice. \'Now we shall get on better.\' \'I\'d rather not,\' the Cat said, waving its tail when I\'m angry. Therefore I\'m mad.\' \'I call it purring, not growling,\' said Alice. \'Of course it is,\' said the March Hare had just begun to dream that she was shrinking rapidly; so she helped herself to about two feet high: even then she had forgotten the words.\' So they got their tails in their mouths; and the other side of the legs of the house, \"Let us both go to law: I will just explain to you to get in?\' she repeated, aloud. \'I must be Mabel after all, and I don\'t remember where.\' \'Well, it must be shutting up like a thunderstorm. \'A fine day, your Majesty!\' the soldiers had to sing you a present of everything I\'ve said as yet.\' \'A cheap sort of way, \'Do cats eat bats, I.</p>', '2', '1', 0, 1, 0, NULL, NULL, NULL, NULL, '2021-05-29 07:21:53', '2021-09-27 03:59:46'),
 (2, NULL, 'About Us', 'en', 1, 'about-us', 'Those whom she sentenced were taken into custody by the officers of the gloves, and was just in time to begin at HIS time of life. The King\'s argument was, that she had read several nice little dog near our house I should say &quot;With what porpoise?&quot;\' \'Don\'t you mean by that?\' said the March Hare said in a great hurry to change the subject. \'Ten hours the first witness,\' said the Cat. \'I\'d nearly forgotten that I\'ve got back to the heads of the e--e--evening, Beautiful, beauti--FUL SOUP!\' \'Chorus again!\' cried the Mock Turtle to sing you a present of everything I\'ve said as yet.\' \'A cheap sort of people live about here?\' \'In THAT direction,\' the Cat went on, \'What HAVE you been doing here?\' \'May it please your Majesty,\' he began. \'You\'re a very difficult question. However, at last she stretched her arms folded, quietly smoking a long tail, certainly,\' said Alice, and tried to curtsey as she went on. Her listeners were perfectly quiet till she heard the Rabbit noticed Alice, as she could, for her to wink with one elbow against the roof of the baby, and not to lie down on the glass table as before, \'It\'s all her fancy, that: they never executes nobody, you know. Please, Ma\'am, is this New Zealand or Australia?\' (and she tried hard to whistle to it; but she could have been was not easy to know what a Mock Turtle said: \'no wise fish would go through,\' thought poor Alice, \'when one wasn\'t always growing larger and smaller, and being ordered about by mice and rabbits. I almost wish I had not the right way to explain the mistake it had been, it suddenly appeared again. \'By-the-bye, what became of the bread-and-butter. Just at this moment Five, who had been jumping about like mad things all this time. \'I want a clean cup,\' interrupted the Hatter: \'let\'s all move one place on.\' He moved on as he spoke, \'we were trying--\' \'I see!\' said the youth, \'one would hardly suppose That your eye was as much as serpents do, you know.\' \'Not the same as they would go, and broke off a little scream, half of fright and half believed herself in Wonderland, though she knew the meaning of it appeared. \'I don\'t like the look of things at all, as the jury had a vague sort of idea that they would go, and making quite a chorus of \'There goes Bill!\' then the Rabbit\'s voice; and Alice was not an encouraging tone. Alice looked all round the rosetree; for, you see, because some of the Lobster Quadrille?\' the Gryphon hastily. \'Go on with the Queen was close behind it when she had wept when she had nibbled some more tea,\' the March Hare took the thimble, saying \'We beg your pardon!\' cried Alice (she was rather glad there WAS no one else seemed inclined to say \'creatures,\' you see, so many out-of-the-way things had happened lately, that Alice said; \'there\'s a large pool all round the rosetree; for, you see, as well be at school at once.\' However, she soon made out what it meant till now.\' \'If that\'s all you know why it\'s called a whiting?\' \'I never thought about it,\' added the.', '1', '1', 0, 1, 1, NULL, NULL, NULL, NULL, '2021-05-29 07:21:53', '2021-05-29 07:21:53'),
 (3, NULL, 'اتصل بنا', 'ar', 2, 'اتصل-بنا', 'الليل صرفته إلى مكان الأول وجللته بنفسها وبريش كان هناك؛ مما ملئ به زق جلد، وربط ثم غوص تحت الماء طلب الصعود وتحامل على من يمسكه تحت الماء، ولا يزال يفعل ذلك في الأشباح الميتة من الوحوش وسواها، من ضار في مثل تلك الحال، فقد رام مستحيلاً وهو بمنزلة من يريد أن يذوق الألوان من حيث هو منزه عن ذلك، وعن جميع ما على وجه جائز في مذهبهم المشهور في زمنهم. ثم إنها حملت منه ووضعت طفلاً. فلما خافت أن يفتضح أمرها وينكشف سرها، وضعته في تابوت أحكمت زمه بعد أن سبقها العدم، أو كانت الابتداء لها من جهة الابتداء، إذ لم يسبقها سكون يكون مبدؤها منه، وكل حركة فلابد لها من محرك ضرورة، والمحرك أما أن يكون بحسب ما يسد بها جوعته. وأقام على تلك الحالة، جزع جزعاً شديداً، وكادت نفسه تفيض أسفاً عليها. فكان يناديها بالصوت الذي كانت عادتها أن تجيبه عند سماعه، ويصيح بأشد ما يقدر عليه، فلا لها عند ذلك تنازعه إلى اتخاذ ذنب من ذنوب الوحوش الميتة ليعلقه على نفسه، إلا أنه انقسم على قلوب البشر قد يتعذر وصفه، فكيف بأمر لا سبيل إلى خطورة على القلب، ولا الروح التي في رتبته من الحسن والبهاء واللذة غير المتناهية، ما لا نهاية، أو هي دائمة البقاء؟ فرأى إن كل واحد من العظم في حال شبيه بالعدم. فلما حكم على ذلك الفعل، مثل الماء، فانه إذا افرط عليه التسخين، استعد للحركة إلى فوق وصلح لها. فذلك الاستعداد هو صورته، وهو الذي يعبر عنه النظار بالنفس النباتية. وطائفة من هذا البخار المدة التي حددنا منتهاها بأحد وعشرين عاماً. ثم انه تأمل جميع الأجسام التي تقبل الإضاءة أتم القبول، هي الأجسام الصقيلة كالمرأة ونحوها. فإذا كانت هذه المرأة مقعرة على شكل مخصوص، حدث فيها النار لإفراط الضياء. الذي هو بمنزلة الطين في هذا الموضع من الخفافيش الذين تظلم الشمس في الضياء و الدفء، فعظم بها ولوعه، واعتقد أنها أفضل الأشياء التي يشرح بها تنقسم: إلى ما التشبه بجوهره مادة قريبة منه، يجتذبها إلى نفسه. والنمو: هو الحركة في الأقطار الثلاثة، هل هو شيء حدث بعد إن تعرف به، فلا محالة أنها إذا أدركت شيئاً من الدواب التي شاهدها قبله ولا هي غيرها وكأنها صورة الشمس التي تظهر عنه بالآلات الحيوانية والنباتية لا غير، فان الحرارة تتبع الضوء أبداً: حتى إن الضوء إذا افرط في المرأة المقعرة، أشعل ما حاذاها. وقد ثبت في نفسه ويتأملها فيراها تتفق في أنها تحس، وتغتذي، وتتحرك بالإرادة إلى أي جهة شاءت، وكان قد صح عنده بفطرته الفائقة التي لمثل هذه الجهة، وهي التي ذكر المسعودي أنها جزيرة الوقواق لان تلك الجزيرة ويسبح في أرجائها، فلا يرى بشيء منها آفة. فكان يطمع إن يعثر على موضع الآفة فيزيلها عنها، فترجع إلى ما كان من ابتداء أمره عند من ينكره التولد. ونحن نصف هنا كيف تربى وكيف أنتقل في أحواله حتى يبلغ المبلغ العظيم. وأما الذين زعموا أنه تولد من الأرض والماء وأغلظ من النار والهواء، صار في حكم الاسطقس الغالب، فلا يستأهل لاجل ذلك من الاختلافات وكان يرى البحر قد أحدق بالجزيرة من كل واحد منها ضداً ظاهر العناد يخالفه في مقتضى طبيعته، ويطلب أن يكون السواد مثلاً حلواً أو حامضاً. لكنا، مع ذلك، لا نخيلك عن إشارات نومئ بها إلى ما كانت عليه فلم ياتت له شيء من أصناف الحيوانات البحرية - كان قد عزم عليه من حيث هو جسم، دون أن يتخللها ألم. ثم جعل الحي يبحث في الأرض حتى حفر حفرة فوارى فيها ذلك الميت بالتراب فقال في نفسه: ما أحسن ما صنع من نقض عهوده في شرط غذاء، وندم على فعله، وأراد الانفصال عن أسال والإقبال على الدنيا، وحذرهم عنه غاية التحذير، وعلم هو وصاحبه أسال أن.', '1', '1', 0, 1, 1, NULL, NULL, NULL, NULL, '2021-05-29 07:21:54', '2021-05-29 07:21:54'),
-(4, NULL, 'معلومات عنا', 'ar', 1, 'معلومات-عنا', 'يمكن أن يتحرك إلى الجهة اليسرى خال لا شيء به. فقال: لن يعدو أحد هذه المواضع الثلاثة، إذ استقر في نفسه أمران كان يتعجب منهما ولا يدري ما هو، وهل يجوز له تناوله أم لا! فامتنع عن الآكل. ولم يزل أسال يرغب إليه ويستعطفه. وقد كان تبين له أنها لا تطرحه إلا إذا منعه مانع يعوقه عن طريقه، مثل الحجر النازل يصادف وجه الأرض صلباً، فلا يمكن أن تفرض فيه هذه الخطوط متناه، وكل جسم يمكن أن يحس فلا يمكن أن يتحرك إلى جهة العلو بالقسر ثم تركت، تحركت بصورتها إلى الأسفل. وفريق من هذه الثلاثة، ولا يتأتى التعبير إلا عما الخطر علها. ومن رام التعبير عن تلك الذوات المفارقة العارفة بذات الحق عز وجل، ووصفه ذلك الحق تعالى وجل بأوصافه الحسنى، ووصف له ما هو، لانه لم يره على صورة شيء من السباع العادية، فتربى الطفل ونما واغتذى بلبن تلك الظبية إلى أن تم له حولان، وتدرج في المشي وأثغر فكان يتبع تلك الظبية، وكانت هي ترفق به و ترحمه وتحمله إلى مواضع فيها شجر مثمر فكانت تطعمه ما تساقط من ثمراتها الحلوة النضيجة؛ وما كان منها صلب القشر كسرته له بطواحنها؛ ومتى عاد إلى عالم الحس. ثم تكلف الوصول إلى ذلك المقام الكريم فلا تلتمس الزيادة عليه من الأولى والثانية وكان دوامه أطول. وما زال يتصفح حركة القمر، فيراها آخذه من المغرب إلى المشرق وحركات الكواكب السيارة كذلك، حتى تبين له أولاً من آمر العناصر واستحالة بعضها إلى بعض، وان لها شيئاً واحداً فيه: هو لها بمنزلة الروح الحيواني واحد، وإذا عمل بالة العين كان فعله أبصاراً، وإذا عمل بآلة اللسان كان فعله حركه، وإذا عمل بآلة الآنف كان فعله شماً، وإذا عمل بآلة الآنف كان فعله أبصاراً، وإذا عمل بالكبد كان فعله لمساً، وإذا عمل بالة العين كان فعله ذوقاً، وإذا عمل بآلة اللسان كان فعله سمعاً، وإذا عمل بالكبد كان فعله لمساً، وإذا عمل بالجلد واللحم كان فعله لمساً، وإذا عمل بآلة الآذن كان فعله حركه، وإذا عمل بالة العين كان فعله سمعاً، وإذا عمل بالة العين كان فعله ذوقاً، وإذا عمل بآلة اللسان كان فعله شماً، وإذا عمل بالعضد كان فعله أبصاراً، وإذا عمل بالة العين كان فعله شماً، وإذا عمل بالة العين كان فعله لمساً، وإذا عمل بالجلد واللحم كان فعله شماً، وإذا عمل بالجلد واللحم كان فعله سمعاً، وإذا عمل بالة العين كان فعله أبصاراً، وإذا عمل بالة العين كان فعله لمساً، وإذا عمل بآلة اللسان كان فعله حركه، وإذا عمل بآلة الآنف كان فعله ذوقاً، وإذا عمل بآلة الآنف كان فعله غذاء واغتذاء. ولكل واحد منهما مركبة من أشياء متضادة، ولذلك تؤول إلى الفساد، وانه لا كثرة فيها بوجه من الوجوه؟ فتشك في ذلك الموجود الواجب الوجود وحده دون شركه؛ فمتى سنح بخياله سانح سواه، طرده عن خياله جهده، ودافعه وراض نفسه على ذلك، بعد استفراغ مجهوده. وجرد القلب فراه مصمتاً من كل جهة، فنظر هل يرى أو يجد لنفسه شبيهاً حسبما يرى لكل واحد من الاعتقادين، فلعل اللازم عنهما يكون شيئاً واحداً. وكادت هذه الشبه ترسخ في نفسه أمران كان يتعجب منهما ولا يدري وجه الحكمة فيهما: أحدهما - لما ضرب هذا الرسول الأمثال للناس في أكثر ما وصفه هؤلاء بعد هذا الموضع، وما وصفه الطائفة الأولى في معنى التربية؛ فقالوا جميعاً: إن الظبية التي تكفلت به وافقت خصباً ومرعى أثيثاً، فكثر لحمها وكثر لبنها، حتى قام بها ملكها وحمل الناس على التزامها. وكان قد شاهد الدماء متى سالت وخرجت انعقدت وجمدت ولم يكن بتلك الجزيرة يعبد الله عز وجل؛ ويعظمه ويقدسه؛ ويفكر في اسمائه الحسنى وصفاته العليا؛ فلا ينقطع خاطره؛ ولا تتكدر فكرته. واذا احتاج إلى غذاء تناول من.', '1', '1', 0, 1, 1, NULL, NULL, NULL, NULL, '2021-05-29 07:21:55', '2021-05-29 07:21:55');
+(4, NULL, 'معلومات عنا', 'ar', 1, 'معلومات-عنا', 'يمكن أن يتحرك إلى الجهة اليسرى خال لا شيء به. فقال: لن يعدو أحد هذه المواضع الثلاثة، إذ استقر في نفسه أمران كان يتعجب منهما ولا يدري ما هو، وهل يجوز له تناوله أم لا! فامتنع عن الآكل. ولم يزل أسال يرغب إليه ويستعطفه. وقد كان تبين له أنها لا تطرحه إلا إذا منعه مانع يعوقه عن طريقه، مثل الحجر النازل يصادف وجه الأرض صلباً، فلا يمكن أن تفرض فيه هذه الخطوط متناه، وكل جسم يمكن أن يحس فلا يمكن أن يتحرك إلى جهة العلو بالقسر ثم تركت، تحركت بصورتها إلى الأسفل. وفريق من هذه الثلاثة، ولا يتأتى التعبير إلا عما الخطر علها. ومن رام التعبير عن تلك الذوات المفارقة العارفة بذات الحق عز وجل، ووصفه ذلك الحق تعالى وجل بأوصافه الحسنى، ووصف له ما هو، لانه لم يره على صورة شيء من السباع العادية، فتربى الطفل ونما واغتذى بلبن تلك الظبية إلى أن تم له حولان، وتدرج في المشي وأثغر فكان يتبع تلك الظبية، وكانت هي ترفق به و ترحمه وتحمله إلى مواضع فيها شجر مثمر فكانت تطعمه ما تساقط من ثمراتها الحلوة النضيجة؛ وما كان منها صلب القشر كسرته له بطواحنها؛ ومتى عاد إلى عالم الحس. ثم تكلف الوصول إلى ذلك المقام الكريم فلا تلتمس الزيادة عليه من الأولى والثانية وكان دوامه أطول. وما زال يتصفح حركة القمر، فيراها آخذه من المغرب إلى المشرق وحركات الكواكب السيارة كذلك، حتى تبين له أولاً من آمر العناصر واستحالة بعضها إلى بعض، وان لها شيئاً واحداً فيه: هو لها بمنزلة الروح الحيواني واحد، وإذا عمل بالة العين كان فعله أبصاراً، وإذا عمل بآلة اللسان كان فعله حركه، وإذا عمل بآلة الآنف كان فعله شماً، وإذا عمل بآلة الآنف كان فعله أبصاراً، وإذا عمل بالكبد كان فعله لمساً، وإذا عمل بالة العين كان فعله ذوقاً، وإذا عمل بآلة اللسان كان فعله سمعاً، وإذا عمل بالكبد كان فعله لمساً، وإذا عمل بالجلد واللحم كان فعله لمساً، وإذا عمل بآلة الآذن كان فعله حركه، وإذا عمل بالة العين كان فعله سمعاً، وإذا عمل بالة العين كان فعله ذوقاً، وإذا عمل بآلة اللسان كان فعله شماً، وإذا عمل بالعضد كان فعله أبصاراً، وإذا عمل بالة العين كان فعله شماً، وإذا عمل بالة العين كان فعله لمساً، وإذا عمل بالجلد واللحم كان فعله شماً، وإذا عمل بالجلد واللحم كان فعله سمعاً، وإذا عمل بالة العين كان فعله أبصاراً، وإذا عمل بالة العين كان فعله لمساً، وإذا عمل بآلة اللسان كان فعله حركه، وإذا عمل بآلة الآنف كان فعله ذوقاً، وإذا عمل بآلة الآنف كان فعله غذاء واغتذاء. ولكل واحد منهما مركبة من أشياء متضادة، ولذلك تؤول إلى الفساد، وانه لا كثرة فيها بوجه من الوجوه؟ فتشك في ذلك الموجود الواجب الوجود وحده دون شركه؛ فمتى سنح بخياله سانح سواه، طرده عن خياله جهده، ودافعه وراض نفسه على ذلك، بعد استفراغ مجهوده. وجرد القلب فراه مصمتاً من كل جهة، فنظر هل يرى أو يجد لنفسه شبيهاً حسبما يرى لكل واحد من الاعتقادين، فلعل اللازم عنهما يكون شيئاً واحداً. وكادت هذه الشبه ترسخ في نفسه أمران كان يتعجب منهما ولا يدري وجه الحكمة فيهما: أحدهما - لما ضرب هذا الرسول الأمثال للناس في أكثر ما وصفه هؤلاء بعد هذا الموضع، وما وصفه الطائفة الأولى في معنى التربية؛ فقالوا جميعاً: إن الظبية التي تكفلت به وافقت خصباً ومرعى أثيثاً، فكثر لحمها وكثر لبنها، حتى قام بها ملكها وحمل الناس على التزامها. وكان قد شاهد الدماء متى سالت وخرجت انعقدت وجمدت ولم يكن بتلك الجزيرة يعبد الله عز وجل؛ ويعظمه ويقدسه؛ ويفكر في اسمائه الحسنى وصفاته العليا؛ فلا ينقطع خاطره؛ ولا تتكدر فكرته. واذا احتاج إلى غذاء تناول من.', '1', '1', 0, 1, 1, NULL, NULL, NULL, NULL, '2021-05-29 07:21:55', '2021-05-29 07:21:55'),
+(5, NULL, 'Dolorem dolorem dolo', 'en', 1, 'dolorem-dolorem-dolo', '<h1 style=\"text-align: center;\">Lorem Ipsum</h1>\r\n<h4 style=\"text-align: center;\">\"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...\"</h4>\r\n<h5 style=\"text-align: center;\">\"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...\"</h5>\r\n<hr />\r\n<div id=\"Content\">\r\n<div id=\"bannerL\">&nbsp;</div>\r\n<div id=\"bannerR\">&nbsp;</div>\r\n<div class=\"boxed\">\r\n<div id=\"lipsum\">\r\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sem lectus, luctus ut dui eget, dictum bibendum magna. Etiam dictum efficitur sapien non rutrum. In ullamcorper felis quis interdum porta. Donec iaculis mattis augue a lacinia. Duis varius elit massa, eget malesuada nibh auctor eget. Ut vulputate mattis cursus. Nam volutpat laoreet pellentesque. Ut metus massa, lobortis sed sodales eleifend, ultricies et sapien. Nunc dignissim porttitor mi non feugiat.</p>\r\n<p>Ut tincidunt venenatis purus iaculis hendrerit. Vivamus a suscipit dolor, eget pulvinar neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis laoreet vestibulum elit, a molestie magna pellentesque quis. Etiam laoreet fermentum enim, et faucibus felis. Donec a lorem sed elit feugiat ullamcorper. Suspendisse in luctus risus. Praesent cursus consectetur malesuada. Vivamus ac eros mollis dui eleifend aliquam dapibus ac lectus. Cras eget lacinia libero. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse pharetra cursus libero, in elementum est porttitor sit amet. Donec porttitor, massa nec laoreet porttitor, odio nunc pretium orci, vitae laoreet justo elit sit amet felis. Duis ex lorem, condimentum eu congue at, dignissim ac magna. Aliquam euismod sit amet arcu non viverra. Etiam ullamcorper auctor neque, vel facilisis elit gravida at.</p>\r\n<p>Nulla in justo eu nisi lacinia vestibulum. Quisque mollis risus eget porttitor venenatis. Morbi ultricies, purus quis finibus viverra, tellus libero sollicitudin ante, sed ullamcorper libero augue non elit. Donec auctor, justo ut gravida congue, neque quam finibus lorem, ac maximus ante augue nec ante. Duis at consequat est, sit amet accumsan lorem. Sed et tincidunt enim. Proin odio elit, molestie vitae nulla a, eleifend porta est. Morbi ullamcorper velit ut metus lacinia, nec convallis purus pretium. Duis condimentum finibus enim, id tempor turpis vehicula vel. Nunc molestie ligula a dolor convallis, quis pellentesque massa sagittis. Quisque dapibus eu libero ac placerat. Vivamus ornare eros vitae ligula vestibulum scelerisque. Aenean convallis consectetur rutrum. Etiam luctus, elit et aliquet blandit, nulla libero mattis sapien, eu fringilla turpis massa at quam.</p>\r\n<p>Nam nec elementum dui. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas non nulla a diam elementum vehicula. Duis eleifend dolor quis lectus fringilla, eget cursus nisl mattis. Integer molestie, ipsum vel dictum varius, odio augue luctus orci, ac sodales tortor leo sit amet mi. Nam purus sapien, dictum sit amet hendrerit sollicitudin, aliquam feugiat purus. Fusce mi magna, faucibus a semper et, aliquam vel velit. Praesent nec quam sapien. Morbi tincidunt, velit id tincidunt lacinia, mauris odio blandit dolor, non vulputate nisl risus id ligula. Praesent vulputate vel ligula id euismod. Sed in lectus nec nisl dignissim ultrices. Curabitur vulputate, sapien ut pulvinar suscipit, massa eros lobortis lorem, in vehicula augue risus sit amet magna.</p>\r\n<p>Donec eget nisl augue. Nulla vitae arcu elit. Proin aliquet, dui vel pulvinar pulvinar, tellus quam tristique sem, id maximus felis ipsum id felis. Donec cursus est eget vehicula consequat. Aliquam fringilla sapien congue elit condimentum viverra. Vivamus at sagittis orci. Etiam justo dui, placerat ac nibh ac, ultrices porttitor lorem. Etiam non pulvinar ex, at auctor nisi. In purus mauris, condimentum at imperdiet quis, ultrices nec diam.</p>\r\n</div>\r\n</div>\r\n</div>', '1', '1', 0, 1, 0, NULL, 'Cumque eligendi dolo', 'Aspernatur deserunt', 'Autem fugit neque a', '2021-09-27 03:47:19', '2021-09-27 03:58:05');
 
 -- --------------------------------------------------------
 
@@ -2740,7 +2813,24 @@ INSERT INTO `persistences` (`id`, `user_id`, `code`, `created_at`, `updated_at`)
 (15, 1, 'UjpMr1w5HW4jWqLEilh1IOnWfmMHjWPr', '2021-07-08 04:33:43', '2021-07-08 04:33:43'),
 (16, 1, 'Y8onHvcOFn8ekWSpTeSvZ6KRyFAqxK71', '2021-07-11 09:32:21', '2021-07-11 09:32:21'),
 (17, 1, 'OVS1fxopHDSR9hU5KnqsYD9lMENq0y9z', '2021-07-29 03:34:01', '2021-07-29 03:34:01'),
-(18, 1, 'k8qrNgHfLDUR8nksbUBrzuxkowZTAMQd', '2021-09-24 06:26:21', '2021-09-24 06:26:21');
+(18, 1, 'k8qrNgHfLDUR8nksbUBrzuxkowZTAMQd', '2021-09-24 06:26:21', '2021-09-24 06:26:21'),
+(19, 1, '1XYgmIyPSID2QEwuradatO3wCbNcJd87', '2021-09-24 09:34:11', '2021-09-24 09:34:11'),
+(20, 1, 'gCzLYh35RgDO6iOa4TifqgJSwAXv3lFS', '2021-09-26 05:26:25', '2021-09-26 05:26:25'),
+(21, 1, 'cHn6iO2vEgCvMmFp4jypfzQPRxySgpgj', '2021-09-27 03:42:23', '2021-09-27 03:42:23'),
+(22, 1, 'sO0YfavSpiuCp6BNVmyrPmp9LQXena65', '2021-09-28 05:47:57', '2021-09-28 05:47:57'),
+(23, 1, 'bHn3wmUYDSfd8tDPV32PngoB5lt5SIPz', '2021-10-04 09:55:34', '2021-10-04 09:55:34'),
+(24, 1, '31vyDKnDJKwrZSVttu1yJxPydyTqQ9Do', '2021-10-05 06:50:03', '2021-10-05 06:50:03'),
+(27, 1, 'mS6q9RLEvZDluJoMxLu53mcLAIJBR5Sg', '2021-10-06 05:01:36', '2021-10-06 05:01:36'),
+(28, 1, 'Ucn991AJ7qqAi2MRl9vopRnm5Pz4zidC', '2021-10-06 06:13:54', '2021-10-06 06:13:54'),
+(29, 1, '0knIV2xVIbdgZZLW1z7vW8ZQnSVzCFB8', '2021-10-24 05:51:08', '2021-10-24 05:51:08'),
+(30, 1, '6BQ6HHDX7FyL6gLAliu40TSjQJYrh2hV', '2021-10-26 08:01:02', '2021-10-26 08:01:02'),
+(31, 1, 'RohWM8Osullc4JkyGoiAqGbpzWFqBYGc', '2021-10-27 10:49:22', '2021-10-27 10:49:22'),
+(32, 1, '5W8GEp6LO2paMBijnijBlNXt6WMmNSVB', '2021-10-27 14:36:43', '2021-10-27 14:36:43'),
+(33, 1, 'N0ygWf1ChIIEa7tQpKsVJ09v1bAKa5zp', '2021-10-28 04:00:07', '2021-10-28 04:00:07'),
+(34, 1, 'oMfg8mbFv0Sc3NHM6nI0gJGRu65co2fW', '2021-10-28 09:27:00', '2021-10-28 09:27:00'),
+(35, 1, 'NAEPRIt5m9SzcqMiOG3r3RWl4DOBBE5o', '2021-10-29 06:47:24', '2021-10-29 06:47:24'),
+(36, 1, '0GEC76nOc0nnLwJxDVo6u3cig09ae1PE', '2021-11-01 05:59:37', '2021-11-01 05:59:37'),
+(37, 1, 'ApBbTU3CCZrM5IniuSNSbAWigVSD6ncL', '2021-11-02 04:17:23', '2021-11-02 04:17:23');
 
 -- --------------------------------------------------------
 
@@ -2857,7 +2947,7 @@ INSERT INTO `posts` (`id`, `title`, `slug`, `content`, `language`, `user_id`, `c
 (14, 'IIHF Men\'s World Championship 2021: Time, TV channel, live stream, where, when, schedule', 'iihf-men\'s-world-championship-2021:-time,-tv-channel,-live-stream,-where,-when,-schedule', '<p>The Men\'s World Championship is set to take place from May 21 to June 6</p>', 'en', 1, 1, NULL, 'article', 0, NULL, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/nhl/news/iihf-mens-world-championship-2021-time-tv-channel-live-stream-where-when-schedule/19g0r162vhcat1fkhazeqsflki', '2021-05-28 17:50:37', '2021-05-29 10:44:33'),
 (15, 'How did Tim Tebow look in his first Jaguars practice? \'Awkward,\' says Urban Meyer', 'how-did-tim-tebow-look-in-his-first-jaguars-practice?-\'awkward,\'-says-urban-meyer', '<p>Tim Tebow hit the field as a tight end for the first time this week and looked about as comfortable as many expected he would.</p>', 'en', 1, 1, NULL, 'article', 0, NULL, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/nfl/news/tim-tebow-jaguars-practice-urban-meyer/jk6417ap6xb91h7iyjaldm21r', '2021-05-28 10:53:51', '2021-05-29 10:44:33'),
 (16, 'Dolphins\' Tua Tagovailoa \'wasn’t comfortable calling plays\' during his rookie season', 'dolphins\'-tua-tagovailoa-\'wasn’t-comfortable-calling-plays\'-during-his-rookie-season', '<p>Tua Tagovailoa had an up-and-down rookie season. The Dolphins quarterback confessed recently that his knowledge of the playbook may have been the reason.</p>', 'en', 1, 1, NULL, 'article', 0, NULL, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/nfl/news/dolphins-tua-tagovailoa-calling-plays/1wj7i4t4k6orc1lxvbsn026nw1', '2021-05-28 10:20:06', '2021-05-29 10:44:33'),
-(17, 'White Sox fans love team\'s \'City Connect\' jersey, have jokes about Tony La Russa', 'white-sox-fans-love-team\'s-\'city-connect\'-jersey,-have-jokes-about-tony-la-russa', '<p>The White Sox are the latest MLB team to release their Nike City Connect jersey. It was well-received by Chicago fans, who also got a chance to make some jokes at Tony La Russa\'s expense after the release.</p>', 'en', 1, 1, NULL, 'article', 0, NULL, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 2, NULL, 'https://www.sportingnews.com/us/mlb/news/white-sox-city-connect-jersey-tony-la-russa/7etjx0rw1hhn1m1yl6ibytvgv', '2021-05-28 07:47:52', '2021-05-29 10:44:33'),
+(17, 'White Sox fans love team\'s \'City Connect\' jersey, have jokes about Tony La Russa', 'white-sox-fans-love-team\'s-\'city-connect\'-jersey,-have-jokes-about-tony-la-russa', '<p>The White Sox are the latest MLB team to release their Nike City Connect jersey. It was well-received by Chicago fans, who also got a chance to make some jokes at Tony La Russa\'s expense after the release.</p>', 'en', 1, 1, NULL, 'article', 0, NULL, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 4, NULL, 'https://www.sportingnews.com/us/mlb/news/white-sox-city-connect-jersey-tony-la-russa/7etjx0rw1hhn1m1yl6ibytvgv', '2021-05-28 07:47:52', '2021-05-29 10:44:33'),
 (18, 'BCCI to conduct remainder of IPL 2021 in September-October in UAE', 'bcci-to-conduct-remainder-of-ipl-2021-in-september-october-in-uae', 'Board to also \"seek an extension\" from ICC \"to take an appropriate call\" on hosting the men\'s T20 World Cup', 'en', 1, 3, NULL, 'article', 0, NULL, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'http://www.espncricinfo.com/ci/content/story/1264442.html?ex_cid=OTC-RSS', '2021-05-29 04:34:53', '2021-05-29 10:54:08'),
 (19, '\'We won the series but don\'t think we played really well\' - Tamim Iqbal', '\'we-won-the-series-but-don\'t-think-we-played-really-well\'---tamim-iqbal', 'Bangladesh captain rues missing out on ten Super League points in the third ODI', 'en', 1, 3, NULL, 'article', 0, NULL, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'http://www.espncricinfo.com/ci/content/story/1264416.html?ex_cid=OTC-RSS', '2021-05-28 12:02:38', '2021-05-29 10:54:08'),
 (20, 'Tridents pick Morris in CPL 2021 draft, Hasaranga goes to Patriots', 'tridents-pick-morris-in-cpl-2021-draft,-hasaranga-goes-to-patriots', 'Seven Pakistanis will feature this season, including first-timers Haider Ali, Usman Qadir, Mohammad Amir and Azam Khan', 'en', 1, 3, NULL, 'article', 0, NULL, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'http://www.espncricinfo.com/ci/content/story/1264399.html?ex_cid=OTC-RSS', '2021-05-28 12:39:20', '2021-05-29 10:54:08'),
@@ -2965,9 +3055,9 @@ INSERT INTO `posts` (`id`, `title`, `slug`, `content`, `language`, `user_id`, `c
 (121, 'Champions League final 2021: Date, time, odds, TV schedule & location for Chelsea vs. Manchester City', 'champions-league-final-2021:-date,-time,-odds,-tv-schedule-&-location-for-chelsea-vs.-manchester-city', '<p>Here is a complete guide to the 2021 UEFA Champions League final between Chelsea and Manchester City, including the start time and channel for viewers in the United States plus updated betting odds.</p>', 'en', 1, 1, NULL, 'article', 0, 37, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 1, NULL, 'https://www.sportingnews.com/us/soccer/news/champions-league-final-2021-chelsea-manchester-city/b22cg0lfkv921ck97bt9kokh3', '2021-05-28 01:32:16', '2021-05-29 12:09:45'),
 (122, 'Champions League live streams: How to watch 2021 UEFA soccer final online in USA', 'champions-league-live-streams:-how-to-watch-2021-uefa-soccer-final-online-in-usa', '<p>How can you watch the UEFA Champions League final between Manchester City and Chelsea? Sporting News has you covered with all the answers ahead of one of soccer\'s biggest tournaments of the year.</p>', 'en', 1, 1, NULL, 'article', 0, 38, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/soccer/news/champions-league-live-streams-usa/1olc79ww2vak81odo3fvw2tk2q', '2021-05-28 01:26:38', '2021-05-29 12:09:52'),
 (123, 'Champions League prize money breakdown: How much do the winners get in 2021?', 'champions-league-prize-money-breakdown:-how-much-do-the-winners-get-in-2021?', '<p>The UEFA Champions League is the most lucrative cup competition in the world and the finalists will reap the biggest cash infusion of the tournament: a cool $23.18 million will go to the winner between Manchester City and Chelsea.</p>', 'en', 1, 1, NULL, 'article', 0, 39, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/soccer/news/champions-league-prize-money-breakdown-how-much-do-the-winners-get-in-2021/5i1j0n2hh9r01ffvgqfsp541l', '2021-05-28 01:26:26', '2021-05-29 12:10:01'),
-(124, 'NBA playoff bracket 2021: Updated TV schedule, scores, results for Round 1', 'nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '<p>Here\'s the complete bracket for the 2021 NBA playoffs, including start times, TV channels and scores for every game.</p>', 'en', 1, 1, NULL, 'article', 0, 40, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 6, NULL, 'https://www.sportingnews.com/us/nba/news/nba-playoff-bracket-2021-schedule-scores-round-1/aet9rpwszeb17xx3zf2urdhy', '2021-05-28 21:31:12', '2021-05-29 12:10:10'),
+(124, 'NBA playoff bracket 2021: Updated TV schedule, scores, results for Round 1', 'nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '<p>Here\'s the complete bracket for the 2021 NBA playoffs, including start times, TV channels and scores for every game.</p>', 'en', 1, 1, NULL, 'article', 0, 40, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 10, NULL, 'https://www.sportingnews.com/us/nba/news/nba-playoff-bracket-2021-schedule-scores-round-1/aet9rpwszeb17xx3zf2urdhy', '2021-05-28 21:31:12', '2021-05-29 12:10:10'),
 (125, 'NBA playoff games today 2021: Live scores, TV schedule & more to watch Saturday\'s matchups', 'nba-playoff-games-today-2021:-live-scores,-tv-schedule-&-more-to-watch-saturday\'s-matchups', '<p>Here\'s everything to know about watching NBA playoff games, including a complete TV schedule for today\'s slate.</p>', 'en', 1, 1, NULL, 'article', 0, 41, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/nba/news/nba-playoff-games-today-2021-scores-schedule/pfk47eoncemt1cstzhvvip64z', '2021-05-28 21:26:55', '2021-05-29 12:10:20'),
-(126, 'NBA playoff schedule 2021: Full bracket, dates, times, TV channels for play-in, playoff games', 'nba-playoff-schedule-2021:-full-bracket,-dates,-times,-tv-channels-for-play-in,-playoff-games', '<p>Here\'s everything you need to know about watching the 2021 NBA playoffs, including TV schedules for play-in and playoff games.</p>', 'en', 1, 1, NULL, 'article', 0, 42, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/nba/news/nba-playoff-schedule-2021-bracket-dates-channels/lgshedeg1xr01ribq0hn6rd04', '2021-05-28 21:28:27', '2021-05-29 12:10:36'),
+(126, 'NBA playoff schedule 2021: Full bracket, dates, times, TV channels for play-in, playoff games', 'nba-playoff-schedule-2021:-full-bracket,-dates,-times,-tv-channels-for-play-in,-playoff-games', '<p>Here\'s everything you need to know about watching the 2021 NBA playoffs, including TV schedules for play-in and playoff games.</p>', 'en', 1, 1, NULL, 'article', 0, 42, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 3, NULL, 'https://www.sportingnews.com/us/nba/news/nba-playoff-schedule-2021-bracket-dates-channels/lgshedeg1xr01ribq0hn6rd04', '2021-05-28 21:28:27', '2021-05-29 12:10:36'),
 (127, 'How long is John Tavares out? Injury timeline, return date, latest updates on Maple Leafs captain', 'how-long-is-john-tavares-out?-injury-timeline,-return-date,-latest-updates-on-maple-leafs-captain', '<p>John Tavares suffered a concussion against the Canadiens. How long will the Leafs captain be out? Here are the latest updates on his condition.</p>', 'en', 1, 1, NULL, 'article', 0, 43, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/nhl/news/how-long-is-john-tavares-out-injury-timeline-return-date-latest-updates-on-maple-leafs/l4paitnc3qzt1dnag76b475d0', '2021-05-29 03:24:20', '2021-05-29 13:22:36'),
 (128, 'Chelsea vs. Manchester City payroll breakdown: Champions League final is a battle of super-rich clubs', 'chelsea-vs.-manchester-city-payroll-breakdown:-champions-league-final-is-a-battle-of-super-rich-clubs', '<p>Chelsea and Manchester City built super clubs over more than a decade. Their investments, spending power and their ability to develop talent have made them world forces and they don\'t look to be slowing down any time soon.</p>', 'en', 1, 1, NULL, 'article', 0, 44, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/soccer/news/chelsea-manchester-city-payroll-breakdown/toxkxkgplero1whm7rn5j17gh', '2021-05-29 03:16:32', '2021-05-29 13:22:46'),
 (129, 'Indy 500 purse, payout breakdown: How much prize money does the winner get in 2021?', 'indy-500-purse,-payout-breakdown:-how-much-prize-money-does-the-winner-get-in-2021?', '<p>What is the potential payday for the winner of this year\'s Indy 500?</p>', 'en', 1, 1, NULL, 'article', 0, 45, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/nascar/news/indy-500-purse-payout-2021-prize-money/19932p9yh3f6i185tfh5nfi02j', '2021-05-29 03:08:01', '2021-05-29 13:22:56'),
@@ -3038,8 +3128,8 @@ INSERT INTO `posts` (`id`, `title`, `slug`, `content`, `language`, `user_id`, `c
 (193, 'Bucks\' Twitter account trolls Heat fans after Milwaukee sweeps Miami out of NBA playoffs', 'bucks\'-twitter-account-trolls-heat-fans-after-milwaukee-sweeps-miami-out-of-nba-playoffs', '<p>Milwaukee completed a dominant sweep of Miami with a 120-103 win, becoming the first team to advance to the second round of the 2021 NBA playoffs.</p>', 'en', 1, 1, NULL, 'article', 0, 107, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/nba/news/bucks-twitter-heat-fans-milwaukee-miami-nba-playoffs/1sg7a09ehnxwa1eqgl5swy7jis', '2021-05-29 12:16:33', '2021-05-30 08:28:31'),
 (194, 'Dan Moriarty, Amar Virdi strut their stuff as Surrey spin a web around Gloucestershire', 'dan-moriarty,-amar-virdi-strut-their-stuff-as-surrey-spin-a-web-around-gloucestershire', 'Young Surrey spinners seize control as Gloucestershire follow-on at The Kia Oval', 'en', 1, 2, NULL, 'article', 0, 108, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'http://www.espncricinfo.com/ci/content/story/1264491.html?ex_cid=OTC-RSS', '2021-05-29 13:09:38', '2021-05-30 08:28:42'),
 (195, 'Chelsea vs. Manchester City score, result, highlights from 2021 Champions League final', 'chelsea-vs.-manchester-city-score,-result,-highlights-from-2021-champions-league-final', '<p>Chelsea pulled off the upset in the UEFA Champions League final, beating English Premier League champions Manchester City 1-0 in a compelling match. Christian Pulisic became the first US national team player to appear in a final and nearly scored.</p>', 'en', 1, 1, NULL, 'article', 0, 109, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/soccer/news/chelsea-manchester-city-live-score-updates-highlights/f62uxfw8wast18h2cao5xyebl', '2021-05-29 14:56:36', '2021-05-30 08:28:57'),
-(196, 'Roman Quinn injury update: Phillies outfielder exits game with Achilles injury after scoring run', 'roman-quinn-injury-update:-phillies-outfielder-exits-game-with-achilles-injury-after-scoring-run', '<p>Quinn\'s ruptured Achilles is the latest in a long line of injuries for the Phillies outfielder.</p>', 'en', 1, 1, NULL, 'article', 0, 110, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/mlb/news/roman-quinn-injury-update-phillies-achilles-score-run/1sqk55margfu51hj4vxjh3i1jk', '2021-05-29 11:14:53', '2021-05-30 08:29:14'),
-(197, 'Christian Pulisic makes Champions League history as first USMNT player to appear, win final', 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '<p>Christian Pulisic became the first USMNT player to appear in a UEFA Champions League final after coming off the bench against Manchester City. Chelsea would go on to win the match 1-0, their second-ever Champions League trophy.</p>', 'en', 1, 1, NULL, 'article', 0, 111, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.sportingnews.com/us/soccer/news/christian-pulisic-champions-league-history-american-final/uzyrze2azute1gp858rwtlrqb', '2021-05-29 14:37:31', '2021-05-30 08:29:26'),
+(196, 'Roman Quinn injury update: Phillies outfielder exits game with Achilles injury after scoring run', 'roman-quinn-injury-update:-phillies-outfielder-exits-game-with-achilles-injury-after-scoring-run', '<p>Quinn\'s ruptured Achilles is the latest in a long line of injuries for the Phillies outfielder.</p>', 'en', 1, 1, NULL, 'article', 0, 110, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 1, NULL, 'https://www.sportingnews.com/us/mlb/news/roman-quinn-injury-update-phillies-achilles-score-run/1sqk55margfu51hj4vxjh3i1jk', '2021-05-29 11:14:53', '2021-05-30 08:29:14'),
+(197, 'Christian Pulisic makes Champions League history as first USMNT player to appear, win final', 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '<p>Christian Pulisic became the first USMNT player to appear in a UEFA Champions League final after coming off the bench against Manchester City. Chelsea would go on to win the match 1-0, their second-ever Champions League trophy.</p>', 'en', 1, 1, NULL, 'article', 0, 111, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 26, NULL, 'https://www.sportingnews.com/us/soccer/news/christian-pulisic-champions-league-history-american-final/uzyrze2azute1gp858rwtlrqb', '2021-05-29 14:37:31', '2021-05-30 08:29:26'),
 (198, 'Sophia Dunkley asserts her England credentials to leave Sunrisers seeing Stars', 'sophia-dunkley-asserts-her-england-credentials-to-leave-sunrisers-seeing-stars', 'Tash Farrant puts seal on crushing win with five-wicket haul at Chelmsford', 'en', 1, 2, NULL, 'article', 0, 112, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'http://www.espncricinfo.com/ci/content/story/1264489.html?ex_cid=OTC-RSS', '2021-05-29 10:29:40', '2021-05-30 08:29:40'),
 (199, 'Rashid Khan to fly to England for T20 Blast immediately after PSL', 'rashid-khan-to-fly-to-england-for-t20-blast-immediately-after-psl', 'The Lahore Qalandars have re-signed the legspinner after his replacement Shakib Al Hasan pulled out of the PSL', 'en', 1, 2, NULL, 'article', 0, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'http://www.espncricinfo.com/ci/content/story/1263859.html?ex_cid=OTC-RSS', '2021-05-22 12:05:17', '2021-05-30 08:30:49'),
 (200, 'Multan Sultans sign Shimron Hetmyer in PSL mini replacement draft', 'multan-sultans-sign-shimron-hetmyer-in-psl-mini-replacement-draft', 'Quetta have picked Zahir Khan to fill in for Ben Cutting, while Islamabad have chosen not to replace the unavailable Janneman Malan', 'en', 1, 2, NULL, 'article', 0, 113, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'http://www.espncricinfo.com/ci/content/story/1263854.html?ex_cid=OTC-RSS', '2021-05-22 12:03:04', '2021-05-30 08:32:06'),
@@ -3087,13 +3177,28 @@ INSERT INTO `posts` (`id`, `title`, `slug`, `content`, `language`, `user_id`, `c
 (244, 'Worcestershire wrap up points after maiden five-for, nine in the match for Dillon Pennington', 'worcestershire-wrap-up-points-after-maiden-five-for,-nine-in-the-match-for-dillon-pennington', 'Young seamer registers career-best performance for the second day running', 'en', 1, 2, NULL, 'article', 0, 152, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'http://www.espncricinfo.com/ci/content/story/1264548.html?ex_cid=OTC-RSS', '2021-05-30 06:23:30', '2021-05-31 14:50:50'),
 (245, 'Group of PSL players and staff to leave for Abu Dhabi via Bahrain ', 'group-of-psl-players-and-staff-to-leave-for-abu-dhabi-via-bahrain', 'Another hurdle overcome as the PSL strives to get underway next month', 'en', 1, 2, NULL, 'article', 0, 153, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'http://www.espncricinfo.com/ci/content/story/1264533.html?ex_cid=OTC-RSS', '2021-05-31 00:10:45', '2021-05-31 14:51:04'),
 (246, 'Star-studded Dhaka Premier League gets underway inside BCB\'s biggest bio-bubble', 'star-studded-dhaka-premier-league-gets-underway-inside-bcb\'s-biggest-bio-bubble', 'Tournament scheduled in a way that most of Bangladesh\'s top cricketers can take part during the break after the ODIs against Sri Lanka, and before their departure to Zimbabwe on June 29', 'en', 1, 2, NULL, 'article', 0, 154, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 1, NULL, 'http://www.espncricinfo.com/ci/content/story/1264530.html?ex_cid=OTC-RSS', '2021-05-30 04:23:11', '2021-05-31 14:51:15'),
-(247, 'South Korea’s 2002 World Cup star Yoo Sang-chul dies at 49 : World Cup match winner', 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '<h2 class=\"synopsis\">The most famous of the Yoo\'s 18 goals was the one that sealed his country\'s first ever win in a World Cup match &mdash; 2-0 against Poland.</h2>\r\n<p>Yoo Sang-chul, one of the stars of South Korea&rsquo;s surprising run to the semifinals at the 2002 World Cup, has died after long battle with pancreatic&nbsp;<a class=\"\" href=\"https://indianexpress.com/about/cancer/\">cancer</a>. He was 49.</p>\r\n<p>Yoo played 124 times for South Korea from 1994 to 2005. The most famous of the Yoo&rsquo;s 18 goals was the one that sealed his country&rsquo;s first ever win in a World Cup match &mdash; 2-0 against Poland. It was in South Korea&rsquo;s first game in the World Cup it was co-hosting with Japan.</p>\r\n<p>&ldquo;We will forever remember the shouts and glory of that day with you. Rest in peace,&rdquo; the Korea Football Association said in a message posted Monday on its social media channels.</p>\r\n<p>South Korea&rsquo;s inspired run on home soil also included a win over Portugal in the group stage and a golden goal win over Italy in the Round of 16, with millions of people pouring onto the streets to celebrate. The Koreans advanced to the semifinals on penalties after their quarterfinal against Spain ended 0-0.</p>\r\n<p>The campaign concluded with a 1-0 loss to Germany in the semifinals and a 3-2 loss to Turkey in the third-place playoff. Reaching the top four remains the best performance by an Asian team at FIFA&rsquo;s global tournament.</p>\r\n<p>Yoo, a versatile midfielder who also played at the back and in attack during his long career, was included by FIFA in its 2002 World Cup All-Star team after appearing in all seven games for the South Koreans.</p>\r\n<p>After retiring in 2005, Yoo, who won league titles as a player in Japan with Yokohama F.Marinos and in South Korea with Ulsan Horangi, worked as a pundit on national television.</p>\r\n<p>Yoo started his coaching career in the K-League with Daejeon Citizen in 2011 and his last job was as head coach of Incheon United.</p>\r\n<p>He was diagnosed with cancer in November 2019 but remained with the team and only quit as head coach two months later, after helping Incheon avoid relegation to the second tier.</p>\r\n<div class=\"non-city-story-widget\">&nbsp;</div>\r\n<p>According to the Yonhap news agency, Yoo is one of only two players in K-League history to be included in the season-ending top XI as a forward, a midfielder and a defender.</p>', 'en', 1, 2, NULL, 'article', 0, 155, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'South Korea’s 2002 World Cup star Yoo Sang-chul dies at 49 : World Cup match winner', NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2021-06-08 09:53:01', '2021-06-08 09:53:01'),
-(248, 'testse', 'testse', '<p>afa fasfasdf</p>', 'en', 1, 2, NULL, 'article', 0, 154, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'testse', NULL, NULL, NULL, NULL, 'style_2', NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, '2021-07-07 08:32:50', '2021-07-07 08:32:50'),
-(249, 'afasdf', 'afasdf', '<p>asfasfds asfasfd</p>', 'en', 1, 6, NULL, 'article', 0, NULL, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'afasdf', NULL, NULL, NULL, NULL, 'style_2', NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, '2021-07-29 03:46:32', '2021-07-29 03:46:32'),
-(250, 'Welcome to Re Knowledge Community', 'welcome-to-re-knowledge-community', '<p>asdffdsa</p>', 'en', 1, NULL, NULL, 'article', 0, NULL, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Welcome to Re Knowledge Community', NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, '2021-09-24 06:26:46', '2021-09-24 06:26:46'),
-(251, 'Welcome to Re Knowledge Communityasfasdf', 'welcome-to-re-knowledge-communityasfasdf', '<p>asdfasdfasdf</p>', 'en', 1, NULL, NULL, 'article', 0, NULL, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Welcome to Re Knowledge Communityasfasdf', NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, '2021-09-24 06:37:50', '2021-09-24 06:37:50');
+(247, 'South Korea’s 2002 World Cup star Yoo Sang-chul dies at 49 : World Cup match winner', 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '<h2 class=\"synopsis\">The most famous of the Yoo\'s 18 goals was the one that sealed his country\'s first ever win in a World Cup match &mdash; 2-0 against Poland.</h2>\r\n<p>Yoo Sang-chul, one of the stars of South Korea&rsquo;s surprising run to the semifinals at the 2002 World Cup, has died after long battle with pancreatic&nbsp;<a class=\"\" href=\"https://indianexpress.com/about/cancer/\">cancer</a>. He was 49.</p>\r\n<p>Yoo played 124 times for South Korea from 1994 to 2005. The most famous of the Yoo&rsquo;s 18 goals was the one that sealed his country&rsquo;s first ever win in a World Cup match &mdash; 2-0 against Poland. It was in South Korea&rsquo;s first game in the World Cup it was co-hosting with Japan.</p>\r\n<p>&ldquo;We will forever remember the shouts and glory of that day with you. Rest in peace,&rdquo; the Korea Football Association said in a message posted Monday on its social media channels.</p>\r\n<p>South Korea&rsquo;s inspired run on home soil also included a win over Portugal in the group stage and a golden goal win over Italy in the Round of 16, with millions of people pouring onto the streets to celebrate. The Koreans advanced to the semifinals on penalties after their quarterfinal against Spain ended 0-0.</p>\r\n<p>The campaign concluded with a 1-0 loss to Germany in the semifinals and a 3-2 loss to Turkey in the third-place playoff. Reaching the top four remains the best performance by an Asian team at FIFA&rsquo;s global tournament.</p>\r\n<p>Yoo, a versatile midfielder who also played at the back and in attack during his long career, was included by FIFA in its 2002 World Cup All-Star team after appearing in all seven games for the South Koreans.</p>\r\n<p>After retiring in 2005, Yoo, who won league titles as a player in Japan with Yokohama F.Marinos and in South Korea with Ulsan Horangi, worked as a pundit on national television.</p>\r\n<p>Yoo started his coaching career in the K-League with Daejeon Citizen in 2011 and his last job was as head coach of Incheon United.</p>\r\n<p>He was diagnosed with cancer in November 2019 but remained with the team and only quit as head coach two months later, after helping Incheon avoid relegation to the second tier.</p>\r\n<div class=\"non-city-story-widget\">&nbsp;</div>\r\n<p>According to the Yonhap news agency, Yoo is one of only two players in K-League history to be included in the season-ending top XI as a forward, a midfielder and a defender.</p>', 'en', 1, 2, NULL, 'article', 0, 155, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 'South Korea’s 2002 World Cup star Yoo Sang-chul dies at 49 : World Cup match winner', NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 27, NULL, NULL, '2021-06-08 09:53:01', '2021-09-26 06:25:28'),
+(253, 'UFC 266 was everything fighting is supposed to be', 'ufc-266-was-everything-fighting-is-supposed-to-be', 'Alexander Volkanovski, Brian Ortega, Valentina Shevchenko and Nick Diaz, created a special night.', 'en', 1, 3, NULL, 'article', 0, 156, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/mma/story/_/id/32282175/ufc-266-alex-volkanovski-brian-ortega-valentina-shevchenko-nick-diaz-reminded-us-how-great-real-fights-be', '2021-09-25 20:37:43', '2021-09-26 06:25:39'),
+(254, 'Usyk stuns Joshua to become heavyweight champ', 'usyk-stuns-joshua-to-become-heavyweight-champ', 'Oleksandr Usyk dominated Anthony Joshua in winning Saturday\'s world heavyweight match by the judges\' scores of 117-112, 116-112, 115-113.', 'en', 1, 3, NULL, 'article', 0, 157, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/boxing/story/_/id/32279025/oleksandr-usyk-stuns-anthony-joshua-win-wba-ibf-wbo-world-heavyweight-titles', '2021-09-25 20:19:54', '2021-09-26 06:25:41');
 INSERT INTO `posts` (`id`, `title`, `slug`, `content`, `language`, `user_id`, `category_id`, `sub_category_id`, `post_type`, `submitted`, `image_id`, `visibility`, `auth_required`, `slider`, `slider_order`, `featured`, `featured_order`, `breaking`, `breaking_order`, `recommended`, `recommended_order`, `editor_picks`, `editor_picks_order`, `scheduled`, `meta_title`, `meta_keywords`, `meta_description`, `tags`, `scheduled_date`, `layout`, `video_id`, `video_url_type`, `video_url`, `video_thumbnail_id`, `status`, `total_hit`, `contents`, `read_more_link`, `created_at`, `updated_at`) VALUES
-(252, 'My personal category', 'my-personal-category', '<p>dfasdfadsf</p>', 'en', 1, NULL, NULL, 'article', 0, 154, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'My personal category', NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, NULL, '2021-09-24 06:50:02', '2021-09-24 06:54:25');
+(255, 'Woman, 2-year-old killed in fall at Petco Park', 'woman,-2-year-old-killed-in-fall-at-petco-park', 'A woman and child died after falling from the third level of Petco Park shortly before Saturday\'s Padres game.', 'en', 1, 3, NULL, 'article', 0, 158, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/mlb/story/_/id/32281455/woman-child-killed-fall-petco-park-ahead-san-diego-padres-game', '2021-09-25 20:19:54', '2021-09-26 06:25:44'),
+(256, 'OSU LB Pope escorted out after sideline blowup', 'osu-lb-pope-escorted-out-after-sideline-blowup', 'Ohio State LB K\'Vaughan Pope was escorted to the locker room in the second quarter of the Buckeyes game against Akron after a blowup on the sideline.', 'en', 1, 3, NULL, 'article', 0, 159, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/college-football/story/_/id/32281723/ohio-state-buckeyes-lb-kvaughan-pope-escorted-field-blow-sideline', '2021-09-25 20:19:54', '2021-09-26 06:25:46'),
+(257, 'Lawler wins by TKO as Diaz refuses to continue', 'lawler-wins-by-tko-as-diaz-refuses-to-continue', 'In a classic fight befitting their memorable status in the sport, Robbie Lawler outlasted Nick Diaz on Saturday night via TKO at 44 seconds of the third round at UFC 266 in Las Vegas.', 'en', 1, 3, NULL, 'article', 0, 160, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/mma/story/_/id/32281685/in-clash-titans-robbie-lawler-gets-expected-outlasts-nick-diaz-ufc-266-showstopper', '2021-09-25 20:19:54', '2021-09-26 06:25:47'),
+(258, 'Shevchenko\'s reign continues with rout of Murphy', 'shevchenko\'s-reign-continues-with-rout-of-murphy', '<p>Valentina Shevchenko finished Lauren Murphy in the fourth round to defend her UFC flyweight title for the sixth time, tying the record for most consecutive defenses by a female champion.</p>', 'en', 1, 3, NULL, 'article', 0, 161, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Shevchenko\'s reign continues with rout of Murphy', NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/mma/story/_/id/32281919/valentina-shevchenko-finishes-lauren-murphy-sixth-straight-title-defense', '2021-09-25 20:19:54', '2021-10-05 06:53:10'),
+(259, 'Clemson stunned by NC State: \'Got to own it\'', 'clemson-stunned-by-nc-state:-\'got-to-own-it\'', 'Clemson finds itself outside the College Football Playoff race for the first time in six years after a stunning double-OT loss to NC State.', 'en', 1, 3, NULL, 'article', 0, 162, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/college-football/story/_/id/32280260/clemson-offense-struggles-again-tigers-fall-2-2-double-ot-loss-nc-state', '2021-09-25 20:19:54', '2021-09-26 06:25:52'),
+(260, 'Ga. State coach: Auburn saved by SEC referees', 'ga.-state-coach:-auburn-saved-by-sec-referees', 'Georgia State coach Shawn Elliott said Auburn was helped by the SEC officials when they confirmed a catch by Auburn, which trailed in the final minute, despite a replay appearing to show that the ball had hit the ground.', 'en', 1, 3, NULL, 'article', 0, 163, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/college-football/story/_/id/32280223/georgia-state-coach-says-auburn-tigers-were-helped-questionable-call-sec-referees', '2021-09-25 20:19:54', '2021-09-26 06:25:55'),
+(261, 'U.S. in command, widens Ryder Cup lead to 11-5', 'u.s.-in-command,-widens-ryder-cup-lead-to-11-5', 'The United States won two matches in the afternoon four-ball session Saturday to take an 11-5 lead and needs just 3½ points to win for just the second time in six Ryder Cups.', 'en', 1, 3, NULL, 'article', 0, 164, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/golf/story/_/id/32277014/united-states-takes-11-5-lead-3-1-2-points-away-winning-ryder-cup', '2021-09-25 20:19:54', '2021-09-26 06:25:56'),
+(262, 'Hog heaven, Tiger misery and more scenes from a chaotic Week 4', 'hog-heaven,-tiger-misery-and-more-scenes-from-a-chaotic-week-4', 'If this last weekend of September taught us anything, it\'s that we have no idea what the weeks ahead might bring.', 'en', 1, 3, NULL, 'article', 0, 165, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/college-football/story/_/page/gamedayfinal092521/from-clemson-stumbling-arkansas-rolling-week-4-kicked-chaos-factor', '2021-09-25 20:36:07', '2021-09-26 06:25:58'),
+(263, 'The lingering problems that led to Clemson\'s collapse', 'the-lingering-problems-that-led-to-clemson\'s-collapse', 'Clemson\'s vulnerability was on display in Saturday\'s loss to NC State.', 'en', 1, 3, NULL, 'article', 0, 166, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/college-football/story/_/id/32280729/clemson-stumble-becomes-freefall-latest-college-football-loss-nc-state', '2021-09-25 20:36:07', '2021-09-26 06:26:00'),
+(264, 'Is there any stopping the U.S. from taking back the Ryder Cup?', 'is-there-any-stopping-the-u.s.-from-taking-back-the-ryder-cup?', 'The U.S. has a big lead. Europe will need an unprecedented Sunday surge. Can it be done? We go through all 12 singles matches to see if it is possible.', 'en', 1, 3, NULL, 'article', 0, 167, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/golf/story/_/id/32280551/is-there-stopping-us-taking-back-ryder-cup', '2021-09-25 17:14:03', '2021-09-26 06:26:02'),
+(265, 'What you need to know for NFL Week 3: Score picks, bold predictions, matchup nuggets, more', 'what-you-need-to-know-for-nfl-week-3:-score-picks,-bold-predictions,-matchup-nuggets,-more', 'What to watch for in every game. Bold predictions. Fantasy advice. Key stats to know. And, of course, score predictions. It\'s all here for Week 3.', 'en', 1, 3, NULL, 'article', 0, 168, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/nfl/story/_/id/32264147/nfl-week-3-game-picks-schedule-guide-fantasy-football-tips-odds-injuries-more', '2021-09-25 20:20:43', '2021-09-26 06:26:03'),
+(266, 'Week 3\'s biggest questions: 32 NFL reporters give advice', 'week-3\'s-biggest-questions:-32-nfl-reporters-give-advice', '<p>Could the Chiefs abandon the running game? Who is the Cowboys\' RB1? Our reporters fill you in before Sunday\'s games.</p>', 'en', 1, 3, NULL, 'article', 0, 169, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Week 3\'s biggest questions: 32 NFL reporters give advice', NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'https://www.espn.com/nfl/story/_/id/32259904/nfl-week-3-fantasy-football-questions-answers-32-reporters-give-advice-clyde-edwards-helaire-ezekiel-elliott-more', '2021-09-25 20:20:49', '2021-10-05 06:52:53'),
+(267, 'Boxing lost its biggest fight in Fury-Joshua but gained a star in Oleksandr Usyk', 'boxing-lost-its-biggest-fight-in-fury-joshua-but-gained-a-star-in-oleksandr-usyk', 'After Oleksandr Usyk\'s dominant victory over Anthony Joshua, what\'s next for them, Tyson Fury and the heavyweight division?', 'en', 1, 3, NULL, 'article', 0, 170, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 1, NULL, 'https://www.espn.com/boxing/story/_/id/32278191/boxing-lost-biggest-fight-tyson-fury-anthony-joshua-gained-star-oleksandr-usyk', '2021-09-25 20:21:16', '2021-09-26 06:26:07'),
+(268, 'India duo Smriti Mandhana and Deepti Sharma sign with Sydney Thunder for WBBL', 'india-duo-smriti-mandhana-and-deepti-sharma-sign-with-sydney-thunder-for-wbbl', 'They replace England\'s Heather Knight and Tammy Beaumont who are unavailable as the Thunder chase back-to-back WBBL titles', 'en', 1, 2, NULL, 'article', 0, 171, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 3, NULL, 'http://www.espncricinfo.com/ci/content/story/1279675.html?ex_cid=OTC-RSS', '2021-09-25 20:45:38', '2021-09-26 06:26:30'),
+(269, 'Ashleigh Gardner and Beth Mooney fifties take Australia to strong total', 'ashleigh-gardner-and-beth-mooney-fifties-take-australia-to-strong-total', 'India had a poor day in the field after another fine spell from Jhulan Goswami had made early inroads', 'en', 1, 2, NULL, 'article', 0, 172, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 2, NULL, 'http://www.espncricinfo.com/ci/content/story/1279669.html?ex_cid=OTC-RSS', '2021-09-25 23:13:45', '2021-09-26 06:26:39'),
+(270, 'Shami, Bishnoi specials end Sunrisers\' playoff hopes', 'shami,-bishnoi-specials-end-sunrisers\'-playoff-hopes', 'Punjab Kings defend 125 to keep their hopes of making the top four alive', 'en', 1, 2, NULL, 'article', 0, 173, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, NULL, NULL, NULL, 'default', NULL, NULL, NULL, NULL, 1, 0, NULL, 'http://www.espncricinfo.com/ci/content/story/1279639.html?ex_cid=OTC-RSS', '2021-09-25 13:54:34', '2021-09-26 06:26:48'),
+(271, 'Emily Windsor, Tara Norris rally Vipers to title defence', 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', '<p>Duo share unbroken stand worth 78 after Diamonds put them on the ropes</p>', 'en', 1, 2, NULL, 'article', 0, 174, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Emily Windsor, Tara Norris rally Vipers to title defence', NULL, NULL, 'sports', NULL, 'default', NULL, NULL, NULL, NULL, 1, 35, '{\"1\":{\"code\":{\"code\":\"Nortje reaping rewards after frustrating first half of IPL\"}},\"2\":{\"twitter-embed\":{\"twitter\":\"Nortje reaping rewards after frustrating first half of IPL\"}}}', 'http://www.espncricinfo.com/ci/content/story/1279635.html?ex_cid=OTC-RSS', '2021-09-25 11:51:51', '2021-11-01 07:45:27'),
+(272, 'Nortje reaping rewards after frustrating first half of IPL', 'nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '<p>Fast bowler is the toast of the team after taking four wickets in his first two games</p>', 'np', 1, 2, NULL, 'article', 0, 175, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Nortje reaping rewards after frustrating first half of IPL', NULL, NULL, 'sports,football,asia', NULL, 'default', NULL, NULL, NULL, NULL, 1, 6, '{\"1\":{\"code\":{\"code\":\"https:\\/\\/www.youtube.com\\/watch?v=_b_YVrex0yI\"}},\"2\":{\"twitter-embed\":{\"twitter\":\"https:\\/\\/www.youtube.com\\/watch?v=_b_YVrex0yI\"}},\"3\":{\"vimeo-embed\":{\"vimeo\":\"https:\\/\\/www.youtube.com\\/watch?v=_b_YVrex0yI\"}}}', 'http://www.espncricinfo.com/ci/content/story/1279613.html?ex_cid=OTC-RSS', '2021-09-25 11:26:21', '2021-11-01 07:44:37');
 
 -- --------------------------------------------------------
 
@@ -3171,7 +3276,8 @@ CREATE TABLE `role_users` (
 
 INSERT INTO `role_users` (`user_id`, `role_id`, `created_at`, `updated_at`) VALUES
 (1, 1, '2021-05-29 07:21:16', '2021-05-29 07:21:16'),
-(2, 4, '2021-05-31 10:41:23', '2021-05-31 10:41:23');
+(2, 4, '2021-05-31 10:41:23', '2021-05-31 10:41:23'),
+(3, 5, '2021-10-24 05:50:12', '2021-10-24 05:50:12');
 
 -- --------------------------------------------------------
 
@@ -3237,7 +3343,7 @@ INSERT INTO `settings` (`id`, `title`, `value`, `lang`, `created_at`, `updated_a
 (6, 'google_client_secretkey', '', 'en', NULL, NULL),
 (7, 'google_visibility', '0', 'en', NULL, NULL),
 (8, 'google_callback_url', '', 'en', NULL, NULL),
-(9, 'preloader_option', '1', 'en', NULL, NULL),
+(9, 'preloader_option', '0', 'en', NULL, '2021-10-28 11:52:35'),
 (10, 'submit_news_status', '1', 'en', NULL, NULL),
 (11, 'version', '110', 'en', NULL, NULL),
 (12, 'default_language', 'en', 'en', '2021-05-29 07:21:34', '2021-05-29 07:21:34'),
@@ -3447,7 +3553,7 @@ CREATE TABLE `themes` (
 --
 
 INSERT INTO `themes` (`id`, `name`, `slug`, `options`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'theme_one', NULL, '{\"header_style\":\"header_1\",\"footer_style\":\"footer_1\",\"primary_color\":\"#1f509e\",\"fonts\":\"Noto+Sans+JP\",\"mode\":\"\"}', 1, '2021-05-29 07:22:41', '2021-05-29 15:38:33');
+(1, 'theme_one', NULL, '{\"header_style\":\"header_1\",\"footer_style\":\"footer_1\",\"primary_color\":\"#1f509e\",\"fonts\":\"Noto+Sans+JP\",\"mode\":\"\"}', 1, '2021-05-29 07:22:41', '2021-09-24 13:28:01');
 
 -- --------------------------------------------------------
 
@@ -3465,7 +3571,7 @@ CREATE TABLE `theme_sections` (
   `ad_id` bigint(20) UNSIGNED DEFAULT NULL,
   `post_amount` bigint(20) UNSIGNED DEFAULT NULL,
   `section_style` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_primary` tinyint(4) NOT NULL DEFAULT 0,
+  `is_primary` tinyint(4) NOT NULL DEFAULT 0 COMMENT '1->primary, 2->breaking_news,3->top_news',
   `status` tinyint(1) NOT NULL DEFAULT 0,
   `language` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -3477,9 +3583,13 @@ CREATE TABLE `theme_sections` (
 --
 
 INSERT INTO `theme_sections` (`id`, `theme_id`, `type`, `label`, `order`, `category_id`, `ad_id`, `post_amount`, `section_style`, `is_primary`, `status`, `language`, `created_at`, `updated_at`) VALUES
-(1, 1, 0, 'Primary Section', 1, NULL, NULL, 10, 'style_1', 1, 1, NULL, '2021-05-29 07:22:41', '2021-07-07 08:30:39'),
-(2, 1, 3, 'latest_post', 6, NULL, NULL, NULL, NULL, 0, 1, NULL, '2021-05-29 07:22:41', '2021-05-29 07:22:41'),
-(3, 1, 1, 'Sports', 1, 1, 2, NULL, 'style_5', 0, 1, 'en', '2021-05-31 14:42:56', '2021-05-31 14:42:56');
+(1, 1, 0, 'Primary Section', 1, NULL, NULL, 10, 'style_1', 1, 1, NULL, '2021-05-29 07:22:41', '2021-10-24 08:18:36'),
+(3, 1, 1, 'Sports', 2, 1, 2, NULL, 'style_5', 0, 1, 'en', '2021-05-31 14:42:56', '2021-09-26 06:06:59'),
+(4, 1, 1, 'Sports', 3, 1, NULL, NULL, 'style_1', 0, 1, 'en', '2021-09-24 10:28:20', '2021-09-24 10:28:20'),
+(5, 1, 1, 'Football', 4, 2, NULL, NULL, 'style_1', 0, 1, 'en', '2021-09-24 10:28:30', '2021-09-24 10:28:30'),
+(7, 1, 3, 'latest_post', 1, NULL, NULL, NULL, NULL, 0, 1, NULL, '2021-09-26 05:44:04', '2021-09-26 06:06:59'),
+(17, 1, 0, 'Top News Section', 1, 8, NULL, 3, 'style_1', 3, 0, NULL, '2021-10-06 05:07:21', '2021-10-06 05:07:21'),
+(18, 1, 0, 'Breaking Section', 1, NULL, NULL, NULL, '', 2, 0, NULL, '2021-10-06 05:07:25', '2021-10-06 05:07:39');
 
 -- --------------------------------------------------------
 
@@ -3495,6 +3605,127 @@ CREATE TABLE `throttle` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tournaments`
+--
+
+CREATE TABLE `tournaments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tournament_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_id` bigint(20) UNSIGNED NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image_thumbnail` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `start_date` datetime DEFAULT NULL,
+  `end_date` datetime DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tournaments`
+--
+
+INSERT INTO `tournaments` (`id`, `tournament_name`, `category_id`, `image`, `image_thumbnail`, `description`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
+(3, 'Premier League', 2, 'images/20211028121305_original_50.webp', 'images/20211028121305_thumbnail_100x100_44.webp', 'What is Lorem Ipsum? Lorem Ipsum&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2021-10-28 12:41:00', '2021-11-06 12:42:00', '2021-10-28 06:26:56', '2021-10-29 06:48:19'),
+(4, 'Laliga', 2, 'images/20211028122828_original_24.webp', 'images/20211028122828_thumbnail_100x100_26.webp', 'What is Lorem Ipsum? Lorem Ipsum&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Why do we use it? It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).', '2021-11-03 12:42:00', '2021-12-03 12:42:00', '2021-10-28 06:43:29', '2021-10-29 06:48:30'),
+(11, 'Series A', 2, NULL, NULL, '', '2021-10-29 12:33:00', '2021-10-29 12:33:00', '2021-10-29 06:48:53', '2021-10-29 06:48:53'),
+(12, 'T20 Worldcup', 3, 'images/20211102130028_original_3.webp', 'images/20211102130028_thumbnail_100x100_28.webp', '', '2021-11-02 12:57:00', '2021-11-25 12:57:00', '2021-11-02 07:15:29', '2021-11-02 07:15:29'),
+(13, 'ODI Selection', 3, 'images/20211102130119_original_1.webp', 'images/20211102130119_thumbnail_100x100_17.webp', '', '2021-11-02 01:01:00', '2021-11-25 01:01:00', '2021-11-02 07:16:19', '2021-11-02 07:16:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tournament_categories`
+--
+
+CREATE TABLE `tournament_categories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `category_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tournament_categories`
+--
+
+INSERT INTO `tournament_categories` (`id`, `category_name`, `created_at`, `updated_at`) VALUES
+(2, 'Football', '2021-10-28 06:24:18', '2021-10-28 06:24:18'),
+(3, 'Cricket', '2021-10-28 06:24:23', '2021-10-28 06:24:23'),
+(4, 'Badminton', '2021-10-28 06:24:32', '2021-10-28 06:24:32'),
+(5, 'Gulf', '2021-10-28 06:24:40', '2021-10-28 06:24:40');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tournament_games`
+--
+
+CREATE TABLE `tournament_games` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tournament_id` bigint(20) UNSIGNED NOT NULL,
+  `game_date` date NOT NULL,
+  `team1_id` bigint(20) UNSIGNED NOT NULL,
+  `team2_id` bigint(20) UNSIGNED NOT NULL,
+  `team1_score` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `team2_score` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `game_status` int(11) NOT NULL DEFAULT 0 COMMENT '0->up_coming,1->on_going,2->completed',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tournament_games`
+--
+
+INSERT INTO `tournament_games` (`id`, `tournament_id`, `game_date`, `team1_id`, `team2_id`, `team1_score`, `team2_score`, `game_status`, `created_at`, `updated_at`) VALUES
+(1, 4, '2021-10-27', 1, 2, '1', '2', 1, '2021-10-28 09:49:43', '2021-10-29 08:26:57'),
+(3, 3, '2021-10-29', 4, 3, '1', '0', 1, '2021-10-29 06:53:15', '2021-10-29 08:26:51'),
+(4, 3, '2021-10-29', 4, 5, '1', '0', 2, '2021-10-29 06:53:24', '2021-11-02 07:11:59'),
+(5, 3, '2021-10-29', 1, 5, '0', '4', 1, '2021-10-29 06:53:33', '2021-10-29 08:27:34'),
+(6, 3, '2021-10-28', 3, 2, '', '', 0, '2021-10-29 06:53:44', '2021-10-29 06:53:44'),
+(7, 3, '2021-10-28', 1, 5, '', '', 0, '2021-10-29 06:54:04', '2021-10-29 06:54:04'),
+(8, 3, '2021-10-28', 1, 4, '', '', 0, '2021-10-29 06:54:22', '2021-10-29 06:54:22'),
+(9, 3, '2021-10-28', 1, 3, '', '', 0, '2021-10-29 06:54:31', '2021-10-29 06:54:31'),
+(10, 3, '2021-10-29', 3, 1, '1', '2', 2, '2021-10-29 07:55:40', '2021-11-01 08:59:41'),
+(11, 3, '2021-11-01', 1, 2, '2', '1', 2, '2021-11-01 06:00:30', '2021-11-02 07:11:48'),
+(12, 12, '2021-11-02', 6, 7, '', '', 0, '2021-11-02 07:18:19', '2021-11-02 07:18:19'),
+(13, 12, '2021-11-03', 5, 7, '', '', 0, '2021-11-02 07:18:33', '2021-11-02 07:18:33'),
+(14, 12, '2021-11-02', 5, 4, '1', '0', 0, '2021-11-02 07:18:58', '2021-11-02 08:04:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tournament_teams`
+--
+
+CREATE TABLE `tournament_teams` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `team_name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `team_name_abb` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `logo` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `tournament_teams`
+--
+
+INSERT INTO `tournament_teams` (`id`, `team_name`, `team_name_abb`, `logo`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Chelsea', 'CH', 'images/20211029123504_original_32.webp', 'Nostrum ducimus, rep.asdfsadf', '2021-10-28 07:11:00', '2021-10-29 06:50:04'),
+(2, 'Liverpool', 'LVP', 'images/20211029123526_original_2.webp', '', '2021-10-28 09:42:32', '2021-10-29 06:50:26'),
+(3, 'West Ham United', 'WHU', 'images/20211029123657_original_1.webp', '', '2021-10-29 06:51:57', '2021-10-29 06:51:57'),
+(4, 'Brighton & Hove Albion', 'B&H', 'images/20211029123717_original_1.webp', '', '2021-10-29 06:52:17', '2021-10-29 06:52:17'),
+(5, 'Tottenham Hotspur', 'TH', 'images/20211029123729_original_35.webp', '', '2021-10-29 06:52:29', '2021-10-29 06:52:29'),
+(6, 'Brody Massey', 'BM', 'images/20211102130252_original_12.webp', 'Consequat. Corporis .', '2021-11-02 07:17:52', '2021-11-02 07:17:52'),
+(7, 'Gwendolyn Jarvis', 'GJ', 'images/20211102130305_original_29.webp', 'Animi, ab amet, cons.', '2021-11-02 07:18:05', '2021-11-02 07:18:05'),
+(8, 'Jane Blevins', 'JB', 'images/20211102130728_original_42.webp', 'Iusto tenetur rem no.', '2021-11-02 07:22:28', '2021-11-02 07:22:28');
 
 -- --------------------------------------------------------
 
@@ -3531,8 +3762,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `permissions`, `last_login`, `first_name`, `last_name`, `profile_image`, `image_id`, `newsletter_enable`, `is_user_banned`, `user_banned_reason`, `is_subscribe_banned`, `subscribe_banned_reason`, `about_us`, `social_media`, `is_active`, `deactivate_reason`, `firebase_auth_id`, `created_at`, `updated_at`) VALUES
-(1, 'bishal.khatri343@gmail.com', '$2y$10$f.af4a1ISfkdvHqCYCg6tOK03dEqYgTcrbYjUC6qGZziRsyXRJ3W2', '{\"email_show\":0}', '2021-09-24 06:26:21', 'Admin', 'User', NULL, NULL, 0, 1, NULL, 1, NULL, NULL, '', 1, NULL, NULL, '2021-05-29 07:21:15', '2021-09-24 06:26:21'),
-(2, 'npalien4u@gmail.com', '$2y$10$QAkLp0/lcxm9Vzqt5VVAquFwWbITIEddEL3o7IHY0Nxy7aUjXU7WC', NULL, NULL, 'Alien', 'Shrestha', NULL, NULL, 1, 1, NULL, 1, NULL, NULL, '', 1, NULL, NULL, '2021-05-31 10:41:23', '2021-05-31 10:41:23');
+(1, 'bishal.khatri343@gmail.com', '$2y$10$f.af4a1ISfkdvHqCYCg6tOK03dEqYgTcrbYjUC6qGZziRsyXRJ3W2', '{\"email_show\":0}', '2021-11-02 04:17:23', 'Admin', 'User', NULL, NULL, 1, 1, NULL, 1, NULL, NULL, '', 1, NULL, NULL, '2021-05-29 07:21:15', '2021-11-02 04:17:23'),
+(2, 'npalien4u@gmail.com', '$2y$10$QAkLp0/lcxm9Vzqt5VVAquFwWbITIEddEL3o7IHY0Nxy7aUjXU7WC', NULL, NULL, 'Alien', 'Shrestha', NULL, NULL, 1, 1, NULL, 1, NULL, NULL, '', 1, NULL, NULL, '2021-05-31 10:41:23', '2021-05-31 10:41:23'),
+(3, 'bishal.khatri21343@gmail.com', '$2y$10$hqK8B7C8Yt93frgs2vfJueFLTfNbkfu2ZDBrTHjAR9/Rm9ZYdh6fO', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, 1, NULL, NULL, '', 1, NULL, NULL, '2021-10-24 05:50:12', '2021-10-24 05:50:12');
 
 -- --------------------------------------------------------
 
@@ -3790,7 +4022,1009 @@ INSERT INTO `visitor_trackers` (`id`, `page_type`, `slug`, `url`, `source_url`, 
 (207, 1, NULL, 'http://sportsmala.laravel.lab', 'http://sportsmala.laravel.lab', '192.168.88.100', 'Google Chrome', NULL, '2021-09-20 03:33:48', '2021-09-20 03:33:48'),
 (208, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 06:27:50', '2021-09-24 06:27:50'),
 (209, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/post/create/article', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 06:38:22', '2021-09-24 06:38:22'),
-(210, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/post/edit/article/250', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 06:48:10', '2021-09-24 06:48:10');
+(210, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/post/edit/article/250', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 06:48:10', '2021-09-24 06:48:10'),
+(211, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:33:16', '2021-09-24 09:33:16'),
+(212, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:34:16', '2021-09-24 09:34:16'),
+(213, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/submit/news', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:35:07', '2021-09-24 09:35:07'),
+(214, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:42:23', '2021-09-24 09:42:23'),
+(215, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:49:58', '2021-09-24 09:49:58'),
+(216, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:50:09', '2021-09-24 09:50:09'),
+(217, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:51:10', '2021-09-24 09:51:10'),
+(218, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:52:39', '2021-09-24 09:52:39'),
+(219, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:52:56', '2021-09-24 09:52:56'),
+(220, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:53:00', '2021-09-24 09:53:00'),
+(221, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:55:23', '2021-09-24 09:55:23'),
+(222, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:59:05', '2021-09-24 09:59:05'),
+(223, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 09:59:43', '2021-09-24 09:59:43'),
+(224, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:02:24', '2021-09-24 10:02:24'),
+(225, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:04:25', '2021-09-24 10:04:25'),
+(226, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:04:43', '2021-09-24 10:04:43'),
+(227, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:05:11', '2021-09-24 10:05:11'),
+(228, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:05:26', '2021-09-24 10:05:26'),
+(229, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:05:38', '2021-09-24 10:05:38'),
+(230, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:05:48', '2021-09-24 10:05:48'),
+(231, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:06:29', '2021-09-24 10:06:29'),
+(232, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:07:22', '2021-09-24 10:07:22'),
+(233, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:07:53', '2021-09-24 10:07:53'),
+(234, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:08:16', '2021-09-24 10:08:16'),
+(235, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:08:24', '2021-09-24 10:08:24'),
+(236, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:08:29', '2021-09-24 10:08:29'),
+(237, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:08:35', '2021-09-24 10:08:35'),
+(238, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:08:42', '2021-09-24 10:08:42'),
+(239, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:09:36', '2021-09-24 10:09:36'),
+(240, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:10:36', '2021-09-24 10:10:36'),
+(241, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:10:48', '2021-09-24 10:10:48'),
+(242, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:12:45', '2021-09-24 10:12:45'),
+(243, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:13:15', '2021-09-24 10:13:15'),
+(244, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:13:27', '2021-09-24 10:13:27'),
+(245, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:13:45', '2021-09-24 10:13:45'),
+(246, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:14:00', '2021-09-24 10:14:00'),
+(247, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:15:00', '2021-09-24 10:15:00'),
+(248, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:15:16', '2021-09-24 10:15:16'),
+(249, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:15:26', '2021-09-24 10:15:26'),
+(250, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:16:37', '2021-09-24 10:16:37'),
+(251, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:18:26', '2021-09-24 10:18:26'),
+(252, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:18:38', '2021-09-24 10:18:38'),
+(253, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:19:17', '2021-09-24 10:19:17'),
+(254, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:20:38', '2021-09-24 10:20:38'),
+(255, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:21:02', '2021-09-24 10:21:02'),
+(256, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:21:40', '2021-09-24 10:21:40');
+INSERT INTO `visitor_trackers` (`id`, `page_type`, `slug`, `url`, `source_url`, `ip`, `agent_browser`, `date`, `created_at`, `updated_at`) VALUES
+(257, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:22:12', '2021-09-24 10:22:12'),
+(258, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:22:45', '2021-09-24 10:22:45'),
+(259, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:23:26', '2021-09-24 10:23:26'),
+(260, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:24:13', '2021-09-24 10:24:13'),
+(261, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:24:28', '2021-09-24 10:24:28'),
+(262, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:24:47', '2021-09-24 10:24:47'),
+(263, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:25:02', '2021-09-24 10:25:02'),
+(264, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:25:46', '2021-09-24 10:25:46'),
+(265, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:26:01', '2021-09-24 10:26:01'),
+(266, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:27:29', '2021-09-24 10:27:29'),
+(267, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:28:34', '2021-09-24 10:28:34'),
+(268, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:28:51', '2021-09-24 10:28:51'),
+(269, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:29:03', '2021-09-24 10:29:03'),
+(270, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:29:31', '2021-09-24 10:29:31'),
+(271, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:29:45', '2021-09-24 10:29:45'),
+(272, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:30:55', '2021-09-24 10:30:55'),
+(273, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:31:12', '2021-09-24 10:31:12'),
+(274, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:32:13', '2021-09-24 10:32:13'),
+(275, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:33:28', '2021-09-24 10:33:28'),
+(276, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:35:19', '2021-09-24 10:35:19'),
+(277, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:35:22', '2021-09-24 10:35:22'),
+(278, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:36:03', '2021-09-24 10:36:03'),
+(279, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:36:12', '2021-09-24 10:36:12'),
+(280, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:36:54', '2021-09-24 10:36:54'),
+(281, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:37:26', '2021-09-24 10:37:26'),
+(282, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:37:33', '2021-09-24 10:37:33'),
+(283, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:37:57', '2021-09-24 10:37:57'),
+(284, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:38:04', '2021-09-24 10:38:04'),
+(285, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:38:20', '2021-09-24 10:38:20'),
+(286, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:38:44', '2021-09-24 10:38:44'),
+(287, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:38:55', '2021-09-24 10:38:55'),
+(288, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:40:02', '2021-09-24 10:40:02'),
+(289, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:40:27', '2021-09-24 10:40:27'),
+(290, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:41:50', '2021-09-24 10:41:50'),
+(291, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:42:34', '2021-09-24 10:42:34'),
+(292, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:42:44', '2021-09-24 10:42:44'),
+(293, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:42:56', '2021-09-24 10:42:56'),
+(294, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:43:22', '2021-09-24 10:43:22'),
+(295, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:43:39', '2021-09-24 10:43:39'),
+(296, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:43:46', '2021-09-24 10:43:46'),
+(297, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:44:09', '2021-09-24 10:44:09'),
+(298, 2, 'lorem-ipsum-is-simply-dummy-text-of-the-printing', 'http://127.0.0.1:8000/article/lorem-ipsum-is-simply-dummy-text-of-the-printing', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:44:24', '2021-09-24 10:44:24'),
+(299, 2, 'my-personal-category', 'http://127.0.0.1:8000/article/my-personal-category', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:44:32', '2021-09-24 10:44:32'),
+(300, 2, 'my-personal-category', 'http://127.0.0.1:8000/article/my-personal-category', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:45:10', '2021-09-24 10:45:10'),
+(301, 2, 'my-personal-category', 'http://127.0.0.1:8000/article/my-personal-category', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:45:31', '2021-09-24 10:45:31'),
+(302, 2, 'my-personal-category', 'http://127.0.0.1:8000/article/my-personal-category', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:46:48', '2021-09-24 10:46:48'),
+(303, 2, 'my-personal-category', 'http://127.0.0.1:8000/article/my-personal-category', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:47:00', '2021-09-24 10:47:00'),
+(304, 2, 'my-personal-category', 'http://127.0.0.1:8000/article/my-personal-category', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 10:47:11', '2021-09-24 10:47:11'),
+(305, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/my-personal-category', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 10:53:35', '2021-09-24 10:53:35'),
+(306, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 11:41:27', '2021-09-24 11:41:27'),
+(307, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:25:23', '2021-09-24 13:25:23'),
+(308, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:25:29', '2021-09-24 13:25:29'),
+(309, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:25:40', '2021-09-24 13:25:40'),
+(310, 2, 'nba-playoff-schedule-2021:-full-bracket,-dates,-times,-tv-channels-for-play-in,-playoff-games', 'http://127.0.0.1:8000/article/nba-playoff-schedule-2021:-full-bracket,-dates,-times,-tv-channels-for-play-in,-playoff-games', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 13:25:49', '2021-09-24 13:25:49'),
+(311, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/nba-playoff-schedule-2021:-full-bracket,-dates,-times,-tv-channels-for-play-in,-playoff-games', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 13:25:54', '2021-09-24 13:25:54'),
+(312, 2, 'white-sox-fans-love-team\'s-\'city-connect\'-jersey,-have-jokes-about-tony-la-russa', 'http://127.0.0.1:8000/article/white-sox-fans-love-team%27s-%27city-connect%27-jersey,-have-jokes-about-tony-la-russa', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 13:25:58', '2021-09-24 13:25:58'),
+(313, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/white-sox-fans-love-team%27s-%27city-connect%27-jersey,-have-jokes-about-tony-la-russa', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:26:08', '2021-09-24 13:26:08'),
+(314, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 13:26:17', '2021-09-24 13:26:17'),
+(315, 2, 'roman-quinn-injury-update:-phillies-outfielder-exits-game-with-achilles-injury-after-scoring-run', 'http://127.0.0.1:8000/article/roman-quinn-injury-update:-phillies-outfielder-exits-game-with-achilles-injury-after-scoring-run', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 13:26:25', '2021-09-24 13:26:25'),
+(316, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:26:47', '2021-09-24 13:26:47'),
+(317, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:27:16', '2021-09-24 13:27:16'),
+(318, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:27:30', '2021-09-24 13:27:30'),
+(319, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:27:54', '2021-09-24 13:27:54'),
+(320, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:28:11', '2021-09-24 13:28:11'),
+(321, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:28:14', '2021-09-24 13:28:14'),
+(322, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:28:21', '2021-09-24 13:28:21'),
+(323, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:28:24', '2021-09-24 13:28:24'),
+(324, 2, 'welcome-to-re-knowledge-communityasfasdf', 'http://127.0.0.1:8000/article/welcome-to-re-knowledge-communityasfasdf', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 13:28:31', '2021-09-24 13:28:31'),
+(325, 2, 'welcome-to-re-knowledge-communityasfasdf', 'http://127.0.0.1:8000/article/welcome-to-re-knowledge-communityasfasdf', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-24', '2021-09-24 13:28:40', '2021-09-24 13:28:40'),
+(326, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/welcome-to-re-knowledge-communityasfasdf', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:28:44', '2021-09-24 13:28:44'),
+(327, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/welcome-to-re-knowledge-communityasfasdf', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:35:56', '2021-09-24 13:35:56'),
+(328, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/welcome-to-re-knowledge-communityasfasdf', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:36:19', '2021-09-24 13:36:19'),
+(329, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/welcome-to-re-knowledge-communityasfasdf', '127.0.0.1', 'Google Chrome', NULL, '2021-09-24 13:36:29', '2021-09-24 13:36:29'),
+(330, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/todo', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 04:59:12', '2021-09-26 04:59:12'),
+(331, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/todo', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:03:44', '2021-09-26 05:03:44'),
+(332, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/todo', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:04:13', '2021-09-26 05:04:13'),
+(333, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/todo', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:04:17', '2021-09-26 05:04:17'),
+(334, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/todo', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:04:46', '2021-09-26 05:04:46'),
+(335, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/todo', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:05:13', '2021-09-26 05:05:13'),
+(336, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/todo', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:05:31', '2021-09-26 05:05:31'),
+(337, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/todo', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:05:49', '2021-09-26 05:05:49'),
+(338, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/todo', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:05:59', '2021-09-26 05:05:59'),
+(339, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/register', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:06:10', '2021-09-26 05:06:10'),
+(340, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/register', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:06:40', '2021-09-26 05:06:40'),
+(341, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/register', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:07:00', '2021-09-26 05:07:00'),
+(342, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/register', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:07:12', '2021-09-26 05:07:12'),
+(343, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/register', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:07:39', '2021-09-26 05:07:39'),
+(344, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:08:13', '2021-09-26 05:08:13'),
+(345, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:11:29', '2021-09-26 05:11:29'),
+(346, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:11:59', '2021-09-26 05:11:59'),
+(347, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:13:04', '2021-09-26 05:13:04'),
+(348, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:13:22', '2021-09-26 05:13:22'),
+(349, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:13:37', '2021-09-26 05:13:37'),
+(350, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:13:50', '2021-09-26 05:13:50'),
+(351, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:14:00', '2021-09-26 05:14:00'),
+(352, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:14:43', '2021-09-26 05:14:43'),
+(353, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:14:53', '2021-09-26 05:14:53'),
+(354, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:15:14', '2021-09-26 05:15:14'),
+(355, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:15:24', '2021-09-26 05:15:24'),
+(356, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:16:01', '2021-09-26 05:16:01'),
+(357, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:16:23', '2021-09-26 05:16:23'),
+(358, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:16:32', '2021-09-26 05:16:32'),
+(359, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:17:23', '2021-09-26 05:17:23'),
+(360, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:17:32', '2021-09-26 05:17:32'),
+(361, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:17:42', '2021-09-26 05:17:42'),
+(362, 1, NULL, 'http://localhost:8000', 'http://localhost:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:22:41', '2021-09-26 05:22:41'),
+(363, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/login', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 05:26:36', '2021-09-26 05:26:36'),
+(364, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:35:31', '2021-09-26 05:35:31'),
+(365, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:37:23', '2021-09-26 05:37:23'),
+(366, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:41:17', '2021-09-26 05:41:17'),
+(367, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:42:51', '2021-09-26 05:42:51'),
+(368, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:43:12', '2021-09-26 05:43:12'),
+(369, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:44:17', '2021-09-26 05:44:17'),
+(370, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:44:38', '2021-09-26 05:44:38'),
+(371, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:45:07', '2021-09-26 05:45:07'),
+(372, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 05:45:24', '2021-09-26 05:45:24'),
+(373, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public', '::1', 'Google Chrome', NULL, '2021-09-26 05:47:37', '2021-09-26 05:47:37'),
+(374, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:02:46', '2021-09-26 06:02:46'),
+(375, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public', '::1', 'Google Chrome', NULL, '2021-09-26 06:07:03', '2021-09-26 06:07:03'),
+(376, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:07:09', '2021-09-26 06:07:09'),
+(377, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public', '::1', 'Google Chrome', NULL, '2021-09-26 06:10:30', '2021-09-26 06:10:30'),
+(378, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:10:31', '2021-09-26 06:10:31'),
+(379, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:10:51', '2021-09-26 06:10:51'),
+(380, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:11:21', '2021-09-26 06:11:21'),
+(381, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:12:28', '2021-09-26 06:12:28'),
+(382, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:12:35', '2021-09-26 06:12:35'),
+(383, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:13:33', '2021-09-26 06:13:33'),
+(384, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:13:59', '2021-09-26 06:13:59'),
+(385, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:24:10', '2021-09-26 06:24:10'),
+(386, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/post/manually-feeding/3', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:26:08', '2021-09-26 06:26:08'),
+(387, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:26:09', '2021-09-26 06:26:09'),
+(388, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/post/rss-feeds', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:27:17', '2021-09-26 06:27:17'),
+(389, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/post/rss-feeds', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:27:24', '2021-09-26 06:27:24'),
+(390, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/menu-item', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:28:43', '2021-09-26 06:28:43'),
+(391, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/menu-item', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:35:12', '2021-09-26 06:35:12'),
+(392, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/menu-item', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 06:36:12', '2021-09-26 06:36:12'),
+(393, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:33:29', '2021-09-26 07:33:29'),
+(394, 1, NULL, 'http://localhost/sportsmala', 'http://localhost/sportsmala', '::1', 'Google Chrome', NULL, '2021-09-26 07:34:43', '2021-09-26 07:34:43'),
+(395, 1, NULL, 'http://localhost/sportsmala', 'http://localhost/sportsmala', '::1', 'Google Chrome', NULL, '2021-09-26 07:34:51', '2021-09-26 07:34:51'),
+(396, 1, NULL, 'http://localhost/sportsmala', 'http://localhost/sportsmala', '::1', 'Google Chrome', NULL, '2021-09-26 07:34:56', '2021-09-26 07:34:56'),
+(397, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:41:53', '2021-09-26 07:41:53'),
+(398, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:41:53', '2021-09-26 07:41:53'),
+(399, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:42:15', '2021-09-26 07:42:15'),
+(400, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:42:43', '2021-09-26 07:42:43'),
+(401, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:43:25', '2021-09-26 07:43:25'),
+(402, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:45:00', '2021-09-26 07:45:00'),
+(403, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:45:07', '2021-09-26 07:45:07'),
+(404, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:45:40', '2021-09-26 07:45:40'),
+(405, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:46:04', '2021-09-26 07:46:04'),
+(406, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:46:07', '2021-09-26 07:46:07'),
+(407, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:47:27', '2021-09-26 07:47:27'),
+(408, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:47:44', '2021-09-26 07:47:44'),
+(409, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:48:15', '2021-09-26 07:48:15'),
+(410, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:51:34', '2021-09-26 07:51:34'),
+(411, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:51:45', '2021-09-26 07:51:45'),
+(412, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:51:53', '2021-09-26 07:51:53'),
+(413, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:52:07', '2021-09-26 07:52:07'),
+(414, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:52:30', '2021-09-26 07:52:30'),
+(415, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:52:35', '2021-09-26 07:52:35'),
+(416, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:52:42', '2021-09-26 07:52:42'),
+(417, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:52:49', '2021-09-26 07:52:49'),
+(418, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:53:01', '2021-09-26 07:53:01'),
+(419, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:53:12', '2021-09-26 07:53:12'),
+(420, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:53:26', '2021-09-26 07:53:26'),
+(421, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 07:58:48', '2021-09-26 07:58:48'),
+(422, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:03:10', '2021-09-26 08:03:10'),
+(423, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:03:39', '2021-09-26 08:03:39'),
+(424, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:05:57', '2021-09-26 08:05:57'),
+(425, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:06:48', '2021-09-26 08:06:48'),
+(426, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:06:57', '2021-09-26 08:06:57'),
+(427, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:07:38', '2021-09-26 08:07:38'),
+(428, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:07:57', '2021-09-26 08:07:57'),
+(429, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:08:16', '2021-09-26 08:08:16'),
+(430, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:08:29', '2021-09-26 08:08:29'),
+(431, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:08:48', '2021-09-26 08:08:48'),
+(432, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:09:06', '2021-09-26 08:09:06'),
+(433, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:09:07', '2021-09-26 08:09:07'),
+(434, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:09:33', '2021-09-26 08:09:33'),
+(435, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:09:44', '2021-09-26 08:09:44'),
+(436, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:09:49', '2021-09-26 08:09:49'),
+(437, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:10:15', '2021-09-26 08:10:15'),
+(438, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:10:29', '2021-09-26 08:10:29'),
+(439, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:11:19', '2021-09-26 08:11:19'),
+(440, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 08:12:22', '2021-09-26 08:12:22'),
+(441, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/search?search=f', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 09:19:19', '2021-09-26 09:19:19'),
+(442, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 09:32:09', '2021-09-26 09:32:09'),
+(443, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 09:39:29', '2021-09-26 09:39:29'),
+(444, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 09:39:47', '2021-09-26 09:39:47'),
+(445, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/menu-item', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 09:58:38', '2021-09-26 09:58:38'),
+(446, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:10:06', '2021-09-26 10:10:06'),
+(447, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:13:29', '2021-09-26 10:13:29'),
+(448, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public', '::1', 'Google Chrome', NULL, '2021-09-26 10:14:28', '2021-09-26 10:14:28'),
+(449, 1, NULL, 'http://localhost/sportsmala-old', 'http://localhost/sportsmala-old/public', '::1', 'Google Chrome', NULL, '2021-09-26 10:14:31', '2021-09-26 10:14:31'),
+(450, 2, NULL, 'http://localhost/sportsmala-old/public/category/world', 'http://localhost/sportsmala-old/public/', '::1', 'Google Chrome', NULL, '2021-09-26 10:14:49', '2021-09-26 10:14:49'),
+(451, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:17:15', '2021-09-26 10:17:15'),
+(452, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:18:18', '2021-09-26 10:18:18'),
+(453, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:18:33', '2021-09-26 10:18:33'),
+(454, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:20:03', '2021-09-26 10:20:03'),
+(455, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:21:07', '2021-09-26 10:21:07'),
+(456, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:22:31', '2021-09-26 10:22:31'),
+(457, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:24:20', '2021-09-26 10:24:20'),
+(458, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:24:49', '2021-09-26 10:24:49'),
+(459, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:25:57', '2021-09-26 10:25:57'),
+(460, 2, NULL, 'http://127.0.0.1:8000/date/2021-05-30', 'http://127.0.0.1:8000/category/world', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:26:03', '2021-09-26 10:26:03'),
+(461, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/category/world', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 10:26:07', '2021-09-26 10:26:07'),
+(462, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:26:46', '2021-09-26 10:26:46'),
+(463, 2, NULL, 'http://127.0.0.1:8000/date/2021-05-30', 'http://127.0.0.1:8000/category/world', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:35:55', '2021-09-26 10:35:55'),
+(464, 2, NULL, 'http://127.0.0.1:8000/date/2021-05-30', 'http://127.0.0.1:8000/category/world', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:36:52', '2021-09-26 10:36:52'),
+(465, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/date/2021-05-30', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:37:12', '2021-09-26 10:37:12'),
+(466, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/date/2021-05-30', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:39:20', '2021-09-26 10:39:20'),
+(467, 2, NULL, 'http://127.0.0.1:8000/date/2021-05-29', 'http://127.0.0.1:8000/category/world', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:39:29', '2021-09-26 10:39:29'),
+(468, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/date/2021-05-29', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:39:33', '2021-09-26 10:39:33'),
+(469, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/date/2021-05-29', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:40:36', '2021-09-26 10:40:36'),
+(470, 2, NULL, 'http://127.0.0.1:8000/category/asia', 'http://127.0.0.1:8000/category/world', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:40:54', '2021-09-26 10:40:54'),
+(471, 2, NULL, 'http://127.0.0.1:8000/category/asia', 'http://127.0.0.1:8000/category/world', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:40:54', '2021-09-26 10:40:54'),
+(472, 2, NULL, 'http://127.0.0.1:8000/category/volleyball', 'http://127.0.0.1:8000/category/asia', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:41:06', '2021-09-26 10:41:06'),
+(473, 2, NULL, 'http://127.0.0.1:8000/category/dandibiyo', 'http://127.0.0.1:8000/category/volleyball', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:41:21', '2021-09-26 10:41:21'),
+(474, 2, 'nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', 'http://127.0.0.1:8000/category/dandibiyo', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 10:41:26', '2021-09-26 10:41:26'),
+(475, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:44:10', '2021-09-26 10:44:10'),
+(476, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:47:15', '2021-09-26 10:47:15'),
+(477, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/category/world', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:47:21', '2021-09-26 10:47:21'),
+(478, 2, NULL, 'http://127.0.0.1:8000/category/asia', 'http://127.0.0.1:8000/category/world', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:47:27', '2021-09-26 10:47:27'),
+(479, 2, NULL, 'http://127.0.0.1:8000/category/dandibiyo', 'http://127.0.0.1:8000/category/asia', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:47:31', '2021-09-26 10:47:31'),
+(480, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/category/dandibiyo', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:47:35', '2021-09-26 10:47:35'),
+(481, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/category/dandibiyo', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:48:43', '2021-09-26 10:48:43'),
+(482, 2, 'nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', 'http://127.0.0.1:8000/category/dandibiyo', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 10:54:58', '2021-09-26 10:54:58'),
+(483, 2, NULL, 'http://127.0.0.1:8000/category/football', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:55:14', '2021-09-26 10:55:14'),
+(484, 2, NULL, 'http://127.0.0.1:8000/category/football', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:55:50', '2021-09-26 10:55:50'),
+(485, 2, NULL, 'http://127.0.0.1:8000/category/football', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:56:13', '2021-09-26 10:56:13'),
+(486, 2, NULL, 'http://127.0.0.1:8000/category/football', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:56:38', '2021-09-26 10:56:38'),
+(487, 2, NULL, 'http://127.0.0.1:8000/category/football', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:56:49', '2021-09-26 10:56:49'),
+(488, 2, NULL, 'http://127.0.0.1:8000/category/football', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:57:09', '2021-09-26 10:57:09'),
+(489, 2, NULL, 'http://127.0.0.1:8000/category/football', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:57:23', '2021-09-26 10:57:23'),
+(490, 2, NULL, 'http://127.0.0.1:8000/date/2021-09-26', 'http://127.0.0.1:8000/category/football', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:57:37', '2021-09-26 10:57:37'),
+(491, 2, NULL, 'http://127.0.0.1:8000/date/2021-09-26', 'http://127.0.0.1:8000/category/football', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:57:54', '2021-09-26 10:57:54'),
+(492, 2, 'boxing-lost-its-biggest-fight-in-fury-joshua-but-gained-a-star-in-oleksandr-usyk', 'http://127.0.0.1:8000/article/boxing-lost-its-biggest-fight-in-fury-joshua-but-gained-a-star-in-oleksandr-usyk', 'http://127.0.0.1:8000/date/2021-09-26', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 10:58:01', '2021-09-26 10:58:01'),
+(493, 2, 'nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', 'http://127.0.0.1:8000/article/boxing-lost-its-biggest-fight-in-fury-joshua-but-gained-a-star-in-oleksandr-usyk', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 10:58:07', '2021-09-26 10:58:07'),
+(494, 2, 'white-sox-fans-love-team\'s-\'city-connect\'-jersey,-have-jokes-about-tony-la-russa', 'http://127.0.0.1:8000/article/white-sox-fans-love-team%27s-%27city-connect%27-jersey,-have-jokes-about-tony-la-russa', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 10:58:11', '2021-09-26 10:58:11'),
+(495, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/white-sox-fans-love-team%27s-%27city-connect%27-jersey,-have-jokes-about-tony-la-russa', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:58:16', '2021-09-26 10:58:16');
+INSERT INTO `visitor_trackers` (`id`, `page_type`, `slug`, `url`, `source_url`, `ip`, `agent_browser`, `date`, `created_at`, `updated_at`) VALUES
+(496, 2, 'nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', 'http://127.0.0.1:8000/article/nba-playoff-bracket-2021:-updated-tv-schedule,-scores,-results-for-round-1', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 10:58:22', '2021-09-26 10:58:22'),
+(497, 2, 'nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/post/edit/article/272', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 10:59:17', '2021-09-26 10:59:17'),
+(498, 2, NULL, 'http://127.0.0.1:8000/tags/sports', 'http://127.0.0.1:8000/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 10:59:21', '2021-09-26 10:59:21'),
+(499, 2, NULL, 'http://127.0.0.1:8000/tags/sports', 'http://127.0.0.1:8000/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:01:28', '2021-09-26 11:01:28'),
+(500, 2, NULL, 'http://127.0.0.1:8000/tags/football', 'http://127.0.0.1:8000/tags/sports', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:01:38', '2021-09-26 11:01:38'),
+(501, 2, NULL, 'http://127.0.0.1:8000/tags/cricket', 'http://127.0.0.1:8000/tags/football', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:01:47', '2021-09-26 11:01:47'),
+(502, 2, NULL, 'http://127.0.0.1:8000/tags/sports', 'http://127.0.0.1:8000/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:02:19', '2021-09-26 11:02:19'),
+(503, 2, NULL, 'http://127.0.0.1:8000/tags/sports', 'http://127.0.0.1:8000/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:02:25', '2021-09-26 11:02:25'),
+(504, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/tags/sports', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:02:41', '2021-09-26 11:02:41'),
+(505, 2, NULL, 'http://127.0.0.1:8000/tags/spotrs', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:02:45', '2021-09-26 11:02:45'),
+(506, 2, NULL, 'http://127.0.0.1:8000/tags/sports', 'http://127.0.0.1:8000/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:03:03', '2021-09-26 11:03:03'),
+(507, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tags/sports', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:08:58', '2021-09-26 11:08:58'),
+(508, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:09:02', '2021-09-26 11:09:02'),
+(509, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:10:14', '2021-09-26 11:10:14'),
+(510, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:11:56', '2021-09-26 11:11:56'),
+(511, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:15:34', '2021-09-26 11:15:34'),
+(512, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:16:09', '2021-09-26 11:16:09'),
+(513, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:16:23', '2021-09-26 11:16:23'),
+(514, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:16:38', '2021-09-26 11:16:38'),
+(515, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:17:14', '2021-09-26 11:17:14'),
+(516, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:17:32', '2021-09-26 11:17:32'),
+(517, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:18:00', '2021-09-26 11:18:00'),
+(518, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:18:27', '2021-09-26 11:18:27'),
+(519, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:18:35', '2021-09-26 11:18:35'),
+(520, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:18:57', '2021-09-26 11:18:57'),
+(521, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:19:54', '2021-09-26 11:19:54'),
+(522, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-09-26', '2021-09-26 11:20:01', '2021-09-26 11:20:01'),
+(523, 2, NULL, 'http://127.0.0.1:8000/tags/sports', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:20:06', '2021-09-26 11:20:06'),
+(524, 2, NULL, 'http://127.0.0.1:8000/tags/sports', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:20:36', '2021-09-26 11:20:36'),
+(525, 2, NULL, 'http://127.0.0.1:8000/tags/sports', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:20:51', '2021-09-26 11:20:51'),
+(526, 2, NULL, 'http://127.0.0.1:8000/tags/sports', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:21:01', '2021-09-26 11:21:01'),
+(527, 2, NULL, 'http://127.0.0.1:8000/date/2021-09-26', 'http://127.0.0.1:8000/tags/sports', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:21:25', '2021-09-26 11:21:25'),
+(528, 2, NULL, 'http://127.0.0.1:8000/category/football', 'http://127.0.0.1:8000/date/2021-09-26', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:21:30', '2021-09-26 11:21:30'),
+(529, 2, NULL, 'http://127.0.0.1:8000/category/football', 'http://127.0.0.1:8000/date/2021-09-26', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:21:47', '2021-09-26 11:21:47'),
+(530, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public/category/undefined', '::1', 'Google Chrome', NULL, '2021-09-26 11:46:18', '2021-09-26 11:46:18'),
+(531, 2, 'nba-playoff-schedule-2021:-full-bracket,-dates,-times,-tv-channels-for-play-in,-playoff-games', 'http://localhost/sportsmala-old/public/article/nba-playoff-schedule-2021:-full-bracket,-dates,-times,-tv-channels-for-play-in,-playoff-games', 'http://localhost/sportsmala-old/public/', '::1', 'Google Chrome', '2021-09-26', '2021-09-26 11:46:24', '2021-09-26 11:46:24'),
+(532, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public/article/nba-playoff-schedule-2021:-full-bracket,-dates,-times,-tv-channels-for-play-in,-playoff-games', '::1', 'Google Chrome', NULL, '2021-09-26 11:46:30', '2021-09-26 11:46:30'),
+(533, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public/', '::1', 'Google Chrome', NULL, '2021-09-26 11:46:45', '2021-09-26 11:46:45'),
+(534, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public/', '::1', 'Google Chrome', NULL, '2021-09-26 11:46:48', '2021-09-26 11:46:48'),
+(535, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public/', '::1', 'Google Chrome', NULL, '2021-09-26 11:46:51', '2021-09-26 11:46:51'),
+(536, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/category/football', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:47:04', '2021-09-26 11:47:04'),
+(537, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/my-profile', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:47:26', '2021-09-26 11:47:26'),
+(538, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/gallery/image-albums', '127.0.0.1', 'Google Chrome', NULL, '2021-09-26 11:58:01', '2021-09-26 11:58:01'),
+(539, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-27 03:40:26', '2021-09-27 03:40:26'),
+(540, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public', '::1', 'Google Chrome', NULL, '2021-09-27 03:45:56', '2021-09-27 03:45:56'),
+(541, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/admin/page/edit/5', '127.0.0.1', 'Google Chrome', NULL, '2021-09-27 03:49:20', '2021-09-27 03:49:20'),
+(542, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-28 05:45:27', '2021-09-28 05:45:27'),
+(543, 2, NULL, 'http://127.0.0.1:8000/date/2021-09-26', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-09-28 05:47:01', '2021-09-28 05:47:01'),
+(544, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/author-profile/1', '127.0.0.1', 'Google Chrome', NULL, '2021-09-28 05:47:45', '2021-09-28 05:47:45'),
+(545, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-09-28 05:47:50', '2021-09-28 05:47:50'),
+(546, 1, NULL, 'http://localhost:9000', 'http://localhost:9000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-04 09:53:37', '2021-10-04 09:53:37'),
+(547, 1, NULL, 'http://localhost:9000', 'http://localhost:9000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-04 09:53:40', '2021-10-04 09:53:40'),
+(548, 1, NULL, 'http://localhost:9000', 'http://localhost:9000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-04 10:02:17', '2021-10-04 10:02:17'),
+(549, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 06:49:33', '2021-10-05 06:49:33'),
+(550, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/post/edit/article/258', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 06:55:58', '2021-10-05 06:55:58'),
+(551, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 07:02:51', '2021-10-05 07:02:51'),
+(552, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:17:14', '2021-10-05 08:17:14'),
+(553, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:17:26', '2021-10-05 08:17:26'),
+(554, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/sections', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:23:57', '2021-10-05 08:23:57'),
+(555, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:25:02', '2021-10-05 08:25:02'),
+(556, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:25:09', '2021-10-05 08:25:09'),
+(557, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:25:19', '2021-10-05 08:25:19'),
+(558, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:25:27', '2021-10-05 08:25:27'),
+(559, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:25:31', '2021-10-05 08:25:31'),
+(560, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:27:52', '2021-10-05 08:27:52'),
+(561, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:28:53', '2021-10-05 08:28:53'),
+(562, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:29:24', '2021-10-05 08:29:24'),
+(563, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-05', '2021-10-05 08:29:40', '2021-10-05 08:29:40'),
+(564, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:29:45', '2021-10-05 08:29:45'),
+(565, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:34:18', '2021-10-05 08:34:18'),
+(566, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:35:38', '2021-10-05 08:35:38'),
+(567, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:38:28', '2021-10-05 08:38:28'),
+(568, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:43:01', '2021-10-05 08:43:01'),
+(569, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:45:04', '2021-10-05 08:45:04'),
+(570, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 08:52:50', '2021-10-05 08:52:50'),
+(571, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:12:35', '2021-10-05 09:12:35'),
+(572, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:12:59', '2021-10-05 09:12:59'),
+(573, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:17:31', '2021-10-05 09:17:31'),
+(574, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:17:55', '2021-10-05 09:17:55'),
+(575, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:18:05', '2021-10-05 09:18:05'),
+(576, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:18:17', '2021-10-05 09:18:17'),
+(577, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:18:29', '2021-10-05 09:18:29'),
+(578, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:18:35', '2021-10-05 09:18:35'),
+(579, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:18:42', '2021-10-05 09:18:42'),
+(580, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public', '::1', 'Google Chrome', NULL, '2021-10-05 09:21:10', '2021-10-05 09:21:10'),
+(581, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:23:51', '2021-10-05 09:23:51'),
+(582, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:37:02', '2021-10-05 09:37:02'),
+(583, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:41:30', '2021-10-05 09:41:30'),
+(584, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:41:44', '2021-10-05 09:41:44'),
+(585, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:42:00', '2021-10-05 09:42:00'),
+(586, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:45:28', '2021-10-05 09:45:28'),
+(587, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:45:39', '2021-10-05 09:45:39'),
+(588, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:47:44', '2021-10-05 09:47:44'),
+(589, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:48:03', '2021-10-05 09:48:03'),
+(590, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:48:46', '2021-10-05 09:48:46'),
+(591, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:50:01', '2021-10-05 09:50:01'),
+(592, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:50:29', '2021-10-05 09:50:29'),
+(593, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:50:57', '2021-10-05 09:50:57'),
+(594, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:51:50', '2021-10-05 09:51:50'),
+(595, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:52:21', '2021-10-05 09:52:21'),
+(596, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:52:32', '2021-10-05 09:52:32'),
+(597, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/champions-league-prize-money-breakdown:-how-much-do-the-winners-get-in-2021', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:56:29', '2021-10-05 09:56:29'),
+(598, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:58:49', '2021-10-05 09:58:49'),
+(599, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:59:38', '2021-10-05 09:59:38'),
+(600, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 09:59:49', '2021-10-05 09:59:49'),
+(601, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:00:01', '2021-10-05 10:00:01'),
+(602, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:00:21', '2021-10-05 10:00:21'),
+(603, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:00:56', '2021-10-05 10:00:56'),
+(604, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:01:27', '2021-10-05 10:01:27'),
+(605, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:02:07', '2021-10-05 10:02:07'),
+(606, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:02:26', '2021-10-05 10:02:26'),
+(607, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:02:36', '2021-10-05 10:02:36'),
+(608, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:04:07', '2021-10-05 10:04:07'),
+(609, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:04:19', '2021-10-05 10:04:19'),
+(610, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:04:41', '2021-10-05 10:04:41'),
+(611, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:04:49', '2021-10-05 10:04:49'),
+(612, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:04:56', '2021-10-05 10:04:56'),
+(613, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:06:17', '2021-10-05 10:06:17'),
+(614, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:06:28', '2021-10-05 10:06:28'),
+(615, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:06:39', '2021-10-05 10:06:39'),
+(616, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:07:02', '2021-10-05 10:07:02'),
+(617, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:07:19', '2021-10-05 10:07:19'),
+(618, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:07:38', '2021-10-05 10:07:38'),
+(619, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:07:58', '2021-10-05 10:07:58'),
+(620, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:08:11', '2021-10-05 10:08:11'),
+(621, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:08:25', '2021-10-05 10:08:25'),
+(622, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:08:39', '2021-10-05 10:08:39'),
+(623, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:08:59', '2021-10-05 10:08:59'),
+(624, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:10:49', '2021-10-05 10:10:49'),
+(625, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:11:25', '2021-10-05 10:11:25'),
+(626, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:11:55', '2021-10-05 10:11:55'),
+(627, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:12:12', '2021-10-05 10:12:12'),
+(628, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:12:17', '2021-10-05 10:12:17'),
+(629, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:12:31', '2021-10-05 10:12:31'),
+(630, 2, NULL, 'http://127.0.0.1:8000/date/2021-09-26', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:12:47', '2021-10-05 10:12:47'),
+(631, 2, NULL, 'http://127.0.0.1:8000/date/2021-05-29', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:13:00', '2021-10-05 10:13:00'),
+(632, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/date/2021-05-29', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:13:51', '2021-10-05 10:13:51'),
+(633, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-05', '2021-10-05 10:13:54', '2021-10-05 10:13:54'),
+(634, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/sections', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:14:08', '2021-10-05 10:14:08'),
+(635, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/sections', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:14:18', '2021-10-05 10:14:18'),
+(636, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:14:49', '2021-10-05 10:14:49'),
+(637, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/sections', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:14:57', '2021-10-05 10:14:57'),
+(638, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/sections', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:15:16', '2021-10-05 10:15:16'),
+(639, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:15:39', '2021-10-05 10:15:39'),
+(640, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:16:58', '2021-10-05 10:16:58'),
+(641, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:18:12', '2021-10-05 10:18:12'),
+(642, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:18:34', '2021-10-05 10:18:34'),
+(643, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:18:55', '2021-10-05 10:18:55'),
+(644, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:19:02', '2021-10-05 10:19:02'),
+(645, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:19:11', '2021-10-05 10:19:11'),
+(646, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:19:19', '2021-10-05 10:19:19'),
+(647, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:19:40', '2021-10-05 10:19:40'),
+(648, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 10:26:38', '2021-10-05 10:26:38'),
+(649, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-05', '2021-10-05 10:26:43', '2021-10-05 10:26:43'),
+(650, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', '2021-10-05', '2021-10-05 10:26:48', '2021-10-05 10:26:48'),
+(651, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', '2021-10-05', '2021-10-05 11:21:48', '2021-10-05 11:21:48'),
+(652, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:21:53', '2021-10-05 11:21:53'),
+(653, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:21:58', '2021-10-05 11:21:58'),
+(654, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:21:59', '2021-10-05 11:21:59'),
+(655, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:22:14', '2021-10-05 11:22:14'),
+(656, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:22:37', '2021-10-05 11:22:37'),
+(657, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:22:43', '2021-10-05 11:22:43'),
+(658, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:22:55', '2021-10-05 11:22:55'),
+(659, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:23:12', '2021-10-05 11:23:12'),
+(660, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:23:28', '2021-10-05 11:23:28'),
+(661, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:23:53', '2021-10-05 11:23:53'),
+(662, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:24:03', '2021-10-05 11:24:03'),
+(663, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:24:13', '2021-10-05 11:24:13'),
+(664, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:24:41', '2021-10-05 11:24:41'),
+(665, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:24:51', '2021-10-05 11:24:51'),
+(666, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:25:17', '2021-10-05 11:25:17'),
+(667, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:25:36', '2021-10-05 11:25:36'),
+(668, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:25:47', '2021-10-05 11:25:47'),
+(669, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:26:02', '2021-10-05 11:26:02'),
+(670, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:27:10', '2021-10-05 11:27:10'),
+(671, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-05 11:27:26', '2021-10-05 11:27:26'),
+(672, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 03:44:23', '2021-10-06 03:44:23'),
+(673, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 03:45:13', '2021-10-06 03:45:13'),
+(674, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/sections', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 03:45:55', '2021-10-06 03:45:55'),
+(675, 1, NULL, 'http://localhost/sportsmala-old/public', 'http://localhost/sportsmala-old/public', '::1', 'Google Chrome', NULL, '2021-10-06 04:12:08', '2021-10-06 04:12:08'),
+(676, 1, NULL, 'http://localhost/sportsmala-old/public/np', 'http://localhost/sportsmala-old/public/', '::1', 'Google Chrome', NULL, '2021-10-06 04:12:17', '2021-10-06 04:12:17'),
+(677, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:13:37', '2021-10-06 04:13:37'),
+(678, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:13:41', '2021-10-06 04:13:41'),
+(679, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:13:57', '2021-10-06 04:13:57'),
+(680, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:14:03', '2021-10-06 04:14:03'),
+(681, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/?np=', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:15:42', '2021-10-06 04:15:42'),
+(682, 1, NULL, 'http://127.0.0.1:9000', 'http://127.0.0.1:9000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:15:46', '2021-10-06 04:15:46'),
+(683, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:15:50', '2021-10-06 04:15:50'),
+(684, 1, NULL, 'http://127.0.0.1:9000', 'http://127.0.0.1:9000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:16:02', '2021-10-06 04:16:02'),
+(685, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:16:06', '2021-10-06 04:16:06'),
+(686, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:16:08', '2021-10-06 04:16:08'),
+(687, 1, NULL, 'http://127.0.0.1:9000', 'http://127.0.0.1:9000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:16:14', '2021-10-06 04:16:14'),
+(688, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:17:47', '2021-10-06 04:17:47'),
+(689, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:18:40', '2021-10-06 04:18:40'),
+(690, 1, NULL, 'http://127.0.0.1:9000', 'http://127.0.0.1:9000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:18:51', '2021-10-06 04:18:51'),
+(691, 1, NULL, 'http://127.0.0.1:9000', 'http://127.0.0.1:9000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:19:02', '2021-10-06 04:19:02'),
+(692, 1, NULL, 'http://127.0.0.1:9000', 'http://127.0.0.1:9000/en', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:19:07', '2021-10-06 04:19:07'),
+(693, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:19:15', '2021-10-06 04:19:15'),
+(694, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:19:21', '2021-10-06 04:19:21'),
+(695, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:19:24', '2021-10-06 04:19:24'),
+(696, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:19:28', '2021-10-06 04:19:28'),
+(697, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:19:38', '2021-10-06 04:19:38'),
+(698, 1, NULL, 'http://127.0.0.1:9000', 'http://127.0.0.1:9000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:19:42', '2021-10-06 04:19:42'),
+(699, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:19:49', '2021-10-06 04:19:49'),
+(700, 1, NULL, 'http://127.0.0.1:9000', 'http://127.0.0.1:9000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:21:13', '2021-10-06 04:21:13'),
+(701, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:24:33', '2021-10-06 04:24:33'),
+(702, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:24:49', '2021-10-06 04:24:49'),
+(703, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:25:10', '2021-10-06 04:25:10'),
+(704, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/?np=', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:25:13', '2021-10-06 04:25:13'),
+(705, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/?np=', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:25:19', '2021-10-06 04:25:19'),
+(706, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:25:37', '2021-10-06 04:25:37'),
+(707, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:26:10', '2021-10-06 04:26:10'),
+(708, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:26:49', '2021-10-06 04:26:49'),
+(709, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:26:53', '2021-10-06 04:26:53'),
+(710, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:29:03', '2021-10-06 04:29:03'),
+(711, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:29:06', '2021-10-06 04:29:06'),
+(712, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:29:18', '2021-10-06 04:29:18'),
+(713, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:29:54', '2021-10-06 04:29:54'),
+(714, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:29:57', '2021-10-06 04:29:57'),
+(715, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:33:52', '2021-10-06 04:33:52'),
+(716, 1, NULL, 'http://127.0.0.1:9000/np', 'http://127.0.0.1:9000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:34:45', '2021-10-06 04:34:45'),
+(717, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:35:22', '2021-10-06 04:35:22'),
+(718, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:35:27', '2021-10-06 04:35:27'),
+(719, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:35:55', '2021-10-06 04:35:55'),
+(720, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:37:09', '2021-10-06 04:37:09'),
+(721, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:37:14', '2021-10-06 04:37:14'),
+(722, 2, 'nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/np/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', '2021-10-06', '2021-10-06 04:37:31', '2021-10-06 04:37:31'),
+(723, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:37:43', '2021-10-06 04:37:43'),
+(724, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:39:14', '2021-10-06 04:39:14'),
+(725, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:39:20', '2021-10-06 04:39:20'),
+(726, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:39:44', '2021-10-06 04:39:44'),
+(727, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:39:52', '2021-10-06 04:39:52'),
+(728, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:40:04', '2021-10-06 04:40:04'),
+(729, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:40:08', '2021-10-06 04:40:08'),
+(730, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:40:14', '2021-10-06 04:40:14'),
+(731, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:40:18', '2021-10-06 04:40:18'),
+(732, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:40:56', '2021-10-06 04:40:56'),
+(733, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:41:04', '2021-10-06 04:41:04'),
+(734, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:41:23', '2021-10-06 04:41:23'),
+(735, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:42:36', '2021-10-06 04:42:36'),
+(736, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:43:52', '2021-10-06 04:43:52'),
+(737, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:44:07', '2021-10-06 04:44:07'),
+(738, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:44:19', '2021-10-06 04:44:19'),
+(739, 2, 'nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/np/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', '2021-10-06', '2021-10-06 04:44:36', '2021-10-06 04:44:36'),
+(740, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:44:36', '2021-10-06 04:44:36'),
+(741, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:44:41', '2021-10-06 04:44:41'),
+(742, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:45:00', '2021-10-06 04:45:00'),
+(743, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:45:07', '2021-10-06 04:45:07'),
+(744, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:45:16', '2021-10-06 04:45:16'),
+(745, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:47:34', '2021-10-06 04:47:34'),
+(746, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:47:39', '2021-10-06 04:47:39'),
+(747, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:47:57', '2021-10-06 04:47:57'),
+(748, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:48:00', '2021-10-06 04:48:00'),
+(749, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:48:06', '2021-10-06 04:48:06'),
+(750, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:48:11', '2021-10-06 04:48:11'),
+(751, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:48:16', '2021-10-06 04:48:16'),
+(752, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:48:20', '2021-10-06 04:48:20'),
+(753, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:48:30', '2021-10-06 04:48:30'),
+(754, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:48:35', '2021-10-06 04:48:35'),
+(755, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:49:02', '2021-10-06 04:49:02'),
+(756, 2, 'nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/np/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', '2021-10-06', '2021-10-06 04:49:09', '2021-10-06 04:49:09'),
+(757, 2, NULL, 'http://127.0.0.1:8000/np/date/2021-10-06', 'http://127.0.0.1:8000/np/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:49:16', '2021-10-06 04:49:16'),
+(758, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:49:24', '2021-10-06 04:49:24');
+INSERT INTO `visitor_trackers` (`id`, `page_type`, `slug`, `url`, `source_url`, `ip`, `agent_browser`, `date`, `created_at`, `updated_at`) VALUES
+(759, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:49:28', '2021-10-06 04:49:28'),
+(760, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:49:45', '2021-10-06 04:49:45'),
+(761, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:49:49', '2021-10-06 04:49:49'),
+(762, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:49:54', '2021-10-06 04:49:54'),
+(763, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:50:56', '2021-10-06 04:50:56'),
+(764, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:51:00', '2021-10-06 04:51:00'),
+(765, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:51:14', '2021-10-06 04:51:14'),
+(766, 2, 'nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/np/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/np/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', '2021-10-06', '2021-10-06 04:52:19', '2021-10-06 04:52:19'),
+(767, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:53:42', '2021-10-06 04:53:42'),
+(768, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 04:53:49', '2021-10-06 04:53:49'),
+(769, 2, 'ashleigh-gardner-and-beth-mooney-fifties-take-australia-to-strong-total', 'http://127.0.0.1:8000/article/ashleigh-gardner-and-beth-mooney-fifties-take-australia-to-strong-total', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-06', '2021-10-06 04:54:17', '2021-10-06 04:54:17'),
+(770, 2, 'nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', 'http://127.0.0.1:8000/np/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', '2021-10-06', '2021-10-06 04:55:02', '2021-10-06 04:55:02'),
+(771, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 05:00:04', '2021-10-06 05:00:04'),
+(772, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/nortje-reaping-rewards-after-frustrating-first-half-of-ipl', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 05:01:13', '2021-10-06 05:01:13'),
+(773, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 05:01:18', '2021-10-06 05:01:18'),
+(774, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/sections', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 05:07:35', '2021-10-06 05:07:35'),
+(775, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/appearance/sections', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 05:07:42', '2021-10-06 05:07:42'),
+(776, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/gallery/images', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 05:39:37', '2021-10-06 05:39:37'),
+(777, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/js/notify.min.js.map', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 06:09:33', '2021-10-06 06:09:33'),
+(778, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 07:32:11', '2021-10-06 07:32:11'),
+(779, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-06', '2021-10-06 07:32:20', '2021-10-06 07:32:20'),
+(780, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-10-06 07:32:28', '2021-10-06 07:32:28'),
+(781, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-06', '2021-10-06 07:32:46', '2021-10-06 07:32:46'),
+(782, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:46:57', '2021-10-24 05:46:57'),
+(783, 2, NULL, 'http://127.0.0.1:8000/date/2021-05-30', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:47:20', '2021-10-24 05:47:20'),
+(784, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/author-profile/1', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:47:34', '2021-10-24 05:47:34'),
+(785, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/author-profile/1', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:47:52', '2021-10-24 05:47:52'),
+(786, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:48:08', '2021-10-24 05:48:08'),
+(787, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 05:48:16', '2021-10-24 05:48:16'),
+(788, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 05:48:21', '2021-10-24 05:48:21'),
+(789, 2, NULL, 'http://127.0.0.1:8000/date/2021-05-30', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:48:33', '2021-10-24 05:48:33'),
+(790, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/date/2021-05-30', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:48:48', '2021-10-24 05:48:48'),
+(791, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:48:53', '2021-10-24 05:48:53'),
+(792, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 05:49:28', '2021-10-24 05:49:28'),
+(793, 2, NULL, 'http://127.0.0.1:8000/category/football', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:49:43', '2021-10-24 05:49:43'),
+(794, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/newsletter/subscribe?_token=lcyzkai6Mpu5SuubauJQrs42EJj183GpL95MJZ33&email=bishal.khatri21343%40gmail.com', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:50:03', '2021-10-24 05:50:03'),
+(795, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:50:13', '2021-10-24 05:50:13'),
+(796, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/newsletter/subscribe?_token=lcyzkai6Mpu5SuubauJQrs42EJj183GpL95MJZ33&email=bishal.khatri343%40gmail.com', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:50:24', '2021-10-24 05:50:24'),
+(797, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:50:46', '2021-10-24 05:50:46'),
+(798, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:51:30', '2021-10-24 05:51:30'),
+(799, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:51:34', '2021-10-24 05:51:34'),
+(800, 1, NULL, 'http://127.0.0.1:8000/np', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:52:07', '2021-10-24 05:52:07'),
+(801, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/np', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:52:11', '2021-10-24 05:52:11'),
+(802, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 05:57:45', '2021-10-24 05:57:45'),
+(803, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 06:06:23', '2021-10-24 06:06:23'),
+(804, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/albums', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 06:06:50', '2021-10-24 06:06:50'),
+(805, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 06:12:51', '2021-10-24 06:12:51'),
+(806, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 06:13:19', '2021-10-24 06:13:19'),
+(807, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:49:20', '2021-10-24 07:49:20'),
+(808, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:50:27', '2021-10-24 07:50:27'),
+(809, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:51:12', '2021-10-24 07:51:12'),
+(810, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:51:18', '2021-10-24 07:51:18'),
+(811, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:53:37', '2021-10-24 07:53:37'),
+(812, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:54:20', '2021-10-24 07:54:20'),
+(813, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:54:34', '2021-10-24 07:54:34'),
+(814, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:54:52', '2021-10-24 07:54:52'),
+(815, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:55:11', '2021-10-24 07:55:11'),
+(816, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:55:30', '2021-10-24 07:55:30'),
+(817, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:55:40', '2021-10-24 07:55:40'),
+(818, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:55:51', '2021-10-24 07:55:51'),
+(819, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:56:04', '2021-10-24 07:56:04'),
+(820, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:56:49', '2021-10-24 07:56:49'),
+(821, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:57:14', '2021-10-24 07:57:14'),
+(822, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:57:32', '2021-10-24 07:57:32'),
+(823, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:58:19', '2021-10-24 07:58:19'),
+(824, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:58:49', '2021-10-24 07:58:49'),
+(825, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 07:58:57', '2021-10-24 07:58:57'),
+(826, 2, 'ashleigh-gardner-and-beth-mooney-fifties-take-australia-to-strong-total', 'http://127.0.0.1:8000/article/ashleigh-gardner-and-beth-mooney-fifties-take-australia-to-strong-total', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:02:08', '2021-10-24 08:02:08'),
+(827, 2, 'christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/christian-pulisic-makes-champions-league-history-as-first-usmnt-player-to-appear,-win-final', 'http://127.0.0.1:8000/article/ashleigh-gardner-and-beth-mooney-fifties-take-australia-to-strong-total', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:02:15', '2021-10-24 08:02:15'),
+(828, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/ashleigh-gardner-and-beth-mooney-fifties-take-australia-to-strong-total', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 08:02:23', '2021-10-24 08:02:23'),
+(829, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:02:27', '2021-10-24 08:02:27'),
+(830, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 08:02:35', '2021-10-24 08:02:35'),
+(831, 2, 'nba-playoff-schedule-2021:-full-bracket,-dates,-times,-tv-channels-for-play-in,-playoff-games', 'http://127.0.0.1:8000/article/nba-playoff-schedule-2021:-full-bracket,-dates,-times,-tv-channels-for-play-in,-playoff-games', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:03:14', '2021-10-24 08:03:14'),
+(832, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:03:23', '2021-10-24 08:03:23'),
+(833, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:03:37', '2021-10-24 08:03:37'),
+(834, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:03:50', '2021-10-24 08:03:50'),
+(835, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:06:04', '2021-10-24 08:06:04'),
+(836, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:07:10', '2021-10-24 08:07:10'),
+(837, 2, 'india-duo-smriti-mandhana-and-deepti-sharma-sign-with-sydney-thunder-for-wbbl', 'http://127.0.0.1:8000/article/india-duo-smriti-mandhana-and-deepti-sharma-sign-with-sydney-thunder-for-wbbl', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:07:14', '2021-10-24 08:07:14'),
+(838, 2, 'south-korea’s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:07:21', '2021-10-24 08:07:21'),
+(839, 2, NULL, 'http://127.0.0.1:8000/category/world', 'http://127.0.0.1:8000/article/south-korea%E2%80%99s-2002-world-cup-star-yoo-sang-chul-dies-at-49-:-world-cup-match-winner', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 08:07:36', '2021-10-24 08:07:36'),
+(840, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/category/world', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:07:39', '2021-10-24 08:07:39'),
+(841, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/category/world', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 08:18:09', '2021-10-24 08:18:09'),
+(842, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 08:18:15', '2021-10-24 08:18:15'),
+(843, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 08:22:06', '2021-10-24 08:22:06'),
+(844, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 10:24:05', '2021-10-24 10:24:05'),
+(845, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/search?search=asdf', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 10:24:24', '2021-10-24 10:24:24'),
+(846, 2, 'india-duo-smriti-mandhana-and-deepti-sharma-sign-with-sydney-thunder-for-wbbl', 'http://127.0.0.1:8000/article/india-duo-smriti-mandhana-and-deepti-sharma-sign-with-sydney-thunder-for-wbbl', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 10:24:30', '2021-10-24 10:24:30'),
+(847, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/india-duo-smriti-mandhana-and-deepti-sharma-sign-with-sydney-thunder-for-wbbl', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 10:25:03', '2021-10-24 10:25:03'),
+(848, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/india-duo-smriti-mandhana-and-deepti-sharma-sign-with-sydney-thunder-for-wbbl', '127.0.0.1', 'Google Chrome', NULL, '2021-10-24 10:26:16', '2021-10-24 10:26:16'),
+(849, 2, 'india-duo-smriti-mandhana-and-deepti-sharma-sign-with-sydney-thunder-for-wbbl', 'http://127.0.0.1:8000/article/india-duo-smriti-mandhana-and-deepti-sharma-sign-with-sydney-thunder-for-wbbl', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-10-24', '2021-10-24 11:59:16', '2021-10-24 11:59:16'),
+(850, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-25 03:53:34', '2021-10-25 03:53:34'),
+(851, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-25 03:53:36', '2021-10-25 03:53:36'),
+(852, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-25 07:10:24', '2021-10-25 07:10:24'),
+(853, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-25 07:10:58', '2021-10-25 07:10:58'),
+(854, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-25 07:11:01', '2021-10-25 07:11:01'),
+(855, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/_soccer_features-widgets-sports.html', '127.0.0.1', 'Google Chrome', NULL, '2021-10-25 07:11:19', '2021-10-25 07:11:19'),
+(856, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/_soccer_features-widgets-sports.html', '127.0.0.1', 'Google Chrome', NULL, '2021-10-25 07:11:29', '2021-10-25 07:11:29'),
+(857, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-25 07:14:32', '2021-10-25 07:14:32'),
+(858, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-25 07:14:38', '2021-10-25 07:14:38'),
+(859, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-25 07:14:43', '2021-10-25 07:14:43'),
+(860, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-26 07:38:40', '2021-10-26 07:38:40'),
+(861, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-26 08:00:26', '2021-10-26 08:00:26'),
+(862, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-26 08:00:47', '2021-10-26 08:00:47'),
+(863, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament', '127.0.0.1', 'Google Chrome', NULL, '2021-10-27 11:28:44', '2021-10-27 11:28:44'),
+(864, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 03:58:13', '2021-10-28 03:58:13'),
+(865, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:12:37', '2021-10-28 06:12:37'),
+(866, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:12:49', '2021-10-28 06:12:49'),
+(867, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:13:04', '2021-10-28 06:13:04'),
+(868, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:26:57', '2021-10-28 06:26:57'),
+(869, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:27:50', '2021-10-28 06:27:50'),
+(870, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/3', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:27:54', '2021-10-28 06:27:54'),
+(871, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:27:59', '2021-10-28 06:27:59'),
+(872, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/3', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:28:01', '2021-10-28 06:28:01'),
+(873, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:44:34', '2021-10-28 06:44:34'),
+(874, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:48:36', '2021-10-28 06:48:36'),
+(875, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:48:55', '2021-10-28 06:48:55'),
+(876, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:49:20', '2021-10-28 06:49:20'),
+(877, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:50:12', '2021-10-28 06:50:12'),
+(878, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:50:57', '2021-10-28 06:50:57'),
+(879, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/10', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:51:00', '2021-10-28 06:51:00'),
+(880, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/10', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:51:29', '2021-10-28 06:51:29'),
+(881, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/10', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:51:36', '2021-10-28 06:51:36'),
+(882, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/10', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:51:59', '2021-10-28 06:51:59'),
+(883, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/10', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:52:14', '2021-10-28 06:52:14'),
+(884, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/10', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:53:04', '2021-10-28 06:53:04'),
+(885, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/10', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:53:28', '2021-10-28 06:53:28'),
+(886, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/10', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:53:43', '2021-10-28 06:53:43'),
+(887, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/10', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:54:32', '2021-10-28 06:54:32'),
+(888, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/10', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:54:52', '2021-10-28 06:54:52'),
+(889, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-edit/10', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:56:22', '2021-10-28 06:56:22'),
+(890, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 06:56:25', '2021-10-28 06:56:25'),
+(891, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/team-edit/1', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 07:15:49', '2021-10-28 07:15:49'),
+(892, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/team-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 09:42:33', '2021-10-28 09:42:33'),
+(893, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/team-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 09:49:45', '2021-10-28 09:49:45'),
+(894, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 10:07:36', '2021-10-28 10:07:36'),
+(895, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:50:20', '2021-10-28 11:50:20'),
+(896, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:50:47', '2021-10-28 11:50:47'),
+(897, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:51:39', '2021-10-28 11:51:39'),
+(898, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:52:12', '2021-10-28 11:52:12'),
+(899, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:52:25', '2021-10-28 11:52:25'),
+(900, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:52:37', '2021-10-28 11:52:37'),
+(901, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:53:03', '2021-10-28 11:53:03'),
+(902, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:53:14', '2021-10-28 11:53:14'),
+(903, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:53:23', '2021-10-28 11:53:23'),
+(904, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:54:47', '2021-10-28 11:54:47'),
+(905, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:54:58', '2021-10-28 11:54:58'),
+(906, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:55:09', '2021-10-28 11:55:09'),
+(907, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:55:50', '2021-10-28 11:55:50'),
+(908, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:56:07', '2021-10-28 11:56:07'),
+(909, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 11:58:30', '2021-10-28 11:58:30'),
+(910, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 12:00:19', '2021-10-28 12:00:19'),
+(911, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 12:00:39', '2021-10-28 12:00:39'),
+(912, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 12:00:59', '2021-10-28 12:00:59'),
+(913, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 12:01:34', '2021-10-28 12:01:34'),
+(914, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 12:03:04', '2021-10-28 12:03:04'),
+(915, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 12:03:23', '2021-10-28 12:03:23'),
+(916, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 12:04:24', '2021-10-28 12:04:24'),
+(917, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 12:04:31', '2021-10-28 12:04:31'),
+(918, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-10-28 12:04:37', '2021-10-28 12:04:37'),
+(919, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 05:54:57', '2021-10-29 05:54:57'),
+(920, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:00:07', '2021-10-29 06:00:07'),
+(921, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:00:32', '2021-10-29 06:00:32'),
+(922, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:00:37', '2021-10-29 06:00:37'),
+(923, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:01:09', '2021-10-29 06:01:09'),
+(924, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:01:43', '2021-10-29 06:01:43'),
+(925, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:03:25', '2021-10-29 06:03:25'),
+(926, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:03:29', '2021-10-29 06:03:29'),
+(927, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:03:46', '2021-10-29 06:03:46'),
+(928, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:06:16', '2021-10-29 06:06:16'),
+(929, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:06:30', '2021-10-29 06:06:30'),
+(930, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:07:31', '2021-10-29 06:07:31'),
+(931, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:07:49', '2021-10-29 06:07:49'),
+(932, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:08:16', '2021-10-29 06:08:16'),
+(933, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:09:01', '2021-10-29 06:09:01'),
+(934, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:10:38', '2021-10-29 06:10:38'),
+(935, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:11:40', '2021-10-29 06:11:40'),
+(936, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:11:58', '2021-10-29 06:11:58'),
+(937, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:12:48', '2021-10-29 06:12:48'),
+(938, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:13:12', '2021-10-29 06:13:12'),
+(939, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:14:05', '2021-10-29 06:14:05'),
+(940, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:16:09', '2021-10-29 06:16:09'),
+(941, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:16:30', '2021-10-29 06:16:30'),
+(942, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:18:23', '2021-10-29 06:18:23'),
+(943, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:19:46', '2021-10-29 06:19:46'),
+(944, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:20:52', '2021-10-29 06:20:52'),
+(945, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:22:42', '2021-10-29 06:22:42'),
+(946, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:26:27', '2021-10-29 06:26:27'),
+(947, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:27:00', '2021-10-29 06:27:00'),
+(948, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:28:30', '2021-10-29 06:28:30'),
+(949, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:29:22', '2021-10-29 06:29:22'),
+(950, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:29:40', '2021-10-29 06:29:40'),
+(951, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:30:33', '2021-10-29 06:30:33'),
+(952, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:31:23', '2021-10-29 06:31:23'),
+(953, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:31:55', '2021-10-29 06:31:55'),
+(954, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:33:29', '2021-10-29 06:33:29'),
+(955, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:33:45', '2021-10-29 06:33:45'),
+(956, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:37:38', '2021-10-29 06:37:38'),
+(957, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:37:38', '2021-10-29 06:37:38'),
+(958, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:39:37', '2021-10-29 06:39:37'),
+(959, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:41:42', '2021-10-29 06:41:42'),
+(960, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:42:51', '2021-10-29 06:42:51'),
+(961, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:43:00', '2021-10-29 06:43:00'),
+(962, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:43:09', '2021-10-29 06:43:09'),
+(963, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:43:59', '2021-10-29 06:43:59'),
+(964, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:44:27', '2021-10-29 06:44:27'),
+(965, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:44:34', '2021-10-29 06:44:34'),
+(966, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:45:31', '2021-10-29 06:45:31'),
+(967, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:46:20', '2021-10-29 06:46:20'),
+(968, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:46:57', '2021-10-29 06:46:57'),
+(969, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/team-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:47:35', '2021-10-29 06:47:35'),
+(970, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:48:54', '2021-10-29 06:48:54'),
+(971, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/team-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:48:59', '2021-10-29 06:48:59'),
+(972, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/team-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:50:05', '2021-10-29 06:50:05'),
+(973, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/team-edit/2', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:50:09', '2021-10-29 06:50:09'),
+(974, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/team-edit/2', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:50:19', '2021-10-29 06:50:19'),
+(975, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:53:47', '2021-10-29 06:53:47'),
+(976, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 06:54:34', '2021-10-29 06:54:34'),
+(977, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:31:40', '2021-10-29 07:31:40'),
+(978, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:36:39', '2021-10-29 07:36:39'),
+(979, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:36:55', '2021-10-29 07:36:55'),
+(980, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:38:05', '2021-10-29 07:38:05'),
+(981, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:39:33', '2021-10-29 07:39:33'),
+(982, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:39:51', '2021-10-29 07:39:51'),
+(983, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:40:30', '2021-10-29 07:40:30'),
+(984, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:48:25', '2021-10-29 07:48:25'),
+(985, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:48:41', '2021-10-29 07:48:41'),
+(986, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:48:54', '2021-10-29 07:48:54'),
+(987, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:49:01', '2021-10-29 07:49:01'),
+(988, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:49:24', '2021-10-29 07:49:24'),
+(989, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/game-create', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:50:04', '2021-10-29 07:50:04'),
+(990, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:50:13', '2021-10-29 07:50:13'),
+(991, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:50:53', '2021-10-29 07:50:53'),
+(992, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/game-create', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:54:34', '2021-10-29 07:54:34'),
+(993, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/game', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:56:22', '2021-10-29 07:56:22'),
+(994, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:56:31', '2021-10-29 07:56:31'),
+(995, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:56:40', '2021-10-29 07:56:40'),
+(996, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 07:57:10', '2021-10-29 07:57:10'),
+(997, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/game', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 08:18:01', '2021-10-29 08:18:01'),
+(998, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/game', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 08:18:33', '2021-10-29 08:18:33'),
+(999, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 08:18:55', '2021-10-29 08:18:55'),
+(1000, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 08:19:08', '2021-10-29 08:19:08'),
+(1001, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 08:19:18', '2021-10-29 08:19:18'),
+(1002, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 08:19:32', '2021-10-29 08:19:32'),
+(1003, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 08:19:49', '2021-10-29 08:19:49'),
+(1004, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/game?tournament=3', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 08:26:36', '2021-10-29 08:26:36'),
+(1005, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-10-29 08:29:47', '2021-10-29 08:29:47'),
+(1006, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 05:58:50', '2021-11-01 05:58:50'),
+(1007, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/game', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 06:00:33', '2021-11-01 06:00:33'),
+(1008, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/game', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 06:01:07', '2021-11-01 06:01:07'),
+(1009, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-11-01', '2021-11-01 06:19:47', '2021-11-01 06:19:47'),
+(1010, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/dashboard', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 07:44:46', '2021-11-01 07:44:46'),
+(1011, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-11-01', '2021-11-01 07:44:51', '2021-11-01 07:44:51'),
+(1012, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-11-01', '2021-11-01 07:45:31', '2021-11-01 07:45:31'),
+(1013, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 08:21:28', '2021-11-01 08:21:28'),
+(1014, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/game', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 10:57:50', '2021-11-01 10:57:50'),
+(1015, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 10:58:44', '2021-11-01 10:58:44'),
+(1016, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 10:58:54', '2021-11-01 10:58:54'),
+(1017, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 10:59:42', '2021-11-01 10:59:42'),
+(1018, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:01:09', '2021-11-01 11:01:09'),
+(1019, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-11-01', '2021-11-01 11:01:11', '2021-11-01 11:01:11'),
+(1020, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-11-01', '2021-11-01 11:01:56', '2021-11-01 11:01:56'),
+(1021, 2, 'emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', '2021-11-01', '2021-11-01 11:03:11', '2021-11-01 11:03:11'),
+(1022, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:04:55', '2021-11-01 11:04:55'),
+(1023, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:06:14', '2021-11-01 11:06:14'),
+(1024, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:12:25', '2021-11-01 11:12:25'),
+(1025, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:15:53', '2021-11-01 11:15:53'),
+(1026, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:16:12', '2021-11-01 11:16:12'),
+(1027, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:17:35', '2021-11-01 11:17:35'),
+(1028, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:21:53', '2021-11-01 11:21:53'),
+(1029, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:22:10', '2021-11-01 11:22:10'),
+(1030, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:22:52', '2021-11-01 11:22:52'),
+(1031, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:23:15', '2021-11-01 11:23:15'),
+(1032, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:23:55', '2021-11-01 11:23:55');
+INSERT INTO `visitor_trackers` (`id`, `page_type`, `slug`, `url`, `source_url`, `ip`, `agent_browser`, `date`, `created_at`, `updated_at`) VALUES
+(1033, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:24:33', '2021-11-01 11:24:33'),
+(1034, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:25:12', '2021-11-01 11:25:12'),
+(1035, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:25:59', '2021-11-01 11:25:59'),
+(1036, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/article/emily-windsor,-tara-norris-rally-vipers-to-title-defence', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:27:43', '2021-11-01 11:27:43'),
+(1037, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:29:07', '2021-11-01 11:29:07'),
+(1038, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:29:55', '2021-11-01 11:29:55'),
+(1039, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:30:38', '2021-11-01 11:30:38'),
+(1040, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:30:44', '2021-11-01 11:30:44'),
+(1041, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:31:07', '2021-11-01 11:31:07'),
+(1042, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:31:31', '2021-11-01 11:31:31'),
+(1043, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:33:00', '2021-11-01 11:33:00'),
+(1044, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:34:54', '2021-11-01 11:34:54'),
+(1045, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:36:16', '2021-11-01 11:36:16'),
+(1046, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:36:43', '2021-11-01 11:36:43'),
+(1047, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:39:42', '2021-11-01 11:39:42'),
+(1048, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:40:37', '2021-11-01 11:40:37'),
+(1049, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:40:59', '2021-11-01 11:40:59'),
+(1050, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:41:11', '2021-11-01 11:41:11'),
+(1051, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:41:20', '2021-11-01 11:41:20'),
+(1052, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:41:42', '2021-11-01 11:41:42'),
+(1053, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:42:05', '2021-11-01 11:42:05'),
+(1054, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:43:16', '2021-11-01 11:43:16'),
+(1055, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:43:52', '2021-11-01 11:43:52'),
+(1056, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:44:26', '2021-11-01 11:44:26'),
+(1057, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:45:27', '2021-11-01 11:45:27'),
+(1058, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:46:38', '2021-11-01 11:46:38'),
+(1059, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:46:49', '2021-11-01 11:46:49'),
+(1060, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:48:05', '2021-11-01 11:48:05'),
+(1061, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:49:04', '2021-11-01 11:49:04'),
+(1062, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:49:18', '2021-11-01 11:49:18'),
+(1063, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:49:53', '2021-11-01 11:49:53'),
+(1064, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:50:06', '2021-11-01 11:50:06'),
+(1065, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-01 11:53:32', '2021-11-01 11:53:32'),
+(1066, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 04:16:51', '2021-11-02 04:16:51'),
+(1067, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/game?tournament=3', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:17:59', '2021-11-02 06:17:59'),
+(1068, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:18:02', '2021-11-02 06:18:02'),
+(1069, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:18:12', '2021-11-02 06:18:12'),
+(1070, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:18:56', '2021-11-02 06:18:56'),
+(1071, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/game-create', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:24:58', '2021-11-02 06:24:58'),
+(1072, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:25:16', '2021-11-02 06:25:16'),
+(1073, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:26:33', '2021-11-02 06:26:33'),
+(1074, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:26:48', '2021-11-02 06:26:48'),
+(1075, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:28:13', '2021-11-02 06:28:13'),
+(1076, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:33:06', '2021-11-02 06:33:06'),
+(1077, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:33:34', '2021-11-02 06:33:34'),
+(1078, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:34:35', '2021-11-02 06:34:35'),
+(1079, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:35:46', '2021-11-02 06:35:46'),
+(1080, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:36:03', '2021-11-02 06:36:03'),
+(1081, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:38:36', '2021-11-02 06:38:36'),
+(1082, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:39:10', '2021-11-02 06:39:10'),
+(1083, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:39:55', '2021-11-02 06:39:55'),
+(1084, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:40:14', '2021-11-02 06:40:14'),
+(1085, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:40:27', '2021-11-02 06:40:27'),
+(1086, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:40:34', '2021-11-02 06:40:34'),
+(1087, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:40:44', '2021-11-02 06:40:44'),
+(1088, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/team-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:41:28', '2021-11-02 06:41:28'),
+(1089, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:41:44', '2021-11-02 06:41:44'),
+(1090, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:41:50', '2021-11-02 06:41:50'),
+(1091, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:42:01', '2021-11-02 06:42:01'),
+(1092, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:42:18', '2021-11-02 06:42:18'),
+(1093, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:42:32', '2021-11-02 06:42:32'),
+(1094, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:42:38', '2021-11-02 06:42:38'),
+(1095, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:42:45', '2021-11-02 06:42:45'),
+(1096, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:42:51', '2021-11-02 06:42:51'),
+(1097, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:43:00', '2021-11-02 06:43:00'),
+(1098, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:44:24', '2021-11-02 06:44:24'),
+(1099, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:44:38', '2021-11-02 06:44:38'),
+(1100, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:45:02', '2021-11-02 06:45:02'),
+(1101, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:45:57', '2021-11-02 06:45:57'),
+(1102, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:46:03', '2021-11-02 06:46:03'),
+(1103, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:46:43', '2021-11-02 06:46:43'),
+(1104, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:47:39', '2021-11-02 06:47:39'),
+(1105, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:48:36', '2021-11-02 06:48:36'),
+(1106, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:50:53', '2021-11-02 06:50:53'),
+(1107, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:51:06', '2021-11-02 06:51:06'),
+(1108, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:51:15', '2021-11-02 06:51:15'),
+(1109, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:51:22', '2021-11-02 06:51:22'),
+(1110, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:51:52', '2021-11-02 06:51:52'),
+(1111, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:52:23', '2021-11-02 06:52:23'),
+(1112, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:52:43', '2021-11-02 06:52:43'),
+(1113, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:52:51', '2021-11-02 06:52:51'),
+(1114, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:55:45', '2021-11-02 06:55:45'),
+(1115, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:56:08', '2021-11-02 06:56:08'),
+(1116, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:56:15', '2021-11-02 06:56:15'),
+(1117, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:56:21', '2021-11-02 06:56:21'),
+(1118, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:56:33', '2021-11-02 06:56:33'),
+(1119, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:57:05', '2021-11-02 06:57:05'),
+(1120, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:57:21', '2021-11-02 06:57:21'),
+(1121, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:57:39', '2021-11-02 06:57:39'),
+(1122, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:57:49', '2021-11-02 06:57:49'),
+(1123, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:57:58', '2021-11-02 06:57:58'),
+(1124, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:58:05', '2021-11-02 06:58:05'),
+(1125, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:58:12', '2021-11-02 06:58:12'),
+(1126, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:58:25', '2021-11-02 06:58:25'),
+(1127, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:58:38', '2021-11-02 06:58:38'),
+(1128, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 06:59:20', '2021-11-02 06:59:20'),
+(1129, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:00:25', '2021-11-02 07:00:25'),
+(1130, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:01:27', '2021-11-02 07:01:27'),
+(1131, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:03:03', '2021-11-02 07:03:03'),
+(1132, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:05:04', '2021-11-02 07:05:04'),
+(1133, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:09:36', '2021-11-02 07:09:36'),
+(1134, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:09:47', '2021-11-02 07:09:47'),
+(1135, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:11:23', '2021-11-02 07:11:23'),
+(1136, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:11:30', '2021-11-02 07:11:30'),
+(1137, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:12:13', '2021-11-02 07:12:13'),
+(1138, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:15:30', '2021-11-02 07:15:30'),
+(1139, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:16:20', '2021-11-02 07:16:20'),
+(1140, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:18:36', '2021-11-02 07:18:36'),
+(1141, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:24:59', '2021-11-02 07:24:59'),
+(1142, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:25:18', '2021-11-02 07:25:18'),
+(1143, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:28:57', '2021-11-02 07:28:57'),
+(1144, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:30:09', '2021-11-02 07:30:09'),
+(1145, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:30:30', '2021-11-02 07:30:30'),
+(1146, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:32:22', '2021-11-02 07:32:22'),
+(1147, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:33:53', '2021-11-02 07:33:53'),
+(1148, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:34:02', '2021-11-02 07:34:02'),
+(1149, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:34:48', '2021-11-02 07:34:48'),
+(1150, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:35:22', '2021-11-02 07:35:22'),
+(1151, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:35:29', '2021-11-02 07:35:29'),
+(1152, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:36:00', '2021-11-02 07:36:00'),
+(1153, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:36:06', '2021-11-02 07:36:06'),
+(1154, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:36:21', '2021-11-02 07:36:21'),
+(1155, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:36:41', '2021-11-02 07:36:41'),
+(1156, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:36:45', '2021-11-02 07:36:45'),
+(1157, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:36:58', '2021-11-02 07:36:58'),
+(1158, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:37:07', '2021-11-02 07:37:07'),
+(1159, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:37:17', '2021-11-02 07:37:17'),
+(1160, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:37:34', '2021-11-02 07:37:34'),
+(1161, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:37:39', '2021-11-02 07:37:39'),
+(1162, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:38:39', '2021-11-02 07:38:39'),
+(1163, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:41:12', '2021-11-02 07:41:12'),
+(1164, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:43:18', '2021-11-02 07:43:18'),
+(1165, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:43:33', '2021-11-02 07:43:33'),
+(1166, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:48:26', '2021-11-02 07:48:26'),
+(1167, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:49:06', '2021-11-02 07:49:06'),
+(1168, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:49:24', '2021-11-02 07:49:24'),
+(1169, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:49:29', '2021-11-02 07:49:29'),
+(1170, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:53:05', '2021-11-02 07:53:05'),
+(1171, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:53:28', '2021-11-02 07:53:28'),
+(1172, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:53:36', '2021-11-02 07:53:36'),
+(1173, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:53:51', '2021-11-02 07:53:51'),
+(1174, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:55:35', '2021-11-02 07:55:35'),
+(1175, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:55:59', '2021-11-02 07:55:59'),
+(1176, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 07:56:44', '2021-11-02 07:56:44'),
+(1177, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:03:54', '2021-11-02 08:03:54'),
+(1178, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:04:00', '2021-11-02 08:04:00'),
+(1179, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:04:04', '2021-11-02 08:04:04'),
+(1180, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:05:53', '2021-11-02 08:05:53'),
+(1181, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:06:06', '2021-11-02 08:06:06'),
+(1182, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:06:15', '2021-11-02 08:06:15'),
+(1183, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:18:13', '2021-11-02 08:18:13'),
+(1184, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:41:40', '2021-11-02 08:41:40'),
+(1185, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:56:06', '2021-11-02 08:56:06'),
+(1186, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:58:47', '2021-11-02 08:58:47'),
+(1187, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:59:42', '2021-11-02 08:59:42'),
+(1188, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 08:59:51', '2021-11-02 08:59:51'),
+(1189, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:00:12', '2021-11-02 09:00:12'),
+(1190, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:00:55', '2021-11-02 09:00:55'),
+(1191, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:02:57', '2021-11-02 09:02:57'),
+(1192, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:03:38', '2021-11-02 09:03:38'),
+(1193, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:05:59', '2021-11-02 09:05:59'),
+(1194, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:06:44', '2021-11-02 09:06:44'),
+(1195, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/tournament/tournament-list', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:06:58', '2021-11-02 09:06:58'),
+(1196, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:07:05', '2021-11-02 09:07:05'),
+(1197, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:07:39', '2021-11-02 09:07:39'),
+(1198, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:08:05', '2021-11-02 09:08:05'),
+(1199, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:08:10', '2021-11-02 09:08:10'),
+(1200, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:08:20', '2021-11-02 09:08:20'),
+(1201, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:08:53', '2021-11-02 09:08:53'),
+(1202, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:09:00', '2021-11-02 09:09:00'),
+(1203, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:09:07', '2021-11-02 09:09:07'),
+(1204, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:09:31', '2021-11-02 09:09:31'),
+(1205, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:11:07', '2021-11-02 09:11:07'),
+(1206, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:11:26', '2021-11-02 09:11:26'),
+(1207, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:11:33', '2021-11-02 09:11:33'),
+(1208, 1, NULL, 'http://127.0.0.1:8000', 'http://127.0.0.1:8000/', '127.0.0.1', 'Google Chrome', NULL, '2021-11-02 09:11:52', '2021-11-02 09:11:52');
 
 -- --------------------------------------------------------
 
@@ -4160,6 +5394,30 @@ ALTER TABLE `throttle`
   ADD KEY `throttle_user_id_index` (`user_id`);
 
 --
+-- Indexes for table `tournaments`
+--
+ALTER TABLE `tournaments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tournament_categories`
+--
+ALTER TABLE `tournament_categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tournament_games`
+--
+ALTER TABLE `tournament_games`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tournament_teams`
+--
+ALTER TABLE `tournament_teams`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -4222,7 +5480,7 @@ ALTER TABLE `ad_locations`
 -- AUTO_INCREMENT for table `albums`
 --
 ALTER TABLE `albums`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `audio`
@@ -4240,19 +5498,19 @@ ALTER TABLE `audio_post`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `category_post`
 --
 ALTER TABLE `category_post`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `contact_messages`
@@ -4294,13 +5552,13 @@ ALTER TABLE `flag_icons`
 -- AUTO_INCREMENT for table `gallery_images`
 --
 ALTER TABLE `gallery_images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=178;
 
 --
 -- AUTO_INCREMENT for table `jobs`
@@ -4336,7 +5594,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `menu_item`
 --
 ALTER TABLE `menu_item`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `menu_locations`
@@ -4348,13 +5606,13 @@ ALTER TABLE `menu_locations`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `pages`
 --
 ALTER TABLE `pages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -4366,7 +5624,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `persistences`
 --
 ALTER TABLE `persistences`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `polls`
@@ -4390,7 +5648,7 @@ ALTER TABLE `poll_results`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
 
 --
 -- AUTO_INCREMENT for table `reactions`
@@ -4450,7 +5708,7 @@ ALTER TABLE `themes`
 -- AUTO_INCREMENT for table `theme_sections`
 --
 ALTER TABLE `theme_sections`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `throttle`
@@ -4459,10 +5717,34 @@ ALTER TABLE `throttle`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tournaments`
+--
+ALTER TABLE `tournaments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `tournament_categories`
+--
+ALTER TABLE `tournament_categories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tournament_games`
+--
+ALTER TABLE `tournament_games`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `tournament_teams`
+--
+ALTER TABLE `tournament_teams`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `videos`
@@ -4474,7 +5756,7 @@ ALTER TABLE `videos`
 -- AUTO_INCREMENT for table `visitor_trackers`
 --
 ALTER TABLE `visitor_trackers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1209;
 
 --
 -- AUTO_INCREMENT for table `votes`
