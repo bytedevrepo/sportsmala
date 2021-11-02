@@ -1,0 +1,26 @@
+.white-nav-bar,.white-nav-bar li,.white-nav-bar ui{
+	background-color: white;
+    display:flex;
+    align-items:center;
+}
+.white-nav-bar ul{
+    display:flex;
+    list-style-type: none;
+    align-items:center;
+    padding-top: 1.01rem;
+}
+.white-nav-bar li{
+    padding:.2rem;
+    font-weight: bold;
+    font-size:18px;
+    color:red;
+}
+.slan-comp-cont{
+    background-color:white;
+}
+.slan-comp{
+    width: 64px;
+    background-color: #295ac9;
+    transform: skew(-25deg);
+    margin-left: -30px;
+}
