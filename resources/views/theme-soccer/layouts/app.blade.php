@@ -25,6 +25,9 @@
     <link href="{{ static_asset('site/theme-soccer/assets/vendor/slick/slick.css') }}" rel="stylesheet">
     <!-- Template CSS-->
     <link href="{{ static_asset('site/theme-soccer/assets/css/style-soccer.css') }}" rel="stylesheet">
+    @if(Route::has('tournament-list'))
+        <link href="{{ static_asset('site/theme-soccer/assets/css/score.css') }}" rel="stylesheet">
+    @endif
     @if(settingHelper('predefined_header')!=null)
         {!! base64_decode(settingHelper('predefined_header')) !!}
     @endif
@@ -41,42 +44,7 @@
         gtag('js', new Date());
         gtag('config', '{{ settingHelper('google_analytics_id') }}');
     </script>
-    <style>
-        .story-result .card{
-            height: 80px;
-            border-radius: 0px;
-            background-color: #1e2024;
-            border-color: #292c31;
-        }
-        .story-result .result{
-            font-weight: bold;
-            font-size: 14px;
-            margin-bottom: 1px;
-            padding-right: 5px;
-            padding-left: 5px;
-        }
-        .team1{
-            font-size: 12px;
-            margin-bottom: 1px;
-            padding-right: 5px;
-            padding-left: 5px;
-        }
-        .team2{
-            font-size: 12px;
-            margin-bottom: 1px;
-            padding-right: 5px;
-            padding-left: 5px;
-        }
-        .story-result .card-body{
-            padding-top:1px;
-            padding-right: 5px;
-            padding-left: 5px;
-            padding-bottom: 0px;
-        }
-        .story-tournament{
-            padding: 10px;
-        }
-    </style>
+
 </head>
 <body data-template="template-soccer" class="@if(settingHelper('preloader_option')==0) page-loader-disable @endif {{defaultModeCheck()}}">
 <div class="site-wrapper clearfix">
@@ -224,60 +192,60 @@
     });
 </script>
 @if(Route::has('tournament-list'))
-<script>
-    $(document).ready(function() {
-        getCategory();
+    <script defer>
+        $(document).ready(function() {
+            getCategory();
 
-        $("#tournamentSelect").on('change', function () {
-            var category_id = $("#tournamentSelect option:selected").val();
-            getScore(category_id);
-        })
+            $("#tournamentSelect").on('change', function () {
+                var category_id = $("#tournamentSelect option:selected").val();
+                getScore(category_id);
+            })
 
-        $("#gameDateSelect").on('change', function () {
-            var date = $(this).val();
-            var category_id = $("#tournamentSelect option:selected").val();
-            getScore(category_id,date);
-        })
-    });
+            $("#gameDateSelect").on('change', function () {
+                var date = $(this).val();
+                var category_id = $("#tournamentSelect option:selected").val();
+                getScore(category_id,date);
+            })
+        });
 
-    function getScore(category_id='', date='') {
-        let id;
-        if (category_id){
-            id = category_id;
-        } else{
-            id = $("#tournamentSelect option:selected").val();
-        }
-        var scoreUrl = "{{ route('tournament-score-ajax') }}";
-        $.ajax({
-            type: 'POST',
-            url: scoreUrl,
-            dataType: "json",
-            data: {'category_id': id, 'date': date, _token:"{{ csrf_token() }}"},
-            async:false,
-            success: function(response) {
-                if ((response.gameDates !== '')) {
-                    var gameDateSelect = $('#gameDateSelect');
-                    gameDateSelect.empty();
-                    var game_dates = response.gameDates;
-                    if (game_dates.length){
-                        for(i=0;i<game_dates.length;i++){
-                            $('<option/>')
-                                .val(game_dates[i].date)
-                                .text(game_dates[i].date_human)
-                                .appendTo('#gameDateSelect')
+        function getScore(category_id='', date='') {
+            let id;
+            if (category_id){
+                id = category_id;
+            } else{
+                id = $("#tournamentSelect option:selected").val();
+            }
+            var scoreUrl = "{{ route('tournament-score-ajax') }}";
+            $.ajax({
+                type: 'POST',
+                url: scoreUrl,
+                dataType: "json",
+                data: {'category_id': id, 'date': date, _token:"{{ csrf_token() }}"},
+                async:false,
+                success: function(response) {
+                    if ((response.gameDates !== '')) {
+                        var gameDateSelect = $('#gameDateSelect');
+                        gameDateSelect.empty();
+                        var game_dates = response.gameDates;
+                        if (game_dates.length){
+                            for(i=0;i<game_dates.length;i++){
+                                $('<option/>')
+                                    .val(game_dates[i].date)
+                                    .text(game_dates[i].date_human)
+                                    .appendTo('#gameDateSelect')
+                            }
                         }
+                        gameDateSelect.val(response.selectedDate);
                     }
-                    gameDateSelect.val(response.selectedDate);
-                }
 
-                var match = response.match;
-                $('.scoreCard').remove();
-                for (i=0; i<match.length; i++) {
-                    var team1_name = match[i].team1.team_name;
-                    var team2_name = match[i].team2.team_name;
+                    var match = response.match;
+                    $('.scoreCard').remove();
+                    for (i=0; i<match.length; i++) {
+                        var team1_name = match[i].team1.team_name;
+                        var team2_name = match[i].team2.team_name;
 
-                    $("#socreCardRow").append(
-                        `<div class="col-md-2 p-0 scoreCard">
+                        $("#socreCardRow").append(
+                            `<div class="col-md-2 p-0 scoreCard">
                     <div class="card">
                         <div class="card-body">
                             <p class="result">
@@ -304,30 +272,30 @@
                     </div>
                 </div>
                         `
-                    )
+                        )
+                    }
                 }
-            }
-        });
-    }
-    function getCategory() {
-        var categoryUrl = "{{ route('tournament-category-ajax') }}";
-        $.ajax({
-            type: 'GET',
-            url: categoryUrl,
-            dataType: "json",
-            async:false,
-            success: function(response) {
-                getScore(response[0].id);
-                for (i=0; i<response.length; i++) {
-                    $('<option/>')
-                        .val(response[i].id)
-                        .text(response[i].category_name)
-                        .appendTo('#tournamentSelect')
+            });
+        }
+        function getCategory() {
+            var categoryUrl = "{{ route('tournament-category-ajax') }}";
+            $.ajax({
+                type: 'GET',
+                url: categoryUrl,
+                dataType: "json",
+                async:false,
+                success: function(response) {
+                    getScore(response[0].id);
+                    for (i=0; i<response.length; i++) {
+                        $('<option/>')
+                            .val(response[i].id)
+                            .text(response[i].category_name)
+                            .appendTo('#tournamentSelect')
+                    }
                 }
-            }
-        });
-    }
-</script>
+            });
+        }
+    </script>
 @endif
 @yield('script')
 @yield('player')

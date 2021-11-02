@@ -73,53 +73,7 @@
     <div class="header__secondary m-2 story-result">
         <div class="container-fluid">
             @if(Route::has('tournament-list'))
-                <div class="row" id="socreCardRow">
-                    <div class="col-md-2 p-0 cols">
-                        <div class="card result-card">
-                            <div class="card-body result-card-body">
-                                <div class="story-tournament">
-                                    <select class="form-control" style="background:#1e2024;color: white;" id="tournamentSelect"></select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 p-0 cols">
-                        <div class="card result-card">
-                            <div class="card-body result-card-body">
-                                <div class="story-tournament">
-                                    <select class="form-control" style="background:#1e2024;color: white;" id="gameDateSelect"></select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {{--<div class="col-md-2 p-0">--}}
-                    {{--<div class="card">--}}
-                    {{--<div class="card-body">--}}
-                    {{--<p class="result">--}}
-                    {{--<span class="float-left">Result</span>--}}
-                    {{--<span class="float-right">Result</span>--}}
-                    {{--</p>--}}
-                    {{--<br>--}}
-                    {{--<p class="team1">--}}
-                    {{--<span class="float-left">--}}
-                    {{--<img class="mr-2" src="http://127.0.0.1:8000/images/20211029123717_original_1.webp" alt="" style="width: 15px;border-radius: 50%;">--}}
-                    {{--Ban--}}
-                    {{--</span>--}}
-                    {{--<span class="float-right">0</span>--}}
-                    {{--</p>--}}
-                    {{--<br>--}}
-                    {{--<p class="team2">--}}
-                    {{--<span class="float-left">--}}
-                    {{--<img class="mr-2" src="http://127.0.0.1:8000/images/20211029123717_original_1.webp" alt="" style="width: 15px;border-radius: 50%;">--}}
-                    {{--Ind--}}
-                    {{--</span>--}}
-                    {{--<span class="float-right">0</span>--}}
-                    {{--</p>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-
-                </div>
+                @include('tournament::score-card')
             @endif
         </div>
         {{--<img src="{{ static_asset('score.png') }}" alt="" style="height: 70px; width: 100%;">--}}
