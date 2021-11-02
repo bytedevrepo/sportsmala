@@ -226,39 +226,63 @@
 <script>
     $(document).ready(function() {
         getCategory();
+
+        $("#tournamentSelect").on('change', function () {
+            var category_id = $("#tournamentSelect option:selected").val();
+            getScore(category_id);
+        })
+
+        $("#gameDateSelect").on('change', function () {
+            var date = $(this).val();
+            var category_id = $("#tournamentSelect option:selected").val();
+            getScore(category_id,date);
+        })
     });
 
-    function getScore(id='') {
-        let val;
-        if (id){
-            val = id;
+    function getScore(category_id='', date='') {
+        let id;
+        if (category_id){
+            id = category_id;
         } else{
-            val = $("#tournamentSelect option:selected").val();
+            id = $("#tournamentSelect option:selected").val();
         }
         var scoreUrl = "{{ route('tournament-score-ajax') }}";
-        // $('#socreCardRow').removeChild();
         $.ajax({
             type: 'POST',
             url: scoreUrl,
             dataType: "json",
-            data: {'tournament_id': val, _token:"{{ csrf_token() }}"},
+            data: {'category_id': id, 'date': date, _token:"{{ csrf_token() }}"},
             async:false,
             success: function(response) {
+                var gameDateSelect = $('#gameDateSelect');
+                gameDateSelect.empty();
+                var game_dates = response.gameDates;
+                if (game_dates.length){
+                    for(i=0;i<game_dates.length;i++){
+                        $('<option/>')
+                            .val(game_dates[i])
+                            .text(game_dates[i])
+                            .appendTo('#gameDateSelect')
+                    }
+                }
+                gameDateSelect.val(response.selectedDate);
+
+                var match = response.match;
                 $('.scoreCard').remove();
-                for (i=0; i<response.length; i++) {
+                for (i=0; i<match.length; i++) {
                     $("#socreCardRow").append(
                         `<div class="col-md-2 p-0 scoreCard">
                     <div class="card">
                         <div class="card-body">
                             <span class="result pull-right">Result</span>
                             <p class="team1">
-                                <span class="float-left">${response[i].team1.team_name}</span>
-                                <span class="float-right">${response[i].team1_score}</span>
+                                <span class="float-left">${match[i].team1.team_name}</span>
+                                <span class="float-right">${match[i].team1_score}</span>
                             </p>
                             <br>
                             <p class="team2">
-                                <span class="float-left">${response[i].team2.team_name}</span>
-                                <span class="float-right">${response[i].team2_score}</span>
+                                <span class="float-left">${match[i].team2.team_name}</span>
+                                <span class="float-right">${match[i].team2_score}</span>
                             </p>
                         </div>
                     </div>
@@ -270,10 +294,10 @@
         });
     }
     function getCategory() {
-        var tournamentUrl = "{{ route('tournament-list-ajax') }}";
+        var categoryUrl = "{{ route('tournament-category-ajax') }}";
         $.ajax({
             type: 'GET',
-            url: tournamentUrl,
+            url: categoryUrl,
             dataType: "json",
             async:false,
             success: function(response) {
@@ -281,7 +305,7 @@
                 for (i=0; i<response.length; i++) {
                     $('<option/>')
                         .val(response[i].id)
-                        .text(response[i].tournament_name)
+                        .text(response[i].category_name)
                         .appendTo('#tournamentSelect')
                 }
             }

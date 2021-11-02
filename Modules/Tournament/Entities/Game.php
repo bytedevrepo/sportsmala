@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
+    protected $table = 'tournament_games';
     protected $fillable = [];
     protected $casts = [
         'game_time' => 'date'

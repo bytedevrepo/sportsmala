@@ -107,19 +107,34 @@ class TournamentController extends Controller
         return redirect()->route('tournament-list')->with('success',__('successfully_added'));
     }
 
-    public function tournamentListAjax()
-    {
-        $tournaments = Tournament::select('id', 'tournament_name')->get();
-        return \response()->json($tournaments);
-    }
-
     public function scoreListAjax(Request $request)
     {
-        $today = Carbon::now()->format('Y-m-d');
-        $match = Game::with(['team1','team2'])
-            ->where('tournament_id',$request->tournament_id)
-            ->where('game_date','=', $today)
-            ->get();
-        return \response()->json($match);
+        $category_id = $request->category_id;
+        $date = $request->date;
+        $tournament_ids = Tournament::where('category_id', $category_id)->pluck('id');
+
+//        get last three dates from games table
+//        if filter provides game date then select games within that day else get games of last date in games table as default
+        $gameDates = Game::whereIn('tournament_id', $tournament_ids)->orderBy('game_date', 'desc')->limit(3)->distinct()->pluck('game_date');
+        $selectedDate = '';
+        if (isset($date) AND $date != ''){
+            $selectedDate = $date;
+        }else{
+            if (!blank($gameDates)){
+                $selectedDate = $gameDates[0];
+            }
+        }
+        $query = Game::query();
+        $query->with(['team1','team2']);
+        $query->where('game_date',$selectedDate);
+        $match = $query->get();
+
+        return \response()->json(compact('gameDates', 'match', 'selectedDate'));
+    }
+
+    public function tournamentCategoryListAjax()
+    {
+        $categories = TournamentCategory::select('id', 'category_name')->get();
+        return \response()->json($categories);
     }
 }
