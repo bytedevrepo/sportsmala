@@ -32,3 +32,16 @@
 .story-tournament{
     padding: 10px;
 }
+/* Score Board */
+.scoreBoard{
+    padding:.5rem;
+    /* box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px; */
+}
+.scoreBoard th{
+    color:black;
+    font-size: 12px;
+}
+.scoreBoard td{
+    color:rgb(43, 42, 42);
+    font-size: 12px;
+}
