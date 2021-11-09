@@ -1,4 +1,4 @@
-@extends('theme-soccer.layouts.app')
+@extends('site.layouts.app')
 
 @section('content')
     <div class="sg-page-content">
