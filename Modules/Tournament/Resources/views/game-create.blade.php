@@ -38,9 +38,9 @@
                             <div class="add-new-page  bg-white p-20 m-b-20">
                                 <div class="block-header">
                                     @if(isset($game))
-                                        <h2>Update Game</h2>
+                                        <h2>Update Match</h2>
                                     @else
-                                        <h2>Create Game</h2>
+                                        <h2>Create Match</h2>
                                     @endif
                                 </div>
                                 <form action="{{ route('game-save') }}" method="post" enctype="multipart/form-data">
@@ -111,7 +111,7 @@
                                             <div class="form-group form-float form-group-sm text-right">
                                                 <button type="submit" name="btnsubmit" class="btn btn-primary pull-right">
                                                     <i class="m-r-10 mdi mdi-plus"></i>
-                                                    @if(isset($tournament))
+                                                    @if(isset($game))
                                                         Update Match
                                                     @else
                                                         Create Match
