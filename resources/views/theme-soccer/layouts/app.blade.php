@@ -196,7 +196,7 @@
     <script defer>
         let loading=true;
         $(document).ready(function() {
-            
+
             getCategory();
 
             $("#tournamentSelect").on('change', function () {
@@ -244,7 +244,7 @@
                     var match = response.match;
                     // $('.scoreCard').remove();
                     $('.owl-wrapper-outer').remove();
-                   
+
                         for (i=0; i<match.length; i++) {
                         var team1_name = match[i].team1.team_name;
                         var team2_name = match[i].team2.team_name;
@@ -269,12 +269,12 @@
                                             <td>${match[i].team2_score}</td>
                                             </tr>
                                             </table>
-                                            
+
                                             </div>
                                             </div>
                                             </div>`
                             )
-                    
+
                         }
                         // get owl element
                         var owl = $('.owl-carousel');
@@ -314,7 +314,7 @@
         carousel.owlCarousel({
         navigation:true,
         navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-    });  
+    });
     });
 </script>
 @endif
