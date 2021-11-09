@@ -1,5 +1,6 @@
-<div class="row" id="socreCardRow">
-    <div class="col-md-2 p-0 cols">
+<div class="row" >
+    
+    <div class="col-md-2 p-1 cols">
         <div class="card result-card">
             <div class="card-body result-card-body">
                 <div class="story-tournament">
@@ -8,7 +9,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-2 p-0 cols">
+    <div class="col-md-2 p-1 cols">
         <div class="card result-card">
             <div class="card-body result-card-body">
                 <div class="story-tournament">
@@ -17,6 +18,12 @@
             </div>
         </div>
     </div>
+    <div class="col-md-8 p-0 cols ">
+        <div id="socreCardRow" class="owl-carousel">
+            
+        </div>
+    </div>
+    
     {{--<div class="col-md-2 p-0">--}}
     {{--<div class="card">--}}
     {{--<div class="card-body">--}}
