@@ -9,11 +9,17 @@
     align-items:center;
     padding-top: 1.01rem;
 }
-.white-nav-bar li{
-    padding:.2rem;
-    font-weight: bold;
-    font-size:18px;
-    color:red;
+.white-nav-bar li a{
+    padding:.3rem;
+    /*font-weight: bold;*/
+    /*font-size:18px;*/
+    /*padding: 0 34px;*/
+    color:red !important;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    font-style: normal;
+    text-transform: uppercase;
 }
 .slan-comp-cont{
     background-color:white;
@@ -26,7 +32,7 @@
 }
 
 /*
-* 	Owl Carousel Owl Demo Theme 
+* 	Owl Carousel Owl Demo Theme
 *	v1.23
 */
 
@@ -127,16 +133,16 @@
   margin:0px 50px;
 }
 
- 
+
 .owl-theme .owl-controls .owl-buttons div {
   position: absolute;
 }
- 
+
 .owl-theme .owl-controls .owl-buttons .owl-prev{
   left: 0px;
-  top: 55px; 
+  top: 55px;
 }
- 
+
 .owl-theme .owl-controls .owl-buttons .owl-next{
   right: 0px;
   top: 55px;

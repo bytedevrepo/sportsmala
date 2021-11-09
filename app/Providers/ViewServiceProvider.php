@@ -40,30 +40,22 @@ class ViewServiceProvider extends ServiceProvider
             'App\Http\View\Composers\AdComposer'
         );
 
-        View::composer(
-            ['theme-soccer.layouts.header','site.layouts.header'],
-            'App\Http\View\Composers\PrimaryMenuComposer'
-        );
+        View::composer(['theme-soccer.layouts.header','site.layouts.header'], 'App\Http\View\Composers\PrimaryMenuComposer');
+        View::composer(['theme-soccer.layouts.header','site.layouts.header'], 'App\Http\View\Composers\SecondaryMenuComposer');
 
         View::composer(
             ['theme-soccer.layouts.header', 'site.layouts.footer', 'theme-soccer._partials.right_sidebar_widgets','site.layouts.header'],
             'App\Http\View\Composers\SocialComposer'
         );
 
-        View::composer(
-            ['site.layouts.header'],
-            'App\Http\View\Composers\LastpostComposer'
-        );
+        View::composer(['site.layouts.header'], 'App\Http\View\Composers\LastpostComposer');
 
         View::composer(
             ['theme-soccer.layouts.header', 'common::layouts.header', 'site.layouts.header'],
             'App\Http\View\Composers\ActiveLangComposer'
         );
 
-        View::composer(
-            ['theme-soccer._partials.home.breaking_section'],
-            'App\Http\View\Composers\BreakingComposer'
-        );
+        View::composer(['theme-soccer._partials.home.breaking_section'], 'App\Http\View\Composers\BreakingComposer');
 
         View::composer(
             ['theme-soccer.layouts.app', 'theme-soccer._partials.home.primary_section', 'site.layouts.app'],
