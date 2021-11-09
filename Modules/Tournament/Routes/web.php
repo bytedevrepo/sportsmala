@@ -35,8 +35,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
                 Route::get('/game', 'GameController@matchList')->name('match-list');
                 Route::get('/game-create', 'GameController@create')->name('game-create');
+                Route::get('/game-edit/{game_id}', 'GameController@edit')->name('game-edit');
                 Route::post('/save-game', 'GameController@store')->name('game-save');
-                Route::post('/update-game', 'GameController@update')->name('game-update');
+                Route::post('/update-game-score', 'GameController@updateScore')->name('game-update');
             });
         });
     });

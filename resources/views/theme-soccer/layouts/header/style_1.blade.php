@@ -71,7 +71,7 @@
     </div>
     <!-- Header Top Bar / End --><!-- Header Secondary -->
     <div class="header__secondary m-2 story-result">
-        <div class="container-fluid">
+        <div class="container-fluid" style="height: 80px">
             @if(Route::has('tournament-list'))
                 @include('tournament::score-card')
             @endif
@@ -195,19 +195,24 @@
                         @endforeach
                     </ul>
 
-                    {{--<a href="#" class="pushy-panel__toggle"><span class="pushy-panel__line"></span> </a>--}}
-                    <!-- Pushy Panel Toggle / Eng -->
-                    <div class="slan-comp">
-                    </div>
-                    <div class="white-nav-bar">
-
-                        <ul>
-                            <li>News</li>
-                            <li>Links</li>
-                            <li>Gallary</li>
-                            <li>Shop</li>
-                        </ul>
-                    </div>
+                {{--<a href="#" class="pushy-panel__toggle"><span class="pushy-panel__line"></span> </a>--}}
+                <!-- Pushy Panel Toggle / Eng -->
+                    <div class="slan-comp"></div>
+                    @if(isset($secondaryMenu) AND !blank($secondaryMenu))
+                        <div class="white-nav-bar">
+                            <ul>
+                                @foreach($secondaryMenu as $sMenu)
+                                    @if($sMenu->is_mega_menu == 'no')
+                                        <li>
+                                            <a href="{{menuUrl($sMenu)}}" target="{{$sMenu->new_teb == 1? '_blank':''}}">
+                                                {{$sMenu->label == 'gallery'? __('gallery'):$sMenu->label}}
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </nav>
                 <!-- Main Navigation / End -->
             </div>

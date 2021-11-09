@@ -69,7 +69,7 @@ class PageController extends Controller
 
     public function imageAlbums(){
         $albums = Album::all();
-        return view('site.pages.albums', compact('albums'));
+        return view('theme-soccer.pages.albums', compact('albums'));
     }
 
     public function imageGallery($slug){
@@ -79,9 +79,9 @@ class PageController extends Controller
             $albumImages    = GalleryImage::where('album_id',$album->id)->orderBy('id','desc')->get();
             $tabs           = $album->tabs;
 //            dd($tabs);
-            return view('site.pages.album_gallery',compact('albumImages','tabs','album'));
+            return view('theme-soccer.pages.album_gallery',compact('albumImages','tabs','album'));
         else:
-            return view('site.pages.404');
+            abort(404);
         endif;
 
     }

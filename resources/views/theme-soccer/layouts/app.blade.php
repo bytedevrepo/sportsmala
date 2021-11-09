@@ -37,6 +37,7 @@
 
     @include('feed::links')
     @stack('style')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css"  />
     <script async src="https://www.googletagmanager.com/gtag/js?id={{ settingHelper('google_analytics_id') }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -193,7 +194,9 @@
 </script>
 @if(Route::has('tournament-list'))
     <script defer>
+        let loading=true;
         $(document).ready(function() {
+
             getCategory();
 
             $("#tournamentSelect").on('change', function () {
@@ -239,41 +242,48 @@
                     }
 
                     var match = response.match;
-                    $('.scoreCard').remove();
-                    for (i=0; i<match.length; i++) {
+                    // $('.scoreCard').remove();
+                    $('.owl-wrapper-outer').remove();
+
+                        for (i=0; i<match.length; i++) {
                         var team1_name = match[i].team1.team_name;
                         var team2_name = match[i].team2.team_name;
 
                         $("#socreCardRow").append(
-                            `<div class="col-md-2 p-0 scoreCard">
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="result">
-                                <span class="float-left">${match[i].tournament.tournament_name} - ${match[i].game_status} </span>
-                                <span class="float-right">Result</span>
-                            </p>
-                            <br>
-                            <p class="team1">
-                                 <span class="float-left">
-                                    <img class="mr-2" src="${match[i].team1.logo}" alt="" style="width: 15px;border-radius: 50%;">
-                                    ${team1_name}
-                                </span>
-                                <span class="float-right">${match[i].team1_score}</span>
-                            </p>
-                            <br>
-                            <p class="team2">
-                                <span class="float-left">
-                                    <img class="mr-2" src="${match[i].team2.logo}" alt="" style="width: 15px;border-radius: 50%;">
-                                    ${team2_name}
-                                </span>
-                                <span class="float-right">${match[i].team2_score}</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                        `
-                        )
-                    }
+                            `<div class=" col-md-3 p-0 scoreCard">
+                                <div class="card h-100 rounded">
+                                    <div class="card-body">
+                                        <table class="scoreBoard">
+                                            <tr>
+                                                <th>${match[i].tournament.tournament_name} - ${match[i].game_status} </th>
+                                                <th>Result</th>
+                                                </tr>
+                                                <tr>
+                                                    <td class="float-left"> <img class="mr-2" src="${match[i].team1.logo}" alt="" style="width: 15px;border-radius: 50%;">
+                                                        ${team1_name}</td>
+                                                        <td>${match[i].team1_score}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="float-left"><img class="mr-2" src="${match[i].team2.logo}" alt="" style="width: 15px;border-radius: 50%;">
+                                                ${team2_name}</td>
+                                            <td>${match[i].team2_score}</td>
+                                            </tr>
+                                            </table>
+                                     </div>
+                                </div>
+                            </div>`
+                            )
+
+                        }
+                        // get owl element
+                        var owl = $('.owl-carousel');
+
+                        // get owl instance from element
+                        var owlInstance = owl.data('owlCarousel');
+
+                        // if instance is existing
+                        if(owlInstance != null)
+                            owlInstance.reinit();
                 }
             });
         }
@@ -296,6 +306,17 @@
             });
         }
     </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
+<script>
+    $(document).ready(function () {
+        var carousel = $("#socreCardRow");
+        carousel.owlCarousel({
+        items:4,
+        navigation:true,
+        navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+    });
+    });
+</script>
 @endif
 @yield('script')
 @yield('player')

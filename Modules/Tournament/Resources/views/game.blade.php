@@ -91,10 +91,10 @@
                                                         </td>
                                                         @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
                                                             <td class="text-center">
-                                                                <button class="mb-2 btn btn-xs btn-primary">Update</button>
+                                                                <button class="mb-2 btn btn-xs btn-primary">Update Score</button>
                                                                 <br>
                                                                 @if(Sentinel::getUser()->hasAccess(['category_write']))
-                                                                    <a href="{{ route('edit-category',$value->id) }}">
+                                                                    <a href="{{ route('game-edit',$value->id) }}">
                                                                         <i class="fa fa-edit option-icon"></i>
                                                                     </a>
                                                                 @endif

@@ -39,6 +39,14 @@ class GameController extends Controller
         return view('tournament::game-create', compact('teams', 'tournaments'));
     }
 
+    public function edit($game_id)
+    {
+        $teams = Team::all();
+        $tournaments = Tournament::all();
+        $game = Game::findOrFail($game_id);
+        return view('tournament::game-create', compact('teams', 'tournaments', 'game'));
+    }
+
     /**
      * Store a newly created resource in storage.
      * @param Request $request
@@ -67,7 +75,7 @@ class GameController extends Controller
         return redirect()->route('match-list')->with('success',__('successfully_added'));
     }
 
-    public function update(Request $request)
+    public function updateScore(Request $request)
     {
         Validator::make($request->all(), [
             'id' => 'required',

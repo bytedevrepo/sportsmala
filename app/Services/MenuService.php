@@ -120,8 +120,15 @@ class MenuService extends Service
 
     public function primaryMenu()
     {
-        $primary_menu = MenuLocation::with(['menuItem.children', 'menuItem.page'])->where('title', 'Primary')->first();
+        $primary_menu = MenuLocation::with(['menuItem.children', 'menuItem.page'])->where('unique_name', 'primary')->first();
 
         return $primary_menu->menuItem->where('parent','==', '')->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'));
+    }
+
+    public function secondaryMenu()
+    {
+        $secondary_menu = MenuLocation::with(['menuItem.children', 'menuItem.page'])->where('unique_name', 'secondary')->first();
+
+        return $secondary_menu->menuItem->where('parent','==', '')->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'));
     }
 }
