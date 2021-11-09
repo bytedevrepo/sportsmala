@@ -140,12 +140,14 @@
 
 .owl-theme .owl-controls .owl-buttons .owl-prev{
   left: 0px;
-  top: 55px;
+  top: 33px;
 }
-
+.owl-wrapper{
+	padding-left: 1.5rem;
+}
 .owl-theme .owl-controls .owl-buttons .owl-next{
-  right: 0px;
-  top: 55px;
+  right: -10px;
+  top: 33px;
 }
 .header__secondary {
     height: 96px;

@@ -250,8 +250,8 @@
                         var team2_name = match[i].team2.team_name;
 
                         $("#socreCardRow").append(
-                            `<div class=" col-md-3 p-0  scoreCard">
-                                <div class="card h-100 rounded ">
+                            `<div class=" col-md-3 p-0 scoreCard">
+                                <div class="card h-100 rounded">
                                     <div class="card-body">
                                         <table class="scoreBoard">
                                             <tr>
@@ -269,10 +269,9 @@
                                             <td>${match[i].team2_score}</td>
                                             </tr>
                                             </table>
-
-                                            </div>
-                                            </div>
-                                            </div>`
+                                     </div>
+                                </div>
+                            </div>`
                             )
 
                         }
@@ -312,6 +311,7 @@
     $(document).ready(function () {
         var carousel = $("#socreCardRow");
         carousel.owlCarousel({
+        items:4,
         navigation:true,
         navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
     });
