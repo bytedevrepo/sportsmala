@@ -270,9 +270,9 @@
                                             </tr>
                                             </table>
                                             
-                                            </div>
-                                            </div>
-                                            </div>`
+                                     </div>
+                                </div>
+                            </div>`
                             )
                     
                         }
@@ -312,6 +312,7 @@
     $(document).ready(function () {
         var carousel = $("#socreCardRow");
         carousel.owlCarousel({
+        items:4,
         navigation:true,
         navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
     });  
