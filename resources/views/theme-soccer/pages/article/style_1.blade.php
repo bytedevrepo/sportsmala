@@ -7,7 +7,7 @@
         @endif
     </figure>
     <!-- Post Meta - Side -->
-    @if(@$post->user->permissions['author_show'] == 1)
+    {{--@if(@$post->user->permissions['author_show'] == 1)--}}
         <div class="post__meta-block post__meta-block--side">
             <!-- Post Author -->
             <div class="post-author">
@@ -59,7 +59,7 @@
                 <li class="meta__item meta__item--views">{{ $post->total_hit ?? 0 }}</li>
             </ul>
         </div>
-    @endif
+    {{--@endif--}}
     <div class="card__content">
         <div class="post__category">
             @if(!blank($post->categories))

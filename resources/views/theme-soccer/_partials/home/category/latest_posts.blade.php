@@ -22,7 +22,7 @@
                                     @endforeach
                                 @endif
                             </div>
-                            <a href="#">
+                            <a href="{{ route('article.detail', ['id' => $post->slug]) }}">
                                 @if(isFileExist($post->image, $result = @$post->image->medium_image_three))
                                     <img src=" {{basePath($post->image)}}/{{ $result }} " width="100%" height="100%" alt="{!! $post->title !!}">
                                 @else
@@ -31,7 +31,11 @@
                             </a>
                         </figure>
                         <div class="posts__inner card__content">
-                            <a href="#" class="posts__cta"></a>
+                            <a href="javascript:void(0)"
+                               class="shareSocial posts__cta"
+                               data-twitter="{{ share_twitter_url(route('article.detail', $post->slug)) }}"
+                               data-fb="{{ share_facebook_url(route('article.detail', $post->slug)) }}"></a>
+
                             <time datetime="{{$post->updated_at}}" class="posts__date">
                                 <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
                                     @if($post->updated_at <= \Carbon\Carbon::today())

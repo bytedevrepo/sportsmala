@@ -23,12 +23,12 @@ function menuUrl($menu)
 
     elseif ($menu->source   == 'page') :
 
-        if($menu->page_id == ""): 
+        if($menu->page_id == ""):
             return route('image.albums');
-        else: 
+        else:
             return route('site.page', ['slug' => $menu['page']->slug]);
         endif;
-        
+
 
     elseif ($menu->source   == 'post'):
 
@@ -163,6 +163,29 @@ if (!function_exists('profile_exist')) {
         if (File::exists($file)) :
             return true;
         endif;
+    }
+
+}
+
+if (!function_exists('share_facebook_url')) {
+
+    function share_facebook_url($url=''){
+        if ($url !== ''){
+            $fb_url = 'http://www.facebook.com/sharer/sharer.phpu='.$url;
+            return $fb_url;
+        }
+        return null;
+    }
+
+}
+if (!function_exists('share_twitter_url')) {
+
+    function share_twitter_url($url=''){
+        if ($url !== ''){
+            $twitter_url = 'https://twitter.com/intent/tweet?url='.$url;
+            return $twitter_url;
+        }
+        return null;
     }
 
 }

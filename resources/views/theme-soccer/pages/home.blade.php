@@ -6,6 +6,7 @@
     @if(!blank($topNewsSection))
         @include('theme-soccer._partials.home.top_news_section', ['section' => $topNewsSection])
     @endif
+    @include('theme-soccer._partials.share_social_modal')
     <div class="site-content">
         <div class="container">
             <div class="row">

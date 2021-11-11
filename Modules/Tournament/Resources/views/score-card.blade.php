@@ -1,5 +1,4 @@
 <div class="row" >
-
     <div class="col-md-2 p-1 cols">
         <div class="card result-card">
             <div class="card-body result-card-body">
@@ -23,6 +22,7 @@
 
         </div>
     </div>
+</div>
 
 
 

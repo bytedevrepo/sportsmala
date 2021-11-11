@@ -31,7 +31,10 @@
                             </figure>
 
                             <div class="posts__inner card__content">
-                                <a href="#" class="posts__cta"></a>
+                                <a href="javascript:void(0)"
+                                   class="shareSocial posts__cta"
+                                   data-twitter="{{ share_twitter_url(route('article.detail', $item->slug)) }}"
+                                   data-fb="{{ share_facebook_url(route('article.detail', $item->slug)) }}"></a>
                                 <time datetime="{{ $item->updated_at }}">
                                     <a href="{{route('article.date', date('Y-m-d', strtotime($item->updated_at)))}}">
                                         @if($item->updated_at <= \Carbon\Carbon::today())
