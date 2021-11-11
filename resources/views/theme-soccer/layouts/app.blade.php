@@ -46,7 +46,11 @@
         gtag('js', new Date());
         gtag('config', '{{ settingHelper('google_analytics_id') }}');
     </script>
-
+    <style>
+        .owl-item{
+            width: auto !important;
+        }
+    </style>
 </head>
 <body data-template="template-soccer" class="@if(settingHelper('preloader_option')==0) page-loader-disable @endif {{defaultModeCheck()}}">
 <div class="site-wrapper clearfix">
@@ -246,7 +250,7 @@
                     // $('.scoreCard').remove();
                     $('.owl-wrapper-outer').remove();
 
-                        for (i=0; i<match.length; i++) {
+                    for (i=0; i<match.length; i++) {
                         var team1_name = match[i].team1.team_name;
                         var team2_name = match[i].team2.team_name;
 
@@ -260,8 +264,10 @@
                                                 <th>Result</th>
                                                 </tr>
                                                 <tr>
-                                                    <td class="float-left"> <img class="mr-2" src="${match[i].team1.logo}" alt="" style="width: 15px;border-radius: 50%;">
-                                                        ${team1_name}</td>
+                                                    <td class="float-left">
+                                                        <img class="mr-2" src="${match[i].team1.logo}" alt="" style="width: 15px;border-radius: 50%;">
+                                                        ${team1_name}
+                                                                </td>
                                                         <td>${match[i].team1_score}</td>
                                         </tr>
                                         <tr>
@@ -273,18 +279,18 @@
                                      </div>
                                 </div>
                             </div>`
-                            )
+                        )
 
-                        }
-                        // get owl element
-                        var owl = $('.owl-carousel');
+                    }
+                    // get owl element
+                    var owl = $('.owl-carousel');
 
-                        // get owl instance from element
-                        var owlInstance = owl.data('owlCarousel');
+                    // get owl instance from element
+                    var owlInstance = owl.data('owlCarousel');
 
-                        // if instance is existing
-                        if(owlInstance != null)
-                            owlInstance.reinit();
+                    // if instance is existing
+                    if(owlInstance != null)
+                        owlInstance.reinit();
                 }
             });
         }
@@ -307,17 +313,17 @@
             });
         }
     </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
-<script>
-    $(document).ready(function () {
-        var carousel = $("#socreCardRow");
-        carousel.owlCarousel({
-        items:4,
-        navigation:true,
-        navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-    });
-    });
-</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            var carousel = $("#socreCardRow");
+            carousel.owlCarousel({
+                items:4,
+                navigation:true,
+                navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
+            });
+        });
+    </script>
 @endif
 @yield('script')
 @yield('player')
