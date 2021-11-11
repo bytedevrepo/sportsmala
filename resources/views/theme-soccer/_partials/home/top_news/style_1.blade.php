@@ -25,11 +25,13 @@
                             </ul>
                         </header>
                         <figure class="post__thumbnail">
-                            @if(isFileExist($value->image, $result = @$value->image->original_image))
-                                <img src=" {{basePath($value->image)}}/{{ $result }} " width="100%" height="100%" alt="{!! $value->title !!}">
-                            @else
-                                <img src="{{static_asset('default-image/default-255x175.png') }} " class="img-fluid" alt="{!! $value->title !!}">
-                            @endif
+                            <a href="{{ route('article.detail', ['id' => $value->slug]) }}">
+                                @if(isFileExist($value->image, $result = @$value->image->original_image))
+                                    <img src=" {{basePath($value->image)}}/{{ $result }} " width="100%" height="100%" alt="{!! $value->title !!}">
+                                @else
+                                    <img src="{{static_asset('default-image/default-255x175.png') }} " class="img-fluid" alt="{!! $value->title !!}">
+                                @endif
+                            </a>
                         </figure>
                         <div class="post__content mt-2">
                             {!! Str::limit(strip_tags($value->content), 255 ) !!}

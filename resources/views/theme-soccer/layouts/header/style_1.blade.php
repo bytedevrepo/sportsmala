@@ -71,7 +71,7 @@
     </div>
     <!-- Header Top Bar / End --><!-- Header Secondary -->
     <div class="header__secondary m-2 story-result">
-        <div class="container-fluid" style="height: 80px">
+        <div class="container-fluid" >
             @if(Route::has('tournament-list'))
                 @include('tournament::score-card')
             @endif

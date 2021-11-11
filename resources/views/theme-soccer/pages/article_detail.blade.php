@@ -1,5 +1,6 @@
 @extends('theme-soccer.layouts.app')
 @section('content')
+    @include('theme-soccer._partials.share_social_modal')
     <!-- Page Heading -->
     <div class="page-heading">
         <div class="container">
