@@ -1,8 +1,12 @@
 .story-result .card{
-    height: 80px;
+    height: 57px;
     border-radius: 0px;
     /*background-color: #1e2024;*/
     /*border-color: #292c31;*/
+}
+.result-card{
+    /* box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%); */
+    box-shadow:none!important;
 }
 .story-result .result{
     font-weight: bold;
@@ -29,8 +33,15 @@
     padding-left: 5px;
     padding-bottom: 0px;
 }
-.story-tournament{
+/* .story-tournament{
     padding: 10px;
+} */
+.story-tournament select{
+    border:none;
+    border-bottom: 1px solid #1892ed;
+}
+.story-result .row {
+    margin-bottom: 0px !important;
 }
 /* Score Board */
 .scoreBoard{

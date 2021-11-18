@@ -1,22 +1,28 @@
-<div class="row" >
-    <div class="col-md-2 p-1 cols">
-        <div class="card result-card">
-            <div class="card-body result-card-body">
-                <div class="story-tournament">
-                    <select class="form-control" style="color: black;" id="tournamentSelect"></select>
+<div class="row  justify-content-center" >
+    <div class="col-md-4 pt-2 pb-2 pl-4 pr-4 cols">
+        <div class="row bg-white rounded">
+            <div class="col-6">
+                <div class="card result-card">
+                    <div class="card-body result-card-body">
+                        <div class="story-tournament">
+                            <select class="form-control" style="color: black;" id="tournamentSelect"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                
+                <div class="card result-card">
+                    <div class="card-body result-card-body">
+                        <div class="story-tournament">
+                            <select class="form-control" style="color: black;" id="gameDateSelect"></select>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-2 p-1 cols">
-        <div class="card result-card">
-            <div class="card-body result-card-body">
-                <div class="story-tournament">
-                    <select class="form-control" style="color: black;" id="gameDateSelect"></select>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <div class="col-md-8 p-0 cols ">
         <div id="socreCardRow" class="owl-carousel">
 
