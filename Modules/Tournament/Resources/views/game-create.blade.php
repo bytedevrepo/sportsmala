@@ -83,10 +83,10 @@
                                             <div class="form-group">
                                                 <label for="category-name" class="col-form-label">Game Date</label>
                                                 <div class="input-group" id="start_date" data-target-input="nearest">
-                                                    <input type="text" name="game_date" class="form-control" value="{{ $game->game_date ?? '' }}">
-                                                    <div class="input-group-append" data-target="#start_date" data-toggle="datetimepicker">
-                                                        <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
-                                                    </div>
+                                                    <input type="date" name="game_date" class="form-control" value="{{ $game->game_date ?? '' }}">
+                                                    {{--<div class="input-group-append" data-target="#start_date" data-toggle="datetimepicker">--}}
+                                                        {{--<div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>--}}
+                                                    {{--</div>--}}
                                                 </div>
                                             </div>
                                         </div>

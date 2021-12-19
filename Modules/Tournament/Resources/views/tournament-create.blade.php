@@ -60,26 +60,26 @@
                                             <input id="category-name" name="tournament_name" type="text" class="form-control" required value="{{ $tournament->tournament_name ?? '' }}">
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <div class="input-group " id="start_date" data-target-input="nearest">
                                                 <label for="category-name" class="col-form-label">Start Date</label>
-                                                <input type="text" name="start_date" class="form-control"
+                                                <input type="date" name="start_date" class="form-control"
                                                        value="{{ $tournament->start_date ?? '' }}">
-                                                <div class="input-group-append" data-target="#start_date" data-toggle="datetimepicker">
-                                                    <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
-                                                </div>
+                                                {{--<div class="input-group-append" data-target="#start_date" data-toggle="datetimepicker">--}}
+                                                    {{--<div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-4">
                                         <div class="form-group">
                                             <div class="input-group" id="end_date" data-target-input="nearest">
                                                 <label for="category-name" class="col-form-label">End Date</label>
-                                                <input type="text" name="end_date" class="form-control" value="{{ $tournament->end_date ?? '' }}">
-                                                <div class="input-group-append" data-target="#end_date" data-toggle="datetimepicker">
-                                                    <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
-                                                </div>
+                                                <input type="date" name="end_date" class="form-control" value="{{ $tournament->end_date ?? '' }}">
+                                                {{--<div class="input-group-append" data-target="#end_date" data-toggle="datetimepicker">--}}
+                                                    {{--<div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>--}}
+                                                {{--</div>--}}
                                             </div>
                                         </div>
                                     </div>
