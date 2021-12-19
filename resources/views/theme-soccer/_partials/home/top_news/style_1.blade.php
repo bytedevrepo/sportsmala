@@ -1,8 +1,8 @@
-<div class="container mt-4">
+<div class="container mt-2 mb-0">
     @foreach($posts as $value)
         <div class="row">
             <div class="content col-lg-12 text-center">
-                <article class="card card--lg post post--single">
+                <article class="card card--sm post post--single">
                     <div class="card__content">
                         <header class="post__header">
                             <h2 class="post__title">

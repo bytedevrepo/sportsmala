@@ -3,11 +3,11 @@
         <!--Content-->
         <div class="modal-content">
             <!--Header-->
-            <div class="modal-header">
-                <p class="heading lead">Share Post</p>
+            <div class="modal-header text-dark">
+                <p class="heading lead text-dark">Share Post</p>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="white-text">&times;</span>
+                    <span aria-hidden="true" class="white-dark">&times;</span>
                 </button>
             </div>
 

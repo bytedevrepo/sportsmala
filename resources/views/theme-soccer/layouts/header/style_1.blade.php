@@ -26,13 +26,9 @@
                     </li>
                 </ul>
                 <div class="header-search-form">
-                    <form id="search_bar_ext"  action="{{ route('article.search') }}" id="search" method="GET">
+                    <form id="search_bar_ext"  action="{{ route('article.search') }}" method="GET">
                         <input type="search" name="search" placeholder="{{ __('search') }}" class="search_bar_input">
                     </form>
-                    {{-- <form action="{{ route('article.search') }}" id="search" class="search-form" method="GET">
-                        <input type="text" style="border-color: white;" class="form-control header-mobile__search-control" name="search" placeholder="{{ __('search') }}">
-                        <button type="submit" class="header-mobile__search-submit"><i class="fa fa-search"></i></button>
-                    </form> --}}
                 </div>
                 <!-- Social Links / End -->
                 <!-- Account Navigation -->
@@ -70,7 +66,7 @@
         </div>
     </div>
     <!-- Header Top Bar / End --><!-- Header Secondary -->
-    <div class="header__secondary  story-result" style="height: 108px;">
+    <div class="header__secondary story-result" style="height: 108px;">
         <div class="container-fluid p-1" >
             @if(Route::has('tournament-list'))
                 @include('tournament::score-card')
@@ -85,7 +81,7 @@
                 <!-- Header Logo -->
                 <div class="header-logo">
                     <a href="{{ route('home') }}">
-                        <img style="width: 150px;" src="{{ static_asset(settingHelper('logo')) }}" srcset="{{ static_asset(settingHelper('logo')) }}" alt="Logo" class="header-logo__img">
+                        <img style="" src="{{ static_asset(settingHelper('logo')) }}" srcset="{{ static_asset(settingHelper('logo')) }}" alt="Logo" class="header-logo__img">
                     </a>
                 </div>
                 <!-- Header Logo / End --><!-- Main Navigation -->
@@ -203,7 +199,7 @@
                             <ul>
                                 @foreach($secondaryMenu as $sMenu)
                                     @if($sMenu->is_mega_menu == 'no')
-                                        <li>
+                                        <li class="main-nav__list">
                                             <a href="{{menuUrl($sMenu)}}" target="{{$sMenu->new_teb == 1? '_blank':''}}">
                                                 {{$sMenu->label == 'gallery'? __('gallery'):$sMenu->label}}
                                             </a>

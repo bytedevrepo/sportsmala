@@ -1,21 +1,20 @@
 <div class="row  justify-content-center" >
-    <div class="col-md-4 pt-2 pb-2 pl-4 pr-4 cols">
-        <div class="row bg-white rounded">
+    <div class="col-md-3 pl-3 cols" style="padding-right:12px">
+        <div class="row bg-white">
             <div class="col-6">
-                <div class="card result-card">
+                <div class="card result-card" style="">
                     <div class="card-body result-card-body">
                         <div class="story-tournament">
-                            <select class="form-control" style="color: black;" id="tournamentSelect"></select>
+                            <select class="form-control" style="color: #1892ed;" id="tournamentSelect"></select>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-6">
-                
-                <div class="card result-card">
+                <div class="card result-card" style="">
                     <div class="card-body result-card-body">
                         <div class="story-tournament">
-                            <select class="form-control" style="color: black;" id="gameDateSelect"></select>
+                            <select class="form-control" style="color: #1892ed;" id="gameDateSelect"></select>
                         </div>
                     </div>
                 </div>
@@ -23,42 +22,8 @@
         </div>
     </div>
 
-    <div class="col-md-8 p-0 cols ">
-        <div id="socreCardRow" class="owl-carousel">
-
-        </div>
+    <div class="col-md-9 p-0 cols ">
+        <section id="socreCardRow"  class="regular slider">
+        </section>
     </div>
 </div>
-
-
-
-
-
-    {{--<div class="col-md-2 p-0">--}}
-        {{--<div class="card">--}}
-            {{--<div class="card-body">--}}
-                {{--<p class="result">--}}
-                    {{--<span class="float-left">Result</span>--}}
-                    {{--<span class="float-right">Result</span>--}}
-                {{--</p>--}}
-                {{--<br>--}}
-                {{--<p class="team1">--}}
-    {{--<span class="float-left">--}}
-    {{--<img class="mr-2" src="http://127.0.0.1:8000/images/20211029123717_original_1.webp" alt="" style="width: 15px;border-radius: 50%;">--}}
-    {{--Ban--}}
-    {{--</span>--}}
-                    {{--<span class="float-right">0</span>--}}
-                {{--</p>--}}
-                {{--<br>--}}
-                {{--<p class="team2">--}}
-    {{--<span class="float-left">--}}
-    {{--<img class="mr-2" src="http://127.0.0.1:8000/images/20211029123717_original_1.webp" alt="" style="width: 15px;border-radius: 50%;">--}}
-    {{--Ind--}}
-    {{--</span>--}}
-                    {{--<span class="float-right">0</span>--}}
-                {{--</p>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</div>--}}
-
-{{--</div>--}}

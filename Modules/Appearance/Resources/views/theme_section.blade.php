@@ -258,7 +258,17 @@
                                                         <input type="radio" name="breaking_section_style" id="primary_section_style_1" value="style_1" @if($breakingSection AND $breakingSection->section_style == "style_1") checked="" @endif class="custom-control-input">
                                                         <span class="custom-control-label"></span>
                                                     </label>
-                                                    <p>style_1</p>
+                                                    <p>style_1 (Scroll)</p>
+                                                    {{--<img src="{{static_asset('default-image/primary_section/Style_1.png') }}" alt="image" class="img-responsive cat-block-img">--}}
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-4">
+                                                <div class="primary_section_style">
+                                                    <label class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" name="breaking_section_style" id="primary_section_style_2" value="style_2" @if($breakingSection AND $breakingSection->section_style == "style_2") checked="" @endif class="custom-control-input">
+                                                        <span class="custom-control-label"></span>
+                                                    </label>
+                                                    <p>style_2 (Slider)</p>
                                                     {{--<img src="{{static_asset('default-image/primary_section/Style_1.png') }}" alt="image" class="img-responsive cat-block-img">--}}
                                                 </div>
                                             </div>
