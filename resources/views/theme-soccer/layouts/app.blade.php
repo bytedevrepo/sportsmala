@@ -193,6 +193,12 @@
     });
 </script>
 @if(Route::has('tournament-list'))
+    <script>
+        var directory = 'public/';
+        @if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') == 's3' || defined('LARAVEL_START_FROM_PUBLIC'))
+            directory = '';
+        @endif
+    </script>
     <script defer>
         $(document).ready(function() {
             getCategory();
@@ -259,7 +265,7 @@
                     <div>
                         <div class="widget-results__content mr-1" style="background-color: #fff; height: 90px;">
                             <div class="widget-results__team widget-results__team--first text-center">
-                                <figure class="widget-results__team-logo"><img src="${match[i].team1.logo}" alt=""></figure><br>
+                                <figure class="widget-results__team-logo"><img src="${directory}${match[i].team1.logo}" alt=""></figure><br>
                                 <div class="widget-results__team-details">
                                     <h5 class="widget-results__team-name">${team1_name}</h5>
                                 </div>
@@ -271,7 +277,7 @@
                                 </div>
                             </div>
                             <div class="widget-results__team widget-results__team--first text-center">
-                                <figure class="widget-results__team-logo"><img src="${match[i].team2.logo}" alt=""></figure><br>
+                                <figure class="widget-results__team-logo"><img src="${directory}${match[i].team2.logo}" alt=""></figure><br>
                                 <div class="widget-results__team-details">
                                     <h5 class="widget-results__team-name">${team2_name}</h5>
                                 </div>

@@ -35,7 +35,7 @@
                                     @foreach ($teams as $value)
                                         <tr role="row" class="odd" id="row_{{ $value->id }}">
                                             <td class="sorting_1">{{ $value->id }}</td>
-                                            <td><img width="50" src="{{ asset($value->logo) }}" alt=""></td>
+                                            <td><img width="50" src="{{ static_asset($value->logo) }}" alt=""></td>
                                             <td>{{ $value->team_name }}</td>
                                             <td class="text-center">{{ Illuminate\Support\Str::limit($value->description, 20, $end='...') }}</td>
                                             @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
