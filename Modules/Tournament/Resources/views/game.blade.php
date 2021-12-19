@@ -100,7 +100,7 @@
                                                                 @endif
                                                                 @if(Sentinel::getUser()->hasAccess(['category_delete']))
                                                                     <a href="javascript:void(0)"
-                                                                       onclick="delete_item('games','{{ $value->id }}')"><i
+                                                                       onclick="delete_item('tournament_games','{{ $value->id }}')"><i
                                                                             class="fa fa-trash option-icon"></i>
                                                                     </a>
                                                                 @endif
