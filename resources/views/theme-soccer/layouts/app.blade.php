@@ -259,8 +259,23 @@
                     $(".slick-track").empty();
                     if (match.length !== 0) {
                         for (let i = 0; i < match.length; i++) {
+console.log(match[i])
                             let team1_name = match[i].team1.team_name;
                             let team2_name = match[i].team2.team_name;
+
+                            let team1_score = match[i].team1_score;
+                            let team2_score = match[i].team2_score;
+
+                            let team1_score_class = '';
+                            let team2_score_class = '';
+
+                            if (team1_score && team2_score && (team1_score > team2_score)){
+                                team1_score_class = 'widget-results__score-winner';
+                                team2_score_class = 'widget-results__score-looser';
+                            }else if(team1_score && team2_score && (team1_score < team2_score)){
+                                team1_score_class = 'widget-results__score-looser';
+                                team2_score_class = 'widget-results__score-winner';
+                            }
                             slickElement.slick('slickAdd', `
                     <div>
                         <div class="widget-results__content mr-1" style="background-color: #fff; height: 90px;">
@@ -272,8 +287,13 @@
                             </div>
                             <div class="widget-results__result">
                                 <div class="widget-results__score">
-                                    <div class="widget-results__status">${match[i].tournament.tournament_name} - ${match[i].game_status}</div>
-                                    <span class="widget-results__score-winner">4</span> - <span class="widget-results__score-loser">2</span>
+                                    <div class="widget-results__status">${match[i].tournament.tournament_name} <br> ${match[i].game_status}</div>
+                                    <span class="${team1_score_class}">
+                                        ${(team1_score) ? team1_score : ''}
+                                    </span> -
+                                    <span class="${team2_score_class}">
+                                        ${(team2_score) ? team2_score : ''}
+                                    </span>
                                 </div>
                             </div>
                             <div class="widget-results__team widget-results__team--first text-center">
