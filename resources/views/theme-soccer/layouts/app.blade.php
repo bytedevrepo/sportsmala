@@ -259,7 +259,6 @@
                     $(".slick-track").empty();
                     if (match.length !== 0) {
                         for (let i = 0; i < match.length; i++) {
-console.log(match[i])
                             let team1_name = match[i].team1.team_name;
                             let team2_name = match[i].team2.team_name;
 
@@ -340,6 +339,7 @@ console.log(match[i])
         $marquee.marquee({
             allowCss3Support: true,
             pauseOnHover: true,
+            duplicated: true
         });
     }
 </script>
