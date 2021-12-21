@@ -35,10 +35,10 @@
                             </a>
                         </figure>
                         <div class="posts__inner card__content">
-                            <a href="javascript:void(0)"
-                               class="shareSocial posts__cta"
-                               data-twitter="{{ share_twitter_url(route('article.detail', $post->slug)) }}"
-                               data-fb="{{ share_facebook_url(route('article.detail', $post->slug)) }}"></a>
+                            {{--<a href="javascript:void(0)"--}}
+                               {{--class="shareSocial posts__cta"--}}
+                               {{--data-twitter="{{ share_twitter_url(route('article.detail', $post->slug)) }}"--}}
+                               {{--data-fb="{{ share_facebook_url(route('article.detail', $post->slug)) }}"></a>--}}
 
                             <time datetime="{{$post->updated_at}}" class="posts__date">
                                 <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
@@ -63,6 +63,7 @@
                             {{--</div>--}}
                             {{--</div>--}}
                             <ul class="post__meta meta">
+                                <div class="sharethis-inline-share-buttons float-left" data-url="{{ route('article.detail', ['id' => $post->slug]) }}"></div>
                                 <li class="meta__item meta__item--views">{{ $post->total_hit ?? 0 }}</li>
                             </ul>
                         </footer>

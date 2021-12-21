@@ -8,66 +8,66 @@
     </figure>
     <!-- Post Meta - Side -->
     {{--@if(@$post->user->permissions['author_show'] == 1)--}}
-        <div class="post__meta-block post__meta-block--side">
-            <!-- Post Author -->
-            <div class="post-author">
-                <figure class="post-author__avatar">
-                    @if(@$post->user->profile_image != null)
-                        <img src="{{asset(@$post->user->profile_image)}}">
-                    @else
-                        <img src="{{static_asset('site/theme-soccer/assets/images/samples/avatar-empty.png') }}">
-                    @endif
-                </figure>
-                <div class="post-author__info">
-                    <h4 class="post-author__name">{{ @$post->user->first_name.' '.@$post->user->last_name}}</h4>
-                </div>
+    <div class="post__meta-block post__meta-block--side">
+        <!-- Post Author -->
+        <div class="post-author">
+            <figure class="post-author__avatar">
+                @if(@$post->user->profile_image != null)
+                    <img src="{{asset(@$post->user->profile_image)}}">
+                @else
+                    <img src="{{static_asset('site/theme-soccer/assets/images/samples/avatar-empty.png') }}">
+                @endif
+            </figure>
+            <div class="post-author__info">
+                <h4 class="post-author__name">{{ @$post->user->first_name.' '.@$post->user->last_name}}</h4>
             </div>
-            <!-- Social Sharing -->
-            <ul class="social-links social-links--btn">
-                @if(@$post->user->social_media['facebook_url'] != null)
-                    <li class="social-links__item">
-                        <a href="{{ @$post->user->social_media['facebook_url'] }}" class="social-links__link social-links__link--fb"><i class="fa fa-facebook"></i></a>
-                    </li>
-                @endif
-                @if(@$post->user->social_media['twitter_url'] != null)
-                    <li class="social-links__item">
-                        <a href="{{ @$post->user->social_media['twitter_url'] }}" class="social-links__link social-links__link--twitter"><i class="fa fa-twitter"></i></a>
-                    </li>
-                @endif
-                @if(@$post->user->social_media['instagram_url'] != null)
-                    <li><a href="{{ @$post->user->social_media['instagram_url'] }}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                @endif
-                @if(@$post->user->social_media['google_url'] != null)
-                    <li class="social-links__item">
-                        <a href="{{ @$post->user->social_media['google_url'] }}" class="social-links__link social-links__link--gplus"><i class="fa fa-google-plus"></i></a>
-                    </li>
-                @endif
-                @if(@$post->user->social_media['pinterest_url'] != null)
-                    <li class="social-links__item">
-                        <a href="{{ @$post->user->social_media['pinterest_url'] }}" class="social-links__link"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                    </li>
-                @endif
-                @if(@$post->user->social_media['youtube_url'] != null)
-                    <li><a href="{{ @$post->user->social_media['youtube_url'] }}" class="social-links__link"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                @endif
-                @if(@$post->user->social_media['linkedin_url'] != null)
-                    <li><a href="{{ @$post->user->social_media['linkedin_url'] }}" class="social-links__link"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                @endif
-            </ul>
-            <!-- Post Meta Info -->
-            <ul class="post__meta meta">
-                <li class="meta__item meta__item--views">{{ $post->total_hit ?? 0 }}</li>
-            </ul>
         </div>
+        <!-- Social Sharing -->
+        <ul class="social-links social-links--btn">
+            {{--@if(@$post->user->social_media['facebook_url'] != null)--}}
+            {{--<li class="social-links__item">--}}
+            {{--<a href="{{ @$post->user->social_media['facebook_url'] }}" class="social-links__link social-links__link--fb"><i class="fa fa-facebook"></i></a>--}}
+            {{--</li>--}}
+            {{--@endif--}}
+            {{--@if(@$post->user->social_media['twitter_url'] != null)--}}
+            {{--<li class="social-links__item">--}}
+            {{--<a href="{{ @$post->user->social_media['twitter_url'] }}" class="social-links__link social-links__link--twitter"><i class="fa fa-twitter"></i></a>--}}
+            {{--</li>--}}
+            {{--@endif--}}
+            {{--@if(@$post->user->social_media['instagram_url'] != null)--}}
+            {{--<li><a href="{{ @$post->user->social_media['instagram_url'] }}"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>--}}
+            {{--@endif--}}
+            {{--@if(@$post->user->social_media['google_url'] != null)--}}
+            {{--<li class="social-links__item">--}}
+            {{--<a href="{{ @$post->user->social_media['google_url'] }}" class="social-links__link social-links__link--gplus"><i class="fa fa-google-plus"></i></a>--}}
+            {{--</li>--}}
+            {{--@endif--}}
+            {{--@if(@$post->user->social_media['pinterest_url'] != null)--}}
+            {{--<li class="social-links__item">--}}
+            {{--<a href="{{ @$post->user->social_media['pinterest_url'] }}" class="social-links__link"><i class="fa fa-pinterest" aria-hidden="true"></i></a>--}}
+            {{--</li>--}}
+            {{--@endif--}}
+            {{--@if(@$post->user->social_media['youtube_url'] != null)--}}
+            {{--<li><a href="{{ @$post->user->social_media['youtube_url'] }}" class="social-links__link"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>--}}
+            {{--@endif--}}
+            {{--@if(@$post->user->social_media['linkedin_url'] != null)--}}
+            {{--<li><a href="{{ @$post->user->social_media['linkedin_url'] }}" class="social-links__link"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>--}}
+            {{--@endif--}}
+        </ul>
+        <!-- Post Meta Info -->
+        <ul class="post__meta meta">
+            <li class="meta__item meta__item--views">{{ $post->total_hit ?? 0 }}</li>
+        </ul>
+    </div>
     {{--@endif--}}
     <div class="card__content">
         <div class="post__category">
             @if(!blank($post->categories))
                 @foreach($post->categories as $category)
                     <div class="label posts__cat-label">
-                         <a href="{{ url('category',$category->slug) }}">
-                             <span class="label posts__cat-label">{{ $category->category_name }}</span>
-                         </a>
+                        <a href="{{ url('category',$category->slug) }}">
+                            <span class="label posts__cat-label">{{ $category->category_name }}</span>
+                        </a>
                     </div>
                 @endforeach
             @endif
@@ -85,8 +85,9 @@
                             @endif
                         </a>
                     </time>
+                    <div class="sharethis-inline-share-buttons float-left" data-url="{{ route('article.detail', ['id' => $post->slug]) }}"></div>
                 </li>
-                <li class="meta__item meta__item--views hidden-md hidden-lg">{{ $post->total_hit ?? 0 }}</li>
+                {{--<li class="meta__item meta__item--views hidden-md hidden-lg">{{ $post->total_hit ?? 0 }}</li>--}}
             </ul>
         </header>
         <div class="post__content">
@@ -109,5 +110,15 @@
                 </div>
             </footer>
         @endif
+
     </div>
+
 </article>
+
+<div class="container mb-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="sharethis-inline-share-buttons float-left" data-url="{{ route('article.detail', ['id' => $post->slug]) }}"></div>
+        </div>
+    </div>
+</div>
