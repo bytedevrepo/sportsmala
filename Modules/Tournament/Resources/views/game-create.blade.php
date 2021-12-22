@@ -5,6 +5,10 @@
 @section('tournament')
     active
 @endsection
+@section('css')
+    <link rel="stylesheet" href="{{ static_asset('vendor/jquery/jquery-ui/jquery-ui.theme.css') }}">
+    <link rel="stylesheet" href="{{ static_asset('vendor/jquery/jquery-ui/jquery-ui.css') }}">
+@endsection
 @section('content')
     <div class="dashboard-ecommerce">
         @include('tournament::sub-menu')
@@ -50,6 +54,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="category">Team1 *</label>
+                                                {{--<input id="tags" class="form-control" name="team1_id">--}}
                                                 <select class="form-control" name="team1_id" id="category" required>
                                                     <option value="">Select</option>
                                                     @if(isset($teams) AND !blank($teams))
@@ -125,4 +130,39 @@
         </div>
         <!-- page info end-->
     </div>
+@endsection
+@section('script')
+    <script src="{{ static_asset('vendor/jquery/jquery-ui/jquery-ui-1.12.1.js') }}"></script>
+    <script>
+        $( function() {
+            var availableTags = [ { label: "Choice1", value: "value1" }];
+            var availableTagss = [
+                "ActionScript",
+                "AppleScript",
+                "Asp",
+                "BASIC",
+                "C",
+                "C++",
+                "Clojure",
+                "COBOL",
+                "ColdFusion",
+                "Erlang",
+                "Fortran",
+                "Groovy",
+                "Haskell",
+                "Java",
+                "JavaScript",
+                "Lisp",
+                "Perl",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Scala",
+                "Scheme"
+            ];
+            $( "#tags" ).autocomplete({
+                source: availableTags
+            });
+        } );
+    </script>
 @endsection

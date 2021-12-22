@@ -23,15 +23,26 @@ class GameController extends Controller
         if(isset($request->tournament) AND !blank($request->tournament)){
             $query->where('tournament_id',$request->tournament )->get();
         }
-        $query->orderBy('id', 'desc');
+        $query->where('is_archived', 0);
+        $query->orderBy('game_date', 'desc');
         $games = $query->paginate(10);
         return view('tournament::game', compact('games','tournaments'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
+    public function matchListArchived(Request $request)
+    {
+        $tournaments = Tournament::all();
+        $query = Game::query();
+        $query->with(['team1', 'team2', 'tournament']);
+        if(isset($request->tournament) AND !blank($request->tournament)){
+            $query->where('tournament_id',$request->tournament )->get();
+        }
+        $query->where('is_archived', 1);
+        $query->orderBy('game_date', 'desc');
+        $games = $query->paginate(10);
+        return view('tournament::archived-game', compact('games', 'tournaments'));
+    }
+
     public function create()
     {
         $teams = Team::all();
@@ -95,5 +106,23 @@ class GameController extends Controller
         $game->save();
 
         return redirect()->route('match-list')->with('success',__('successfully_updated'));
+    }
+
+    public function bulkAction(Request $request)
+    {
+        Validator::make($request->all(), [
+            'ids_json' => 'required',
+            'action' => 'required'
+        ])->validate();
+        $ids = json_decode($request->ids_json);
+        if ($request->action == 'delete'){
+            Game::whereIn('id', $ids)->delete();
+        }
+        elseif($request->action == 'archive'){
+            Game::whereIn('id', $ids)->update(['is_archived' => 1]);
+        }else{
+            return redirect()->back();
+        }
+        return redirect()->back()->with('success',__('Action performed successfully.'));
     }
 }

@@ -32,7 +32,8 @@
         "pragmarx/countries": "^0.7.2",
         "spatie/laravel-feed": "^2.7",
         "spatie/laravel-sitemap": "^5.8",
-        "tymon/jwt-auth": "1.0.0-rc.5"
+        "tymon/jwt-auth": "1.0.0-rc.5",
+        "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

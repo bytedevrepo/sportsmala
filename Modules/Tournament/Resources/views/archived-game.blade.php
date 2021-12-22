@@ -17,11 +17,11 @@
                         <div class="col-md-12">
                             <div class="add-new-page  bg-white p-20 m-b-20">
                                 <div class="block-header">
-                                    <h2>Match</h2>
+                                    <h2>Archived Match</h2>
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col-md-4">
-                                        <form action="{{ route('match-list') }}" method="get" id="filter">
+                                        <form action="{{ route('match-list-archived') }}" method="get" id="filter">
                                             <select name="tournament" class="form-control" id="filter-by-tournament">
                                                 <option value="">All Tournaments</option>
                                                 @if(isset($tournaments))
@@ -36,12 +36,11 @@
                                         <select name="bulk_action" class="form-control" id="bulk-action">
                                             <option value="">Bulk Action</option>
                                             <option value="delete">Delete</option>
-                                            <option value="archive">Archive</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4">
                                         {{--<button type="submit" class="btn btn-primary pull-left btn-xs">Filter</button>--}}
-                                        <a href="{{ route('match-list-archived') }}" class="btn btn-primary btn-xs pull-right">List Archived Match</a>
+                                        {{--<button type="submit" class="btn btn-primary btn-xs pull-right">All Match</button>--}}
                                         <a href="{{ route('game-create') }}" class="btn btn-primary pull-right btn-xs">Create New Match</a>
 
                                     </div>
@@ -80,8 +79,7 @@
                                                                 {{ data_get($value, 'tournament.tournament_name') }}
                                                             @endif
                                                         </td>
-                                                        <td class="text-center">
-                                                            {{ data_get($value, 'team1.team_name') }}
+                                                        <td class="text-center">{{ data_get($value, 'team1.team_name') }}
                                                             <br>
                                                             <small> VS </small>
                                                             <br>
@@ -104,17 +102,10 @@
                                                         </td>
                                                         @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
                                                             <td class="text-center">
-                                                                <a href="#" class="btn btn-xs btn-primary updateScore" data-id="{{ $value->id }}">Score</a>
-                                                                @if(Sentinel::getUser()->hasAccess(['category_write']))
-                                                                    <a href="{{ route('game-edit',$value->id) }}" class="btn btn-xs btn-primary">
-                                                                        Edit
-                                                                    </a>
-                                                                @endif
                                                                 @if(Sentinel::getUser()->hasAccess(['category_delete']))
                                                                     <a href="javascript:void(0)"
-                                                                       class="btn btn-xs btn-danger"
                                                                        onclick="delete_item('tournament_games','{{ $value->id }}')">
-                                                                        Delete
+                                                                        <i class="fa fa-trash option-icon"></i>
                                                                     </a>
                                                                 @endif
                                                             </td>
@@ -150,30 +141,11 @@
                     </a>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('game-update') }}" method="post" id="update-score-form">
-                        @csrf
-                        <input type="hidden" id="game_id_score" name="id">
-                        <div class="form-group">
-                            <label for="category-name" class="col-form-label">Game Status</label>
-                            <select name="played" class="form-control">
-                                <option value="0">UP_COMING</option>
-                                <option value="1">ON_GOING</option>
-                                <option value="2">COMPLETED</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="category-name" class="col-form-label">Team 1 Score</label>
-                            <input type="text" name="team1_score" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="category-name" class="col-form-label">Team 2 Score</label>
-                            <input type="text" name="team2_score" class="form-control">
-                        </div>
-                    </form>
+                    <p>Woohoo, You are readng this text in a modal! Use Bootstrap’s JavaScript modal plugin to add dialogs to your site for lightboxes, user notifications, or completely custom content.</p>
                 </div>
                 <div class="modal-footer">
                     <a href="#" class="btn btn-secondary" data-dismiss="modal">Close</a>
-                    <a href="#" class="btn btn-primary" id="update-score-btn">Update Score</a>
+                    <a href="#" class="btn btn-primary">Save changes</a>
                 </div>
             </div>
         </div>
@@ -208,15 +180,6 @@
 @section('script')
     <script>
         $(document).ready(function () {
-            $(".updateScore").on('click', function (e) {
-                e.preventDefault();
-                let id = $(this).data('id');
-                $("#game_id_score").val(id);
-                $("#updateScore").modal('show');
-            })
-            $("#update-score-btn").on("click", function () {
-                $("#update-score-form").submit()
-            });
             $("#filter-by-tournament").on("change", function () {
                 $("#filter").submit()
             });
