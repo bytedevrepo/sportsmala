@@ -287,7 +287,7 @@
                     @endif
                     @if(Sentinel::getUser()->hasAccess(['users_read']) || Sentinel::getUser()->hasAccess(['users_write']) || Sentinel::getUser()->hasAccess(['users_delete']))
                         <li class="nav-item">
-                            <a class="nav-link @yield('tournament')" href="{{route('tournament-category')}}">
+                            <a class="nav-link @yield('tournament')" href="{{route('match-list')}}">
                                 <i class="fas fa-fw fa-users"></i>Tournament
                             </a>
                         </li>

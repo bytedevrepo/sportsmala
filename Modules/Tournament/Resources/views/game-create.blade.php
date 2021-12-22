@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <div class="add-new-page  bg-white p-20 m-b-20">
                                 <div class="block-header">
                                     @if(isset($game))
@@ -82,12 +82,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="category-name" class="col-form-label">Game Date</label>
-                                                <div class="input-group" id="start_date" data-target-input="nearest">
-                                                    <input type="date" name="game_date" class="form-control" value="{{ $game->game_date ?? '' }}">
-                                                    {{--<div class="input-group-append" data-target="#start_date" data-toggle="datetimepicker">--}}
-                                                        {{--<div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>--}}
-                                                    {{--</div>--}}
-                                                </div>
+                                                <input type="date" name="game_date" class="form-control" value="{{ (isset($game)) ? date_format($game->game_date,"Y-m-d") : '' }}">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">

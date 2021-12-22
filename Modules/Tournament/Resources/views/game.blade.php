@@ -19,11 +19,10 @@
                                 <div class="block-header">
                                     <h2>Match</h2>
                                 </div>
-                                <form action="{{ route('match-list') }}" method="get">
-
+                                <form action="{{ route('match-list') }}" method="get" id="filter">
                                     <div class="row mb-2">
                                         <div class="col-md-4">
-                                            <select name="tournament" class="form-control" id="">
+                                            <select name="tournament" class="form-control" id="filter-by-tournament">
                                                 <option value="">All Tournaments</option>
                                                 @if(isset($tournaments))
                                                     @foreach($tournaments as $val)
@@ -33,8 +32,10 @@
                                             </select>
                                         </div>
                                         <div class="col-md-8">
-                                            <button type="submit" class="btn btn-primary pull-left">Filter</button>
-                                            <a href="{{ route('game-create') }}" class="btn btn-primary pull-right">Create New Match</a>
+                                            {{--<button type="submit" class="btn btn-primary pull-left btn-xs">Filter</button>--}}
+                                            <button type="submit" class="btn btn-primary btn-xs pull-right">All Match</button>
+                                            <a href="{{ route('game-create') }}" class="btn btn-primary pull-right btn-xs">Create New Match</a>
+
                                         </div>
                                     </div>
                                 </form>
@@ -44,12 +45,10 @@
                                         <tr role="row">
                                             <th>#</th>
                                             <th>Tournament</th>
-                                            <th>Team1</th>
-                                            <th>Team2</th>
-                                            <th>Game Date</th>
-                                            <th class="text-center">Team1 Score</th>
-                                            <th class="text-center">Team2 Score</th>
-                                            <th>Game Status</th>
+                                            <th class="text-center">Game</th>
+                                            <th class="text-center">Score</th>
+                                            <th class="text-center">Game Date</th>
+                                            <th class="text-center">Game Status</th>
                                             @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
                                                 <th class="text-center">{{ __('options') }}</th>
                                             @endif
@@ -68,21 +67,19 @@
                                                                 {{ data_get($value, 'tournament.tournament_name') }}
                                                             @endif
                                                         </td>
-                                                        <td>{{ data_get($value, 'team1.team_name') }}</td>
-                                                        <td>{{ data_get($value, 'team2.team_name') }}</td>
-                                                        <td>{{ $value->game_date }}</td>
-                                                        @if($value->game_status != 2)
+                                                        <td class="text-center">{{ data_get($value, 'team1.team_name') }}
+                                                            <br>
+                                                            <small> VS </small>
+                                                            <br>
+                                                            {{ data_get($value, 'team2.team_name') }}
+                                                        </td>
                                                             <td class="text-center">
-                                                                <input name="team1_score" type="text" style="width: 100px;" value="{{ $value->team1_score ?? '' }}">
+                                                                <span class="float-left">{{ data_get($value, 'team1.team_name') }} :</span> <span class="float-right">{{ $value->team1_score }}</span>
+                                                                <br>
+                                                                <span class="float-left">{{ data_get($value, 'team2.team_name') }} :</span> <span class="float-right">{{ $value->team2_score }}</span>
                                                             </td>
-                                                            <td class="text-center">
-                                                                <input name="team2_score" type="text" style="width: 100px;" value="{{ $value->team2_score ?? '' }}">
-                                                            </td>
-                                                        @else
-                                                            <td class="text-center">{{ $value->team1_score }}</td>
-                                                            <td class="text-center">{{ $value->team2_score }}</td>
-                                                        @endif
-                                                        <td>
+                                                        <td class="text-center">{{ date_format($value->game_date,"M d Y") }} </td>
+                                                        <td class="text-center">
                                                             <select name="played" id="">
                                                                 <option value="0" @if($value->game_status == 0) selected @endif>UP_COMING</option>
                                                                 <option value="1" @if($value->game_status == 1) selected @endif>ON_GOING</option>
@@ -125,4 +122,14 @@
         </div>
         <!-- page info end-->
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $("#filter-by-tournament").on("change", function () {
+                $("#filter").submit()
+            })
+        })
+    </script>
 @endsection

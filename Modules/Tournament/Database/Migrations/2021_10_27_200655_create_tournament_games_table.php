@@ -22,6 +22,7 @@ class CreateTournamentGamesTable extends Migration
             $table->string('team1_score');
             $table->string('team2_score');
             $table->integer('game_status')->comment('0->up_coming,1->on_going,2->completed');
+            $table->boolean('is_archived')->comment('1->not-archived, 1->archived');
             $table->timestamps();
         });
     }
