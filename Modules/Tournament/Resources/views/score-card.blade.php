@@ -5,7 +5,7 @@
                 <div class="card result-card" style="">
                     <div class="card-body result-card-body">
                         <div class="story-tournament">
-                            <select class="form-control" style="color: #1892ed;" id="tournamentSelect"></select>
+                            <select class="form-control" style="color: #295ac9;" id="tournamentSelect"></select>
                         </div>
                     </div>
                 </div>
@@ -14,7 +14,7 @@
                 <div class="card result-card" style="">
                     <div class="card-body result-card-body">
                         <div class="story-tournament">
-                            <select class="form-control" style="color: #1892ed;" id="gameDateSelect"></select>
+                            <select class="form-control" style="color: #295ac9;" id="gameDateSelect"></select>
                         </div>
                     </div>
                 </div>

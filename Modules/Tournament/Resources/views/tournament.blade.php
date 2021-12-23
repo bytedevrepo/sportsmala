@@ -21,13 +21,13 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr role="row">
-                                    <th>#</th>
-                                    <th>Image</th>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Image</th>
                                     <th>Tournament Name</th>
                                     <th class="text-center">Category</th>
                                     <th class="text-center">Start Date</th>
                                     <th class="text-center">End Date</th>
-                                    <th class="text-center">Description</th>
+                                    <th>Description</th>
                                     @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
                                         <th class="text-center">{{ __('options') }}</th>
                                     @endif
@@ -37,17 +37,17 @@
                                 @if(isset($tournaments) AND !blank($tournaments))
                                     @foreach ($tournaments as $value)
                                         <tr role="row" class="odd" id="row_{{ $value->id }}">
-                                            <td class="sorting_1">{{ $value->id }}</td>
-                                            <td><img width="50" src="{{ asset($value->image_thumbnail) }}" alt=""></td>
+                                            <td class="sorting_1 text-center">{{ $value->id }}</td>
+                                            <td class="text-center"><img width="50" src="{{ asset($value->image_thumbnail) }}" alt=""></td>
                                             <td>{{ $value->tournament_name }}</td>
                                             <td class="text-center">
                                                 @if(!blank($value->category))
                                                     {{ data_get($value->category, 'category_name') }}
                                                 @endif
                                             </td>
-                                            <td class="text-center">{{ $value->start_date }}</td>
-                                            <td class="text-center">{{ $value->end_date }}</td>
-                                            <td class="text-center">{{ Illuminate\Support\Str::limit($value->description, 20, $end='...') }}</td>
+                                            <td class="text-center">{{ date_format(\Carbon\Carbon::createFromDate($value->start_date),"M d Y") }}</td>
+                                            <td class="text-center">{{ date_format(\Carbon\Carbon::createFromDate($value->end_date),"M d Y") }}</td>
+                                            <td>{{ Illuminate\Support\Str::limit($value->description, 20, $end='...') }}</td>
                                             @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
                                                 <td class="text-center">
                                                     @if(Sentinel::getUser()->hasAccess(['category_write']))

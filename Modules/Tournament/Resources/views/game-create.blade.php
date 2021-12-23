@@ -87,7 +87,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="category-name" class="col-form-label">Game Date</label>
-                                                <input type="date" name="game_date" class="form-control" value="{{ (isset($game)) ? date_format($game->game_date,"Y-m-d") : '' }}">
+                                                <input type="date" name="game_date" class="form-control" value="{{ (isset($game)) ? date_format(\Carbon\Carbon::createFromDate($game->game_date),"Y-m-d") : '' }}">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">

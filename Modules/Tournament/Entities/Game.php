@@ -9,7 +9,7 @@ class Game extends Model
     protected $table = 'tournament_games';
     protected $fillable = [];
     protected $casts = [
-        'game_date' => 'date'
+//        'game_date' => 'date'
     ];
 
     public function team1()

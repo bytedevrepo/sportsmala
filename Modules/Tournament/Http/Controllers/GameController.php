@@ -58,11 +58,6 @@ class GameController extends Controller
         return view('tournament::game-create', compact('teams', 'tournaments', 'game'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Response
-     */
     public function store(Request $request)
     {
         Validator::make($request->all(), [

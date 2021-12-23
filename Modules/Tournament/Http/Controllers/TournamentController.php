@@ -145,6 +145,7 @@ class TournamentController extends Controller
                 'team2_score' => $value->team2_score,
             ];
         }
+//        dd(compact('gameDates', 'match', 'selectedDate'));
         return \response()->json(compact('gameDates', 'match', 'selectedDate'));
     }
 

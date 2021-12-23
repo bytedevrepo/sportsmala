@@ -21,8 +21,8 @@
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr role="row">
-                                    <th>#</th>
-                                    <th>Team Logo</th>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Team Logo</th>
                                     <th>Team Name</th>
                                     <th>Description</th>
                                     @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
@@ -34,10 +34,10 @@
                                 @if(isset($teams) AND !blank($teams))
                                     @foreach ($teams as $value)
                                         <tr role="row" class="odd" id="row_{{ $value->id }}">
-                                            <td class="sorting_1">{{ $value->id }}</td>
-                                            <td><img width="50" src="{{ static_asset($value->logo) }}" alt=""></td>
+                                            <td class="text-center sorting_1">{{ $value->id }}</td>
+                                            <td class="text-center"><img width="50" src="{{ static_asset($value->logo) }}" alt=""></td>
                                             <td>{{ $value->team_name }}</td>
-                                            <td class="text-center">{{ Illuminate\Support\Str::limit($value->description, 20, $end='...') }}</td>
+                                            <td>{{ Illuminate\Support\Str::limit($value->description, 20, $end='...') }}</td>
                                             @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
                                                 <td class="text-center">
                                                     @if(Sentinel::getUser()->hasAccess(['category_write']))

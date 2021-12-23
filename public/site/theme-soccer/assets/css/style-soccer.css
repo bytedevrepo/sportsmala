@@ -6373,7 +6373,7 @@ div.cs-skin-border li.cs-focus span {
 
 .marquee-wrapper:before {
     left: 0;
-    background-color: #38a9ff
+    background-color: red
 }
 
 .marquee-wrapper:after,
@@ -6388,7 +6388,8 @@ div.cs-skin-border li.cs-focus span {
 
 .marquee-wrapper:after {
     right: 0;
-    background-color: #38a9ff
+    background-color: red;
+    /*background-color: #38a9ff*/
 }
 
 .marquee {
@@ -6404,7 +6405,8 @@ div.cs-skin-border li.cs-focus span {
     .marquee:before {
         right: -20px;
         width: 135px;
-        background-color: #38a9ff
+        /*background-color: #38a9ff*/
+        background-color: red;
     }
     .marquee:after,
     .marquee:before {
@@ -6442,11 +6444,11 @@ div.cs-skin-border li.cs-focus span {
         font-family: Montserrat, sans-serif;
         font-weight: 700;
         letter-spacing: -.02em;
-        color: #31404b;
-        background-color: #38a9ff
+        color: white;
+        background-color: red
     }
     .marquee-label:before {
-        background-color: #38a9ff;
+        background-color: red;
         width: 35px;
         right: -26px
     }
@@ -11588,7 +11590,7 @@ ul.posts:not(.post-grid) {
 .posts--inline .posts__title:before {
     content: "//";
     margin-right: 1em;
-    color: #c2ff1f
+    color: #295ac9;
 }
 
 .posts--inline .posts__cat {

@@ -230,6 +230,7 @@
                 data: {'category_id': id, 'date': date, _token:"{{ csrf_token() }}"},
                 async:false,
                 success: function(response) {
+                    console.log(response)
                     if ((response.gameDates !== '')) {
                         let gameDateSelect = $('#gameDateSelect');
                         gameDateSelect.empty();
@@ -286,7 +287,9 @@
                             </div>
                             <div class="widget-results__result">
                                 <div class="widget-results__score">
-                                    <div class="widget-results__status">${match[i].tournament.tournament_name} <br> ${match[i].game_status}</div>
+                                    <div class="widget-results__status">
+                                        ${new Date(match[i].game_date).toLocaleDateString(undefined, {year: 'numeric', month: '2-digit', day: '2-digit', weekday:"long"})} <br> ${match[i].tournament.tournament_name} <br> ${match[i].game_status}
+                                    </div>
                                     <span class="${team1_score_class}">
                                         ${(team1_score) ? team1_score : ''}
                                     </span> -

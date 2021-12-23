@@ -20,9 +20,17 @@
                                     <h2>Match</h2>
                                 </div>
                                 <div class="row mb-2">
-                                    <div class="col-md-4">
-                                        <form action="{{ route('match-list') }}" method="get" id="filter">
-                                            <select name="tournament" class="form-control" id="filter-by-tournament">
+                                    <div class="com-md-2 col-lg-2">
+                                        <select name="bulk_action" class="form-control" id="bulk-action">
+                                            <option value="">Bulk Action</option>
+                                            <option value="delete">Delete</option>
+                                            <option value="archive">Archive</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5 col-lg-5">
+                                        <form action="{{ route('match-list') }}" method="get" id="filter" class="form-inline">
+                                            <label for="filter-by-tournament" class="col-form-label mr-2">Filter: </label>
+                                            <select name="tournament" class="form-control" id="filter-by-tournament" style="width: 80%">
                                                 <option value="">All Tournaments</option>
                                                 @if(isset($tournaments))
                                                     @foreach($tournaments as $val)
@@ -32,14 +40,8 @@
                                             </select>
                                         </form>
                                     </div>
-                                    <div class="com-md-4">
-                                        <select name="bulk_action" class="form-control" id="bulk-action">
-                                            <option value="">Bulk Action</option>
-                                            <option value="delete">Delete</option>
-                                            <option value="archive">Archive</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-4">
+
+                                    <div class="col-md-5 col-lg-5">
                                         {{--<button type="submit" class="btn btn-primary pull-left btn-xs">Filter</button>--}}
                                         <a href="{{ route('match-list-archived') }}" class="btn btn-primary btn-xs pull-right">List Archived Match</a>
                                         <a href="{{ route('game-create') }}" class="btn btn-primary pull-right btn-xs">Create New Match</a>
@@ -50,10 +52,10 @@
                                     <table class="table table-bordered table-striped">
                                         <thead>
                                         <tr role="row">
-                                            <th>
+                                            <th class="text-center">
                                                 <input type="checkbox" id="masterCheck" value="">
                                             </th>
-                                            <th>#</th>
+                                            <th class="text-center">#</th>
                                             <th>Tournament</th>
                                             <th class="text-center">Game</th>
                                             <th class="text-center">Score</th>
@@ -71,10 +73,10 @@
                                                     @csrf
                                                     <tr role="row" class="odd" id="row_{{ $value->id }}">
                                                         <input type="hidden" value="{{ $value->id }}" name="id">
-                                                        <td class="sorting_1">
+                                                        <td class="sorting_1 text-center">
                                                             <input type="checkbox" class="child" value="{{ $value->id }}">
                                                         </td>
-                                                        <td class="">{{ $value->id }}</td>
+                                                        <td class="text-center">{{ $value->id }}</td>
                                                         <td>
                                                             @if(!blank($value->tournament))
                                                                 {{ data_get($value, 'tournament.tournament_name') }}
@@ -92,7 +94,7 @@
                                                             <br>
                                                             <span class="float-left">{{ data_get($value, 'team2.team_name') }} :</span> <span class="float-right">{{ $value->team2_score }}</span>
                                                         </td>
-                                                        <td class="text-center">{{ date_format($value->game_date,"M d Y") }} </td>
+                                                        <td class="text-center">{{ date_format(\Carbon\Carbon::createFromDate($value->game_date),"M d Y") }} </td>
                                                         <td class="text-center">
                                                             @if($value->game_status == 0)
                                                                 <span class="badge badge-primary">UP-COMING</span>
@@ -104,7 +106,10 @@
                                                         </td>
                                                         @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
                                                             <td class="text-center">
-                                                                <a href="#" class="btn btn-xs btn-primary updateScore" data-id="{{ $value->id }}">Score</a>
+                                                                <a href="#" class="btn btn-xs btn-primary updateScore"
+                                                                   data-id="{{ $value->id }}"
+                                                                   data-team1="{{ data_get($value, 'team1.team_name') }}"
+                                                                   data-team2="{{ data_get($value, 'team2.team_name') }}">Score</a>
                                                                 @if(Sentinel::getUser()->hasAccess(['category_write']))
                                                                     <a href="{{ route('game-edit',$value->id) }}" class="btn btn-xs btn-primary">
                                                                         Edit
@@ -162,11 +167,11 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="category-name" class="col-form-label">Team 1 Score</label>
+                            <label for="category-name" class="col-form-label"><span id="team1_name_score"></span></label>
                             <input type="text" name="team1_score" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="category-name" class="col-form-label">Team 2 Score</label>
+                            <label for="category-name" class="col-form-label"><span id="team2_name_score"></span></label>
                             <input type="text" name="team2_score" class="form-control">
                         </div>
                     </form>
@@ -211,6 +216,10 @@
             $(".updateScore").on('click', function (e) {
                 e.preventDefault();
                 let id = $(this).data('id');
+                let team1 = $(this).data('team1');
+                let team2 = $(this).data('team2');
+                $("#team1_name_score").html(team1);
+                $("#team2_name_score").html(team2);
                 $("#game_id_score").val(id);
                 $("#updateScore").modal('show');
             })
