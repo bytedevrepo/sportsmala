@@ -1,9 +1,9 @@
 <article class="card card--lg card--block post post--single">
     <figure class="post__thumbnail">
         @if(isFileExist(@$post->image, $result = @$post->image->big_image_two))
-            <img src="{{ basePath(@$post->image) }}/{{ $result }}" alt="{!! $post->title !!}">
+            <img src="{{ basePath(@$post->image) }}/{{ $result }}" alt="{!! $post->title !!}" style="width: 100%;">
         @else
-            <img src="{{static_asset('default-image/default-730x400.png') }} " alt="{!! $post->title !!}">
+            <img src="{{static_asset('default-image/default-730x400.png') }} " alt="{!! $post->title !!}" style="width: 100%;">
         @endif
     </figure>
     <!-- Post Meta - Side -->

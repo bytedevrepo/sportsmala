@@ -150,7 +150,6 @@ class WidgetService extends Service
                         ->where('location', \Modules\Widget\Enums\WidgetLocation::RIGHT_SIDEBAR)
                         ->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))
                         ->get();
-//                        dd($widgets);
 
         foreach ($widgets as $widget) {
 

@@ -194,9 +194,9 @@
 </script>
 @if(Route::has('tournament-list'))
     <script>
-        var directory = 'public/';
+        var directory = '/public/';
         @if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') == 's3' || defined('LARAVEL_START_FROM_PUBLIC'))
-            directory = '';
+            directory = '/';
         @endif
     </script>
     <script defer>
