@@ -4,7 +4,7 @@
         <div class="widget widget--footer widget-contact">
             <h4 class="widget__title">{{ data_get($detail, 'title') }}</h4>
             <div class="widget__content">
-                <p>Subscribe to our newsletter.</p>
+                <p>{{ __('newsletter_description') ?? 'Subscribe to our mailing list to get the new updates!' }}</p>
                 <form action="{{ route('subscribe.newsletter') }}" method="post" class="contact-form">
                     @csrf
                     <div class="form-group form-group--xs">

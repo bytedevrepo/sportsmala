@@ -1,7 +1,7 @@
 <!-- Widget: Newsletter -->
 <aside class="widget widget--sidebar card widget-newsletter">
     <div class="widget__title card__header">
-        <h4>{{ __('newsletter') }}</h4>
+        <h4>{{ data_get($detail, 'title') }}</h4>
     </div>
     <div class="widget__content card__content">
         <h5 class="widget-newsletter__subtitle">Subscribe Now!</h5>
