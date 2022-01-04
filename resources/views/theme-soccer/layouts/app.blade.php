@@ -34,7 +34,15 @@
     @if(settingHelper('custom_header_style')!=null)
         {!! base64_decode(settingHelper('custom_header_style')) !!}
     @endif
-
+    @if(LaravelLocalization::setLocale() == 'np')
+        <style>
+            .widget--footer .posts--simple-list .posts__title {
+                font-size: 12px;
+                line-height: 1.5em;
+                font-style: normal;
+            }
+        </style>
+    @endif
     @include('feed::links')
     @stack('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css"  />
@@ -230,7 +238,6 @@
                 data: {'category_id': id, 'date': date, _token:"{{ csrf_token() }}"},
                 async:false,
                 success: function(response) {
-                    console.log(response)
                     if ((response.gameDates !== '')) {
                         let gameDateSelect = $('#gameDateSelect');
                         gameDateSelect.empty();
@@ -253,8 +260,8 @@
                             dots: false,
                             arrows: false,
                             infinite: false,
-                            slidesToShow: 3,
-                            slidesToScroll: 3
+                            slidesToShow: calculateNumberOfSlidesToShow(),
+                            slidesToScroll: 1,
                         });
                     }
                     $(".slick-track").empty();
@@ -310,6 +317,26 @@
                     }
                 }
             });
+        }
+        function calculateNumberOfSlidesToShow(){
+            var carouselWidth = jQuery("#socreCardRow").width();
+            var numberOfSlides = 3;
+            switch (true) {
+                case (carouselWidth < 767):
+                    numberOfSlides = 1;
+                    break;
+                case (carouselWidth < 991):
+                    numberOfSlides = 2;
+                    break;
+                case (carouselWidth < 1199):
+                    numberOfSlides = 3;
+                    break;
+                case (carouselWidth > 1200):
+                    numberOfSlides = 3;
+                    break;
+            }
+
+            return numberOfSlides;
         }
         function getCategory() {
             var categoryUrl = "{{ route('tournament-category-ajax') }}";

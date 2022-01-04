@@ -29,9 +29,9 @@ class PostController extends Controller
 {
     public function index()
     {
-        $categories     = Category::all();
-        $activeLang     = Language::where('status', 'active')->orderBy('name', 'ASC')->get();
-        $posts          = Post::orderBy('id','desc')->with('image','video','category','subCategory','user')->paginate('15');
+        $categories = Category::all();
+        $activeLang = Language::where('status', 'active')->orderBy('name', 'ASC')->get();
+        $posts = Post::orderBy('id','desc')->with('image','video','categories','subCategory','user')->paginate('15');
 
         return view('post::index',compact('posts','categories','activeLang'));
     }
