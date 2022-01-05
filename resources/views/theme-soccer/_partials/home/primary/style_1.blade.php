@@ -5,12 +5,16 @@
 <div class="card card--clean">
     <header class="card__header card__header--has-filter">
         <h4>Featured News</h4>
-        {{--<ul class="category-filter category-filter--featured">--}}
-            {{--<li class="category-filter__item"><a href="#" class="category-filter__link category-filter__link--reset category-filter__link--active">All</a></li>--}}
-            {{--<li class="category-filter__item"><a href="#" class="category-filter__link" data-category="posts__item--category-1">The Team</a></li>--}}
+        <ul class="category-filter category-filter--featured">
+            <li class="category-filter__item">
+                <a href="#" class="category-filter__link category-filter__link--reset category-filter__link--active">All</a>
+            </li>
+            <li class="category-filter__item">
+                <a href="#" class="category-filter__link" data-category="posts__item--category-1">The Team</a>
+            </li>
             {{--<li class="category-filter__item"><a href="#" class="category-filter__link" data-category="posts__item--category-3">The League</a></li>--}}
             {{--<li class="category-filter__item"><a href="#" class="category-filter__link" data-category="posts__item--category-2">Injuries</a></li>--}}
-        {{--</ul>--}}
+        </ul>
     </header>
     <div class="card__content">
         <!-- Slider -->

@@ -34,15 +34,34 @@
     @if(settingHelper('custom_header_style')!=null)
         {!! base64_decode(settingHelper('custom_header_style')) !!}
     @endif
-    @if(LaravelLocalization::setLocale() == 'np')
-        <style>
-            .widget--footer .posts--simple-list .posts__title {
-                font-size: 12px;
-                line-height: 1.5em;
-                font-style: normal;
-            }
-        </style>
-    @endif
+    <style>
+        .widget--footer .posts--simple-list .posts__title {
+            font-size: 14px;
+            line-height: 1.5em;
+            font-style: normal;
+        }
+        .posts--simple-list .posts__title {
+            margin-bottom: 0;
+            line-height: 1.5em !important;
+        }
+        .posts--simple-list .posts__excerpt--space-sm {
+            padding-top: 10px;
+        }
+        .posts__item--card .posts__title {
+            font-size: 18px;
+            line-height: 1.5em;
+            margin-bottom: 0em;
+        }
+
+        @if(LaravelLocalization::setLocale() == 'np')
+        .posts--simple-list .posts__title {
+            margin-bottom: 0;
+            line-height: 1.5em !important;
+            font-size: 16px;
+        }
+        @endif
+
+    </style>
     @include('feed::links')
     @stack('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css"  />
