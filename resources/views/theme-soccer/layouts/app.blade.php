@@ -382,15 +382,5 @@
 @yield('player')
 @yield('audio')
 <script src="{{ static_asset('site/theme-soccer/assets/vendor/marquee/jquery.marquee.min.js') }}"></script>
-<script>
-    var $marquee = $('.marquee');
-    if ($marquee.exists()) {
-        $marquee.marquee({
-            allowCss3Support: true,
-            pauseOnHover: true,
-            duplicated: true
-        });
-    }
-</script>
 </body>
 </html>
