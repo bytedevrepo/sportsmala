@@ -1,7 +1,3 @@
-@php
-    $main_post = $posts[0];
-$posts = $posts->slice(1);
-@endphp
 <div class="container mt-2 mb-0">
     <div class="row">
         <div class="col-md-8">
@@ -18,54 +14,56 @@ $posts = $posts->slice(1);
                 <div class="card__content">
                     <!-- Slider -->
                     <div class="slick posts posts--slider-featured posts-slider posts-slider--center">
-                        <div class="posts__item posts__item--category-1">
-                            <a href="#" class="posts__link-wrapper">
-                                <figure class="posts__thumb">
-                                    {{--                                    <img src="{{ static_asset('site/theme-soccer/assets/images/soccer/samples/post-slide7.jpg')}}" alt="">--}}
-                                    @if(isFileExist(@$main_post->image, $result = @$main_post->image->big_image_two))
-                                        <img src="{{basePath($main_post->image)}}/{{$result }}" alt="{!! $main_post->title !!}" style="width:773px">
-                                    @else
-                                        <img src="{{static_asset('default-image/default-500x500.png') }}" alt="{!! $main_post->title !!}" style="width:400px">
-                                    @endif
-                                </figure>
-                                <div class="posts__inner">
-                                    <div class="posts__cat">
-                                        @if(!blank($main_post->categories))
-                                            @foreach($main_post->categories as $category)
-                                                <a href="{{ url('category',$category->slug) }}">
-                                                    <span class="label posts__cat-label mb-1 ml-1">{{ $category->category_name }}</span>
-                                                </a>
-                                            @endforeach
+                        @foreach($posts as $post)
+                            <div class="posts__item posts__item--category-1">
+                                <a href="#" class="posts__link-wrapper">
+                                    <figure class="posts__thumb">
+                                        {{--                                    <img src="{{ static_asset('site/theme-soccer/assets/images/soccer/samples/post-slide7.jpg')}}" alt="">--}}
+                                        @if(isFileExist(@$post->image, $result = @$post->image->big_image_two))
+                                            <img src="{{basePath($post->image)}}/{{$result }}" alt="{!! $post->title !!}" style="width:773px">
+                                        @else
+                                            <img src="{{static_asset('default-image/default-500x500.png') }}" alt="{!! $post->title !!}" style="width:400px">
                                         @endif
-                                    </div>
-                                    <a href="{{ route('article.detail', ['id' => $main_post->slug]) }}">
-                                        <h3 class="posts__title">
-                                            {!! \Illuminate\Support\Str::limit($main_post->title, 95) !!}
-                                        </h3>
-                                    </a>
+                                    </figure>
+                                    <div class="posts__inner">
+                                        <div class="posts__cat">
+                                            @if(!blank($post->categories))
+                                                @foreach($post->categories as $category)
+                                                    <a href="{{ url('category',$category->slug) }}">
+                                                        <span class="label posts__cat-label mb-1 ml-1">{{ $category->category_name }}</span>
+                                                    </a>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                        <a href="{{ route('article.detail', ['id' => $post->slug]) }}">
+                                            <h3 class="posts__title">
+                                                {!! \Illuminate\Support\Str::limit($post->title, 95) !!}
+                                            </h3>
+                                        </a>
 
-                                    <div class="post-author">
-                                        <figure class="post-author__avatar">
-                                            <img src="{{ static_asset('site/theme-soccer/assets/images/samples/avatar-4.jpg')}}" alt="Post Author Avatar">
-                                        </figure>
-                                        <div class="post-author__info">
-                                            <h4 class="post-author__name">
-                                                Published
-                                            </h4>
-                                            <time datetime="{{$main_post->updated_at}}" class="posts__date">
-                                                <a href="{{route('article.date', date('Y-m-d', strtotime($main_post->updated_at)))}}">
-                                                    @if($main_post->updated_at < \Carbon\Carbon::today())
-                                                        {{ $main_post->updated_at->format('F j, Y') }}
-                                                    @else
-                                                        {{ $main_post->updated_at->diffForHumans() }}
-                                                    @endif
-                                                </a>
-                                            </time>
+                                        <div class="post-author">
+                                            {{--<figure class="post-author__avatar">--}}
+                                            {{--<img src="{{ static_asset('site/theme-soccer/assets/images/samples/avatar-4.jpg')}}" alt="Post Author Avatar">--}}
+                                            {{--</figure>--}}
+                                            <div class="post-author__info">
+                                                <h4 class="post-author__name">
+                                                    Published
+                                                </h4>
+                                                <time datetime="{{$post->updated_at}}" class="posts__date">
+                                                    <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
+                                                        @if($post->updated_at < \Carbon\Carbon::today())
+                                                            {{ $post->updated_at->format('F j, Y') }}
+                                                        @else
+                                                            {{ $post->updated_at->diffForHumans() }}
+                                                        @endif
+                                                    </a>
+                                                </time>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
+                                </a>
+                            </div>
+                        @endforeach
                     </div>
                     <!-- Slider / End -->
                 </div>
