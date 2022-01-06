@@ -2,6 +2,8 @@
 
 namespace Modules\Tournament\Http\Controllers;
 
+use Illuminate\Support\Facades\Config;
+use Modules\Setting\Entities\Setting;
 use Modules\Tournament\Entities\Game;
 use Modules\Tournament\Entities\Tournament;
 use Modules\Tournament\Enums\GamePlayedStatus;
@@ -165,5 +167,18 @@ class TournamentController extends Controller
     {
         $categories = TournamentCategory::select('id', 'category_name')->get();
         return \response()->json($categories);
+    }
+
+    public function getSetting()
+    {
+        $visibility = Setting::firstOrCreate(['title' => 'tournament_story_visibility']);
+        return view('tournament::setting', compact('visibility'));
+    }
+    public function updateSetting(Request $request)
+    {
+        $setting = Setting::where('title', 'tournament_story_visibility')->first();
+        $setting->value = $request->tournament_story_visibility;
+        $setting->save();
+        return redirect()->back();
     }
 }

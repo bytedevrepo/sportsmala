@@ -40,6 +40,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
                 Route::post('/save-game', 'GameController@store')->name('game-save');
                 Route::post('/update-game-score', 'GameController@updateScore')->name('game-update');
                 Route::post('/game-bulk-action', 'GameController@bulkAction')->name('game.bulk-action');
+
+                Route::get('/setting', 'TournamentController@getSetting')->name('tournament-setting');
+                Route::post('/setting/update', 'TournamentController@updateSetting')->name('tournament-setting-update');
             });
         });
     });

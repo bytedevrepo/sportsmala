@@ -65,16 +65,19 @@
             </div>
         </div>
     </div>
-    <!-- Header Top Bar / End --><!-- Header Secondary -->
-    <div class="header__secondary story-result" style="height: 108px;">
-        <div class="container-fluid p-1" >
-            @if(Route::has('tournament-list'))
+
+    <!-- Header Top Bar / End -->
+    <!-- Header Secondary -->
+    @if(Route::has('tournament-list') AND settingHelper('tournament_story_visibility') == 1)
+        <div class="header__secondary story-result" style="height: 108px;">
+            <div class="container-fluid p-1" >
                 @include('tournament::score-card')
-            @endif
+            </div>
         </div>
-        {{--<img src="{{ static_asset('score.png') }}" alt="" style="height: 70px; width: 100%;">--}}
-    </div>
-    <!-- Header Secondary / End --><!-- Header Primary -->
+    @endif
+
+    <!-- Header Secondary / End -->
+    <!-- Header Primary -->
     <div class="header__primary">
         <div class="container">
             <div class="header__primary-inner">

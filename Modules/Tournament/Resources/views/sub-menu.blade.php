@@ -5,6 +5,7 @@
             <a class="nav-item nav-link @yield('team-list')" href="{{ route('team-list') }}">Teams</a>
             <a class="nav-item nav-link @yield('tournament-list')" href="{{ route('tournament-list') }}">Tournaments</a>
             <a class="nav-item nav-link @yield('tournament-category')" href="{{ route('tournament-category') }}">Category</a>
+            <a class="nav-item nav-link @yield('tournament-setting')" href="{{ route('tournament-setting') }}"><i class="fa fa-cog mr-2"></i>Settings</a>
         </div>
     </nav>
 </div>
