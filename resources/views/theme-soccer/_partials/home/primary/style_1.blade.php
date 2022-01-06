@@ -53,11 +53,9 @@
                             </a>
 
                             <div class="post-author">
-                                {{--{{ __('post_by') }}--}}
                                 <div class="post-author__info">
                                     <h4 class="post-author__name">
                                         Published
-                                        {{--                                        <a href="{{ route('site.author',['id' => $post['user']->id]) }}">{{ data_get($post, 'user.first_name') }}</a>--}}
                                     </h4>
                                     <time datetime="{{$post->updated_at}}" class="posts__date">
                                         <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
