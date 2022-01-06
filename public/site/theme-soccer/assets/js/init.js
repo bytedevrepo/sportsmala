@@ -554,13 +554,13 @@
 
             // Featured News Slider
             if ($slick_featured_slider.exists()) {
-
                 $slick_featured_slider.slick({
                     slidesToShow: 1,
                     slidesToScroll: 1,
                     autoplay: true,
                     autoplaySpeed: 5000,
                     rows: 0,
+                    // centerMode: true,
                     responsive: [{
                         breakpoint: 768,
                         settings: {

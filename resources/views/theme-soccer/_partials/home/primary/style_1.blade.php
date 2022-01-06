@@ -6,12 +6,12 @@
     <header class="card__header card__header--has-filter">
         <h4>Featured News</h4>
         <ul class="category-filter category-filter--featured">
-            <li class="category-filter__item">
-                <a href="#" class="category-filter__link category-filter__link--reset category-filter__link--active">All</a>
-            </li>
-            <li class="category-filter__item">
-                <a href="#" class="category-filter__link" data-category="posts__item--category-1">The Team</a>
-            </li>
+            {{--<li class="category-filter__item">--}}
+                {{--<a href="#" class="category-filter__link category-filter__link--reset category-filter__link--active featured-slider">all</a>--}}
+            {{--</li>--}}
+            {{--<li class="category-filter__item">--}}
+            {{--<a href="#" class="category-filter__link" data-category="posts__item--category-1">The Team</a>--}}
+            {{--</li>--}}
             {{--<li class="category-filter__item"><a href="#" class="category-filter__link" data-category="posts__item--category-3">The League</a></li>--}}
             {{--<li class="category-filter__item"><a href="#" class="category-filter__link" data-category="posts__item--category-2">Injuries</a></li>--}}
         </ul>
@@ -21,15 +21,20 @@
         <div class="slick posts posts--slider-featured posts-slider posts-slider--center">
             @foreach($sliderPosts as $post)
                 {{--{{dd($post['image'])}}--}}
-                <div class="posts__item posts__item--category-1">
+                <div class="posts__item posts__item--category-{{rand(1,3)}}">
                     <a href="#" class="posts__link-wrapper">
                         <figure class="posts__thumb">
-                            {{--@if(isFileExist(@$post['image'], $result = @$post['image']->big_image))--}}
-                                {{--<img src="{{basePath(@$post['image'])}}/{{ $result }}" alt="{!! $post->title !!}">--}}
+                            {{--{{dd(@$post->image)}}--}}
+                            {{--<img src="{{basePath(@$post['image'])}}/{{ $result }}" alt="{!! $post->title !!}">--}}
                             {{--@else--}}
-                                {{--<img src="{{static_asset('default-image/default-500x500.png') }}" alt="{!! $post->title !!}" style="height: 100px;width: 100px">--}}
+                            {{--<img src="{{static_asset('default-image/default-500x500.png') }}" alt="{!! $post->title !!}" style="height: 100px;width: 100px">--}}
                             {{--@endif--}}
-                            <img src="{{ static_asset('site/theme-soccer/assets/images/soccer/samples/post-slide7.jpg') }}" alt="">
+{{--                            <img src="{{ static_asset('site/theme-soccer/assets/images/soccer/samples/post-slide7.jpg') }}" alt="">--}}
+                            @if(isFileExist(@$post->image, $result = @$post->image->big_image_two))
+                                <img src="{{basePath($post->image)}}/{{$result }}" alt="{!! $post->title !!}" style="width:773px">
+                            @else
+                                <img src="{{static_asset('default-image/default-500x500.png') }}" alt="{!! $post->title !!}" style="width:400px">
+                            @endif
                         </figure>
                         <div class="posts__inner">
                             <div class="posts__cat">
@@ -52,7 +57,7 @@
                                 <div class="post-author__info">
                                     <h4 class="post-author__name">
                                         Published
-{{--                                        <a href="{{ route('site.author',['id' => $post['user']->id]) }}">{{ data_get($post, 'user.first_name') }}</a>--}}
+                                        {{--                                        <a href="{{ route('site.author',['id' => $post['user']->id]) }}">{{ data_get($post, 'user.first_name') }}</a>--}}
                                     </h4>
                                     <time datetime="{{$post->updated_at}}" class="posts__date">
                                         <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">

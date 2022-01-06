@@ -210,6 +210,7 @@
 <script src="{{ static_asset('site/theme-soccer/assets/vendor/twitter/jquery.twitter.js') }}"></script>
 <!-- Template JS -->
 <script src="{{ static_asset('site/theme-soccer/assets/js/init.js') }}"></script>
+
 <script src="{{ static_asset('site/theme-soccer/assets/js/custom.js') }}"></script>
 <script src="{{static_asset('site/theme-soccer/assets/js/theia-sticky-sidebar.min.js') }}"></script>
 <script type="text/javascript">
@@ -283,7 +284,7 @@
                             slidesToScroll: 1,
                         });
                     }
-                    $(".slick-track").empty();
+                    $("#socreCardRow").find(".slick-track").empty();
                     if (match.length !== 0) {
                         for (let i = 0; i < match.length; i++) {
                             let team1_name = match[i].team1.team_name;
@@ -380,7 +381,6 @@
 @yield('script')
 @yield('player')
 @yield('audio')
-
 <script src="{{ static_asset('site/theme-soccer/assets/vendor/marquee/jquery.marquee.min.js') }}"></script>
 <script>
     var $marquee = $('.marquee');
