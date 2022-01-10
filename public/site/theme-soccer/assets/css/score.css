@@ -1,0 +1,28 @@
+.story-result .card{
+    height: 57px;
+    border-radius: 0px;
+}
+.result-card{
+    height: 75px !important;
+    box-shadow:none!important;
+    border: none;
+}
+.story-result .result{
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 1px;
+    padding-right: 5px;
+    padding-left: 5px;
+    line-height: 15px !important;
+}
+.story-result .card-body{
+    padding-top:3px;
+}
+
+.story-tournament select{
+    border:none;
+    border-bottom: 1px solid #295ac9;
+}
+.story-result .row {
+    margin-bottom: 0px !important;
+}
