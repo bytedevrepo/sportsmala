@@ -5,6 +5,10 @@
 @section('tournament')
     active
 @endsection
+@section('css')
+    <link rel="stylesheet" href="{{ static_asset('vendor/jquery/jquery-ui/jquery-ui.theme.css') }}">
+    <link rel="stylesheet" href="{{ static_asset('vendor/jquery/jquery-ui/jquery-ui.css') }}">
+@endsection
 @section('content')
     <div class="dashboard-ecommerce">
         @include('tournament::sub-menu')
@@ -34,7 +38,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-8">
                             <div class="add-new-page  bg-white p-20 m-b-20">
                                 <div class="block-header">
                                     @if(isset($game))
@@ -50,6 +54,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="category">Team1 *</label>
+                                                {{--<input id="tags" class="form-control" name="team1_id">--}}
                                                 <select class="form-control" name="team1_id" id="category" required>
                                                     <option value="">Select</option>
                                                     @if(isset($teams) AND !blank($teams))
@@ -82,12 +87,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="category-name" class="col-form-label">Game Date</label>
-                                                <div class="input-group" id="start_date" data-target-input="nearest">
-                                                    <input type="text" name="game_date" class="form-control" value="{{ $game->game_date ?? '' }}">
-                                                    <div class="input-group-append" data-target="#start_date" data-toggle="datetimepicker">
-                                                        <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
-                                                    </div>
-                                                </div>
+                                                <input type="date" name="game_date" class="form-control" value="{{ (isset($game)) ? date_format(\Carbon\Carbon::createFromDate($game->game_date),"Y-m-d") : '' }}">
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
@@ -130,4 +130,39 @@
         </div>
         <!-- page info end-->
     </div>
+@endsection
+@section('script')
+    <script src="{{ static_asset('vendor/jquery/jquery-ui/jquery-ui-1.12.1.js') }}"></script>
+    <script>
+        $( function() {
+            var availableTags = [ { label: "Choice1", value: "value1" }];
+            var availableTagss = [
+                "ActionScript",
+                "AppleScript",
+                "Asp",
+                "BASIC",
+                "C",
+                "C++",
+                "Clojure",
+                "COBOL",
+                "ColdFusion",
+                "Erlang",
+                "Fortran",
+                "Groovy",
+                "Haskell",
+                "Java",
+                "JavaScript",
+                "Lisp",
+                "Perl",
+                "PHP",
+                "Python",
+                "Ruby",
+                "Scala",
+                "Scheme"
+            ];
+            $( "#tags" ).autocomplete({
+                source: availableTags
+            });
+        } );
+    </script>
 @endsection

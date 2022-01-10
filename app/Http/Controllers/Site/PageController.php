@@ -17,9 +17,9 @@ class PageController extends Controller
     public function page( $id )
     {
         try{
-            $page               = Page::where('slug', $id)->first();
-            $socialMedias       = SocialMedia::where('status', 1)->get();
-
+            $page = Page::with('image')->where('slug', $id)->first();
+            $socialMedias = SocialMedia::where('status', 1)->get();
+//            dd($page);
             if($page->page_type == 1):
 //                return view('site.pages.default_page', compact('page'));
                 return view('theme-soccer.pages.default_page', compact('page'));
@@ -36,17 +36,17 @@ class PageController extends Controller
     public function sendMessage( Request $request )
     {
         if( settingHelper('captcha_visibility') == 1):
-        	$validator                  = Validator::make($request->all(), [
-                'name'                  => 'required',
-                'email'                 => 'required',
-                'message'               => 'required',
-                'g-recaptcha-response'  => 'required'
+        	$validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'email' => 'required',
+                'message' => 'required',
+                'g-recaptcha-response' => 'required'
             ]);
         else:
-            $validator                  = Validator::make($request->all(), [
-                'name'                  => 'required',
-                'email'                 => 'required',
-                'message'               => 'required'
+            $validator = Validator::make($request->all(), [
+                'name' => 'required',
+                'email' => 'required',
+                'message' => 'required'
             ]);
         endif;
 
@@ -56,12 +56,10 @@ class PageController extends Controller
                     ->withInput();
         endif;
 
-    	 $message                       = new ContactMessage();
-
-    	 $message->name                 = $request->name;
-    	 $message->email                = $request->email;
-    	 $message->message              = $request->message;
-
+    	 $message = new ContactMessage();
+    	 $message->name = $request->name;
+    	 $message->email = $request->email;
+    	 $message->message = $request->message;
     	 $message->save();
 
     	 return redirect()->back()->with('success', __('successfully_send'));

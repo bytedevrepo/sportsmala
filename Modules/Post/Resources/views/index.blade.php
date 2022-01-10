@@ -31,10 +31,10 @@
                                     @if(Sentinel::getUser()->hasAccess(['post_write']))
                                         <div class="col-6 text-right">
                                             <a href="{{ route('create-article') }}"
-                                            class="btn btn-primary btn-sm btn-add-new"><i class="mdi mdi-plus"></i>
+                                               class="btn btn-primary btn-sm btn-add-new"><i class="mdi mdi-plus"></i>
                                                 {{ __('create_article') }}
                                             </a>
-                                            <!-- <a href="{{ route('create-video-post') }}"
+                                        <!-- <a href="{{ route('create-video-post') }}"
                                                class="btn btn-primary btn-sm btn-add-new"><i class="mdi mdi-plus"></i>
                                                 {{ __('create_video_post') }}
                                             </a>
@@ -152,10 +152,13 @@
                                             <td>{{ $post->language }} </td>
                                             <td class="td-post-type">{{ $post->post_type }}</td>
                                             <td>
-                                                <label class="category-label m-r-5 label-table"
-                                                      id="breaking-post-bgc">
-                                                    {{ @$post->category['category_name'] }} </label>
-
+                                                @if(!blank($post->categories))
+                                                    @foreach($post->categories as $category)
+                                                        <label class="category-label m-r-5 label-table"
+                                                               id="breaking-post-bgc">
+                                                            {{ @$category->category_name }} </label>
+                                                    @endforeach
+                                                @endif
                                             </td>
                                             <td>
                                                 <a href="#" target="_blank" class="table-user-link">

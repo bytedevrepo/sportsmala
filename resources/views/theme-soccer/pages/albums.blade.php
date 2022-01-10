@@ -1,39 +1,49 @@
-@extends('site.layouts.app')
+@extends('theme-soccer.layouts.app')
 
 @section('content')
-    <div class="sg-page-content">
+    <!-- Page Heading -->
+    <div class="page-heading">
         <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ url('') }}">{{__('home')}}</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('image.albums')}}"> {{__('albums')}}</a></li>
-                </ol>
-            </nav>
             <div class="row">
-
-                <div class="col-md-12 col-lg-12">
-                    <div class="grid mb-5">
-                        <div class="grid-sizer"></div>
-                        @foreach(@$albums as $album)
-                            <a href="{{ route('album.gallery',['slug'=>@$album->slug]) }}">
-                                <div class="grid-item ">
-                                    @if(isFileExist(@$album, $result = @$album->original_image))
-                                        <img src="{{basePath($album)}}/{{ @$result }}"/>
-                                    @else
-                                        <img src="{{static_asset('default-image/default-1080x1000.png') }}"/>
-                                    @endif
-
-                                    <div class="title">
-                                        <div class="album">
-                                            {{ $album->name }}
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
-                    </div>
+                <div class="col-md-10 offset-md-1">
+                    <h1 class="page-heading__title">{{__('albums')}}</h1>
+                    <ol class="page-heading__breadcrumb breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{__('home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('albums')}}</li>
+                    </ol>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="site-content">
+        <div class="container">
+            <!-- Gallery -->
+            <div class="gallery row">
+                @foreach(@$albums as $album)
+                    <div class="gallery__item col-6 col-sm-4">
+                        <a href="{{ route('album.gallery',['slug'=>@$album->slug]) }}" class="gallery__item-inner card">
+                            <figure class="gallery__thumb">
+                                @if(isFileExist(@$album, $result = @$album->original_image))
+                                    <img src="{{basePath($album)}}/{{ @$result }}"/>
+                                @else
+                                    <img src="{{static_asset('default-image/default-1080x1000.png') }}"/>
+                                @endif
+                                <span class="btn-fab gallery__btn-fab"></span>
+                            </figure>
+
+                            <div class="gallery__content card__content card__content--header-bg">
+                                <span class="gallery__icon gallery__icon--circle"><span class="icon-picture"></span></span>
+                                <div class="gallery__details">
+                                    <h4 class="gallery__name">{{ $album->name }}</h4>
+                                    <div class="gallery__date">Updated: {{ $album->updated_at->format('F d, Y') }}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+            <!-- Gallery / End -->
+            <div class="spacer-lg"></div>
         </div>
     </div>
 @endsection

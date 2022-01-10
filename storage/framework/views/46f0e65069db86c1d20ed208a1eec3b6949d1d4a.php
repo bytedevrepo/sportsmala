@@ -309,7 +309,7 @@
                     <?php endif; ?>
                     <?php if(Sentinel::getUser()->hasAccess(['users_read']) || Sentinel::getUser()->hasAccess(['users_write']) || Sentinel::getUser()->hasAccess(['users_delete'])): ?>
                         <li class="nav-item">
-                            <a class="nav-link <?php echo $__env->yieldContent('tournament'); ?>" href="<?php echo e(route('tournament-category')); ?>">
+                            <a class="nav-link <?php echo $__env->yieldContent('tournament'); ?>" href="<?php echo e(route('match-list')); ?>">
                                 <i class="fas fa-fw fa-users"></i>Tournament
                             </a>
                         </li>

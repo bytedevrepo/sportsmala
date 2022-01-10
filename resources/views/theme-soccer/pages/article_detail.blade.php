@@ -6,10 +6,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 offset-md-1">
-                    <h1 class="page-heading__title">Article</h1>
+                    <h1 class="page-heading__title">{{__('article_detail')}}</h1>
                     <ol class="page-heading__breadcrumb breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Article</li>
+                        <li class="breadcrumb-item"><a href="/">{{__('home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('article_detail')}}</li>
                     </ol>
                 </div>
             </div>

@@ -28,21 +28,22 @@
                         <div class="card__header">
                             <h4>Register Now</h4>
                         </div>
-                        <div class="card__content">
-                            <!-- Register Form -->
+                        <div class="card__content" style="padding-right: 24px">
+                        @include('theme-soccer._partials.notification')
+                        <!-- Register Form -->
                             <form name="ragister-form" method="post" action="{{ route('site.register') }}">
                                 @csrf
                                 <div class="form-group">
                                     <label for="register-name">{{ __('first_name') }}</label>
-                                    <input type="text" name="first_name" class="form-control" placeholder="{{ __('first_name') }}" required>
+                                    <input type="text" value="{{ old('first_name') }}" name="first_name" class="form-control" placeholder="{{ __('first_name') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="register-name">{{ __('last_name') }}</label>
-                                    <input type="text" name="last_name" class="form-control" placeholder="{{ __('last_name') }}" required>
+                                    <input type="text" value="{{ old('last_name') }}" name="last_name" class="form-control" placeholder="{{ __('last_name') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="register-name">{{ __('email') }}</label>
-                                    <input type="email" name="email" class="form-control" placeholder="{{ __('input_email') }}" required>
+                                    <input type="email" value="{{ old('email') }}" name="email" class="form-control" placeholder="{{ __('input_email') }}" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="register-password">{{ __('password') }}</label>

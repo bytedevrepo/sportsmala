@@ -23,7 +23,6 @@
     <link href="{{ static_asset('site/theme-soccer/assets/fonts/simple-line-icons/css/simple-line-icons.css') }}" rel="stylesheet">
     <link href="{{ static_asset('site/theme-soccer/assets/vendor/magnific-popup/dist/magnific-popup.css') }}" rel="stylesheet">
     <link href="{{ static_asset('site/theme-soccer/assets/vendor/slick/slick.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/css/mdb.min.css">
     <!-- Template CSS-->
     <link href="{{ static_asset('site/theme-soccer/assets/css/style-soccer.css') }}" rel="stylesheet">
     @if(Route::has('tournament-list'))
@@ -35,7 +34,34 @@
     @if(settingHelper('custom_header_style')!=null)
         {!! base64_decode(settingHelper('custom_header_style')) !!}
     @endif
+    <style>
+        .widget--footer .posts--simple-list .posts__title {
+            font-size: 14px;
+            line-height: 1.5em;
+            font-style: normal;
+        }
+        .posts--simple-list .posts__title {
+            margin-bottom: 0;
+            line-height: 1.5em !important;
+        }
+        .posts--simple-list .posts__excerpt--space-sm {
+            padding-top: 10px;
+        }
+        .posts__item--card .posts__title {
+            font-size: 18px;
+            line-height: 1.5em;
+            margin-bottom: 0em;
+        }
 
+        @if(LaravelLocalization::setLocale() == 'np')
+        .posts--simple-list .posts__title {
+            margin-bottom: 0;
+            line-height: 1.5em !important;
+            font-size: 16px;
+        }
+        @endif
+
+    </style>
     @include('feed::links')
     @stack('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css"  />
@@ -46,11 +72,7 @@
         gtag('js', new Date());
         gtag('config', '{{ settingHelper('google_analytics_id') }}');
     </script>
-    <style>
-        .owl-item{
-            width: auto !important;
-        }
-    </style>
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=61bc42ae46f67d00196e856d&product=inline-share-buttons" async="async"></script>
 </head>
 <body data-template="template-soccer" class="@if(settingHelper('preloader_option')==0) page-loader-disable @endif {{defaultModeCheck()}}">
 <div class="site-wrapper clearfix">
@@ -188,6 +210,7 @@
 <script src="{{ static_asset('site/theme-soccer/assets/vendor/twitter/jquery.twitter.js') }}"></script>
 <!-- Template JS -->
 <script src="{{ static_asset('site/theme-soccer/assets/js/init.js') }}"></script>
+
 <script src="{{ static_asset('site/theme-soccer/assets/js/custom.js') }}"></script>
 <script src="{{static_asset('site/theme-soccer/assets/js/theia-sticky-sidebar.min.js') }}"></script>
 <script type="text/javascript">
@@ -198,22 +221,26 @@
     });
 </script>
 @if(Route::has('tournament-list'))
+    <script>
+        var directory = '/public/';
+        @if (strpos(php_sapi_name(), 'cli') !== false || settingHelper('default_storage') == 's3' || defined('LARAVEL_START_FROM_PUBLIC'))
+            directory = '/';
+        @endif
+    </script>
     <script defer>
-        let loading=true;
         $(document).ready(function() {
-
             getCategory();
 
             $("#tournamentSelect").on('change', function () {
-                var category_id = $("#tournamentSelect option:selected").val();
+                let category_id = $("#tournamentSelect option:selected").val();
                 getScore(category_id);
-            })
+            });
 
             $("#gameDateSelect").on('change', function () {
-                var date = $(this).val();
-                var category_id = $("#tournamentSelect option:selected").val();
+                let date = $(this).val();
+                let category_id = $("#tournamentSelect option:selected").val();
                 getScore(category_id,date);
-            })
+            });
         });
 
         function getScore(category_id='', date='') {
@@ -223,7 +250,7 @@
             } else{
                 id = $("#tournamentSelect option:selected").val();
             }
-            var scoreUrl = "{{ route('tournament-score-ajax') }}";
+            let scoreUrl = "{{ route('tournament-score-ajax') }}";
             $.ajax({
                 type: 'POST',
                 url: scoreUrl,
@@ -232,11 +259,11 @@
                 async:false,
                 success: function(response) {
                     if ((response.gameDates !== '')) {
-                        var gameDateSelect = $('#gameDateSelect');
+                        let gameDateSelect = $('#gameDateSelect');
                         gameDateSelect.empty();
-                        var game_dates = response.gameDates;
+                        let game_dates = response.gameDates;
                         if (game_dates.length){
-                            for(i=0;i<game_dates.length;i++){
+                            for(let i=0;i<game_dates.length;i++){
                                 $('<option/>')
                                     .val(game_dates[i].date)
                                     .text(game_dates[i].date_human)
@@ -245,54 +272,91 @@
                         }
                         gameDateSelect.val(response.selectedDate);
                     }
+                    let match = response.match;
+                    let slickElement = $('.regular');
 
-                    var match = response.match;
-                    // $('.scoreCard').remove();
-                    $('.owl-wrapper-outer').remove();
-
-                    for (i=0; i<match.length; i++) {
-                        var team1_name = match[i].team1.team_name;
-                        var team2_name = match[i].team2.team_name;
-
-                        $("#socreCardRow").append(
-                            `<div class=" col-md-3 p-0 scoreCard">
-                                <div class="card h-100 rounded">
-                                    <div class="card-body">
-                                        <table class="scoreBoard">
-                                            <tr>
-                                                <th>${match[i].tournament.tournament_name} - ${match[i].game_status} </th>
-                                                <th>Result</th>
-                                                </tr>
-                                                <tr>
-                                                    <td class="float-left">
-                                                        <img class="mr-2" src="${match[i].team1.logo}" alt="" style="width: 15px;border-radius: 50%;">
-                                                        ${team1_name}
-                                                                </td>
-                                                        <td>${match[i].team1_score}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="float-left"><img class="mr-2" src="${match[i].team2.logo}" alt="" style="width: 15px;border-radius: 50%;">
-                                                ${team2_name}</td>
-                                            <td>${match[i].team2_score}</td>
-                                            </tr>
-                                            </table>
-                                     </div>
-                                </div>
-                            </div>`
-                        )
-
+                    if (!slickElement.hasClass('slick-initialized')) {
+                        slickElement.slick({
+                            dots: false,
+                            arrows: false,
+                            infinite: false,
+                            slidesToShow: calculateNumberOfSlidesToShow(),
+                            slidesToScroll: 1,
+                        });
                     }
-                    // get owl element
-                    var owl = $('.owl-carousel');
+                    $("#socreCardRow").find(".slick-track").empty();
+                    if (match.length !== 0) {
+                        for (let i = 0; i < match.length; i++) {
+                            let team1_name = match[i].team1.team_name;
+                            let team2_name = match[i].team2.team_name;
 
-                    // get owl instance from element
-                    var owlInstance = owl.data('owlCarousel');
+                            let team1_score = match[i].team1_score;
+                            let team2_score = match[i].team2_score;
 
-                    // if instance is existing
-                    if(owlInstance != null)
-                        owlInstance.reinit();
+                            let team1_score_class = '';
+                            let team2_score_class = '';
+
+                            if (team1_score && team2_score && (team1_score > team2_score)){
+                                team1_score_class = 'widget-results__score-winner';
+                                team2_score_class = 'widget-results__score-looser';
+                            }else if(team1_score && team2_score && (team1_score < team2_score)){
+                                team1_score_class = 'widget-results__score-looser';
+                                team2_score_class = 'widget-results__score-winner';
+                            }
+                            slickElement.slick('slickAdd', `
+                    <div>
+                        <div class="widget-results__content mr-1" style="background-color: #fff; height: 90px;">
+                            <div class="widget-results__team widget-results__team--first text-center">
+                                <figure class="widget-results__team-logo"><img src="${directory}${match[i].team1.logo}" alt=""></figure><br>
+                                <div class="widget-results__team-details">
+                                    <h5 class="widget-results__team-name">${team1_name}</h5>
+                                </div>
+                            </div>
+                            <div class="widget-results__result">
+                                <div class="widget-results__score">
+                                    <div class="widget-results__status">
+                                        ${new Date(match[i].game_date).toLocaleDateString(undefined, {year: 'numeric', month: '2-digit', day: '2-digit', weekday:"long"})} <br> ${match[i].tournament.tournament_name} <br> ${match[i].game_status}
+                                    </div>
+                                    <span class="${team1_score_class}">
+                                        ${(team1_score) ? team1_score : ''}
+                                    </span> -
+                                    <span class="${team2_score_class}">
+                                        ${(team2_score) ? team2_score : ''}
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="widget-results__team widget-results__team--first text-center">
+                                <figure class="widget-results__team-logo"><img src="${directory}${match[i].team2.logo}" alt=""></figure><br>
+                                <div class="widget-results__team-details">
+                                    <h5 class="widget-results__team-name">${team2_name}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`)
+                        }
+                    }
                 }
             });
+        }
+        function calculateNumberOfSlidesToShow(){
+            var carouselWidth = jQuery("#socreCardRow").width();
+            var numberOfSlides = 3;
+            switch (true) {
+                case (carouselWidth < 767):
+                    numberOfSlides = 1;
+                    break;
+                case (carouselWidth < 991):
+                    numberOfSlides = 2;
+                    break;
+                case (carouselWidth < 1199):
+                    numberOfSlides = 3;
+                    break;
+                case (carouselWidth > 1200):
+                    numberOfSlides = 3;
+                    break;
+            }
+
+            return numberOfSlides;
         }
         function getCategory() {
             var categoryUrl = "{{ route('tournament-category-ajax') }}";
@@ -303,7 +367,7 @@
                 async:false,
                 success: function(response) {
                     getScore(response[0].id);
-                    for (i=0; i<response.length; i++) {
+                    for (let i=0; i<response.length; i++) {
                         $('<option/>')
                             .val(response[i].id)
                             .text(response[i].category_name)
@@ -313,20 +377,10 @@
             });
         }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.js"></script>
-    <script>
-        $(document).ready(function () {
-            var carousel = $("#socreCardRow");
-            carousel.owlCarousel({
-                items:4,
-                navigation:true,
-                navigationText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
-            });
-        });
-    </script>
 @endif
 @yield('script')
 @yield('player')
 @yield('audio')
+<script src="{{ static_asset('site/theme-soccer/assets/vendor/marquee/jquery.marquee.min.js') }}"></script>
 </body>
 </html>

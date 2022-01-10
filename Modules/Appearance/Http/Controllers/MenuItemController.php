@@ -26,40 +26,40 @@ class MenuItemController extends Controller
         $categories         = Category::orderBy('id','ASC')->where('language',$selectedLanguage)->get();
 
         $menuItems          = MenuItem::with(['children'])
-                                    ->where('parent', null)
-                                    ->where('menu_id', $selectedMenu->id)
-                                    ->where('language', $selectedLanguage)
-                                    ->orderBy('order', 'asc')
-                                    ->get();
+            ->where('parent', null)
+            ->where('menu_id', $selectedMenu->id)
+            ->where('language', $selectedLanguage)
+            ->orderBy('order', 'asc')
+            ->get();
 
         $pages              = Page::where('language',$selectedLanguage)->get();
 
         $posts              = Post::select('id', 'title')
-                                ->orderBy('id', 'desc')->where('language',$selectedLanguage)->get();
+            ->orderBy('id', 'desc')->where('language',$selectedLanguage)->get();
         $activeLang         = Language::where('status', 'active')
-                                    ->orderBy('name', 'ASC')->get();
+            ->orderBy('name', 'ASC')->get();
 
         return view('appearance::menu_item',[
-                                            'menuItems'         => $menuItems,
-                                            'menus'             => $menus,
-                                            'selectedMenus'     => $selectedMenu,
-                                            'selectedLanguage'  => $selectedLanguage,
-                                            'pages'             => $pages,
-                                            'menuLocations'     => $menuLocations,
-                                            'categories'        => $categories,
-                                            'activeLang'        => $activeLang,
-                                            'posts'             => $posts
-                                        ]);
+            'menuItems'         => $menuItems,
+            'menus'             => $menus,
+            'selectedMenus'     => $selectedMenu,
+            'selectedLanguage'  => $selectedLanguage,
+            'pages'             => $pages,
+            'menuLocations'     => $menuLocations,
+            'categories'        => $categories,
+            'activeLang'        => $activeLang,
+            'posts'             => $posts
+        ]);
     }
     public function menuItemSearch(Request $request){
         $menuLocations  = MenuLocation::with('menu')->get();
 
         $menuItems      = MenuItem::with(['children'])
-                            ->where('parent', null)
-                            ->where('menu_id', $request->menu_id)
-                            ->where('language', $request->language)
-                            ->orderBy('order','ASC')
-                            ->get();
+            ->where('parent', null)
+            ->where('menu_id', $request->menu_id)
+            ->where('language', $request->language)
+            ->orderBy('order','ASC')
+            ->get();
 
         $menus              = Menu::all();
         $selectedMenu       = Menu::find($request->menu_id);
@@ -71,17 +71,17 @@ class MenuItemController extends Controller
         $categories         = Category::orderBy('id','ASC')->where('language',$selectedLanguage)->get();
 
         return view('appearance::menu_item', [
-                                            'menuItems' => $menuItems,
-                                            'menus' => $menus,
-                                            'selectedMenus' => $selectedMenu,
-                                            'selectedLanguage' => $selectedLanguage,
-                                            'pages' => $pages,
-                                            'menuLocations' => $menuLocations,
-                                            'categories' => $categories,
-                                            'activeLang' => $activeLang,
-                                            'posts'=> $posts
-                                        ]);
-        }
+            'menuItems' => $menuItems,
+            'menus' => $menus,
+            'selectedMenus' => $selectedMenu,
+            'selectedLanguage' => $selectedLanguage,
+            'pages' => $pages,
+            'menuLocations' => $menuLocations,
+            'categories' => $categories,
+            'activeLang' => $activeLang,
+            'posts'=> $posts
+        ]);
+    }
 
     public function changeMenuOrder(Request $request)
     {
@@ -129,7 +129,6 @@ class MenuItemController extends Controller
             'source'    => 'required',
             'menu_id'   => 'required'
         ])->validate();
-
         if ($request->source == 'page') :
 
             if(!isset($request->page_id)){
@@ -137,19 +136,15 @@ class MenuItemController extends Controller
             }
 
             for($i=0; count($request->page_id)>$i; $i++){
-                $menuItem           = new MenuItem();
-
-                if(gettype($request->page_id[$i]) == "integer"):
-
-                    $page               = Page::find($request->page_id[$i]);
-                    $menuItem->label    = $page->title;
-                    $menuItem->page_id  = $request->page_id[$i];
-
-                else:
-
-                    $menuItem->label    = 'gallery';
-
-                endif;
+                $menuItem = new MenuItem();
+                if ($request->page_id == 'gallery'){
+                    $menuItem->label = 'gallery';
+                }
+                else {
+                    $page = Page::find($request->page_id[$i]);
+                    $menuItem->label = $page->title;
+                    $menuItem->page_id = $request->page_id[$i];
+                }
 
                 $menuItem->menu_id  = $request->menu_id;
                 $menuItem->language = $request->language ?? app()->getLocale();
@@ -208,24 +203,24 @@ class MenuItemController extends Controller
                 return redirect()->back()->with('error',__('please_select_at_least_one_item'));
             }
 
-                if($request->sub_category_id !=null):
-                    for($i=0; count($request->sub_category_id)>$i; $i++):
-    
-                        $menuItem               = new MenuItem();
-                        $category               = SubCategory::find($request->sub_category_id[$i]);
-                        $menuItem->label        = $category->sub_category_name;
-                        $menuItem->menu_id      = $request->menu_id;
-                        $menuItem->language     = $request->language ?? app()->getLocale();
-                        $menuItem->source       = $request->source;
-                        $menuItem->parent       = null;
-                        $menuItem->sub_category_id  = $request->sub_category_id[$i];
-                        $menuItem->status       = 1;
-    
-                        $menuItem->save();
-                    endfor;
-                else:
-                    return redirect()->back()->with('error',__('please_select_at_least_one_item'));
-                endif;
+            if($request->sub_category_id !=null):
+                for($i=0; count($request->sub_category_id)>$i; $i++):
+
+                    $menuItem               = new MenuItem();
+                    $category               = SubCategory::find($request->sub_category_id[$i]);
+                    $menuItem->label        = $category->sub_category_name;
+                    $menuItem->menu_id      = $request->menu_id;
+                    $menuItem->language     = $request->language ?? app()->getLocale();
+                    $menuItem->source       = $request->source;
+                    $menuItem->parent       = null;
+                    $menuItem->sub_category_id  = $request->sub_category_id[$i];
+                    $menuItem->status       = 1;
+
+                    $menuItem->save();
+                endfor;
+            else:
+                return redirect()->back()->with('error',__('please_select_at_least_one_item'));
+            endif;
 
 
         else:
@@ -297,7 +292,7 @@ class MenuItemController extends Controller
 
             $menuItem->order    = $order;
 
-             // for making sub menu
+            // for making sub menu
             if($request->menu_lenght[$i] == 2):
                 $menuItem->parent   = @$main_menu;
             elseif($request->menu_lenght[$i] == 3):

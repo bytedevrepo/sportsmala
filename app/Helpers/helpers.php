@@ -171,7 +171,7 @@ if (!function_exists('share_facebook_url')) {
 
     function share_facebook_url($url=''){
         if ($url !== ''){
-            $fb_url = 'http://www.facebook.com/sharer/sharer.phpu='.$url;
+            $fb_url = 'http://www.facebook.com/sharer/sharer.php?u='.$url;
             return $fb_url;
         }
         return null;

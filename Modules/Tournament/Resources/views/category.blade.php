@@ -44,7 +44,7 @@
                                     <table class="table table-bordered table-striped">
                                         <thead>
                                         <tr role="row">
-                                            <th>#</th>
+                                            <th class="text-center">#</th>
                                             <th>{{ __('category_name') }}</th>
                                             @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
                                                 <th class="text-center">{{ __('options') }}</th>
@@ -55,7 +55,7 @@
                                         @if(isset($categories) AND !blank($categories))
                                             @foreach ($categories as $category)
                                                 <tr role="row" class="odd" id="row_{{ $category->id }}">
-                                                    <td class="sorting_1">{{ $category->id }}</td>
+                                                    <td class="sorting_1 text-center">{{ $category->id }}</td>
                                                     <td>{{ $category->category_name }}</td>
                                                     @if(Sentinel::getUser()->hasAccess(['category_write']) || Sentinel::getUser()->hasAccess(['category_delete']))
                                                         <td class="text-center">

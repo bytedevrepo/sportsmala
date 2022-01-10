@@ -41,18 +41,18 @@
         <div class="container">
             <div class="footer-secondary__inner">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="footer-copyright"><a href="#">{{settingHelper('copyright_text')}}</a></div>
                     </div>
-                    <div class="col-md-8">
-                        <ul class="footer-nav footer-nav--right footer-nav--condensed footer-nav--sm">
-                            <li class="footer-nav__item"><a href="_soccer_index.html">Home</a></li>
-                            <li class="footer-nav__item"><a href="_soccer_features-shortcodes.html">Features</a></li>
-                            <li class="footer-nav__item"><a href="_soccer_team-standings.html">Statistics</a></li>
-                            <li class="footer-nav__item"><a href="_soccer_team-overview.html">The Team</a></li>
-                            <li class="footer-nav__item"><a href="_soccer_blog-3.html">News</a></li>
-                            <li class="footer-nav__item"><a href="_soccer_shop-grid.html">Shop</a></li>
-                        </ul>
+                    <div class="col-md-6">
+                        {{--<ul class="footer-nav footer-nav--right footer-nav--condensed footer-nav--sm">--}}
+                            {{--<li class="footer-nav__item"><a href="{{ url('/') }}">Home</a></li>--}}
+                            {{--<li class="footer-nav__item"><a href="/">Features</a></li>--}}
+                            {{--<li class="footer-nav__item"><a href="/">Statistics</a></li>--}}
+                            {{--<li class="footer-nav__item"><a href="/">The Team</a></li>--}}
+                            {{--<li class="footer-nav__item"><a href="/">News</a></li>--}}
+                            {{--<li class="footer-nav__item"><a href="/">Shop</a></li>--}}
+                        {{--</ul>--}}
                     </div>
                 </div>
             </div>

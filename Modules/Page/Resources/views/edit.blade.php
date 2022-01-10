@@ -136,9 +136,9 @@
                                 <label for="template" class="col-form-label">{{ __('template') }}</label>
                                 <select name="template" id="template" class="form-control">
                                     <option
-                                        value="1" {{ $page->template==1?"selected":"" }}>{{__('without_sidebar')}}</option>
+                                        value="1" {{ $page->template==1?"selected":"" }}>style_1 ({{__('without_sidebar')}})</option>
                                     <option
-                                        value="2" {{ $page->template==2?"selected":"" }}>{{__('with_right_sidebar')}}</option>
+                                        value="2" {{ $page->template==2?"selected":"" }}>style_2 ({{__('with_right_sidebar')}})</option>
                                 </select>
                             </div>
                         </div>

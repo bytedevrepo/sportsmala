@@ -1,47 +1,28 @@
 .story-result .card{
-    height: 80px;
+    height: 57px;
     border-radius: 0px;
-    /*background-color: #1e2024;*/
-    /*border-color: #292c31;*/
+}
+.result-card{
+    height: 75px !important;
+    box-shadow:none!important;
+    border: none;
 }
 .story-result .result{
     font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 1px;
-    padding-right: 5px;
-    padding-left: 5px;
-}
-.team1{
     font-size: 12px;
     margin-bottom: 1px;
     padding-right: 5px;
     padding-left: 5px;
-}
-.team2{
-    font-size: 12px;
-    margin-bottom: 1px;
-    padding-right: 5px;
-    padding-left: 5px;
+    line-height: 15px !important;
 }
 .story-result .card-body{
-    padding-top:1px;
-    padding-right: 5px;
-    padding-left: 5px;
-    padding-bottom: 0px;
+    padding-top:3px;
 }
-.story-tournament{
-    padding: 10px;
+
+.story-tournament select{
+    border:none;
+    border-bottom: 1px solid #295ac9;
 }
-/* Score Board */
-.scoreBoard{
-    padding:.5rem;
-    /* box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px; */
-}
-.scoreBoard th{
-    color:black;
-    font-size: 12px;
-}
-.scoreBoard td{
-    color:rgb(43, 42, 42);
-    font-size: 12px;
+.story-result .row {
+    margin-bottom: 0px !important;
 }

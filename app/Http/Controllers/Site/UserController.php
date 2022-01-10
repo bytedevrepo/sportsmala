@@ -45,15 +45,15 @@ class UserController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (blank($user)) {
-            return redirect()->back()->with(['error' => __('your_email_is_invalid')]);
+            return redirect()->back()->withErrors(['email' => __('your_email_is_invalid')]);
         } elseif($user->is_user_banned == 0) {
-            return redirect()->back()->with(['error' => __('your_account_is_banned')]);
+            return redirect()->back()->withErrors(['email' => __('your_account_is_banned')]);
         }
 
         try {
 
             if (!Hash::check($request->get('password'), $user->password)) {
-                return redirect()->back()->with(['error' => 'Invalid Credentials !']);
+                return redirect()->back()->withErrors(['error' => 'Invalid Credentials !']);
             }
 
             Sentinel::authenticate($request->all());
@@ -62,7 +62,7 @@ class UserController extends Controller
 
         } catch (NotActivatedException $e) {
 
-            return redirect()->back()->with(['error' => __('your_account_is_not_activated')]);
+            return redirect()->back()->withErrors(['account' => __('your_account_is_not_activated')]);
         }
     }
 
@@ -76,19 +76,19 @@ class UserController extends Controller
         if( settingHelper('captcha_visibility') == 1):
 
             $request->validate([
-                'first_name'    => ['required', 'string', 'max:255'],
-                'last_name'     => ['required', 'string', 'max:255'],
-                'email'         => ['required', 'string', 'email', 'max:255'],
-                'password'      => ['required', 'string', 'min:6'],
-                'g-recaptcha-response'      => ['required', 'string'],
+                'first_name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+                'password' => ['required', 'string', 'min:6'],
+                'g-recaptcha-response' => ['required', 'string'],
             ]);
 
         else:
             $request->validate([
-                'first_name'    => ['required', 'string', 'max:255'],
-                'last_name'     => ['required', 'string', 'max:255'],
-                'email'         => ['required', 'string', 'email', 'max:255'],
-                'password'      => ['required', 'string', 'min:6'],
+                'first_name' => ['required', 'string', 'max:255'],
+                'last_name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255'],
+                'password' => ['required', 'string', 'min:6'],
             ]);
 
         endif;
@@ -101,40 +101,36 @@ class UserController extends Controller
             if(!blank($user)){
                 if($user->withActivation == ""){
 
-                    $user->password             = bcrypt($request->password);
-                    $user->first_name           = $request->first_name;
-                    $user->last_name            = $request->last_name;
+                    $user->password = bcrypt($request->password);
+                    $user->first_name = $request->first_name;
+                    $user->last_name = $request->last_name;
                     $user->save();
 
-                    $activation         = Activation::create($user);
+                    $activation = Activation::create($user);
 
                     sendMail($user, $activation->code, 'activate_account', $request->password);
 
                     return redirect()->route('site.login.form')->with('success', __('check_user_mail_for_active_this_account'));
 
                 }else{
-                    return redirect()->back()->with('error', __('the_email_has_already_been_taken'));
+                    return redirect()->back()->withErrors('error', __('the_email_has_already_been_taken'));
                 }
             }
 
-            $user               = Sentinel::register($request->all());
-            $role               = Sentinel::findRoleBySlug('user');
+            $user = Sentinel::register($request->all());
+            $role = Sentinel::findRoleBySlug('user');
 
             $role->users()->attach($user);
 
-            $activation         = Activation::create($user);
+            $activation = Activation::create($user);
 
             sendMail($user, $activation->code, 'activate_account', $request->password);
 
             return redirect()->route('site.login.form')->with('success', __('check_user_mail_for_active_this_account'));
 
-
-
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', __('test_mail_error_message'));
+            return redirect()->back()->withErrors('error', __('test_mail_error_message'));
         }
-
-
     }
 
     public function logout()
