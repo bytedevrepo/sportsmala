@@ -133,8 +133,8 @@
                             <div class="form-group">
                                 <label for="template" class="col-form-label">{{ __('template') }}*</label>
                                 <select name="template" id="template" class="form-control">
-                                    <option value="1">{{__('without_sidebar')}}</option>
-                                    <option value="2">{{__('with_right_sidebar')}}</option>
+                                    <option value="1">style_1 ({{__('without_sidebar')}})</option>
+                                    <option value="2">style_2 ({{__('with_right_sidebar')}})</option>
                                 </select>
                             </div>
                         </div>

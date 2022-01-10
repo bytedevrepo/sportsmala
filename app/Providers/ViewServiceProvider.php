@@ -16,7 +16,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer(
-            ['theme-soccer._partials.right_sidebar_widgets'],
+            ['theme-soccer._partials.right_sidebar_widgets', 'theme-soccer.pages.default_page'],
             'App\Http\View\Composers\WidgetComposer'
         );
 
@@ -26,7 +26,7 @@ class ViewServiceProvider extends ServiceProvider
         );
 
         View::composer(
-            ['theme-soccer.layouts.header', 'site.layouts.app'],
+            ['theme-soccer.layouts.header', 'theme-soccer.layouts.app'],
             'App\Http\View\Composers\HeaderWidgetComposer'
         );
 
@@ -44,11 +44,11 @@ class ViewServiceProvider extends ServiceProvider
         View::composer(['theme-soccer.layouts.header','site.layouts.header'], 'App\Http\View\Composers\SecondaryMenuComposer');
 
         View::composer(
-            ['theme-soccer.layouts.header', 'site.layouts.footer', 'theme-soccer._partials.right_sidebar_widgets','site.layouts.header'],
+            ['theme-soccer.layouts.header', 'theme-soccer.layouts.footer', 'theme-soccer._partials.right_sidebar_widgets','theme-soccer.layouts.header', 'theme-soccer.pages.default_page'],
             'App\Http\View\Composers\SocialComposer'
         );
 
-        View::composer(['site.layouts.header'], 'App\Http\View\Composers\LastpostComposer');
+        View::composer(['theme-soccer.layouts.header'], 'App\Http\View\Composers\LastpostComposer');
 
         View::composer(
             ['theme-soccer.layouts.header', 'common::layouts.header', 'site.layouts.header'],

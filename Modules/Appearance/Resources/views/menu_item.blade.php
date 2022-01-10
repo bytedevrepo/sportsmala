@@ -412,7 +412,7 @@
                                                                                     <label for="is_mega_menu" class="col-form-label">{{ __('is_mega_menu') }}</label>
                                                                                     <select name="is_mega_menu[]" id="is_mega_menu" class="form-control">
                                                                                         <option value="no" {{$item->is_mega_menu == 'no'?'selected':''}}>{{ __('no') }}</option>
-                                                                                        <option value="tab" {{$item->is_mega_menu == 'tab'?'selected':''}}>{{ __('tab_type') }}</option>
+{{--                                                                                        <option value="tab" {{$item->is_mega_menu == 'tab'?'selected':''}}>{{ __('tab_type') }}</option>--}}
                                                                                         <option value="category" {{$item->is_mega_menu == 'category'?'selected':''}}>{{ __('category_type') }}</option>
 
                                                                                     </select>

@@ -28,8 +28,8 @@
                         <div class="card__header">
                             <h4>Register Now</h4>
                         </div>
-                        <div class="card__content">
-                        @include('theme-soccer._partials.error')
+                        <div class="card__content" style="padding-right: 24px">
+                        @include('theme-soccer._partials.notification')
                         <!-- Register Form -->
                             <form name="ragister-form" method="post" action="{{ route('site.register') }}">
                                 @csrf

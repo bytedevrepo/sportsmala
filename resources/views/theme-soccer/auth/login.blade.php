@@ -28,8 +28,8 @@
                         <div class="card__header">
                             <h4>{{ __('login') }}</h4>
                         </div>
-                        <div class="card__content">
-                        @include('theme-soccer._partials.error')
+                        <div class="card__content" style="padding-right: 24px">
+                        @include('theme-soccer._partials.notification')
                             <!-- Login Form -->
                             <form name="ragister-form" method="post" action="#">
                                 @csrf
