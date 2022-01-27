@@ -50,11 +50,11 @@ class Handler extends ExceptionHandler
     {
          if ($this->isHttpException($exception)) {
              if ($exception->getStatusCode() == 404) {
-                 return response()->view('theme-soccer.errors.404');
+                 return response()->view('errors.404');
              } elseif ($exception->getStatusCode() == 403) {
-                 return response()->view('theme-soccer.errors.403');
+                 return response()->view('errors.403');
              } elseif ($exception->getStatusCode() == 405){
-                  return response()->view('theme-soccer.errors.405');
+                  return response()->view('errors.405');
              }
          }
         return parent::render($request, $exception);

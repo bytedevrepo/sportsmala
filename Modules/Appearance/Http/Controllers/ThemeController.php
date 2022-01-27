@@ -48,18 +48,18 @@ class ThemeController extends Controller
         $theme = Theme::where('status', 1)->first();
 
         $data = [
-            'theme_id'      => $theme->id,
-            'label'         => 'Primary Section',
-            'order'         => 1,
-            'post_amount'   => 10,
+            'theme_id' => $theme->id,
+            'label' => 'Primary Section',
+            'order' => 1,
+            'post_amount' => 10,
             'section_style' => $request->get('primary_section_style', 'style_1'),
-            'is_primary'    => 1,
-            'status'        => 1
+            'is_primary' => 1,
+            'status' => 1
         ];
 
         ThemeSection::updateOrCreate([
-            'theme_id'      => $theme->id,
-            'is_primary'    => 1,
+            'theme_id' => $theme->id,
+            'is_primary' => 1,
         ], $data);
 
         return redirect()->back()->with('success', __('successfully_updated'));
@@ -74,12 +74,12 @@ class ThemeController extends Controller
         $theme = Theme::where('status', 1)->first();
 
         $data = [
-            'theme_id'      => $theme->id,
-            'label'         => 'Breaking Section',
-            'order'         => 1,
+            'theme_id' => $theme->id,
+            'label' => 'Breaking Section',
+            'order' => 1,
             'section_style' => $request->get('breaking_section_style', 'style_1'),
-            'is_primary'    => 2,
-            'status'        => 1
+            'is_primary' => 2,
+            'status' => 1
         ];
 
         ThemeSection::updateOrCreate([
@@ -93,16 +93,15 @@ class ThemeController extends Controller
     public function updateTopNewsSection(Request $request)
     {
         $theme = Theme::where('status', 1)->first();
-
         $data = [
-            'theme_id'      => $theme->id,
-            'label'         => 'Top News Section',
-            'order'         => 1,
+            'theme_id' => $theme->id,
+            'label' => 'Top News Section',
+            'order' => 1,
             'post_amount' => $request->get('posts_count', 3),
             'section_style' => $request->get('top_news_section_style', 'style_1'),
-            'is_primary'    => 3,
-            'category_id'    => $request->get('category_id'),
-            'status'        => 1
+            'is_primary' => 3,
+            'category_id' => !blank($request->get('category_id')) ? $request->get('category_id') : null,
+            'status' => 1
         ];
 
         ThemeSection::updateOrCreate([
@@ -127,11 +126,9 @@ class ThemeController extends Controller
             'footer_style' => 'required'
         ])->validate();
 
-        $inputs             = $request->except(['_token']);
-
-        $theme              = Theme::where('status', ThemeVisivilityStatus::ACTIVE)->where('name', 'theme_one')->first();
-
-        $theme->options     = $inputs;
+        $inputs = $request->except(['_token']);
+        $theme = Theme::where('status', ThemeVisivilityStatus::ACTIVE)->where('name', 'theme_one')->first();
+        $theme->options = $inputs;
         $theme->save();
 
         return redirect()->back()->with('success', __('successfully_updated'));

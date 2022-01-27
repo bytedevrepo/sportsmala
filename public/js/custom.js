@@ -284,6 +284,7 @@
                 $('#category-area').removeClass('d-none');
                 $('#section-style').removeClass('d-none');
                 $('#category_id').attr('required');
+                $('#gallery-area').addClass('d-none');
             }else if($(this).val() == 2){
                 $('#category-area').addClass('d-none');
                 $('#category_id').removeAttr('required');
@@ -293,6 +294,11 @@
                 $('#category_id').removeAttr('required');
                 $('#section-style').addClass('d-none');
 
+            }else if($(this).val() == 4){
+                $('#category-area').addClass('d-none');
+                $('#category_id').removeAttr('required');
+                $('#section-style').addClass('d-none');
+                $('#gallery-area').removeClass('d-none');
             }
 
          });

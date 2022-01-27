@@ -1,12 +1,29 @@
-@extends('site.layouts.app')
+@extends('theme-soccer.layouts.app')
 
 @section('content')
-    <div class="container-fluid ">
-        <div class="text-center my-5">
-            <div class="error mx-auto" data-text="404">{{ __('404') }}</div>
-            <p class="lead text-gray-800 mb-5">{{ __('page_not_found') }}</p>
-            <p class="text-gray-500 mb-0">{{ __('404_message') }} </p>
-            <a href="{{url('')}}">← {{ __('back_to_home') }}</a>
+<div class="site-content">
+    <div class="container">
+        <!-- Error 404 -->
+        <div class="error-404">
+            <div class="row mt-4">
+                <div class="col-md-8 offset-md-2">
+                    <figure class="error-404__figure">
+                        <img src="{{ static_asset('site/theme-soccer/assets/images/icon-ghost.svg') }}" alt="" style="width: 150px;">
+                    </figure>
+                    <header class="error__header">
+                        <h2 class="error__title">{{ __('page_not_found') }}</h2>
+                        <h3 class="error__subtitle">{{ __('404_message') }}</h3>
+                    </header>
+                    <div class="error__description">
+                        {{--The page you are looking for has been moved or doesn’t exist anymore, if you like you can return to our homepage.--}}
+                    </div>
+                    <footer class="error__cta">
+                        <a href="{{ route('home') }}" class="btn btn-primary">{{ __('back_to_home') }}</a>
+                    </footer>
+                </div>
+            </div>
         </div>
+        <!-- Error 404 / End -->
     </div>
+</div>
 @endsection

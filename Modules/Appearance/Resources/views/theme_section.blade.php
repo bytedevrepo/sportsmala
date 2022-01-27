@@ -55,6 +55,7 @@
                                                             <option value="{{\Modules\Appearance\Enums\ThemeSectionType::CATEGORY}}" selected>{{ __('category') }}</option>
                                                             <option value="{{\Modules\Appearance\Enums\ThemeSectionType::VIDEO}}">{{ __('videos') }}</option>
                                                             <option value="{{\Modules\Appearance\Enums\ThemeSectionType::LATEST_POST}}">{{ __('latest_post') }}</option>
+                                                            <option value="{{\Modules\Appearance\Enums\ThemeSectionType::GALLERY}}">{{ __('gallery') }}</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -65,6 +66,17 @@
                                                             <option value="">{{ __('select_category') }}</option>
                                                             @foreach ($categories as $category)
                                                                 <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 d-none" id="gallery-area">
+                                                    <div class="form-group">
+                                                        <label for="album_id">{{ __('album') }}</label>
+                                                        <select class="form-control" name="album_id" id="album_id" required>
+                                                            <option value="">{{ __('select_album') }}</option>
+                                                            @foreach ($albums as $album)
+                                                                <option value="{{ $album->id }}">{{ $album->name }}</option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -93,18 +105,20 @@
                                                     </label>
                                                 </div>
                                                 <div class="col-md-8"></div>
-                                                <div class="col-md-12" id="section-style">
-                                                    <div class="form-title">
-                                                        <label for="section_style">{{ __('section_style') }}</label>
+                                                <div id="section-style">
+                                                    <div class="col-md-12">
+                                                        <div class="form-title">
+                                                            <label for="section_style">{{ __('section_style') }}</label>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-4 mb-2">
-                                                    <div class="section_section_style">
-                                                        <label class="custom-control custom-radio custom-control-inline">
-                                                            <input type="radio" name="section_style" id="section_section_style_1" value="style_1" checked class="custom-control-input">
-                                                            <span class="custom-control-label"></span>
-                                                        </label>
-                                                        <img src="{{static_asset('default-image/Section/Section_1.png') }}" alt="" class="img-responsive cat-block-img">
+                                                    <div class="col-md-4 mb-2">
+                                                        <div class="section_section_style">
+                                                            <label class="custom-control custom-radio custom-control-inline">
+                                                                <input type="radio" name="section_style" id="section_section_style_1" value="style_1" checked class="custom-control-input">
+                                                                <span class="custom-control-label"></span>
+                                                            </label>
+                                                            <img src="{{static_asset('default-image/Section/Section_1.png') }}" alt="" class="img-responsive cat-block-img">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-12" id="ad-area">
@@ -141,14 +155,14 @@
                                                 <th>{{ __('section_style') }}</th>
                                                 <th>{{ __('status') }}</th>
                                                 <th>{{ __('show_ad_in_bottom') }}</th>
-                                                <th style="width: 150px">
+                                                <th style="width: 160px">
                                                     {{ __('order') }}
                                                     <button type="submit" name="btnsubmit" class="btn btn-primary pull-right btn-xs">{{ __('update') }}</button>
                                                 </th>
                                                 @if(Sentinel::getUser()->hasAccess(['theme_section_write']) || Sentinel::getUser()->hasAccess(['theme_section_delete']))
                                                     <th style="width: 100px;">
                                                         <a href="#" class="btn btn-primary btn-xs btn-block" data-toggle="modal" data-target="#addSection">
-                                                            New Section
+                                                            {{ __('add_section') }}
                                                         </a>
                                                     </th>
                                                 @endif
@@ -284,7 +298,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="category">{{ __('category') }}</label>
-                                            <select class="form-control" name="category_id" id="category" required>
+                                            <select class="form-control" name="category_id" id="category">
                                                 <option value="">{{ __('select_category') }}</option>
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category->id }}" {{ ($topNewsSection AND ($topNewsSection->category_id == $category->id)) ? 'selected' : '' }}>{{ $category->category_name }}</option>
