@@ -13,7 +13,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         @if(session('error'))
-                                            <div id="error_m" class="alert alert-danger">
+                                            <div id="errorSection Style_m" class="alert alert-danger">
                                                 {{session('error')}}
                                             </div>
                                         @endif
@@ -51,11 +51,11 @@
                                                     <div class="form-group">
                                                         <label for="type">{{ __('type') }}</label>
                                                         <select class="form-control" name="type" id="type" required>
-                                                            
+
                                                                 <option value="{{\Modules\Appearance\Enums\ThemeSectionType::CATEGORY}}" {{ $section->type == 1? 'selected':'' }}>{{ __('category') }}</option>
                                                                 <option value="{{\Modules\Appearance\Enums\ThemeSectionType::VIDEO}}" {{ $section->type == 2? 'selected':'' }}>{{ __('video') }}</option>
                                                                 <option value="{{\Modules\Appearance\Enums\ThemeSectionType::LATEST_POST}}" {{ $section->type == 3? 'selected':'' }}>{{ __('latest_post') }}</option>
-                                                            
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -115,42 +115,42 @@
                                                                 <img src="{{static_asset('default-image/Section/Section_1.png') }}" alt="" class="img-responsive cat-block-img">
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-md-4">
-                                                            <div class="section_section_style">
-                                                                <label class="custom-control custom-radio custom-control-inline">
-                                                                    <input type="radio" name="section_style" id="section_section_style_2" @if($section->section_style=="style_2") checked @endif value="style_2" class="custom-control-input">
-                                                                    <span class="custom-control-label"></span>
-                                                                </label>
-                                                                <img src="{{static_asset('default-image/Section/Section_2.png') }}" alt="" class="img-responsive cat-block-img">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-4">
-                                                            <div class="section_section_style">
-                                                                <label class="custom-control custom-radio custom-control-inline">
-                                                                    <input type="radio" name="section_style" id="section_section_style_3" @if($section->section_style=="style_3") checked @endif value="style_3" class="custom-control-input">
-                                                                    <span class="custom-control-label"></span>
-                                                                </label>
-                                                                <img src="{{static_asset('default-image/Section/Section_3.png') }}" alt="" class="img-responsive cat-block-img">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-4">
-                                                            <div class="section_section_style">
-                                                                <label class="custom-control custom-radio custom-control-inline">
-                                                                    <input type="radio" name="section_style" id="section_section_style_4" value="style_4" @if($section->section_style=="style_4") checked @endif class="custom-control-input">
-                                                                    <span class="custom-control-label"></span>
-                                                                </label>
-                                                                <img src="{{static_asset('default-image/Section/Section_4.png') }}" alt="" class="img-responsive cat-block-img">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-md-4">
-                                                            <div class="section_section_style">
-                                                                <label class="custom-control custom-radio custom-control-inline">
-                                                                    <input type="radio" name="section_style" id="section_section_style_5" value="style_5" @if($section->section_style=="style_5") checked @endif class="custom-control-input">
-                                                                    <span class="custom-control-label"></span>
-                                                                </label>
-                                                                <img src="{{static_asset('default-image/Section/Section_5.png') }}" alt="" class="img-responsive cat-block-img">
-                                                            </div>
-                                                        </div>
+                                                        {{--<div class="col-12 col-md-4">--}}
+                                                            {{--<div class="section_section_style">--}}
+                                                                {{--<label class="custom-control custom-radio custom-control-inline">--}}
+                                                                    {{--<input type="radio" name="section_style" id="section_section_style_2" @if($section->section_style=="style_2") checked @endif value="style_2" class="custom-control-input">--}}
+                                                                    {{--<span class="custom-control-label"></span>--}}
+                                                                {{--</label>--}}
+                                                                {{--<img src="{{static_asset('default-image/Section/Section_2.png') }}" alt="" class="img-responsive cat-block-img">--}}
+                                                            {{--</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col-12 col-md-4">--}}
+                                                            {{--<div class="section_section_style">--}}
+                                                                {{--<label class="custom-control custom-radio custom-control-inline">--}}
+                                                                    {{--<input type="radio" name="section_style" id="section_section_style_3" @if($section->section_style=="style_3") checked @endif value="style_3" class="custom-control-input">--}}
+                                                                    {{--<span class="custom-control-label"></span>--}}
+                                                                {{--</label>--}}
+                                                                {{--<img src="{{static_asset('default-image/Section/Section_3.png') }}" alt="" class="img-responsive cat-block-img">--}}
+                                                            {{--</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col-12 col-md-4">--}}
+                                                            {{--<div class="section_section_style">--}}
+                                                                {{--<label class="custom-control custom-radio custom-control-inline">--}}
+                                                                    {{--<input type="radio" name="section_style" id="section_section_style_4" value="style_4" @if($section->section_style=="style_4") checked @endif class="custom-control-input">--}}
+                                                                    {{--<span class="custom-control-label"></span>--}}
+                                                                {{--</label>--}}
+                                                                {{--<img src="{{static_asset('default-image/Section/Section_4.png') }}" alt="" class="img-responsive cat-block-img">--}}
+                                                            {{--</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col-12 col-md-4">--}}
+                                                            {{--<div class="section_section_style">--}}
+                                                                {{--<label class="custom-control custom-radio custom-control-inline">--}}
+                                                                    {{--<input type="radio" name="section_style" id="section_section_style_5" value="style_5" @if($section->section_style=="style_5") checked @endif class="custom-control-input">--}}
+                                                                    {{--<span class="custom-control-label"></span>--}}
+                                                                {{--</label>--}}
+                                                                {{--<img src="{{static_asset('default-image/Section/Section_5.png') }}" alt="" class="img-responsive cat-block-img">--}}
+                                                            {{--</div>--}}
+                                                        {{--</div>--}}
                                                     </div>
                                                 </div>
                                                 <div class="row">
