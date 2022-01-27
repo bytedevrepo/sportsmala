@@ -1,4 +1,3 @@
-
 @foreach($categorySections as $categorySection)
     @php
         if($categorySection->type != 3):
@@ -10,16 +9,16 @@
 
     @php
         if($categorySection->type == 1):
-            $posts = data_get($categorySection, 'post', collect([]));
+            $posts = data_get($categorySection, 'newPosts', collect([]));
         elseif($categorySection->type == 2):
             $posts = $video_posts;
         elseif($categorySection->type == 3):
             $posts = $latest_posts;
         endif;
     @endphp
-
     @if(!blank($posts))
         @if(view()->exists($viewFile))
+
             @include($viewFile, [
                 '$categorySection' => $categorySection,
                 '$posts' => $posts

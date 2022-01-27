@@ -87,7 +87,8 @@
                         <img style="" src="{{ static_asset(settingHelper('logo')) }}" srcset="{{ static_asset(settingHelper('logo')) }}" alt="Logo" class="header-logo__img">
                     </a>
                 </div>
-                <!-- Header Logo / End --><!-- Main Navigation -->
+                <!-- Header Logo / End -->
+                <!-- Main Navigation -->
                 <nav class="main-nav clearfix">
                     <ul class="main-nav__list">
                         @foreach($primaryMenu as $mainMenu)
@@ -116,7 +117,7 @@
                             @endif
                             @if($mainMenu->is_mega_menu == 'category')
                                 <li class="">
-                                    <a href="{{menuUrl($mainMenu)}}" target="{{$mainMenu->new_teb == 1? '_blank':''}}">{{$mainMenu->label == 'gallery'? __('gallery'):$mainMenu->label}} </a>
+                                    <a href="{{menuUrl($mainMenu)}}" target="{{$mainMenu->new_teb == 1 ? '_blank':''}}">{{$mainMenu->label == 'gallery'? __('gallery'):$mainMenu->label}}</a>
                                     <div class="main-nav__megamenu clearfix">
                                         @foreach($mainMenu->children as $child)
                                             <ul class="col-lg-4 col-md-4 col-12 main-nav__ul">

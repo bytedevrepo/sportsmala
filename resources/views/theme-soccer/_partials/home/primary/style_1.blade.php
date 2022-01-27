@@ -2,9 +2,9 @@
     $blockPosts = $posts->take(4);
 @endphp
 <!-- Featured News -->
-<div class="card card--clean">
+<div class="card card--clean mt-1">
     <header class="card__header card__header--has-filter">
-        <h4>Featured News</h4>
+        <h4>{{ __('featured_news') }}</h4>
         <ul class="category-filter category-filter--featured">
             {{--<li class="category-filter__item">--}}
                 {{--<a href="#" class="category-filter__link category-filter__link--reset category-filter__link--active featured-slider">all</a>--}}
@@ -76,7 +76,8 @@
         <!-- Slider / End -->
     </div>
 </div>
-<!-- Featured News / End --><!-- Post Area 1 -->
+<!-- Featured News / End -->
+<!-- Post Area 1 -->
 <div class="posts posts--cards post-grid row">
     @foreach($blockPosts as $post)
         <div class="post-grid__item col-sm-6">

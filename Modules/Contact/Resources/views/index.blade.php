@@ -45,49 +45,55 @@
                                 <div class="table-responsive all-pages">
                                     <table class="table table-bordered table-striped">
                                         <thead>
-                                            <tr role="row">
-                                                <th>#</th>
-                                                <th>{{ __('name') }}</th>
-                                                <th>{{ __('email') }}</th>
-                                                <th>{{ __('message') }}</th>
-                                                <th>{{ __('send_date') }}</th>
-                                                <th>{{ __('status') }}</th>
-                                                @if(Sentinel::getUser()->hasAccess(['contact_message_delete']) || Sentinel::getUser()->hasAccess(['contact_message_write'])
-                                                    || Sentinel::getUser()->hasAccess(['contact_message_read']))
-                                                    <th>{{ __('options') }}</th>
-                                                @endif
-                                            </tr>
+                                        <tr role="row">
+                                            <th>#</th>
+                                            <th>{{ __('name') }}</th>
+                                            <th>{{ __('email') }}</th>
+                                            <th>{{ __('message') }}</th>
+                                            <th>{{ __('send_date') }}</th>
+                                            <th class="text-center">{{ __('status') }}</th>
+                                            @if(Sentinel::getUser()->hasAccess(['contact_message_delete']) || Sentinel::getUser()->hasAccess(['contact_message_write'])
+                                                || Sentinel::getUser()->hasAccess(['contact_message_read']))
+                                                <th>{{ __('options') }}</th>
+                                            @endif
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($contactMessages as $contactMessage)
-                                                <tr role="row" id="row_{{ $contactMessage->id }}" class="odd">
-                                                    <td class="sorting_1">{{ $contactMessage->id }}</td>
-                                                    <td>{{ $contactMessage->name }}</td>
-                                                    <td>{{ $contactMessage->email }}</td>
-                                                    <td> {{ $contactMessage->message }} </td>
-                                                    <td>{{ $contactMessage->created_at->toDayDateTimeString() }}</td>
-                                                    <td>@if($contactMessage->message_seen == 0) {{ __('unseen') }} @else {{ __('seen') }}@endif</td>
+                                        @foreach ($contactMessages as $contactMessage)
+                                            <tr role="row" id="row_{{ $contactMessage->id }}" class="odd">
+                                                <td class="sorting_1">{{ $contactMessage->id }}</td>
+                                                <td>{{ $contactMessage->name }}</td>
+                                                <td>{{ $contactMessage->email }}</td>
+                                                <td> {{ Str::limit($contactMessage->message, 20) }} </td>
+                                                <td>{{ $contactMessage->created_at->toDayDateTimeString() }}</td>
+                                                <td class="text-center">
+                                                    @if($contactMessage->message_seen == 0)
+                                                        <span class="label label-danger">{{ __('unseen') }}</span>
+                                                    @else
+                                                        <span class="label label-success">{{ __('seen') }}</span>
+                                                    @endif
+                                                </td>
 
-                                                    @if(Sentinel::getUser()->hasAccess(['contact_message_delete']) || Sentinel::getUser()->hasAccess(['contact_message_write'])
-                                                        || Sentinel::getUser()->hasAccess(['contact_message_read']))
+                                                @if(Sentinel::getUser()->hasAccess(['contact_message_delete']) || Sentinel::getUser()->hasAccess(['contact_message_write'])
+                                                    || Sentinel::getUser()->hasAccess(['contact_message_read']))
                                                     <td>
                                                         @if(Sentinel::getUser()->hasAccess(['contact_message_read']))
                                                             <a href="javascript:void(0)" class="modal-menu btn btn-light active btn-xs"
-                                                                data-title="View Mesage"
-                                                                data-url="{{route('edit-info',['page_name'=>'view-message','param1'=>$contactMessage->id])}}"
-                                                                data-toggle="modal"
-                                                                data-target="#common-modal"><i
-                                                                class="fa fa-eye"></i>
+                                                               data-title="View Mesage"
+                                                               data-url="{{route('edit-info',['page_name'=>'view-message','param1'=>$contactMessage->id])}}"
+                                                               data-toggle="modal"
+                                                               data-target="#common-modal"><i
+                                                                    class="fa fa-eye"></i>
                                                                 {{ __('view') }}
                                                             </a>
                                                         @endif
 
                                                         @if(Sentinel::getUser()->hasAccess(['contact_message_write']))
                                                             <a href="javascript:void(0)" class="modal-menu btn btn-light active btn-xs"
-                                                                data-title="Reply Message"
-                                                                data-url="{{route('edit-info',['page_name'=>'replay-contact-message','param1'=>$contactMessage->id])}}"
-                                                                data-toggle="modal"
-                                                                data-target="#common-modal">
+                                                               data-title="Reply Message"
+                                                               data-url="{{route('edit-info',['page_name'=>'replay-contact-message','param1'=>$contactMessage->id])}}"
+                                                               data-toggle="modal"
+                                                               data-target="#common-modal">
                                                                 <i class="fas fa-reply"></i>
                                                                 {{ __('replay') }}
                                                             </a>
@@ -95,16 +101,16 @@
 
                                                         @if(Sentinel::getUser()->hasAccess(['contact_message_delete']))
                                                             <a href="javascript:void(0)" class="btn btn-light active btn-xs"
-                                                                onclick="delete_item('contact_messages','{{ $contactMessage->id }}')"><i
-                                                                class="fa fa-trash"></i>
+                                                               onclick="delete_item('contact_messages','{{ $contactMessage->id }}')"><i
+                                                                    class="fa fa-trash"></i>
                                                                 {{ __('delete') }}
                                                             </a>
                                                         @endif
                                                     </td>
-                                                    @endif
+                                                @endif
 
-                                                </tr>
-                                            @endforeach
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>

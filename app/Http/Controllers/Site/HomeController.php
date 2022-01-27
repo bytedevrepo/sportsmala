@@ -50,11 +50,9 @@ class HomeController extends Controller
                 $query->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))->orWhere('language', null);
             })
             ->get();
-
         $categorySections->each(function($section){
-            $section->load('post');
+            $section->load('post.post');
         });
-
         $video_posts = Post::with('category', 'image','user')
             ->where('post_type', 'video')
             ->where('visibility', 1)
