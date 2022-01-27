@@ -53,6 +53,7 @@ class HomeController extends Controller
         $categorySections->each(function($section){
             $section->load('post.post');
         });
+//        dd($categorySections);
         $video_posts = Post::with('category', 'image','user')
             ->where('post_type', 'video')
             ->where('visibility', 1)

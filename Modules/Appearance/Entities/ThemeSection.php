@@ -4,6 +4,7 @@ namespace Modules\Appearance\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use LaravelLocalization;
+use Modules\Gallery\Entities\Album;
 use Modules\Post\Entities\Category;
 use Modules\Post\Entities\CategoryPost;
 use Sentinel;
@@ -48,6 +49,11 @@ class ThemeSection extends Model
 
     public function newPosts(){
         return $this->hasMany(CategoryPost::class, 'category_id', 'category_id');
+    }
+
+    public function album()
+    {
+        return Album::where('id', $this->album_id)->with('galleryImages')->first();
     }
 }
 

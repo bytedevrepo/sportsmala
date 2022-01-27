@@ -47,13 +47,10 @@ if (!function_exists('basePath')) {
      */
     function basePath($image)
     {
-
         if (!blank($image)):
-            if ($image->disk    == 'local') :
-
+            if ($image->disk == 'local') :
                 //return public_path();
-
-                if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) {
+                if (strpos(php_sapi_name(),'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) {
                     return url('/');
                 }else{
                     return url('/public');
@@ -62,7 +59,6 @@ if (!function_exists('basePath')) {
                 return "https://s3." . config('filesystems.disks.s3.region') . ".amazonaws.com/" . config('filesystems.disks.s3.bucket');
             endif;
         endif;
-
     }
 }
 
@@ -110,7 +106,7 @@ if (!function_exists('isFileExist')) {
     function isFileExist($item  = '', $file = '')
     {
         if (!blank($item) and !blank($file)) :
-            if ($item->disk     == 'local') :
+            if ($item->disk == 'local') :
                 if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) {
                     $file = $file;
                 }else{
