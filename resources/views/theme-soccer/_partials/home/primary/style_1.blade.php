@@ -54,16 +54,14 @@
 
                             <div class="post-author">
                                 <div class="post-author__info">
-                                    <h4 class="post-author__name">
-                                        Published
-                                    </h4>
-                                    <time datetime="{{$post->updated_at}}" class="posts__date">
+                                    <time datetime="{{$post->updated_at}}" class="">
                                         <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
-                                            @if($post->updated_at <= \Carbon\Carbon::today())
-                                                {{ $post->updated_at->format('F j, Y') }}
-                                            @else
-                                                {{ $post->updated_at->diffForHumans() }}
-                                            @endif
+                                            {{--@if($post->updated_at <= \Carbon\Carbon::today())--}}
+                                                {{--{{ $post->updated_at->format('F j, Y') }}--}}
+                                            {{--@else--}}
+                                                {{--{{ $post->updated_at->diffForHumans() }}--}}
+                                            {{--@endif--}}
+                                            {{ $post->updated_at ?? '' }}
                                         </a>
                                     </time>
                                 </div>
@@ -108,7 +106,7 @@
                                     <a href="{{ route('article.detail', ['id' => $post->slug]) }}">{!! \Illuminate\Support\Str::limit($post->title, 60) !!}</a>
                                 </h6>
                                 <time datetime="{{ $post->updated_at }}" class="posts__date">
-                                    <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}"> {{ $post->updated_at->format('F j, Y') }}</a>
+                                    <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}"> {{ $post->updated_at ?? '' }}</a>
                                 </time>
                             </div>
                             <div class="posts__excerpt posts__excerpt--space-sm">

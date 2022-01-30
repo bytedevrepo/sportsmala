@@ -78,11 +78,12 @@
                 <li class="meta__item meta__item--date">
                     <time datetime="{{ $post->updated_at }}">
                         <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
-                            @if($post->updated_at <= \Carbon\Carbon::today())
-                                {{ $post->updated_at->format('F j, Y') }}
-                            @else
-                                {{ $post->updated_at->diffForHumans() }}
-                            @endif
+                            {{--@if($post->updated_at <= \Carbon\Carbon::today())--}}
+                                {{--{{ $post->updated_at->format('F j, Y') }}--}}
+                            {{--@else--}}
+                                {{--{{ $post->updated_at->diffForHumans() }}--}}
+                            {{--@endif--}}
+                            {{ $post->updated_at ?? '' }}
                         </a>
                     </time>
                     <div class="sharethis-inline-share-buttons float-left" data-url="{{ route('article.detail', ['id' => $post->slug]) }}"></div>

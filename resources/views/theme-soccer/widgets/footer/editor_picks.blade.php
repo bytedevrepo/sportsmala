@@ -29,7 +29,7 @@
                                     <time datetime="2017-08-21" class="posts__date">
                                         {{ __('post_by') }}<a href="{{ route('site.author',['id' => $post->user->id]) }}"> {{ data_get($post, 'user.first_name') }}</a>
                                         ON
-                                        <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">{{ $post->updated_at->format('F j, Y') }}</a>
+                                        <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">{{ $post->updated_at ?? '' }}</a>
                                     </time>
                                 </div>
                             </li>

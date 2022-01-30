@@ -33,7 +33,7 @@
                             </a>
                         </h6>
                         <time datetime="2016-08-23" class="posts__date">
-                            <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">{{ $post->updated_at->format('F j, Y') }}</a>
+                            <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">{{ $post->updated_at ?? '' }}</a>
                         </time>
                     </div>
                 </li>

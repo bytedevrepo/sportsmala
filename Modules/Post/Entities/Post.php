@@ -2,7 +2,9 @@
 
 namespace Modules\Post\Entities;
 
+use App\Helper\NepaliCalendar;
 use App\NewsItemFeed;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
@@ -11,6 +13,30 @@ use LaravelLocalization;
 class Post extends Model implements Feedable
 {
     protected $fillable = ['title'];
+    protected $casts = [
+        "contents" => "array",
+        'updated_at' => 'datetime',
+    ];
+    public function getUpdatedAtAttribute($updated_at)
+    {
+        if ($updated_at >= \Carbon\Carbon::today()){
+            return $updated_at->diffForHumans();
+        }
+        else{
+            if(settingHelper('default_language') == 'np'){
+                $calendar = new NepaliCalendar();
+                $date = Carbon::createFromFormat('Y-m-d H:i:s', $updated_at);
+                $cal = $calendar->eng_to_nep($date->year, $date->month, $date->day);
+                if (!blank($cal)){
+                    $year = $cal['year'];
+                    $month = $cal['nmonth'];
+                    $date = $cal['date'];
+                    return "$date $month $year";
+                }
+            }
+            return date('F j, Y', strtotime($updated_at));
+        }
+    }
 
     public function image(){
         //   return $this->hasOne(Media::class ,'id', 'avatar_id');
@@ -73,10 +99,6 @@ class Post extends Model implements Feedable
             ->orderBY('id', 'desc')
             ->limit(50)->get();
     }
-
-    protected $casts = [
-    	"contents" => "array"
-    ];
 
     public function categories()
     {

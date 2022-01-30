@@ -37,11 +37,12 @@
                                    {{--data-fb="{{ share_facebook_url(route('article.detail', $item->slug)) }}"></a>--}}
                                 <time datetime="{{ $item->updated_at }}">
                                     <a href="{{route('article.date', date('Y-m-d', strtotime($item->updated_at)))}}">
-                                        @if($item->updated_at <= \Carbon\Carbon::today())
-                                            {{ $item->updated_at->format('F j, Y') }}
-                                        @else
-                                            {{ $item->updated_at->diffForHumans() }}
-                                        @endif
+                                        {{--@if($item->updated_at <= \Carbon\Carbon::today())--}}
+                                            {{--{{ $item->updated_at->format('F j, Y') }}--}}
+                                        {{--@else--}}
+                                            {{--{{ $item->updated_at->diffForHumans() }}--}}
+                                        {{--@endif--}}
+                                        {{ $item->updated_at ?? '' }}
                                     </a>
                                 </time>
                                 <h6 class="posts__title">

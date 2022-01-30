@@ -13,11 +13,12 @@
                             <ul class="post__meta meta">
                                 <li class="meta__item meta__item--date">
                                     <time datetime="{{ $value->updated_at }}">
-                                        @if($value->updated_at <= \Carbon\Carbon::today())
-                                            {{ $value->updated_at->format('F j, Y') }}
-                                        @else
-                                            {{ $value->updated_at->diffForHumans() }}
-                                        @endif
+                                        {{--@if($value->updated_at <= \Carbon\Carbon::today())--}}
+                                            {{--{{ $value->updated_at->format('F j, Y') }}--}}
+                                        {{--@else--}}
+                                            {{--{{ $value->updated_at->diffForHumans() }}--}}
+                                        {{--@endif--}}
+                                        {{ $value->updated_at ?? '' }}
                                     </time>
                                 </li>
 
