@@ -382,5 +382,24 @@
 @yield('player')
 @yield('audio')
 <script src="{{ static_asset('site/theme-soccer/assets/vendor/marquee/jquery.marquee.min.js') }}"></script>
+
+{{--// SET LANGUAGE BY CLIENT LOCATION--}}
+
+<script>
+    // $.get("https://ipinfo.io", function(response) {
+    //     // console.log(response.city, response.country);
+    // }, "jsonp");
+
+    // $.ajax({
+    //     type: 'GET',
+    //     url: "https://ipinfo.io",
+    //     dataType: "json",
+    //     async:false,
+    //     success: function(response) {
+    //         window.location.href = 'site-switch-langauge/'+response.country
+    //         console.log(response)
+    //     }
+    // });
+</script>
 </body>
 </html>

@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Modules\Language\Entities\LanguageConfig;
@@ -35,40 +38,59 @@ class AppServiceProvider extends ServiceProvider
 
         try {
 
-            DB::connection()->getPdo(); 
-             
-          } catch (\Exception $e) {
+            DB::connection()->getPdo();
 
-            $supportedLocales               = ['en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English', 'regional' => 'en_GB']];
+        } catch (\Exception $e) {
+
+            $supportedLocales = ['en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English', 'regional' => 'en_GB']];
 
             Config::set('app.locale', 'en');
             Config::set('laravellocalization.supportedLocales', $supportedLocales);
 
             return redirect('install');
-          }
+        }
 
 
-         if (Schema::hasTable('settings') && Schema::hasTable('languages') ) :
+        if (Schema::hasTable('settings') && Schema::hasTable('languages')){
 
-            $default_lang           = Setting::where('title', 'default_language')->first();
+            $default_lang = Setting::where('title', 'default_language')->first();
+            $setting = Setting::select('title', 'value')->where('lang', @$default_lang->value)->get()->toArray();
+            $session_array = array();
 
-            $setting                = Setting::select('title', 'value')->where('lang', @$default_lang->value)->get()->toArray();
-            
-            $session_array          = array();
-
-            foreach($setting as $row):
+            foreach ($setting as $row) {
                 $session_array[$row['title']] = $row['value'];
-            endforeach;
+            }
 
             Config::set('site.settings', $session_array);
 
-            if (!empty($default_lang)) :
-                Config::set('app.locale', $default_lang->value);
-            else :
-                Config::set('app.locale', 'en');
-            endif;
+            if (!empty($default_lang)) {
+                $userIp = \Request::ip();
+                $geo = \GeoIP::getLocation($userIp);
 
-            $timezone       = settingHelper('timezone');
+                if(blank($geo)) {
+                    Config::set('app.locale', $default_lang->value);
+                }
+                else{
+                    $userCountry = $geo['country'];
+                    $supportedLanguages = [
+                        'United States' => 'en',
+                        'Canada' => 'en',
+                        'India' => 'en',
+                        'Nepal' => 'np',
+                    ];
+                    if (array_key_exists($userCountry, $supportedLanguages)) {
+                        $preferredLang = $supportedLanguages[$userCountry];
+                    } else {
+                        $preferredLang = 'en';
+                    }
+                    Config::set('app.locale', $preferredLang);
+                }
+            }
+            else {
+                Config::set('app.locale', 'en');
+            }
+
+            $timezone = settingHelper('timezone');
 
             if (!empty($timezone)) :
                 date_default_timezone_set($timezone);
@@ -76,19 +98,19 @@ class AppServiceProvider extends ServiceProvider
                 date_default_timezone_set('America/New_York');
             endif;
 
-            $appName        = settingHelper('application_name');
+            $appName = settingHelper('application_name');
 
             if (!empty($appName)) :
                 Config::set('app.name', $appName);
             endif;
 
-            $captcha_sitekey        = settingHelper('captcha_sitekey');
+            $captcha_sitekey = settingHelper('captcha_sitekey');
 
             if (!empty($captcha_sitekey)) :
                 Config::set('captcha.sitekey', $captcha_sitekey);
             endif;
 
-            $captcha_secret        = settingHelper('captcha_secret');
+            $captcha_secret = settingHelper('captcha_secret');
 
             if (!empty($captcha_secret)) :
                 Config::set('captcha.secret', $captcha_secret);
@@ -96,48 +118,48 @@ class AppServiceProvider extends ServiceProvider
 
             $default_storage = settingHelper('default_storage');
 
-            //facebook login 
+            //facebook login
 
-            $facebook_client_id        = settingHelper('facebook_client_id');
+            $facebook_client_id = settingHelper('facebook_client_id');
             if (!empty($facebook_client_id)) :
                 Config::set('services.facebook.client_id', $facebook_client_id);
             endif;
-            $facebook_client_secret        = settingHelper('facebook_client_secretkey');
+            $facebook_client_secret = settingHelper('facebook_client_secretkey');
             if (!empty($facebook_client_secret)) :
                 Config::set('services.facebook.client_secret', $facebook_client_secret);
             endif;
-            $facebook_callback_url        = settingHelper('facebook_callback_url');
+            $facebook_callback_url = settingHelper('facebook_callback_url');
             if (!empty($facebook_callback_url)) :
                 Config::set('services.facebook.redirect', $facebook_callback_url);
             endif;
 
-            $google_client_id        = settingHelper('google_client_id');
+            $google_client_id = settingHelper('google_client_id');
             if (!empty($google_client_id)) :
                 Config::set('services.google.client_id', $google_client_id);
             endif;
-            $google_client_secret        = settingHelper('google_client_secretkey');
+            $google_client_secret = settingHelper('google_client_secretkey');
             if (!empty($google_client_secret)) :
                 Config::set('services.google.client_secret', $google_client_secret);
             endif;
-            $google_callback_url        = settingHelper('google_callback_url');
+            $google_callback_url = settingHelper('google_callback_url');
             if (!empty($google_callback_url)) :
                 Config::set('services.google.redirect', $google_callback_url);
             endif;
 
-            if(!empty($default_storage)):
+            if (!empty($default_storage)):
                 Config::set('filesystems.default', $default_storage);
                 // if( $default_storage->value=='s3'):
-                    $aws_access_key_id      = settingHelper('aws_access_key_id');
-                    $aws_secret_access_key  = settingHelper('aws_secret_access_key');
-                    $aws_default_region     = settingHelper('aws_default_region');
-                    $aws_bucket             = settingHelper('aws_bucket');
-                    $aws_url                ="http://$aws_bucket.s3.$aws_default_region.amazonaws.com";
+                $aws_access_key_id = settingHelper('aws_access_key_id');
+                $aws_secret_access_key = settingHelper('aws_secret_access_key');
+                $aws_default_region = settingHelper('aws_default_region');
+                $aws_bucket = settingHelper('aws_bucket');
+                $aws_url = "http://$aws_bucket.s3.$aws_default_region.amazonaws.com";
 
-                    Config::set('filesystems.disks.s3.key', $aws_access_key_id);
-                    Config::set('filesystems.disks.s3.secret', $aws_secret_access_key);
-                    Config::set('filesystems.disks.s3.region', $aws_default_region);
-                    Config::set('filesystems.disks.s3.bucket', $aws_bucket);
-                    Config::set('filesystems.disks.s3.url', $aws_url);
+                Config::set('filesystems.disks.s3.key', $aws_access_key_id);
+                Config::set('filesystems.disks.s3.secret', $aws_secret_access_key);
+                Config::set('filesystems.disks.s3.region', $aws_default_region);
+                Config::set('filesystems.disks.s3.bucket', $aws_bucket);
+                Config::set('filesystems.disks.s3.url', $aws_url);
                 // endif;
             endif;
 
@@ -154,34 +176,33 @@ class AppServiceProvider extends ServiceProvider
 
 
                 //checking if table is not empty
-                if ($mail_driver !=null && $mail_host !=null && $mail_port !=null && $mail_address !=null && $mail_name !=null && $mail_username !=null && $mail_password !=null && $mail_encryption !=null && $sendmail_path != null) 
-                {
+                if ($mail_driver != null && $mail_host != null && $mail_port != null && $mail_address != null && $mail_name != null && $mail_username != null && $mail_password != null && $mail_encryption != null && $sendmail_path != null) {
                     $config = array(
-                        'driver'     => $mail_driver->value,
-                        'host'       => $mail_host->value,
-                        'port'       => $mail_port->value,
+                        'driver' => $mail_driver->value,
+                        'host' => $mail_host->value,
+                        'port' => $mail_port->value,
                         'from' => [
                             'address' => $mail_address->value,
                             'name' => $mail_name->value,
                         ],
                         'encryption' => $mail_encryption->value,
-                        'username'   => $mail_username->value,
-                        'password'   => $mail_password->value,
-                        'sendmail'   => $sendmail_path->value,
-                        'pretend'    => false,
+                        'username' => $mail_username->value,
+                        'password' => $mail_password->value,
+                        'sendmail' => $sendmail_path->value,
+                        'pretend' => false,
                     );
                     Config::set('mail', $config);
                 }
-            }  
+            }
 
-            $supportedLocales               = array();
-            $languageList                   = Language::where('status', 'active')->get();
+            $supportedLocales = array();
+            $languageList = Language::where('status', 'active')->get();
 
             if ($languageList->count() > 0) :
                 foreach ($languageList as $lang) :
-                    $langConfigs            = LanguageConfig::select('name', 'script', 'native', 'regional')
-                                                ->where('language_id', $lang->id)
-                                                ->get();
+                    $langConfigs = LanguageConfig::select('name', 'script', 'native', 'regional')
+                        ->where('language_id', $lang->id)
+                        ->get();
 
                     foreach ($langConfigs as $langConfig) :
                         // return $langConfig;
@@ -191,18 +212,15 @@ class AppServiceProvider extends ServiceProvider
 
                 Config::set('laravellocalization.supportedLocales', $supportedLocales);
             else :
-                $supportedLocales           = ['en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English', 'regional' => 'en_GB']];
+                $supportedLocales = ['en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English', 'regional' => 'en_GB']];
                 Config::set('laravellocalization.supportedLocales', $supportedLocales);
             endif;
-
-        else :
-            $supportedLocales               = ['en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English', 'regional' => 'en_GB']];
+        }
+        else {
+            $supportedLocales = ['en' => ['name' => 'English', 'script' => 'Latn', 'native' => 'English', 'regional' => 'en_GB']];
 
             Config::set('app.locale', 'en');
             Config::set('laravellocalization.supportedLocales', $supportedLocales);
-        endif;
-
-        
-
+        }
     }
 }

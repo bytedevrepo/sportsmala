@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Modules\Post\Entities\Comment;
 use Illuminate\Support\Facades\App;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -53,8 +54,11 @@ class CommentController extends Controller
         App::setLocale($lang);
         Session::put('locale', $lang);
         LaravelLocalization::setLocale($lang);
+        // add cookie on language switch
+//        Cookie::queue(Cookie::make('lang', $lang, '20160'));
 
         $url = \LaravelLocalization::getLocalizedURL(App::getLocale(), \URL::previous());
+//        dd($url);
         return redirect($url);
     }
 
