@@ -6,6 +6,7 @@ use App\Helper\NepaliCalendar;
 use App\NewsItemFeed;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use LaravelLocalization;
@@ -23,7 +24,8 @@ class Post extends Model implements Feedable
             return $updated_at->diffForHumans();
         }
         else{
-            if(settingHelper('default_language') == 'np'){
+            if(Config::get('app.locale') == 'np'){
+
                 $calendar = new NepaliCalendar();
                 $date = Carbon::createFromFormat('Y-m-d H:i:s', $updated_at);
                 $cal = $calendar->eng_to_nep($date->year, $date->month, $date->day);
