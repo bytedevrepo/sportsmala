@@ -46,7 +46,7 @@
                                             {{--<img src="{{ static_asset('site/theme-soccer/assets/images/samples/avatar-4.jpg')}}" alt="Post Author Avatar">--}}
                                             {{--</figure>--}}
                                             <div class="post-author__info">
-                                                <time datetime="{{$post->updated_at}}" class="posts__date">
+                                                <time datetime="{{$post->updated_at}}" class="">
                                                     <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
                                                         {{--@if($post->updated_at < \Carbon\Carbon::today())--}}
                                                             {{--{{ $post->updated_at->format('F j, Y') }}--}}
