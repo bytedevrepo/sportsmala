@@ -63,32 +63,37 @@ class AppServiceProvider extends ServiceProvider
 
             Config::set('site.settings', $session_array);
 
-            if (!empty($default_lang)) {
-                $userIp = \Request::ip();
-                $geo = \GeoIP::getLocation($userIp);
+//            if (!empty($default_lang)) {
+//                $userIp = \Request::ip();
+//                $geo = \GeoIP::getLocation($userIp);
+//
+//                if(blank($geo)) {
+//                    Config::set('app.locale', $default_lang->value);
+//                }
+//                else{
+//                    $userCountry = $geo['country'];
+//                    $supportedLanguages = [
+//                        'United States' => 'en',
+//                        'Canada' => 'en',
+//                        'India' => 'en',
+//                        'Nepal' => 'np',
+//                    ];
+//                    if (array_key_exists($userCountry, $supportedLanguages)) {
+//                        $preferredLang = $supportedLanguages[$userCountry];
+//                    } else {
+//                        $preferredLang = 'en';
+//                    }
+////                    dd($preferredLang);
+//                    Config::set('app.locale', $preferredLang);
+//                }
+//            }
+//            else {
+//                Config::set('app.locale', 'en');
+//            }
 
-                if(blank($geo)) {
-                    Config::set('app.locale', $default_lang->value);
-                }
-                else{
-                    $userCountry = $geo['country'];
-                    $supportedLanguages = [
-                        'United States' => 'en',
-                        'Canada' => 'en',
-                        'India' => 'en',
-                        'Nepal' => 'np',
-                    ];
-                    if (array_key_exists($userCountry, $supportedLanguages)) {
-                        $preferredLang = $supportedLanguages[$userCountry];
-                    } else {
-                        $preferredLang = 'en';
-                    }
-                    Config::set('app.locale', $preferredLang);
-                }
-            }
-            else {
-                Config::set('app.locale', 'en');
-            }
+//            dd($default_lang->value);
+            Config::set('app.locale', $default_lang->value);
+
 
             $timezone = settingHelper('timezone');
 

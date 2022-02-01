@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Config;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Language\Entities\Language;
 use Modules\Setting\Entities\Setting;
 use Validator;
@@ -50,16 +51,21 @@ class SettingController extends Controller
 
             // if ($request->$key != null) :
             if ($key == 'logo') {
+
                 if ($request->file('logo')) {
                     $validation = Validator::make($request->all(), [
                         'logo' => 'required|mimes:jpg,JPG,JPEG,jpeg,gif,png|max:5120',
                     ])->validate();
 
-                    $setting = Setting::where('title', 'logo')->first();
+                    $current_language = settingHelper('default_language');
 
+                    $setting = Setting::firstOrCreate([
+                        'title' => 'logo',
+                        'lang' => $current_language
+                    ]);
 
                     if (File::exists($path . $setting->value) && !blank($setting->value)) {
-                        unlink($path . $setting->value);
+//                        unlink($path . $setting->value);
                     }
 
                     $requestImage = $request->file('logo');
@@ -89,10 +95,15 @@ class SettingController extends Controller
                         'favicon' => 'required|mimes:jpg,JPG,JPEG,jpeg,gif,png,ico|max:5120',
                     ])->validate();
 
-                    $setting = Setting::where('title', 'favicon')->first();
+                    $current_language = settingHelper('default_language');
+
+                    $setting = Setting::firstOrCreate([
+                        'title' => 'favicon',
+                        'lang' => $current_language
+                    ]);
 
                     if (File::exists($path . $setting->value) && !blank($setting->value)) :
-                        unlink($path . $setting->value);
+//                        unlink($path . $setting->value);
                     endif;
 
                     $requestImage = $request->file('favicon');
