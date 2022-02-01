@@ -15,7 +15,8 @@
     <div class="card__content">
         <!-- Post Area 4 -->
         <div class="posts posts--cards post-grid row">
-            @foreach($posts->take(4) as $post)
+            @foreach($posts->take(4) as $value)
+                @php $post = data_get($value, 'post') @endphp
                 <div class="post-grid__item col-sm-6">
                     <div class="posts__item posts__item--card posts__item--category-1 card">
                         <figure class="posts__thumb">
@@ -44,11 +45,12 @@
 
                             <time datetime="{{$post->updated_at}}" class="posts__date">
                                 <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
-                                    @if($post->updated_at <= \Carbon\Carbon::today())
-                                        {{ $post->updated_at->format('F j, Y') }}
-                                    @else
-                                        {{ $post->updated_at->diffForHumans() }}
-                                    @endif
+                                    {{--@if($post->updated_at <= \Carbon\Carbon::today())--}}
+                                        {{--{{ $post->updated_at->format('F j, Y') }}--}}
+                                    {{--@else--}}
+                                        {{--{{ $post->updated_at->diffForHumans() }}--}}
+                                    {{--@endif--}}
+                                    {{ $post->updated_at ?? '' }}
                                 </a>
                             </time>
                             <h6 class="posts__title"><a href="{{ route('article.detail', ['id' => $post->slug]) }}">{!! \Illuminate\Support\Str::limit($post->title,80) !!}</a></h6>

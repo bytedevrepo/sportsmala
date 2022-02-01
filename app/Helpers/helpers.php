@@ -11,30 +11,30 @@ function activeTheme()
 
 function menuUrl($menu)
 {
-    if ($menu->source       == 'custom'):
-
+//   return 'sf';
+    if ($menu->source == 'custom') {
         return $menu->url ?? '#';
-
-    elseif ($menu->source   == 'category') :
-        return route('site.category', ['slug' => $menu['category']->slug]);
-
-    elseif ($menu->source   == 'sub-category') :
-            return route('site.sub-category', ['slug' => $menu['subCategory']->slug]);
-
-    elseif ($menu->source   == 'page') :
-
-        if($menu->page_id == ""):
+    }
+    elseif ($menu->source == 'category') {
+//            return route('site.category', ['slug' => $menu['category']->slug]);
+        if (!blank($menu['category']->slug)){
+            return route('site.category', ['slug' => $menu['category']->slug]);
+        }
+    }
+    elseif ($menu->source == 'sub-category') {
+        return route('site.sub-category', ['slug' => $menu['subCategory']->slug]);
+    }
+    elseif ($menu->source == 'page') {
+        if ($menu->page_id == "") {
             return route('image.albums');
-        else:
+        }
+        else {
             return route('site.page', ['slug' => $menu['page']->slug]);
-        endif;
-
-
-    elseif ($menu->source   == 'post'):
-
+        }
+    }
+    elseif ($menu->source == 'post') {
         return route('article.detail', ['id' => $menu['post']->slug]);
-
-    endif;
+    }
 }
 
 if (!function_exists('basePath')) {
@@ -47,13 +47,10 @@ if (!function_exists('basePath')) {
      */
     function basePath($image)
     {
-
         if (!blank($image)):
-            if ($image->disk    == 'local') :
-
+            if ($image->disk == 'local') :
                 //return public_path();
-
-                if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) {
+                if (strpos(php_sapi_name(),'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) {
                     return url('/');
                 }else{
                     return url('/public');
@@ -62,7 +59,6 @@ if (!function_exists('basePath')) {
                 return "https://s3." . config('filesystems.disks.s3.region') . ".amazonaws.com/" . config('filesystems.disks.s3.bucket');
             endif;
         endif;
-
     }
 }
 
@@ -110,7 +106,7 @@ if (!function_exists('isFileExist')) {
     function isFileExist($item  = '', $file = '')
     {
         if (!blank($item) and !blank($file)) :
-            if ($item->disk     == 'local') :
+            if ($item->disk == 'local') :
                 if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) {
                     $file = $file;
                 }else{
@@ -119,7 +115,7 @@ if (!function_exists('isFileExist')) {
                 if (File::exists($file)) :
                     return true;
                 endif;
-             else :
+            else :
                 if (Storage::disk('s3')->exists($file)) :
                     return true;
                 endif;

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Config;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Modules\Language\Entities\Language;
 use Modules\Setting\Entities\Setting;
 use Validator;
@@ -28,217 +29,210 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $countries      = Countries::all();
-
-        $activeLang     = Language::where('status', 'active')->orderBy('name', 'ASC')->get();
-        return view('setting::index',
-            [
-                'activeLang'    => $activeLang,
-                'countries'     => $countries
-            ]);
+        $countries = Countries::all();
+        $activeLang = Language::where('status', 'active')->orderBy('name', 'ASC')->get();
+        return view('setting::index', ['activeLang' => $activeLang, 'countries' => $countries]);
     }
 
     //update settings
     public function updateSettings(Request $request)
     {
-        $default_language   = $request->default_language ?? settingHelper('default_language');
-
-
-        $company_language   = $request->company_language;
-        $seo_language       = $request->seo_language;
+        $default_language = $request->default_language ?? settingHelper('default_language');
+        $company_language = $request->company_language;
+        $seo_language = $request->seo_language;
         $onesignal_language = $request->onesignal_language;
 
-        foreach ($request->except('_token', 'company_language', 'seo_language', 'onesignal_language') as $key => $value) :
-
+        foreach ($request->except('_token', 'company_language', 'seo_language', 'onesignal_language') as $key => $value) {
             if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) {
                 $path = '';
-            }else{
+            } else {
                 $path = 'public/';
             }
 
             // if ($request->$key != null) :
-            if ($key == 'logo') :
-                if ($request->file('logo')) :
+            if ($key == 'logo') {
 
+                if ($request->file('logo')) {
                     $validation = Validator::make($request->all(), [
-                        'logo'  => 'required|mimes:jpg,JPG,JPEG,jpeg,gif,png|max:5120',
+                        'logo' => 'required|mimes:jpg,JPG,JPEG,jpeg,gif,png|max:5120',
                     ])->validate();
 
-                    $setting    = Setting::where('title', 'logo')->first();
+                    $current_language = settingHelper('default_language');
 
+                    $setting = Setting::firstOrCreate([
+                        'title' => 'logo',
+                        'lang' => $current_language
+                    ]);
 
-                    if (File::exists($path.$setting->value) && !blank($setting->value)) :
-                        unlink($path.$setting->value);
-                    endif;
+                    if (File::exists($path . $setting->value) && !blank($setting->value)) {
+//                        unlink($path . $setting->value);
+                    }
 
-                    $requestImage       = $request->file('logo');
+                    $requestImage = $request->file('logo');
 
-                    $fileType           = $requestImage->getClientOriginalExtension();
-                    $originalImageName  = date('YmdHis') . "_logo_" . rand(1, 50) . '.' . $fileType;
+                    $fileType = $requestImage->getClientOriginalExtension();
+                    $originalImageName = date('YmdHis') . "_logo_" . rand(1, 50) . '.' . $fileType;
 
-                    if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) :
-                        $directory              = 'images/';
-                    else:
-                        $directory              = 'public/images/';
-                    endif;
+                    if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) {
+                        $directory = 'images/';
+                    } else {
+                        $directory = 'public/images/';
+                    }
 
-                    $originalImageUrl   = $directory . $originalImageName;
+                    $originalImageUrl = $directory . $originalImageName;
 
                     Image::make($requestImage)->save($originalImageUrl);
 
-                    $setting->value     = str_replace("public/","",$originalImageUrl);
-                    $setting->lang      = $default_language;
+                    $setting->value = str_replace("public/", "", $originalImageUrl);
+                    $setting->lang = $default_language;
 
                     $setting->save();
-                endif;
-
-            elseif ($key == 'favicon'):
+                }
+            }
+            elseif ($key == 'favicon'){
                 if ($request->file('favicon')) :
-
-                    $validation     = Validator::make($request->all(), [
-                        'favicon'   => 'required|mimes:jpg,JPG,JPEG,jpeg,gif,png,ico|max:5120',
+                    $validation = Validator::make($request->all(), [
+                        'favicon' => 'required|mimes:jpg,JPG,JPEG,jpeg,gif,png,ico|max:5120',
                     ])->validate();
 
-                    $setting        = Setting::where('title', 'favicon')->first();
+                    $current_language = settingHelper('default_language');
 
-                    if (File::exists($path.$setting->value) && !blank($setting->value)) :
-                        unlink($path.$setting->value);
+                    $setting = Setting::firstOrCreate([
+                        'title' => 'favicon',
+                        'lang' => $current_language
+                    ]);
+
+                    if (File::exists($path . $setting->value) && !blank($setting->value)) :
+//                        unlink($path . $setting->value);
                     endif;
 
-                    $requestImage       = $request->file('favicon');
+                    $requestImage = $request->file('favicon');
 
-                    $fileType           = $requestImage->getClientOriginalExtension();
-                    $originalImageName  = date('YmdHis') . "_favicon_" . rand(1, 50) . '.' . $fileType;
+                    $fileType = $requestImage->getClientOriginalExtension();
+                    $originalImageName = date('YmdHis') . "_favicon_" . rand(1, 50) . '.' . $fileType;
 
                     if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) :
-                        $directory              = 'images/';
+                        $directory = 'images/';
                     else:
-                        $directory              = 'public/images/';
+                        $directory = 'public/images/';
                     endif;
 
-                    $originalImageUrl   = $directory . $originalImageName;
+                    $originalImageUrl = $directory . $originalImageName;
 
                     Image::make($requestImage)->save($originalImageUrl);
 
-                    $setting->value     = str_replace("public/","",$originalImageUrl);
-                    $setting->lang      = $default_language;
+                    $setting->value = str_replace("public/", "", $originalImageUrl);
+                    $setting->lang = $default_language;
 
                     $setting->save();
 
                 endif;
-
-            elseif ($key == 'og_image'):
+            }
+            elseif ($key == 'og_image'){
                 if ($request->file('og_image')) :
-
-                    $validation     = Validator::make($request->all(), [
-                        'og_image'  => 'required|mimes:jpg,JPG,JPEG,jpeg,gif,png,ico|max:5120',
+                    $validation = Validator::make($request->all(), [
+                        'og_image' => 'required|mimes:jpg,JPG,JPEG,jpeg,gif,png,ico|max:5120',
                     ])->validate();
 
                     $setting = Setting::where('title', 'og_image')->first();
                     if (File::exists($setting->value)) :
                         unlink($setting->value);
                     endif;
-                    $requestImage       = $request->file('og_image');
+                    $requestImage = $request->file('og_image');
 
-                    $fileType           = $requestImage->getClientOriginalExtension();
-                    $originalImageName  = date('YmdHis') . "_og_image_" . rand(1, 50) . '.' . $fileType;
+                    $fileType = $requestImage->getClientOriginalExtension();
+                    $originalImageName = date('YmdHis') . "_og_image_" . rand(1, 50) . '.' . $fileType;
 
 
                     if (strpos(php_sapi_name(), 'cli') !== false || defined('LARAVEL_START_FROM_PUBLIC')) :
-                        $directory              = 'images/';
+                        $directory = 'images/';
                     else:
-                        $directory              = 'public/images/';
+                        $directory = 'public/images/';
                     endif;
 
-                    $originalImageUrl   = $directory . $originalImageName;
+                    $originalImageUrl = $directory . $originalImageName;
 
                     Image::make($requestImage)->save($originalImageUrl);
 
-                    $setting->value     = str_replace("public/","",$originalImageUrl);
-                    $setting->lang      = $default_language;
+                    $setting->value = str_replace("public/", "", $originalImageUrl);
+                    $setting->lang = $default_language;
 
                     $setting->save();
 
                 endif;
-
-            else:
-
-                if ($key == "application_name" || $key == "address" || $key == "email" || $key == "phone" || $key == "zip_code" || $key == "city" || $key == "state" || $key == "country" || $key == "website" || $key == "company_registration" || $key == "tax_number" || $key == "about_us_description") :
-
-                    $setting            = Setting::where('title', $key)->where('lang', $company_language)->first();
-
-                    if ($setting == "") :
-                        $setting        = new Setting();
+            }
+            else{
+                if ($key == "application_name" || $key == "address" || $key == "email" || $key == "phone" || $key == "zip_code" || $key == "city" || $key == "state" || $key == "country" || $key == "website" || $key == "company_registration" || $key == "tax_number" || $key == "about_us_description") {
+                    $setting = Setting::where('title', $key)->where('lang', $company_language)->first();
+                    if ($setting == "") {
+                        $setting = new Setting();
                         $setting->title = $key;
                         $setting->value = $value;
-                        $setting->lang  = $company_language;
-                    else :
+                        $setting->lang = $company_language;
+                    }
+                    else {
                         $setting->value = $value;
-                        $setting->lang  = $company_language;
-                    endif;
-
-                elseif ($key == "seo_title" || $key == "seo_keywords" || $key == "seo_meta_description" || $key == "author_name" || $key == "og_title" || $key == "og_description") :
-
-                    $setting            = Setting::where('title', $key)->where('lang', $seo_language)->first();
-
-                    if ($setting == "") :
-                        $setting        = new Setting();
+                        $setting->lang = $company_language;
+                    }
+                }
+                elseif ($key == "seo_title" || $key == "seo_keywords" || $key == "seo_meta_description" || $key == "author_name" || $key == "og_title" || $key == "og_description") {
+                    $setting = Setting::where('title', $key)->where('lang', $seo_language)->first();
+                    if ($setting == "") {
+                        $setting = new Setting();
                         $setting->title = $key;
                         $setting->value = $value;
-                        $setting->lang  = $seo_language;
-                    else :
+                        $setting->lang = $seo_language;
+                    }
+                    else {
                         $setting->value = $value;
-                        $setting->lang  = $seo_language;
-                    endif;
-
-                elseif ($key == "onesignal_action_message" || $key == "onesignal_accept_button" || $key == "onesignal_cancel_button") :
-
-                    $setting            = Setting::where('title', $key)->where('lang', $onesignal_language)->first();
-
-                    if ($setting == "") :
-                        $setting        = new Setting();
+                        $setting->lang = $seo_language;
+                    }
+                }
+                elseif ($key == "onesignal_action_message" || $key == "onesignal_accept_button" || $key == "onesignal_cancel_button") {
+                    $setting = Setting::where('title', $key)->where('lang', $onesignal_language)->first();
+                    if ($setting == "") {
+                        $setting = new Setting();
                         $setting->title = $key;
                         $setting->value = $value;
-                        $setting->lang  = $onesignal_language;
-                    else :
+                        $setting->lang = $onesignal_language;
+                    }
+                    else {
                         $setting->value = $value;
-                        $setting->lang  = $onesignal_language;
-                    endif;
-
-                elseif ($key == "custom_footer_js" || $key == "custom_header_style" || $key == "predefined_header" || $key == "addthis_public_id" || $key == "addthis_toolbox") :
-
-                    $setting            = Setting::where('title', $key)->where('lang', $default_language)->first();
-
-                    if ($setting == "") :
-                        $setting        = new Setting();
-                        $setting->title = $key;
-                        $setting->value = base64_encode($value);
-                        $setting->lang  = $default_language;
-                    else :
-                        $setting->value = base64_encode($value);
-                        $setting->lang  = $default_language;
-                    endif;
-
-                else :
+                        $setting->lang = $onesignal_language;
+                    }
+                }
+                elseif ($key == "custom_footer_js" || $key == "custom_header_style" || $key == "predefined_header" || $key == "addthis_public_id" || $key == "addthis_toolbox") {
                     $setting = Setting::where('title', $key)->where('lang', $default_language)->first();
-
-                    if ($setting == "") :
-                        $setting        = new Setting();
+                    if ($setting == "") {
+                        $setting = new Setting();
+                        $setting->title = $key;
+                        $setting->value = base64_encode($value);
+                        $setting->lang = $default_language;
+                    }
+                    else {
+                        $setting->value = base64_encode($value);
+                        $setting->lang = $default_language;
+                    }
+                }
+                else {
+                    $setting = Setting::where('title', $key)->first();
+                    if (!$setting) {
+                        $setting = new Setting();
                         $setting->title = $key;
                         $setting->value = $value;
-                        $setting->lang  = $default_language;
-                    else :
+                        $setting->lang = $default_language;
+                    }
+                    else {
                         $setting->value = $value;
-                        $setting->lang  = $default_language;
-                    endif;
-
-                endif;
+                        $setting->lang = $default_language;
+                    }
+                }
 
                 $setting->save();
 
-            endif;
+            }
             // endif;
-        endforeach;
+        }
 
         return redirect()->back()->with('success', __('successfully_updated'));
 
@@ -430,7 +424,7 @@ class SettingController extends Controller
 
             if($slug == "newsletter"){
 
-               \Artisan::call('queue:cron');
+                \Artisan::call('queue:cron');
 
 
             }elseif($slug == "video-convert"){

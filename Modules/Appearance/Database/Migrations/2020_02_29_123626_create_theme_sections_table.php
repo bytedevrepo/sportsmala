@@ -19,10 +19,11 @@ class CreateThemeSectionsTable extends Migration
             $table->tinyInteger('type')->default(0);
             $table->string('label');
             $table->integer('order')->default(0);
-            $table->bigInteger('category_id')->nullable()->unsigned()->default(null);
-            $table->bigInteger('ad_id')->nullable()->unsigned()->default(null);
-            $table->bigInteger('post_amount')->nullable()->unsigned();
-            $table->string('section_style')->nullable()->default(null);
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('album_id')->nullable();
+            $table->unsignedBigInteger('ad_id')->nullable();
+            $table->unsignedBigInteger('post_amount')->nullable();
+            $table->string('section_style')->nullable();
             $table->tinyInteger('is_primary')->default(0);
             $table->boolean('status')->default(0);
             $table->string('language')->nullable();
@@ -32,6 +33,9 @@ class CreateThemeSectionsTable extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
 
             $table->foreign('category_id')->references('id')->on('categories')
+                ->onUpdate('cascade')->onDelete('cascade');
+
+            $table->foreign('album_id')->references('id')->on('albums')
                 ->onUpdate('cascade')->onDelete('cascade');
         });
     }

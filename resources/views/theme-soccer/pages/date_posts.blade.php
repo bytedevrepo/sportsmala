@@ -47,11 +47,12 @@
                                             <a href="#" class="posts__cta"></a>
                                             <time datetime="{{ $post->updated_at }}" class="posts__date">
                                                 <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
-                                                    @if($post->updated_at <= \Carbon\Carbon::today())
-                                                        {{ $post->updated_at->format('F j, Y') }}
-                                                    @else
-                                                        {{ $post->updated_at->diffForHumans() }}
-                                                    @endif
+                                                    {{--@if($post->updated_at <= \Carbon\Carbon::today())--}}
+                                                        {{--{{ $post->updated_at->format('F j, Y') }}--}}
+                                                    {{--@else--}}
+                                                        {{--{{ $post->updated_at->diffForHumans() }}--}}
+                                                    {{--@endif--}}
+                                                    {{ $post->updated_at ?? '' }}
                                                 </a>
                                             </time>
 

@@ -96,7 +96,8 @@
                                     <div class="entry-meta">
                                         <ul class="global-list">
                                             <li>
-                                                <a href="javascript:void(0)">{{ Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</a>
+{{--                                                <a href="javascript:void(0)">{{ Carbon\Carbon::parse($post->updated_at)->diffForHumans() }}</a>--}}
+                                                <a href="javascript:void(0)">{{ $post->updated_at ?? '' }}</a>
                                             </li>
                                         </ul>
                                     </div>

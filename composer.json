@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2",
         "ext-gd": "*",
+        "ext-json": "*",
         "anhskohbo/no-captcha": "^3.2",
         "barryvdh/laravel-translation-manager": "^0.5.6",
         "browner12/helpers": "^3.0",
@@ -32,8 +33,8 @@
         "pragmarx/countries": "^0.7.2",
         "spatie/laravel-feed": "^2.7",
         "spatie/laravel-sitemap": "^5.8",
-        "tymon/jwt-auth": "1.0.0-rc.5",
-        "ext-json": "*"
+        "torann/geoip": "1.2.1",
+        "tymon/jwt-auth": "1.0.0-rc.5"
     },
     "require-dev": {
         "facade/ignition": "^1.4",

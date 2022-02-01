@@ -1,7 +1,7 @@
 <div class="marquee-wrapper mt-1">
     <div class="container">
-        <div class="marquee-label">Breaking News</div>
-        <div class="marquee" data-startvisible="true" data-duration="18000" data-gap="10" data-duplicated="true">
+        <div class="marquee-label">{{ __("Breaking News") }}</div>
+        <div class="marquee" data-startvisible="true" data-duration="30000" data-gap="10" data-duplicated="true">
             <ul class="posts posts--inline">
                 @foreach($breakingNewss as $post)
                 <li class="posts__item">

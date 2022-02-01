@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\Appearance\Entities\ThemeSection;
+use Modules\Gallery\Entities\Album;
 use Modules\Post\Entities\Category;
 use Modules\Ads\Entities\Ad;
 use Modules\Appearance\Entities\Theme;
@@ -23,19 +24,20 @@ class ThemeSectionController extends Controller
             ->paginate(10);
 
         $categories = Category::orderBy('id','ASC')->where('language', \LaravelLocalization::setLocale() ?? settingHelper('default_language'))->get();
+        $albums = Album::where('language', \LaravelLocalization::setLocale() ?? settingHelper('default_language'))->get();
         $primarySection = ThemeSection::where('is_primary',1)->first();
         $breakingSection = ThemeSection::where('is_primary',2)->first();
         $topNewsSection = ThemeSection::where('is_primary',3)->first();
-
         $ads = Ad::orderBy('id','desc')->get();
 
         return view('appearance::theme_section',[
-            'sections'      =>$sections,
-            'primarySection'=> $primarySection,
-            'breakingSection'=> $breakingSection,
-            'categories'    =>$categories,
-            'topNewsSection'    =>$topNewsSection,
-            'ads'           =>$ads,
+            'sections' => $sections,
+            'primarySection' => $primarySection,
+            'breakingSection' => $breakingSection,
+            'categories' => $categories,
+            'topNewsSection' => $topNewsSection,
+            'ads' => $ads,
+            'albums' => $albums
         ]);
     }
 
@@ -65,38 +67,45 @@ class ThemeSectionController extends Controller
                 'status'        => 'required'
             ])->validate();
 
-        endif;
+        elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::GALLERY):
 
-        $section                = new ThemeSection();
-        $section->theme_id      = 1;
-        $section->type          = $request->type;
-
-        if($request->type == \Modules\Appearance\Enums\ThemeSectionType::CATEGORY):
-
-            $category               = Category::findOrFail($request->category_id);
-
-            $section->label         = $category->category_name;
-            $section->category_id   = $request->category_id;
-            $section->section_style = $request->section_style;
-            $section->language      = \LaravelLocalization::setLocale() ?? settingHelper('default_language');
-
-        elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::VIDEO):
-
-            $section->section_style = $request->section_style;
-            $section->label         = 'videos';
-
-        elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::LATEST_POST):
-
-            $section->label         = 'latest_post';
+            Validator::make($request->all(), [
+                'album_id'         => 'required',
+                'order'         => 'required',
+                'status'        => 'required'
+            ])->validate();
 
         endif;
 
+        $section = new ThemeSection();
+        $section->theme_id = 1;
+        $section->type = $request->type;
 
-        $section->order         = $request->order;
+        if($request->type == \Modules\Appearance\Enums\ThemeSectionType::CATEGORY) {
+            $category = Category::findOrFail($request->category_id);
+            $section->label = $category->category_name;
+            $section->category_id = $request->category_id;
+            $section->section_style = $request->section_style;
+            $section->language = \LaravelLocalization::setLocale() ?? settingHelper('default_language');
+        }
+        elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::VIDEO) {
+            $section->section_style = $request->section_style;
+            $section->label = 'videos';
+        }
+        elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::LATEST_POST) {
+            $section->label = 'latest_post';
+        }
+        elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::GALLERY) {
+            $album = Album::findOrFail($request->album_id);
+            $section->label = $album->name;
+            $section->album_id = $request->album_id;
+        }
 
-        $section->status        = $request->status;
+        $section->order = $request->order;
+
+        $section->status = $request->status;
         if($request->ad != ""){
-            $section->ad_id         = $request->ad;
+            $section->ad_id = $request->ad;
         }
 
 
@@ -106,11 +115,17 @@ class ThemeSectionController extends Controller
     }
 
     public function editThemeSection($id){
-        $section            = ThemeSection::findOrFail($id);
-        $categories         = Category::orderBy('id','ASC')->where('language', \LaravelLocalization::setLocale() ?? settingHelper('default_language'))->get();
-        $ads                = Ad::orderBy('id','desc')->get();
+        $section = ThemeSection::findOrFail($id);
+        $categories = Category::orderBy('id','ASC')->where('language', \LaravelLocalization::setLocale() ?? settingHelper('default_language'))->get();
+        $ads = Ad::orderBy('id','desc')->get();
+        $albums = Album::where('language', \LaravelLocalization::setLocale() ?? settingHelper('default_language'))->get();
 
-        return view('appearance::edit_theme_section',['section'=>$section,'categories'=>$categories, 'ads'=>$ads]);
+        return view('appearance::edit_theme_section',[
+            'section'=>$section,
+            'categories'=>$categories,
+            'ads'=>$ads,
+            'albums'=>$albums
+        ]);
 
     }
 

@@ -2,9 +2,9 @@
     $blockPosts = $posts->take(4);
 @endphp
 <!-- Featured News -->
-<div class="card card--clean">
+<div class="card card--clean mt-1">
     <header class="card__header card__header--has-filter">
-        <h4>Featured News</h4>
+        <h4>{{ __('featured_news') }}</h4>
         <ul class="category-filter category-filter--featured">
             {{--<li class="category-filter__item">--}}
                 {{--<a href="#" class="category-filter__link category-filter__link--reset category-filter__link--active featured-slider">all</a>--}}
@@ -54,16 +54,14 @@
 
                             <div class="post-author">
                                 <div class="post-author__info">
-                                    <h4 class="post-author__name">
-                                        Published
-                                    </h4>
-                                    <time datetime="{{$post->updated_at}}" class="posts__date">
+                                    <time datetime="{{$post->updated_at}}" class="">
                                         <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
-                                            @if($post->updated_at <= \Carbon\Carbon::today())
-                                                {{ $post->updated_at->format('F j, Y') }}
-                                            @else
-                                                {{ $post->updated_at->diffForHumans() }}
-                                            @endif
+                                            {{--@if($post->updated_at <= \Carbon\Carbon::today())--}}
+                                                {{--{{ $post->updated_at->format('F j, Y') }}--}}
+                                            {{--@else--}}
+                                                {{--{{ $post->updated_at->diffForHumans() }}--}}
+                                            {{--@endif--}}
+                                            {{ $post->updated_at ?? '' }}
                                         </a>
                                     </time>
                                 </div>
@@ -76,7 +74,8 @@
         <!-- Slider / End -->
     </div>
 </div>
-<!-- Featured News / End --><!-- Post Area 1 -->
+<!-- Featured News / End -->
+<!-- Post Area 1 -->
 <div class="posts posts--cards post-grid row">
     @foreach($blockPosts as $post)
         <div class="post-grid__item col-sm-6">
@@ -107,7 +106,7 @@
                                     <a href="{{ route('article.detail', ['id' => $post->slug]) }}">{!! \Illuminate\Support\Str::limit($post->title, 60) !!}</a>
                                 </h6>
                                 <time datetime="{{ $post->updated_at }}" class="posts__date">
-                                    <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}"> {{ $post->updated_at->format('F j, Y') }}</a>
+                                    <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}"> {{ $post->updated_at ?? '' }}</a>
                                 </time>
                             </div>
                             <div class="posts__excerpt posts__excerpt--space-sm">
