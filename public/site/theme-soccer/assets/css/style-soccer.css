@@ -5263,18 +5263,18 @@ div.cs-skin-border li.cs-focus span {
 @media (min-width:992px) {
     .posts-slider--center .slick-next,
     .posts-slider--center .slick-prev {
-        bottom: 50px
+        bottom: 100px
     }
 }
 
 .posts-slider--center .slick-prev {
-    right: 50%;
+    right: 95%;
     margin-right: 4px
 }
 
 .posts-slider--center .slick-next {
     right: auto;
-    left: 50%;
+    left: 95%;
     margin-left: 4px
 }
 
@@ -11241,7 +11241,7 @@ ul.posts:not(.post-grid) {
 }
 
 .posts-slider--center .posts__inner {
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
     right: auto;
@@ -11255,7 +11255,7 @@ ul.posts:not(.post-grid) {
 @media (min-width:992px) {
     .posts-slider--center .posts__inner {
         padding: 0;
-        width: 60%
+        width: 75%;
     }
 }
 

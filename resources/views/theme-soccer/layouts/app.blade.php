@@ -60,7 +60,6 @@
             font-size: 16px;
         }
         @endif
-
     </style>
     @include('feed::links')
     @stack('style')

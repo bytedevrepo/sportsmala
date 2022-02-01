@@ -14,7 +14,7 @@
                     @foreach($images as $image)
                         <div class="posts__item posts__item--category-1">
                             <a href="#" class="posts__link-wrapper">
-                                <figure class="posts__thumb">
+                                <figure class="posts__thumb gallery_thumb">
                                     @if(isFileExist($image, $result = @$image->original_image))
                                         <img src=" {{basePath($image)}}/{{ $result }} " width="100%" height="100%" alt="">
                                     @else
