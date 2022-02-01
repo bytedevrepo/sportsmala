@@ -21,3 +21,7 @@ yarn-error.log
 /bootstrap/cache/*.php
 /__SOURCE
 /.vscode
+sportsma_website.sql
+.gitignore
+vendor.zip
+composer.lock
