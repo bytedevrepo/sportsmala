@@ -10,7 +10,7 @@
                     <div class="form-group form-group--xs">
                         <input type="email" name="email" class="form-control input-sm" id="contact-form-email" placeholder="{{__('email_address')}}" required>
                     </div>
-                    <button type="submit" class="btn btn-primary-inverse btn-sm btn-block">{{ __('subscribe') }}</button>
+                    <button type="submit" class="btn btn-primary-inverse btn-sm btn-block">{{__("Subscribe Now")}}</button>
                 </form>
             </div>
         </div>

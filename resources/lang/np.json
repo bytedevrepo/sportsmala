@@ -436,7 +436,7 @@
     "dont_have_an_account": "खाता छैन",
     "sign_up": "साइन अप",
     "already_have_an_account": "पहिले नै खाता छ",
-    "submit_now": "",
+    "submit_now": "पेश गर्नुहोस्",
     "follow_us": "",
     "reply_from": "",
     "breaking_news": "",
@@ -685,5 +685,6 @@
     "featured_news": "विशेष समाचार",
     "Breaking News": "ताजा समाचार",
     "Search Results": "खोज परिणामहरू",
-    "Date": "मिति"
+    "Date": "मिति",
+    "Subscribe Now": "सदस्यता लिनुहोस्"
 }

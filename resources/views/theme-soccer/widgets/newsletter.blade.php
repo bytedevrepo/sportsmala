@@ -4,7 +4,7 @@
         <h4>{{ data_get($detail, 'title') }}</h4>
     </div>
     <div class="widget__content card__content">
-        <h5 class="widget-newsletter__subtitle">Subscribe Now!</h5>
+        <h5 class="widget-newsletter__subtitle">{{__("Subscribe Now")}}!</h5>
         <div class="widget-newsletter__desc">
             <p>{{ __('newsletter_description') ?? 'Subscribe to our mailing list to get the new updates!' }}</p>
         </div>
@@ -12,7 +12,7 @@
             @csrf
             <div class="input-group">
                 <input name="email" type="email" class="form-control" placeholder="{{__('email_address')}}">
-                <span class="input-group-append"><button class="btn btn-lg btn-default" type="submit">Send</button></span>
+                <span class="input-group-append"><button class="btn btn-lg btn-default" type="submit">{{__("Subscribe Now")}}</button></span>
             </div>
         </form>
     </div>
