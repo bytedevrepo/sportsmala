@@ -198,7 +198,7 @@
                     </div>
                 {{--<a href="#" class="pushy-panel__toggle"><span class="pushy-panel__line"></span> </a>--}}
                 <!-- Pushy Panel Toggle / Eng -->
-                    <div class="slan-comp"></div>
+                    {{--<div class="slan-comp"></div>--}}
                     @if(isset($secondaryMenu) AND !blank($secondaryMenu))
                         <div class="white-nav-bar">
                             <ul>
