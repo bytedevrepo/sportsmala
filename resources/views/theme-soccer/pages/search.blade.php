@@ -6,8 +6,8 @@
                 <div class="col-md-10 offset-md-1">
                     <h1 class="page-heading__title">Search <span class="highlight">Results</span></h1>
                     <ol class="page-heading__breadcrumb breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Search Results</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">{{__('home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('Search Results')}}</li>
                     </ol>
                 </div>
             </div>

@@ -7,8 +7,8 @@
                 <div class="col-md-10 offset-md-1">
                     <h1 class="page-heading__title">Date</h1>
                     <ol class="page-heading__breadcrumb breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Date</li>
+                        <li class="breadcrumb-item"><a href="/">{{__('home')}}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{__('Date')}}</li>
                     </ol>
                 </div>
             </div>
