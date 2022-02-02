@@ -8,6 +8,7 @@
     list-style-type: none;
     align-items:center;
     padding-top: 1.01rem;
+    transform: skewX(25deg);
 }
 .white-nav-bar li a{
     padding:.3rem;
@@ -19,13 +20,13 @@
     text-transform: uppercase;
 }
 .slan-comp-cont{
-    background-color:white;
+    background-color: white;
 }
 .slan-comp{
     width: 64px;
     background-color: #295ac9;
     transform: skew(-25deg);
-    margin-left: -30px;
+    margin-left: -16px;
 }
 
 .header__secondary {

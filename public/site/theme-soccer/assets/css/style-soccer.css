@@ -7146,33 +7146,33 @@ body {
 .header__primary-inner {
     position: relative;
     z-index: 1;
-    background-color: #295ac9;
+    /*background-color: #295ac9;*/
 }
 
-.header--layout-1 .header__primary-inner:before {
-    content: "";
-    position: absolute;
-    display: none;
-    top: 0;
-    bottom: 0;
-    width: 210px;
-    background-color: #fff;
-    left: -25px;
-    margin-left: 0;
-    transform: skew(-25deg);
-}
-.header--layout-1 .header__primary-inner::after {
-    content: "bnc";
-    position: absolute;
-    display: none;
-    top: 0;
-    bottom: 0;
-    width: 210px;
-    background-color: #1e2024;
-    left: -25px;
-    margin-left: 0;
-    transform: skew(-25deg)
-}
+/*.header--layout-1 .header__primary-inner:before {*/
+/*content: "";*/
+/*position: absolute;*/
+/*display: none;*/
+/*top: 0;*/
+/*bottom: 0;*/
+/*width: 210px;*/
+/*background-color: #fff;*/
+/*left: -25px;*/
+/*margin-left: 0;*/
+/*transform: skew(-25deg);*/
+/*}*/
+/*.header--layout-1 .header__primary-inner::after {*/
+/*content: "bnc";*/
+/*position: absolute;*/
+/*display: none;*/
+/*top: 0;*/
+/*bottom: 0;*/
+/*width: 210px;*/
+/*background-color: #1e2024;*/
+/*left: -25px;*/
+/*margin-left: 0;*/
+/*transform: skew(-25deg)*/
+/*}*/
 
 @media (min-width:768px) {
     .header--layout-1 .header__primary-inner:before {
@@ -7601,7 +7601,7 @@ input.header-mobile__search-control:focus {
 .main-nav {
     text-align: right;
     display: flex;
-    margin-left: 14rem;
+    margin-left: 12rem;
     background-color: white;
 }
 
@@ -7612,10 +7612,11 @@ input.header-mobile__search-control:focus {
 .main-nav__list {
     display: inline-block;
     text-align: left;
-    padding: 0;
+    padding: 0 20px;
     margin: 0;
     list-style: none;
     background-color: #295ac9;
+    transform: skewX(-25deg);
 }
 
 @media (min-width:992px) {
@@ -7627,7 +7628,8 @@ input.header-mobile__search-control:focus {
 .main-nav__list>li {
     text-align: center;
     display: inline-block;
-    padding: 0
+    padding: 0;
+    transform: skewX(25deg);
 }
 
 @media (min-width:992px) {
@@ -7643,8 +7645,8 @@ input.header-mobile__search-control:focus {
 .main-nav__list>li>a {
     display: block;
     color: #fff;
-    padding: 0 34px;
-    line-height: 62px;
+    padding: 20px;
+    /*line-height: 62px;*/
     text-decoration: none;
     position: relative;
     font-family: Montserrat, sans-serif;
@@ -8866,7 +8868,7 @@ input.header-mobile__search-control:focus {
 @media (min-width:992px) {
     .page-heading {
         padding: 30px 0 30px;
-        margin-bottom:20px;
+        margin-bottom: 20px;
     }
 }
 
@@ -27713,40 +27715,40 @@ th.team-leader__total {
 .search_bar_input {
     outline: none;
 }
+
 .search_bar_input:focus::placeholder {
     color: black !important;
 }
+
 .search_bar_input[type=search] {
     -webkit-appearance: textfield;
     -webkit-box-sizing: content-box;
     font-family: inherit;
     font-size: 100%;
 }
+
 .search_bar_input::-webkit-search-decoration,
 .search_bar_input::-webkit-search-cancel-button {
     display: none;
 }
-
 
 .search_bar_input[type=search] {
     background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 6px center;
     border: solid 1px #ccc;
     padding: 9px 10px 9px 32px;
     width: 55px;
-
     -webkit-border-radius: 10em;
     -moz-border-radius: 10em;
     border-radius: 10em;
-
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
     transition: all .5s;
 }
+
 .search_bar_input[type=search]:focus {
     width: 130px;
     background-color: #fff;
     border-color: #66CC75;
-
     -webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
     -moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
     box-shadow: 0 0 5px rgba(109,207,246,.5);
@@ -27756,6 +27758,7 @@ th.team-leader__total {
 .search_bar_input:-moz-placeholder {
     color: #999;
 }
+
 .search_bar_input::-webkit-input-placeholder {
     color: #999;
 }
@@ -27771,6 +27774,7 @@ th.team-leader__total {
 #search_bar_ext input[type=search]:hover {
     background-color: #fff;
 }
+
 #search_bar_ext input[type=search]:focus {
     width: 200px;
     padding-left: 32px;
