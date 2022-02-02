@@ -21,7 +21,7 @@ class Post extends Model implements Feedable
     public function getUpdatedAtAttribute($updated_at)
     {
         if ($updated_at >= \Carbon\Carbon::today()){
-            return $updated_at->diffForHumans();
+            return Carbon::createFromFormat('Y-m-d H:i:s', $updated_at)->diffForHumans();
         }
         else{
             if(Config::get('app.locale') == 'np'){
