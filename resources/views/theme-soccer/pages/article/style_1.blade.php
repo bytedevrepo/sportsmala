@@ -1,12 +1,10 @@
 <article class="card card--lg card--block post post--single">
-    <figure class="post__thumbnail">
-        @if(isFileExist(@$post->image, $result = @$post->image->big_image_two))
+    @if(isFileExist(@$post->image, $result = @$post->image->big_image_two))
+        <figure class="post__thumbnail">
             <img src="{{ basePath(@$post->image) }}/{{ $result }}" alt="{!! $post->title !!}" style="width: 100%;">
-        @else
-            <img src="{{static_asset('default-image/default-730x400.png') }} " alt="{!! $post->title !!}" style="width: 100%;">
-        @endif
-    </figure>
-    <!-- Post Meta - Side -->
+        </figure>
+    @endif
+
     {{--@if(@$post->user->permissions['author_show'] == 1)--}}
     <div class="post__meta-block post__meta-block--side">
         <!-- Post Author -->
@@ -79,9 +77,9 @@
                     <time datetime="{{ $post->updated_at }}">
                         <a href="{{route('article.date', date('Y-m-d', strtotime($post->updated_at)))}}">
                             {{--@if($post->updated_at <= \Carbon\Carbon::today())--}}
-                                {{--{{ $post->updated_at->format('F j, Y') }}--}}
+                            {{--{{ $post->updated_at->format('F j, Y') }}--}}
                             {{--@else--}}
-                                {{--{{ $post->updated_at->diffForHumans() }}--}}
+                            {{--{{ $post->updated_at->diffForHumans() }}--}}
                             {{--@endif--}}
                             {{ $post->updated_at ?? '' }}
                         </a>
@@ -99,6 +97,8 @@
                 </div>
             @endif
         </div>
+
+        @include('theme-soccer.pages.article.partials.content')
 
         @if($post->tags!=null)
             <footer class="post__footer">

@@ -60,12 +60,12 @@ class AlbumController extends Controller
 
         $originalImageUrl     = "";
         $thumbnailImageUrl   = "";
-        
+
 
         if ($request->hasFile('cover_image')):
 
             $requestImage = $request->file('cover_image');
-        
+
             $fileType = $requestImage->getClientOriginalExtension();
             $originalImageName = date('YmdHis') . "_galleryImage_big" . rand(1, 50) . '.' . $fileType;
             $thumbnailImageName = date('YmdHis') . "_galleryImage_thumb" . rand(1, 50) . '.' . $fileType;
@@ -146,7 +146,7 @@ class AlbumController extends Controller
         if ($request->hasFile('cover_image')):
 
             $requestImage = $request->file('cover_image');
-        
+
             $fileType = $requestImage->getClientOriginalExtension();
             $originalImageName = date('YmdHis') . "_galleryImage_big" . rand(1, 50) . '.' . $fileType;
             $thumbnailImageName = date('YmdHis') . "_galleryImage_thumb" . rand(1, 50) . '.' . $fileType;
@@ -326,16 +326,14 @@ class AlbumController extends Controller
 
     public function saveImageGallery(Request $request)
     {
-//        dd( $request->all());
 
         Validator::make($request->all(), [
             'album_id' => 'required',
             'files' => 'required',
         ])->validate();
 
-        if ($request->hasFile('files')):
+        if ($request->hasFile('files')){
             try {
-
                 $images = $request->file('files');
 
                 foreach ($images as $requestImage):
@@ -354,7 +352,6 @@ class AlbumController extends Controller
 
                     $originalImageUrl       = $directory . $originalImageName;
                     $thumbnailImageUrl      = $directory . $thumbnailImageName;
-
                     if (settingHelper('default_storage') == 's3'):
 
                         //ogImage
@@ -391,9 +388,11 @@ class AlbumController extends Controller
                 Log::error($e->getMessage());
                 return null;
             }
-        else:
+
+        }
+        else {
             return redirect()->back()->with('error', __('something_went_wrong'));
-        endif;
+        }
     }
 
     public function editImage($id)
@@ -531,7 +530,7 @@ class AlbumController extends Controller
     }
 
     private function make_slug($string) {
-        $slug = preg_replace('/\s+/u', '-', trim(strtolower($string))); 
+        $slug = preg_replace('/\s+/u', '-', trim(strtolower($string)));
 
         if(isset($slug)):
             return $slug;
