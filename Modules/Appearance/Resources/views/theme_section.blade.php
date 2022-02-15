@@ -53,7 +53,7 @@
                                                         <label for="type">{{ __('type') }}</label>
                                                         <select class="form-control" name="type" id="type" required>
                                                             <option value="{{\Modules\Appearance\Enums\ThemeSectionType::CATEGORY}}" selected>{{ __('category') }}</option>
-                                                            <option value="{{\Modules\Appearance\Enums\ThemeSectionType::VIDEO}}">{{ __('videos') }}</option>
+{{--                                                            <option value="{{\Modules\Appearance\Enums\ThemeSectionType::VIDEO}}">{{ __('videos') }}</option>--}}
                                                             <option value="{{\Modules\Appearance\Enums\ThemeSectionType::LATEST_POST}}">{{ __('latest_post') }}</option>
                                                             <option value="{{\Modules\Appearance\Enums\ThemeSectionType::GALLERY}}">{{ __('gallery') }}</option>
                                                         </select>
@@ -73,7 +73,7 @@
                                                 <div class="col-sm-12 d-none" id="gallery-area">
                                                     <div class="form-group">
                                                         <label for="album_id">{{ __('album') }}</label>
-                                                        <select class="form-control" name="album_id" id="album_id" required>
+                                                        <select class="form-control" name="album" id="album_id">
                                                             <option value="">{{ __('select_album') }}</option>
                                                             @foreach ($albums as $album)
                                                                 <option value="{{ $album->id }}">{{ $album->name }}</option>

@@ -70,7 +70,7 @@ class ThemeSectionController extends Controller
         elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::GALLERY):
 
             Validator::make($request->all(), [
-                'album_id'         => 'required',
+                'album'         => 'required',
                 'order'         => 'required',
                 'status'        => 'required'
             ])->validate();
@@ -96,9 +96,9 @@ class ThemeSectionController extends Controller
             $section->label = 'latest_post';
         }
         elseif($request->type == \Modules\Appearance\Enums\ThemeSectionType::GALLERY) {
-            $album = Album::findOrFail($request->album_id);
+            $album = Album::findOrFail($request->album);
             $section->label = $album->name;
-            $section->album_id = $request->album_id;
+            $section->album_id = $request->album;
         }
 
         $section->order = $request->order;
