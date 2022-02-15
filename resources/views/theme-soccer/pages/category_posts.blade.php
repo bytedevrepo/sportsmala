@@ -18,12 +18,12 @@
         <div class="container">
             <div class="row">
                 <!-- Content -->
-                <div class="content col-lg-8">
+                <div class="content col-lg-8 col-sm-12 col-xs-12">
                     <!-- Posts Grid -->
                     <div class="posts posts--cards post-grid post-grid--2cols post-grid--fitRows row">
                         @if($posts->count())
                             @foreach($posts as $post)
-                                <div class="post-grid__item col-6">
+                                <div class="post-grid__item col-12">
                                     <div class="posts__item posts__item--card posts__item--category-1 card">
                                         <figure class="posts__thumb">
                                             @if(!blank($post->categories))
@@ -83,7 +83,7 @@
                         @endif
                     </div>
                 </div>
-                <div id="sidebar" class="sidebar col-lg-4">
+                <div id="sidebar" class="sidebar col-lg-4 col-sm-12">
                     <div class="theiaStickySidebar">
                         @include('theme-soccer._partials.right_sidebar_widgets')
                     </div>

@@ -1,5 +1,5 @@
 <!-- Widget: Popular News -->
-<aside class="widget widget--sidebar card widget-popular-posts">
+<aside class="widget widget--sidebar card widget-popular-posts mt-1">
     <div class="widget__title card__header">
         <h4>{{ data_get($detail, 'title') }}</h4>
     </div>
