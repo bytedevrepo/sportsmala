@@ -41,10 +41,11 @@ class ArticleController extends Controller
 			$post->save();
 
 			if ($post->auth_required == 1 && Sentinel::check() == false) {
-				return view('site.pages.403');
+			    abort(403);
 			}
-		} else {
-			return view('site.pages.404');
+
+        } else {
+            abort(404);
 		}
 		$post               = Post::with(['image','comments'=> function ($query) {
 										return $query->whereNull('comment_id');
@@ -170,7 +171,7 @@ class ArticleController extends Controller
 //			return view('site.pages.submit_news', compact('widgets'));
 			return view('theme-soccer.pages.author.create_post', compact('widgets'));
 		else:
-			return response()->view('site.pages.404');
+            abort(404);
 		endif;
 	}
 
@@ -191,7 +192,8 @@ class ArticleController extends Controller
 	public function saveNews(Request $request)
 	{
 		if (settingHelper('submit_news_status') != 1):
-			return response()->view('site.pages.404');
+            abort(404);
+//			return response()->view('site.pages.404');
 		endif;
 
 		Validator::make($request->all(), [
@@ -224,7 +226,8 @@ class ArticleController extends Controller
 
 			DB::rollBack();
 
-			return view('site.pages.500');
+			abort(500);
+//			return view('site.pages.500');
 		}
 	}
 
@@ -566,9 +569,11 @@ class ArticleController extends Controller
 			$tracker->agent_browser = UserAgentBrowser(\Request()->header('User-Agent'));
 			$tracker->save();
 
-			return view('site.pages.category_posts', compact('posts', 'widgets', 'totalPostCount', 'id'));
+			return view('theme-soccer.pages.category_posts', compact('posts', 'widgets', 'totalPostCount', 'id'));
+//			return view('site.pages.category_posts', compact('posts', 'widgets', 'totalPostCount', 'id'));
 		} catch (\Exception $e) {
-			return view('site.pages.404');
+		    abort(404);
+//			return view('site.pages.404');
 		}
 	}
 
@@ -689,7 +694,8 @@ class ArticleController extends Controller
 //			return view('site.pages.tags_posts', compact('posts', 'widgets', 'totalPostCount', 'slug'));
 			return view('theme-soccer.pages.tags_posts', compact('posts', 'widgets', 'totalPostCount', 'slug'));
 		} catch (\Exception $e) {
-			return view('site.pages.404');
+		    abort(404);
+//			return view('site.pages.404');
 		}
 	}
 
@@ -797,9 +803,10 @@ class ArticleController extends Controller
 			$tracker->agent_browser = UserAgentBrowser(\Request()->header('User-Agent'));
 			$tracker->save();
 
-			return view('site.pages.category_posts', compact('posts', 'widgets'));
+			return view('theme-soccer.pages.category_posts', compact('posts', 'widgets'));
 		} catch (\Exception $e) {
-			return view('site.pages.404');
+		    abort(404);
+//			return view('site.pages.404');
 		}
 	}
 
@@ -844,7 +851,8 @@ class ArticleController extends Controller
 //			return view('site.pages.date_posts', compact('posts', 'widgets', 'totalPostCount', 'date'));
 			return view('theme-soccer.pages.date_posts', compact('posts', 'widgets', 'totalPostCount', 'date'));
 		} catch (\Exception $e) {
-			return view('site.pages.404');
+		    abort(404);
+//			return view('site.pages.404');
 		}
 	}
 
