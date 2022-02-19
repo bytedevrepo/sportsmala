@@ -1,4 +1,4 @@
-<div class="col-sm-6 col-lg-3">
+<div class="col-sm-6 col-lg-3 col-md-3">
     <div class="widget widget--footer widget-contact-info">
         <div class="widget__content">
             <div class="widget-contact-info__desc">

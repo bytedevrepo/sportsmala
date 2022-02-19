@@ -1,4 +1,4 @@
-<div class="col-sm-6 col-lg-4">
+<div class="col-sm-6 col-lg-3 col-md-3">
     <div class="footer-col-inner">
         <!-- Widget: Popular Posts / End -->
         <div class="widget widget--footer widget-popular-posts">
@@ -14,9 +14,9 @@
                                 <figure class="posts__thumb posts__thumb--hover">
                                     <a href="{{ route('article.detail', ['id' => $post->slug]) }}">
                                         @if(isFileExist(@$post->image, $result = @$post->image->small_image))
-                                            <img src="{{basePath($post->image)}}/{{$result }}" alt="{!! $post->title !!}">
+                                            <img src="{{basePath($post->image)}}/{{$result }}" alt="{!! $post->title !!}" width="80">
                                         @else
-                                            <img src="{{static_asset('default-image/default-123x83.png') }}" alt="{!! $post->title !!}">
+                                            <img src="{{static_asset('default-image/default-123x83.png') }}" alt="{!! $post->title !!}" width="80">
                                         @endif
                                     </a>
                                 </figure>

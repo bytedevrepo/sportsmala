@@ -1,4 +1,4 @@
-<div class="col-sm-6 col-lg-4">
+<div class="col-sm-6 col-lg-3 col-md-3">
     <div class="footer-col-inner">
         <!-- Widget: Contact / End -->
         <div class="widget widget--footer widget-contact">
