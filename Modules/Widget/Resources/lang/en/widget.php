@@ -29,6 +29,7 @@ return [
         \Modules\Widget\Enums\WidgetContentType::CATEGORIES => 'Categories',
         \Modules\Widget\Enums\WidgetContentType::EDITORS_PICKS => 'Editor Picks',
         \Modules\Widget\Enums\WidgetContentType::AD => 'Ads',
+        \Modules\Widget\Enums\WidgetContentType::CONTACT_DETAILS => 'Contact Details',
     ],
     'content_type_header' => [
         \Modules\Widget\Enums\WidgetContentType::AD => 'Ads',

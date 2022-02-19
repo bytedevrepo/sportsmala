@@ -78,7 +78,7 @@
                                 </select>
                             </div>
                         </div>
-
+{{--{{dd(__('widget::widget.content_type_footer'))}}--}}
                         <div class="col-sm-12 ">
                             <div class="form-group">
                                 <label for="language">{{ __('content_type') }}</label>
@@ -212,7 +212,7 @@
             $('#location').change(function () {
                 let location = $(this).val();
                 if (location == {{ \Modules\Widget\Enums\WidgetLocation::RIGHT_SIDEBAR }}) {
-                    
+
                     if($('#content_type').val() == {{ \Modules\Widget\Enums\WidgetContentType::VOTING_POLL }}){
                         $('#poll-area').removeClass('d-none');
                     }

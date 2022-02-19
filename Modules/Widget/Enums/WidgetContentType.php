@@ -13,6 +13,7 @@ interface WidgetContentType
     const RECOMMENDED_POSTS = 7;
     const VOTING_POLL       = 8;
     const AD                = 9;
+    const CONTACT_DETAILS   = 10;
     //const WEATHER = 10;
     const CATEGORIES        = 11;
     const EDITORS_PICKS     = 12;

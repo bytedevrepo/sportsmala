@@ -23,21 +23,22 @@ class FooterWidgetService extends Service
         WidgetContentType::AD                   => 'ad_widget',
         WidgetContentType::CATEGORIES           => 'categories',
         WidgetContentType::EDITORS_PICKS        => 'editor_picks',
+        WidgetContentType::CONTACT_DETAILS        => 'contact_details',
     ];
 
     private function popularPost()
     {
         return Post::with(['image', 'user'])
-                ->orderBy('total_hit', 'DESC')
-                ->take(4)
-                ->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))
-                ->where('visibility', 1)
-                ->where('status', 1)
-                ->when(Sentinel::check()== false, function ($query) {
-                        $query->where('auth_required',0); })
-                ->get();
+            ->orderBy('total_hit', 'DESC')
+            ->take(4)
+            ->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))
+            ->where('visibility', 1)
+            ->where('status', 1)
+            ->when(Sentinel::check()== false, function ($query) {
+                $query->where('auth_required',0); })
+            ->get();
     }
-    
+
 
     private function categories()
     {
@@ -79,12 +80,12 @@ class FooterWidgetService extends Service
     {
         $widgetContents = [];
 
-        $widgets        = Widget::with('ad')
-                        ->where('status', 1)
-                        ->where('location', \Modules\Widget\Enums\WidgetLocation::FOOTER)
-                        ->orderBy('order', 'asc')
-                        ->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))
-                        ->get();
+        $widgets = Widget::with('ad')
+            ->where('status', 1)
+            ->where('location', \Modules\Widget\Enums\WidgetLocation::FOOTER)
+            ->orderBy('order', 'asc')
+            ->where('language', LaravelLocalization::setLocale() ?? settingHelper('default_language'))
+            ->get();
 
         foreach ($widgets as $widget) {
 

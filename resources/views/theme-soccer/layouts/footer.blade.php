@@ -1,7 +1,5 @@
-{{--<pre>--}}
 @php
     $footerWidgets = data_get($widgets, \Modules\Widget\Enums\WidgetLocation::FOOTER, []);
-//print_r($footerWidgets);
 @endphp
 
 @include('site.partials.ads', ['ads' => $footerWidgets])
