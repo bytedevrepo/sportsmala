@@ -6,6 +6,7 @@
             <div class="container">
                 <div class="row">
                     @foreach($footerWidgets as $widget)
+                        <pre>{{ print_r($widget['view']) }}</pre>
                         @if($widget['view'] == 'popular_post')
                             @include('theme-soccer.widgets.footer.popular_post', $widget)
                         @elseif($widget['view'] == 'editor_picks')
@@ -14,6 +15,10 @@
                             @include('theme-soccer.widgets.footer.categories', $widget)
                         @elseif($widget['view'] == 'newsletter')
                             @include('theme-soccer.widgets.footer.newsletter', $widget)
+                        @elseif($widget['view'] == 'follow_us')
+                            @include('theme-soccer.widgets.footer.follow_us', $widget)
+                        @elseif($widget['view'] == 'company_contact')
+                            @include('theme-soccer.widgets.footer.contact', $widget)
                         @endif
                     @endforeach
                     <div class="clearfix visible-sm"></div>
